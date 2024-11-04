@@ -66,3 +66,6 @@ L4 = Maillon(30, Maillon(44, Maillon(50, None)))
 # print(taille_rec(L4))
 # print(nieme_element_iter(2, L4))
 # print(nieme_element_rec(2, L4))
+
+print(concatener_iter(L1, L2))
+print(concatener_rec(L1, L2))
