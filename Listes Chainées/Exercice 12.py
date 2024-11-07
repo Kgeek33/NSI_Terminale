@@ -1,4 +1,3 @@
-
 class Maillon:
     def __init__(self, v: any, s: any) -> None:
         self._valeur = v
@@ -43,14 +42,13 @@ def trouve_iter(x: any, lst: Maillon):
 
 
 def trouve_rec(x: any, lst: Maillon):
-    if lst == None:
-        return 0
-    
     s = 0
-    if lst.valeur() == x:
+    if lst == None:
         return s
+    if lst.valeur() == x:
+        return s + 1
 
-    return trouve_rec(x, lst.suite()) + 1
+    return trouve_rec(x, lst.suite())
 
 
 m = Maillon(9, None)
