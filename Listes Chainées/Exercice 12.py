@@ -34,21 +34,27 @@ def taille_iter(L: Maillon) -> int:
 
 
 def trouve_iter(x: any, lst: Maillon):
-    for i in range(taille_iter(lst)):
-        if lst.valeur() == x:
-            return i
+    k = 0
+    while lst != None:
+        if x == lst.valeur():
+            return k
+
         lst = lst.suite()
+        k += 1
     return None
 
 
 def trouve_rec(x: any, lst: Maillon):
-    s = 0
     if lst == None:
-        return s
-    if lst.valeur() == x:
-        return s + 1
+        return None
+    if x == lst.valeur():
+        return 0
+    
+    rec = trouve_rec(x, lst.suite())
+    if rec == None:
+        return None
 
-    return trouve_rec(x, lst.suite())
+    return rec + 1
 
 
 m = Maillon(9, None)
@@ -60,9 +66,9 @@ L2 = m1
 m2 = Maillon(3, m1)
 L3 = m2
 
-L4 = Maillon(30, Maillon(44, Maillon(30, None)))
+L4 = Maillon(66, Maillon(44, Maillon(30, None)))
 
-print(trouve_iter(30, L4))
-print(trouve_iter(20, L2))
-print(trouve_rec(30, L4))
-print(trouve_rec(20, L2))
+print("30 dans L4 :", trouve_iter(30, L4))
+print("20 dans L2 :", trouve_iter(20, L2))
+print("30 dans L4 :", trouve_rec(30, L4))
+print("20 dans L2 :", trouve_rec(20, L2))
