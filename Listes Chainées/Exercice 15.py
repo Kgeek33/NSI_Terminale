@@ -22,6 +22,12 @@ class Maillon:
     def est_vide(lst) -> bool:
         return lst == None
 
+def _(x, lst: Maillon):
+    a = None
+    while lst.valeur() < x:
+        a = Maillon(lst.valeur(), a)
+        lst = lst.suite()
+    
 
 def inserer_rec(x: int, lst: Maillon) -> Maillon:
     pass
