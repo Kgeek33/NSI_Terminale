@@ -23,7 +23,7 @@ class Maillon:
         return lst == None
 
 
-def inserer_rec(x, lst: Maillon) -> Maillon:
+def inserer_rec(x: int, lst: Maillon) -> Maillon:
     pass
 
 
