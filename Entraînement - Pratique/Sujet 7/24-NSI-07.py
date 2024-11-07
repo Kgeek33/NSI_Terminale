@@ -26,9 +26,9 @@ def tri_insertion(tab: list):
         j = i
         # tant qu'on n'a pas trouvé la place de l'élément à
         # insérer on décale les valeurs du tableau vers la droite
-        while j > i - 1 and valeur_insertion < tab[j]:
+        while j > 0 and valeur_insertion < tab[j - 1]:
             tab[j] = tab[j-1]
-            j = j + 1
+            j = j - 1
         tab[j] = valeur_insertion
 
 
