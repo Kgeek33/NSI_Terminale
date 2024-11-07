@@ -41,8 +41,8 @@ def identiques(lst1: Maillon, lst2: Maillon) -> bool:
         if lst1.valeur() != lst2.valeur():
             return False
 
-        lst1 = lst1.valeur()
-        lst2 = lst2.valeur()
+        lst1 = lst1.suite()
+        lst2 = lst2.suite()
     return True
 
 
