@@ -30,7 +30,13 @@ def _(x, lst: Maillon):
     
 
 def inserer_rec(x: int, lst: Maillon) -> Maillon:
-    pass
+    if lst == None:
+        return Maillon(x, None)
+    
+    if x<= lst.valeur():
+        return Maillon(x, lst)
+    
+    return Maillon(lst.valeur(), inserer_rec(x, lst.suite()))
 
 
 m = Maillon(9, None)
