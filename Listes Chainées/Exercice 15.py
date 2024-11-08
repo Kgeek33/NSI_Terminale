@@ -38,6 +38,13 @@ def inserer_rec(x: int, lst: Maillon) -> Maillon:
     
     return Maillon(lst.valeur(), inserer_rec(x, lst.suite()))
 
+def tri_par_insertion(lst: Maillon) -> Maillon:
+    if lst == None:
+        return None
+    if lst.suite() == None:
+        return lst
+    
+    return inserer_rec(lst.valeur(), tri_par_insertion(lst.suite()))
 
 m = Maillon(9, None)
 L1 = m
@@ -48,4 +55,6 @@ L2 = m1
 m2 = Maillon(3, m1)
 L3 = m2
 
-L4 = Maillon(30, Maillon(44, Maillon(30, None)))
+L4 = Maillon(500, Maillon(44, Maillon(30, None)))
+
+print(tri_par_insertion(L4))
