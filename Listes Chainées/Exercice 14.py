@@ -37,6 +37,8 @@ def identiques(lst1: Maillon, lst2: Maillon) -> bool:
     """
     retourne un booléen précisant si les listes lst1 et lst2 contiennent les mêmes éléments dans le même ordre
     """
+    if taille_iter(lst1) != taille_iter(lst2):
+        return None
     for _ in range(taille_iter(lst1)):
         if lst1.valeur() != lst2.valeur():
             return False
