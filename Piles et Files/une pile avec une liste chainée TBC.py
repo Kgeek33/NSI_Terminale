@@ -62,6 +62,10 @@ def inverser_pile(p: Pile) -> Pile:
     return rev
 
 
+def haut_bas_bas_haut(p: Pile):
+    pass
+
+
 P = Pile()
 print("pile vide ?", P.est_vide())
 P.empiler(5)
