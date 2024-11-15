@@ -1,6 +1,7 @@
 from classe_maillon import *
 from copy import deepcopy
 
+
 class Pile:
     """structure de pile"""
 
@@ -40,13 +41,25 @@ class Pile:
     def taille(self) -> int:
         return self._taille
 
+
 def inverser_pile(p: Pile) -> Pile:
-    pcopy = deepcopy(p)
-    nv = Pile()
-    while not pcopy.est_vide():
-        a = pcopy.depiler()
-        nv.empiler(a)
-    return nv
+    # pcopy = deepcopy(p)
+    # nv = Pile()
+    # while not pcopy.est_vide():
+    #     a = pcopy.depiler()
+    #     nv.empiler(a)
+    # return nv
+    rev = Pile()
+    new = Pile()
+
+    while not p.est_vide():
+        rev.empiler(p.sommet())
+        new.empiler(p.depiler())
+
+    while not new.est_vide():
+        p.empiler(new.depiler())
+
+    return rev
 
 
 P = Pile()
