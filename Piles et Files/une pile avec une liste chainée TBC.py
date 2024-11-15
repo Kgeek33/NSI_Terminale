@@ -1,13 +1,13 @@
 from classe_maillon import *
-
+from copy import deepcopy
 
 class Pile:
     """structure de pile"""
 
-    def __init__(self, nb: int) -> None:
+    def __init__(self) -> None:
         # contenu est un maillon
         self.contenu = None
-        self._taille = nb
+        self._taille = 0
 
     def est_vide(self) -> bool:
         return self.contenu is None
@@ -40,16 +40,16 @@ class Pile:
     def taille(self) -> int:
         return self._taille
 
-    def inverser_pile(self) -> Maillon:
-        maillon = self.contenu
-        rev_lst = None
-        while maillon is not None:
-            rev_lst = Maillon(maillon._valeur, rev_lst)
-            maillon = maillon.suite()
-        return rev_lst
+def inverser_pile(p: Pile) -> Pile:
+    pcopy = deepcopy(p)
+    nv = Pile()
+    while not pcopy.est_vide():
+        a = pcopy.depiler()
+        nv.empiler(a)
+    return nv
 
 
-P = Pile(0)
+P = Pile()
 print("pile vide ?", P.est_vide())
 P.empiler(5)
 print(str(P))
@@ -63,8 +63,17 @@ print("Voici la taille !!! -> ", P.taille())
 
 P.vider()
 print("pile vide ?", P.est_vide())
+
+P.empiler(5)
+P.empiler(-2)
 n = P.depiler()
+P.empiler(-2)
+
 print("sommet dépilé =", n)
 print("pile vide ?", P.est_vide())
 print(str(P))
 print(P.sommet())
+
+print("Avant inversement -> ", P)
+S = inverser_pile(P)
+print("Après inversement -> ", P, S)
