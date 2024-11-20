@@ -77,7 +77,9 @@ def haut_bas_bas_haut(p: Pile) -> None:
 def melange(pile1: Pile, pile2: Pile) -> Pile:
     pile3 = Pile()
     print("normal", pile1.contenu, "mélangé", shuffle([pile1.contenu]))
-    pile3.empiler(shuffle(pile1.contenu))
+    pile3.empiler(shuffle([pile1.contenu]))
+    pile3.empiler(shuffle([pile2.contenu]))
+    return pile3
 
 
 if __name__ == '__main__':
