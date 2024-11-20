@@ -32,7 +32,9 @@ class Pile:
     def __str__(self, chaine="[") -> str:
         return str(self.contenu)
 
-    def sommet(self) -> any:
+    def sommet(self):
+        if self.est_vide():
+            raise IndexError("pas de sommet sur une pile vide !")
         return self.contenu.valeur()
 
     def vider(self) -> None:
@@ -49,48 +51,45 @@ def inverser_pile(p: Pile) -> Pile:
     #     a = pcopy.depiler()
     #     nv.empiler(a)
     # return nv
-    rev = Pile()
-    new = Pile()
-
-    while not p.est_vide():
-        rev.empiler(p.sommet())
-        new.empiler(p.depiler())
-
-    while not new.est_vide():
-        p.empiler(new.depiler())
-
-    return rev
+    """prend en argument une pile p et inverse ses elements. Modifie la pile p"""
+    n = p.taille()
+    rev_p = Pile()
+    for _ in range(n):
+        rev_p.empiler(p.depiler())
+    p.contenu = rev_p
+    return rev_p
 
 
 def haut_bas_bas_haut(p: Pile):
     pass
 
 
-P = Pile()
-print("pile vide ?", P.est_vide())
-P.empiler(5)
-print(str(P))
-P.empiler(8)
-print(str(P))
-P.empiler(-2)
-print(str(P))
+if __name__ == '__main__':
+    P = Pile()
+    print("pile vide ?", P.est_vide())
+    P.empiler(5)
+    print(str(P))
+    P.empiler(8)
+    print(str(P))
+    P.empiler(-2)
+    print(str(P))
 
-print("L'oscar est desserné à .... -> ", P.sommet())
-print("Voici la taille !!! -> ", P.taille())
+    print("L'oscar est desserné à .... -> ", P.sommet())
+    print("Voici la taille !!! -> ", P.taille())
 
-P.vider()
-print("pile vide ?", P.est_vide())
+    P.vider()
+    print("pile vide ?", P.est_vide())
 
-P.empiler(5)
-P.empiler(-2)
-n = P.depiler()
-P.empiler(-2)
+    P.empiler(5)
+    P.empiler(-2)
+    n = P.depiler()
+    P.empiler(-2)
 
-print("sommet dépilé =", n)
-print("pile vide ?", P.est_vide())
-print(str(P))
-print(P.sommet())
+    print("sommet dépilé =", n)
+    print("pile vide ?", P.est_vide())
+    print(str(P))
+    print(P.sommet())
 
-print("Avant inversement -> ", P)
-S = inverser_pile(P)
-print("Après inversement -> ", P, S)
+    print("Avant inversement -> ", P)
+    S = inverser_pile(P)
+    print("Après inversement -> ", P, S)
