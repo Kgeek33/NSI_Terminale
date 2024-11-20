@@ -1,5 +1,6 @@
+from random import shuffle
 from classe_maillon import *
-# from copy import deepcopy
+from copy import deepcopy
 
 
 class Pile:
@@ -44,23 +45,39 @@ class Pile:
 
 
 def inverser_pile(p: Pile) -> Pile:
-    # pcopy = deepcopy(p)
-    # nv = Pile()
-    # while not pcopy.est_vide():
-    #     a = pcopy.depiler()
-    #     nv.empiler(a)
-    # return nv
-    """prend en argument une pile p et inverse ses elements. Modifie la pile p"""
-    n = p.taille()
-    rev_p = Pile()
-    for _ in range(n):
-        rev_p.empiler(p.depiler())
-    p.contenu = rev_p
-    return rev_p
+    pcopy = deepcopy(p)
+    nv = Pile()
+    while not pcopy.est_vide():
+        a = pcopy.depiler()
+        nv.empiler(a)
+    return nv
 
 
-def haut_bas_bas_haut(p: Pile):
-    pass
+def haut_bas_bas_haut(p: Pile) -> None:
+    print("Avant ->", str(p.contenu))
+    pcopy = deepcopy(p)
+    taillecopy = p.taille()
+    pnew = Pile()
+    premierElm = None
+    dernierElm = pcopy.depiler()
+    while pcopy.taille() != 1:
+        pcopy.depiler()
+    premierElm = pcopy.depiler()
+    pnew.empiler(dernierElm)
+    p = inverser_pile(p)
+    for i in range(taillecopy):
+        if i != 0 and i != taillecopy - 1:
+            pnew.empiler(p.contenu.valeur())
+
+        p.depiler()
+    pnew.empiler(premierElm)
+    p.contenu = pnew
+    print("Après ->", str(p.contenu))
+
+def melange(pile1: Pile, pile2: Pile) -> Pile:
+    pile3 = Pile()
+    print("normal", pile1.contenu, "mélangé", shuffle([pile1.contenu]))
+    pile3.empiler(shuffle(pile1.contenu))
 
 
 if __name__ == '__main__':
@@ -72,6 +89,10 @@ if __name__ == '__main__':
     print(str(P))
     P.empiler(-2)
     print(str(P))
+    P.empiler(15)
+    P.empiler(16)
+    P.empiler(17)
+    haut_bas_bas_haut(P)
 
     print("L'oscar est desserné à .... -> ", P.sommet())
     print("Voici la taille !!! -> ", P.taille())
@@ -91,4 +112,6 @@ if __name__ == '__main__':
 
     print("Avant inversement -> ", P)
     S = inverser_pile(P)
-    print("Après inversement -> ", P, S)
+    print("Après inversement -> ", S)
+    print("Nous allons mélanger 2 piles !")
+    print(melange(P, S))
