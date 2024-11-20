@@ -1,5 +1,5 @@
 from classe_maillon import *
-from copy import deepcopy
+# from copy import deepcopy
 
 
 class Pile:
@@ -28,7 +28,6 @@ class Pile:
 
         return cqfs
 
-    # permet l'appel str(P) equivalent à P.__str__()
     def __str__(self, chaine="[") -> str:
         return str(self.contenu)
 
