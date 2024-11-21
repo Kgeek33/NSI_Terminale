@@ -1,4 +1,4 @@
-from random import shuffle
+from random import randint, shuffle
 from classe_maillon import *
 from copy import deepcopy
 
@@ -74,12 +74,34 @@ def haut_bas_bas_haut(p: Pile) -> None:
     p.contenu = pnew
     print("Après ->", str(p.contenu))
 
-def melange(pile1: Pile, pile2: Pile) -> Pile:
-    pile3 = Pile()
-    print("normal", pile1.contenu, "mélangé", shuffle([pile1.contenu]))
-    pile3.empiler(shuffle([pile1.contenu]))
-    pile3.empiler(shuffle([pile2.contenu]))
-    return pile3
+def melange(nb_cartes):
+    """ melange deux paquets de nb_cartes chacun"""
+    # On dépile p pour remplir une pile p2
+    assert 0<=nb_cartes<100
+    
+    p_1 = Pile()
+    p_2 = Pile()
+    p_melange=Pile()
+    L_1=[100+k for k in range(nb_cartes)]
+    shuffle(L_1)
+    L_2=[200+k for k in range(nb_cartes)]
+    shuffle(L_2)
+    # transforme les listes en piles
+    for no_carte in range(nb_cartes):
+        p_1.empiler(L_1[no_carte])
+        p_2.empiler(L_2[no_carte])
+    while not p_1.est_vide() and not p_2.est_vide():
+        paquet_1=randint(0,1)
+        if paquet_1==1:
+            p_melange.empiler(p_1.depiler())
+        else:
+            p_melange.empiler(p_2.depiler())
+
+    while not p_2.est_vide():
+        p_melange.empiler(p_2.depiler())
+    while not p_1.est_vide():
+        p_melange.empiler(p_1.depiler())  
+    return p_melange
 
 
 if __name__ == '__main__':
