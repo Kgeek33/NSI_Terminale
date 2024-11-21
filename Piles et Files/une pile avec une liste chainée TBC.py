@@ -53,26 +53,22 @@ def inverser_pile(p: Pile) -> Pile:
     return nv
 
 
-def haut_bas_bas_haut(p: Pile) -> None:
-    print("Avant ->", str(p.contenu))
-    pcopy = deepcopy(p)
-    taillecopy = p.taille()
-    pnew = Pile()
-    premierElm = None
-    dernierElm = pcopy.depiler()
-    while pcopy.taille() != 1:
-        pcopy.depiler()
-    premierElm = pcopy.depiler()
-    pnew.empiler(dernierElm)
-    p = inverser_pile(p)
-    for i in range(taillecopy):
-        if i != 0 and i != taillecopy - 1:
-            pnew.empiler(p.contenu.valeur())
-
-        p.depiler()
-    pnew.empiler(premierElm)
-    p.contenu = pnew
-    print("Après ->", str(p.contenu))
+def haut_bas_bas_haut(p):
+    """ Échange le sommet et le fond de la pile p (p[-1] <-> p[0]) en temps O(n)."""
+    # On dépile p pour remplir une pile p2
+    haut = p.depiler()
+    p_2 = Pile()
+    while not p.est_vide():
+        p_2.empiler(p.depiler())
+    #le bas de p est maintenant le sommet de p_2. On le récupère et on le garde pour la fin
+    bas = p_2.depiler()
+    # on pose le haut au fond de p
+    p.empiler(haut)
+    # On rempile tout le reste dans p
+    while not p_2.est_vide():
+        p.empiler(p_2.depiler())  # Ordre inchangé pour ces valeurs là
+    #on pose le bas tout en haut de p
+    p.empiler(bas)
 
 def melange(nb_cartes):
     """ melange deux paquets de nb_cartes chacun"""
