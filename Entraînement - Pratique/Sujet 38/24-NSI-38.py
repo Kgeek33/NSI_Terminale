@@ -1,3 +1,21 @@
+def indices_maxi(tab: list[int]) -> tuple[int, list]:
+    maxi = tab[0]
+    indices = []
+    for valeur in tab:
+        if valeur > maxi:
+            maxi = valeur
+
+    for i in range(len(tab)):
+        if tab[i] == maxi:
+            indices.append(i)
+
+    return (maxi, indices)
+
+
+assert indices_maxi([1, 5, 6, 9, 1, 2, 3, 7, 9, 8]) == (9, [3, 8])
+assert indices_maxi([7]) == (7, [0])
+
+
 def renverse(pile: list[int]):
     '''renvoie une pile contenant les mêmes éléments que pile,
     mais dans l'ordre inverse.
