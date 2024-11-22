@@ -14,8 +14,12 @@ class File:
     def retirer(self):
         """ retire le maillon de tête """
         if self.tete == None:
-            raise ValueError("^pmlojhghujiopiugfciuouhgvhujiouhgvcghuiuhg")
+            raise ValueError("self.tete est vide !!")
+        v = self.tete.valeur()
         self.tete = self.tete.suite()
+        if self.tete is None:
+            self.queue = None
+        return v
 
     def ajouter(self, x):
         """ajoute un maillon en queue de la file"""
@@ -44,6 +48,6 @@ F.ajouter(-2)
 print(str(F))
 # n =premier(F)
 n = F.retirer()
-print("premier retirÃ© =", n)
+print("premier retiré =", n)
 print("file vide ?", F.est_vide())
 print(str(F))
