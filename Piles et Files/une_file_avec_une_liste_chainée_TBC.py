@@ -37,7 +37,7 @@ class File:
     def __len__(self):
         return taille_iter(self.tete)
 
-if __name__ == "__main":
+if __name__ == "__main__":
     F = File()
     print("file vide ?", F.est_vide())
     F.ajouter(5)
