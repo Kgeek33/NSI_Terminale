@@ -60,35 +60,36 @@ def haut_bas_bas_haut(p):
     p_2 = Pile()
     while not p.est_vide():
         p_2.empiler(p.depiler())
-    #le bas de p est maintenant le sommet de p_2. On le récupère et on le garde pour la fin
+    # le bas de p est maintenant le sommet de p_2. On le récupère et on le garde pour la fin
     bas = p_2.depiler()
     # on pose le haut au fond de p
     p.empiler(haut)
     # On rempile tout le reste dans p
     while not p_2.est_vide():
         p.empiler(p_2.depiler())  # Ordre inchangé pour ces valeurs là
-    #on pose le bas tout en haut de p
+    # on pose le bas tout en haut de p
     p.empiler(bas)
+
 
 def melange(nb_cartes):
     """ melange deux paquets de nb_cartes chacun"""
     # On dépile p pour remplir une pile p2
-    assert 0<=nb_cartes<100
-    
+    assert 0 <= nb_cartes < 100
+
     p_1 = Pile()
     p_2 = Pile()
-    p_melange=Pile()
-    L_1=[100+k for k in range(nb_cartes)]
+    p_melange = Pile()
+    L_1 = [100+k for k in range(nb_cartes)]
     shuffle(L_1)
-    L_2=[200+k for k in range(nb_cartes)]
+    L_2 = [200+k for k in range(nb_cartes)]
     shuffle(L_2)
     # transforme les listes en piles
     for no_carte in range(nb_cartes):
         p_1.empiler(L_1[no_carte])
         p_2.empiler(L_2[no_carte])
     while not p_1.est_vide() and not p_2.est_vide():
-        paquet_1=randint(0,1)
-        if paquet_1==1:
+        paquet_1 = randint(0, 1)
+        if paquet_1 == 1:
             p_melange.empiler(p_1.depiler())
         else:
             p_melange.empiler(p_2.depiler())
@@ -96,7 +97,7 @@ def melange(nb_cartes):
     while not p_2.est_vide():
         p_melange.empiler(p_2.depiler())
     while not p_1.est_vide():
-        p_melange.empiler(p_1.depiler())  
+        p_melange.empiler(p_1.depiler())
     return p_melange
 
 
@@ -134,4 +135,4 @@ if __name__ == '__main__':
     S = inverser_pile(P)
     print("Après inversement -> ", S)
     print("Nous allons mélanger 2 piles !")
-    print(melange(P, S))
+    print(melange(5))
