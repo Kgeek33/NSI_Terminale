@@ -16,8 +16,13 @@ class File:
         if self.est_vide():
             raise ValueError("Une des 2 piles est vide !!")
 
-        v = self.pile_ar.depiler()
-        self.pile_av.empiler(v)
+        if not self.pile_av.est_vide():
+            v = self.pile_av.sommet()
+            self.pile_av.depiler()
+        else:
+            while not self.pile_ar.est_vide():
+                self.pile_av.empiler(self.pile_ar.depiler())
+            v = self.pile_av.depiler()
 
         return v
 
