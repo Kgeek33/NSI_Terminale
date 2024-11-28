@@ -27,7 +27,7 @@ def simuler(duree_h: int) -> str:
             if len(en_attente) == 1:
                 tps_restant_en_ctl = en_attente.tete.valeur()
 
-        if tps_restant_en_ctl <= 0:
+        if tps_restant_en_ctl == 0:
             en_attente.retirer()
             if not en_attente.est_vide():
                 tps_restant_en_ctl = en_attente.tete.valeur()
