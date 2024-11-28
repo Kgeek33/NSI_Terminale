@@ -2,7 +2,7 @@ from random import choice
 from une_file_avec_une_liste_chainée_TBC import *
 
 T_ALIM_MIN = 7
-TPS_CTS = [4, 6, 8, 9]
+TPS_CTS = [4, 6, 8, 12]
 NB_TYPES = len(TPS_CTS)
 
 
@@ -21,14 +21,19 @@ def simuler(duree_h: int) -> str:
     en_attente.ajouter(choice(TPS_CTS))
     tps_restant_en_ctl = en_attente.tete.valeur()
 
-    while duree_minutes >= 0:
-        if tmps_minutes % 7 == 0:
+    while tmps_minutes < duree_minutes or not en_attente.est_vide():
+        # if duree_minutes % 240 == 0:
+        #     duree_minutes -= 15
+        #     continue
+
+        if tmps_minutes % T_ALIM_MIN == 0:
             en_attente.ajouter(choice(TPS_CTS))
             if len(en_attente) == 1:
                 tps_restant_en_ctl = en_attente.tete.valeur()
 
         if tps_restant_en_ctl == 0:
-            en_attente.retirer()
+            tps_continu_en_ctl += en_attente.retirer()
+            nb_pieces_controlees += 1
             if not en_attente.est_vide():
                 tps_restant_en_ctl = en_attente.tete.valeur()
 
@@ -41,6 +46,11 @@ def simuler(duree_h: int) -> str:
         tps_restant_en_ctl -= 1
         duree_minutes -= 1
 
+    return (
+        f"\nC'est la fin !\nLa durée de séjour moyenne des pièces dans le poste de contrôle a été de {
+            round(tps_continu_en_ctl / nb_pieces_controlees, 2)} minutes"
+    )
 
-print(simuler(1))
+
+# print(simuler(1))
 print(simuler(80))
