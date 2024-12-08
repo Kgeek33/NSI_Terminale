@@ -1,160 +1,206 @@
 from random import randint
 import snake_pygame as spg
 
-BLACK=(0,0,0)
-RED = (255,0,0)
-GREEN = (0,255,0)
-BLUE= (0,0,255)
-WHITE=(255,255,255)
-YELLOW=(255,255,0)
-PURPLE=(89,27,219)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+WHITE = (255, 255, 255)
+YELLOW = (255, 255, 0)
+PURPLE = (89, 27, 219)
 
 
+class Point:
+    # attribut de classe : définit la taille d'un point (taille du côté) en pixels
+    taille_pxl = 20
 
-class Point :
-    #attribut de classe : définit la taille d'un point (taille du côté) en pixels
-    taille_pxl=20
-    
-    def __init__(self,x_m,y_m,x,y,c):
+    def __init__(self, x_m: int, y_m: int, x: int, y: int, c: tuple[int]) -> None:
         """x_m et y_m (entiers) definissent le max en x et en y,
         x et y (entiers) les coordonnées du point et
         c (tuple RGB) sa couleur """
-        self.x_max=x_m
-        self.y_max=y_m
-        self.abs=max(min(x,self.x_max),0)
-        self.ord=max(min(y,self.y_max),0)
-        self.couleur=c
-    
-    def __str__(self):
+        self.x_max = x_m
+        self.y_max = y_m
+        self.abs = max(min(x, self.x_max), 0)
+        self.ord = max(min(y, self.y_max), 0)
+        self.couleur = c
+
+    def __str__(self) -> str:
         """renvoie une chaine sous la forme '(x,y)'"""
-        pass
-        return "Point.__str__ a completer"
+        return f"({self.x_max},{self.y_max})"
 
-    
-    def __eq__(self,p):
-        """deux points sont egaux ssi ils ont les mêmes coordonnées (couleur indifférente),
-        renvoie un booléen"""
-        pass
-    
-    def placer(self):
+    def __eq__(self, p):
+        """deux points sont egaux ssi ils ont les memes coordonnees (couleur indifferente)"""
+        return self.abs == p.abs and self.ord == p.ord
+
+    def placer(self) -> None:
         """place le point dans le jardin (affichage dans la fenetre graphique)"""
-        pass
-        
-    def effacer(self):
-        pass
-    
-class Pomme :
-    bonus_pomme_rouge=5
-    
-    def __init__(self,pt,d):
-        """pt est une instance de la classe Point et d un entier désignant la durée de vie de la pomme"""
-        pass    
+        spg.affiche_point(self, self.couleur)
 
-    def pourrie(self,j=1):
+    def effacer(self):
+        spg.affiche_point(self, spg.COLOR_JARDIN)
+
+    def voisin(self, p):
+        """ retourne True si les points self et p diffèrent d'une case horzontale ou verticale """
+        return "à compléter"
+
+
+class Pomme:
+    bonus_pomme_rouge = 10
+
+    def __init__(self, pt: Point, d: int) -> None:
+        """pt est une instance de la classe Point et d un entier désignant la durée de vie de la pomme"""
+        self.point = pt
+        self.duree = d
+
+    def pourrie(self, j: int = 1) -> bool:
         "décompose la pomme et renvoie True si la pomme a depassé sa duree de vie, False sinon"
-        pass
-    
+        self.duree -= 1
+        return self.duree <= 0
+
     def jeter(self):
         """fait disparaitre la pomme du jardin"""
-    #
-    # ... et d'autres methodes si besoin...
-    # 
-    
-    def __str__(self):
-        """renvoie une chaine donnant l'état des attributs d'instances"""
-        return "Pomme.__str__ a completer"
+        self.point.effacer()
+
+    def placer(self):
+        """affiche la pomme dans la fenetre graphique"""
+        self.point.placer()
+
+    def __str__(self) -> str:
+        return str(self.point) + f" duree : {self.duree}"
 
 
-class Snake :
-    def __init__(self,x_m,y_m,c)  :
+class Snake:
+    def __init__(self, x_m: int, y_m: int, c: tuple[int]) -> None:
         """x_m et y_m (entiers) definissent le max en x et en y de la zone dans laquelle pourra évoluer le serpent,
         c sa couleur (tuple RGB)"""
-
-        # la vitesse est la dernière vitesse demandée par le joueur
-        # si le joueur relache les fleches de direction, le serpent continue sur son élan
-        self.vitesse=(0,0)
+        self.x_max = x_m
+        self.y_max = y_m
+        self.couleur = c
+        # la vitesse est la derniÃ¨re vitesse demandÃ©e par le joueur
+        # si le joueur relache les fleches de direction, le serpent continue sur son Ã©lan
+        self.vitesse = (0, 0)
         # le corps est une liste de 1 seul point quelque part dans le jardin
-        self.corps = "à completer"
+        S = Point(x_m, y_m, randint(0, x_m), randint(0, 2), c)
+        self.corps = [S]
+        S.placer()
         # et les autres attributs :
-        pass
-    
-    def __len__(self):
+        self.score = 0
+        self.vivant = True
+
+    def __len__(self) -> int:
         """renvoie la longueur du serpent"""
         return len(self.corps)
-    
-    def __str__(self):
-        pass
-        return "Snake.__str__ a completer"
-    
-    def contient(self,x,y):
-        """renvoie True si les coordonnées x,y sont celles d'un point du corps du serpent"""
-        pass
-    
-    def get_tete(self):
-        """renvoie le point de tête"""
-        pass
-    def get_queue(self):
-        """renvoie le point de queue"""
-        pass
-    def get_corps_sans_tete(self):
-        """renvoie la liste des points sans la tête""" 
-        pass
 
-    def avale(self,pomme):
+    def __str__(self) -> str:
+        ch = f"corps : {len(self)}"
+        for LEPLAIZ in self.corps:
+            ch += str(LEPLAIZ)
+        return ch
+
+    def contient(self, x, y) -> bool:
+        """renvoie True si les coordonnées x,y sont celles d'un point du corps du serpent"""
+        for Lelement in self.corps:
+            if str(Lelement) == f"({x}, {y})":
+                return True
+        return False
+
+    def get_tete(self) -> Point:
+        """renvoie le point de tête"""
+        return self.corps[-1]
+
+    def get_queue(self) -> Point:
+        """renvoie le point de queue"""
+        return self.corps[0]
+
+    def get_corps_sans_tete(self) -> list[Point]:
+        """renvoie la liste des points sans la tête"""
+        return self.corps[:-1]
+
+    def avale(self, pomme: Pomme) -> None | AssertionError:
         """pomme est une instance de Pomme.
         fait grandir le corps par le haut (la tête) dans le sens de deplacement courant"""
-        assert self.get_tete()==pomme.point
-        pass
+        assert self.get_tete() == pomme.point
+        print("mange ", str(pomme))
+        self.corps.append(pomme)
 
-    def peut_manger(self,pomme):
+    def peut_manger(self, pomme: Pomme) -> bool:
         """pomme est une instance de Pomme
         renvoie True si la tête est sur la pomme"""
-        pass
+        return self.get_tete() == str(pomme)
 
-    def se_deplace(self,vitesse):
+    def se_deplace(self, vitesse) -> None:
         """ deplace le serpent dans le sens de la vitesse (couple (Vx,Vy) passée en parametre)
-        
+
         maintient un attribut *vivant* comme suit
         le serpent ne reste vivant que
         * si le deplacement le maintient dans les limites du jardin
         * si le deplacement n'est pas un retournenemnt
         """
-        
+        self.vitesse = vitesse
         print(str(self))
-        pass
-    
-    def se_mord_la_queue(self):
+        a = self.get_tete()
+        if vitesse[0] == 0:
+            a.ord += 1
+        # match vitesse:
+        #     case (0, 1):
+        #         a.ord += 1
+        self.corps.append(a)
+        self.corps.pop(0)
+
+    def est_vivant(self):
+        """renvoie True si le serpent bouge encore dans le jeu, False sinon """
+        return "à compléter"
+
+    def se_mord_la_queue(self) -> bool:
         """ renvoie True et tue le serpent si la tete coincide avec une autre partie du corps"""
-        pass
-        
-        
-# les tests du module   
-if __name__ == '__main__' :
-    DIM_X, DIM_Y = 40, 30 # nombre de cases (point) en x et en y dans la fenetre
-    H_SCORE_EN_PXL = 40 # hauteur du panneau de score en pixels
-    spg.fenetre_init(DIM_X, DIM_Y,H_SCORE_EN_PXL,Point.taille_pxl)
-    
-    #tests de la classe Point
-    point_A=Point(20,10,2,3,BLUE)
+        return self.get_tete() in self.get_corps_sans_tete()
+
+
+# les tests du module
+if __name__ == '__main__':
+    # nombre de cases (point) en x et en y dans la fenetre
+    DIM_X, DIM_Y = 40, 30
+    H_SCORE_EN_PXL = 40  # hauteur du panneau de score en pixels
+    spg.fenetre_init(DIM_X, DIM_Y, H_SCORE_EN_PXL, Point.taille_pxl)
+
+    # tests de la classe Point
+    point_A = Point(20, 10, 2, 3, BLUE)
     print(str(point_A))
     point_A.placer()
-    point_B=Point(20,10,25,-3,GREEN)
+    point_B = Point(20, 10, 25, -3, GREEN)
     print(str(point_B))
     point_B.placer()
-    L_COLORS=[BLACK,YELLOW,RED,PURPLE]
+    L_COLORS = [BLACK, YELLOW, RED, PURPLE]
     for k in range(4):
-        point_B=Point(20,10,25,-3,L_COLORS[randint(1,len(L_COLORS))-1])
+        point_B = Point(20, 10, 25, -3, L_COLORS[randint(1, len(L_COLORS))-1])
         print(str(point_B))
         point_B.placer()
-        spg.attente(1000)
+        spg.attente(200)
         point_B.effacer()
 
-    #tests de la classe Pomme
+    # tests de la classe Pomme
+    # a completer
 
+    # tests de la classe Snake
+    mon_snake = Snake(DIM_X, DIM_Y, (19, 244, 234))
+    print(str(mon_snake))
+    mon_snake.se_deplace((0, 1))
 
-    #tests de la classe Snake
-    mon_snake=Snake(DIM_X, DIM_Y,(19, 244, 234))
-    mon_snake.se_deplace((0,1))
-    # a completer : test en ligne droite, en zig-zag
-    # a completer : test de rencontres avec des pommmes et croissance du serpent
+    def ligne_droite(n, vit):
+        global mon_snake
+        for k in range(n):
+            mon_snake.se_deplace(vit)
+            # if k % 3 == 0:
+            #     pt_tete = mon_snake.get_tete()
+            #     pomme = Pomme(pt_tete, 100)
+            #     mon_snake.avale(pomme)
+            spg.score(0, mon_snake.y_max, Point.taille_pxl, 1000+k, WHITE)
+            spg.attente(500)
 
+    ligne_droite(DIM_Y//3, (0, 1))
+    ligne_droite(3, (-1, 0))
+    ligne_droite(DIM_Y//3, (0, -1))
+    ligne_droite(2, (-1, 0))
+
+    spg.attente(5000)
+    spg.fin()
