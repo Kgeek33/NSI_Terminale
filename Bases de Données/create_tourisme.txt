@@ -1,0 +1,38 @@
+CREATE TABLE Stations(Nom_Station VARCHAR(255) PRIMARY KEY,Capacite INTEGER,Lieu VARCHAR(255),Region VARCHAR(255),Tarif INTEGER);
+
+INSERT into Stations VALUES('Tanger',350,'Maroc','Afrique',1200);
+INSERT into Stations VALUES('La Bourboule',250,'Auvergne','Europe',700);
+INSERT into Stations VALUES('Victoria',200,'Seychelles','Ocean Indien',1500);
+INSERT into Stations VALUES('Courchevel',400,'Alpes','Europe',2200);
+
+
+CREATE TABLE Activites(Libelle VARCHAR(255),Nom_Station VARCHAR(255),Prix INTEGER);
+
+INSERT into Activites VALUES('Pêche','La Bourboule',50);
+INSERT into Activites VALUES('Randonnée','La Bourboule',0);
+INSERT into Activites VALUES('Plongée','Tanger',120);
+INSERT into Activites VALUES('Plongée','Victoria',130);
+INSERT into Activites VALUES('Ski','Courchevel',120);
+INSERT into Activites VALUES('Excursion','Tanger',60);
+
+CREATE TABLE Clients(Id INTEGER PRIMARY KEY,Nom VARCHAR(255),Prenom VARCHAR(255),Ville VARCHAR(255),Region VARCHAR(255),Solde INTEGER);
+
+INSERT into Clients VALUES(1,'Bauer','Elmut','Berlin','Europe',9825);
+INSERT into Clients VALUES(2,'Smith','John','Londres','Europe',12436);
+INSERT into Clients VALUES(3,'Johnson','Britney','New York','Amérique',6721);
+
+CREATE TABLE Sejours(Id_Client INTEGER REFERENCES Clients(Id),Station VARCHAR(255),Arrivee DATE NOT NULL,Nb_Places INTEGER, CHECK(Nb_Places>0));
+
+INSERT into Sejours VALUES(1,'Courchevel','2020-02-17',2);
+INSERT into Sejours VALUES(3,'Tanger','2019-11-17',5);
+INSERT into Sejours VALUES(2,'Courchevel','2019-01-28',4);
+INSERT into Sejours VALUES(3,'La Bourboule','2017-07-20',3);
+INSERT into Sejours VALUES(3,'Victoria','2016-09-13',6);
+INSERT into Sejours VALUES(2,'La Bourboule','2019-08-13',3);
+INSERT into Sejours VALUES(3,'Courchevel','2018-02-27',5);
+INSERT into Sejours VALUES(1,'Victoria','2018-09-05',3);
+
+
+
+
+
