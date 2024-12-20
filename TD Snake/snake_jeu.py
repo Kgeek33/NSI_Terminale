@@ -26,7 +26,7 @@ def jouer():
 
     DEScoor = Point(20, 10, randint(0, H_SCORE_EN_PXL - 10),
                     randint(0, H_SCORE_EN_PXL - 10), RED)
-    LApomme = Pomme(DEScoor, 5)
+    LApomme = Pomme(DEScoor, 50)
     LApomme.placer()
 
     LEscore = 0
@@ -44,7 +44,7 @@ def jouer():
                 spg.score(0, snake.y_max, Point.taille_pxl, LEscore, WHITE)
             DEScoor = Point(20, 10, randint(0, H_SCORE_EN_PXL - 10), randint(0,
                             H_SCORE_EN_PXL - 10), L_COLORS[randint(1, len(L_COLORS))-1])
-            LApomme = Pomme(DEScoor, 5)
+            LApomme = Pomme(DEScoor, 50)
             LApomme.placer()
         if LApomme.pourrie(0.5):
             LApomme.jeter()
