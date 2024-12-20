@@ -54,7 +54,7 @@ class Pomme:
 
     def pourrie(self, j: int = 1) -> bool:
         "décompose la pomme et renvoie True si la pomme a depassé sa duree de vie, False sinon"
-        self.duree -= 1
+        self.duree -= j
         return self.duree <= 0
 
     def jeter(self):
@@ -82,7 +82,7 @@ class Snake:
         # le corps est une liste de 1 seul point quelque part dans le jardin
         S = Point(x_m, y_m, randint(0, x_m), randint(0, 2), c)
         self.corps = [S]
-        S.placer()
+        self.afficher()
         # et les autres attributs :
         self.score = 0
         self.vivant = True
@@ -97,10 +97,15 @@ class Snake:
             ch += str(LEPLAIZ)
         return ch
 
+    def afficher(self) -> None:
+        """affiche le corps du serpent dans la fenêtre"""
+        for p in self.corps:
+            p.placer()
+
     def contient(self, x, y) -> bool:
         """renvoie True si les coordonnées x,y sont celles d'un point du corps du serpent"""
-        for Lelement in self.corps:
-            if str(Lelement) == f"({x}, {y})":
+        for p in self.corps:
+            if p.abs == x and p.ord == y:
                 return True
         return False
 
@@ -116,17 +121,33 @@ class Snake:
         """renvoie la liste des points sans la tête"""
         return self.corps[:-1]
 
+    def est_dans_zone(self, x, y) -> bool:
+        return x >= 0 and x <= self.x_max and y >= 0 and y <= self.y_max
+
+    def grandir_en_tete(self):
+        """fait grandir le corps par la tête dans le sens de deplacement courant"""
+        t = self.get_tete()
+        nx = t.abs + self.vitesse[0]
+        ny = t.ord + self.vitesse[1]
+        if self.est_dans_zone(nx, ny) and not self.contient(nx, ny):
+            t = Point(self.x_max, self.y_max, nx, ny, self.couleur)
+            self.corps.append(t)
+            t.placer()
+        else:
+            self.vivant = False
+
     def avale(self, pomme: Pomme) -> None | AssertionError:
         """pomme est une instance de Pomme.
         fait grandir le corps par le haut (la tête) dans le sens de deplacement courant"""
         assert self.get_tete() == pomme.point
         print("mange ", str(pomme))
-        self.corps.append(pomme)
+        self.grandir_en_tete()
 
     def peut_manger(self, pomme: Pomme) -> bool:
         """pomme est une instance de Pomme
         renvoie True si la tête est sur la pomme"""
-        return self.get_tete() == str(pomme)
+        t = self.get_tete()
+        return t == pomme.point
 
     def se_deplace(self, vitesse) -> None:
         """ deplace le serpent dans le sens de la vitesse (couple (Vx,Vy) passée en parametre)
@@ -137,23 +158,21 @@ class Snake:
         * si le deplacement n'est pas un retournenemnt
         """
         self.vitesse = vitesse
-        print(str(self))
-        a = self.get_tete()
-        if vitesse[0] == 0:
-            a.ord += 1
-        # match vitesse:
-        #     case (0, 1):
-        #         a.ord += 1
-        self.corps.append(a)
-        self.corps.pop(0)
+        self.grandir_en_tete()
+
+        q = self.corps.pop(0)
+        q.effacer()
 
     def est_vivant(self):
         """renvoie True si le serpent bouge encore dans le jeu, False sinon """
-        return "à compléter"
+        return self.vivant
 
     def se_mord_la_queue(self) -> bool:
         """ renvoie True et tue le serpent si la tete coincide avec une autre partie du corps"""
-        return self.get_tete() in self.get_corps_sans_tete()
+        if self.get_tete() in self.get_corps_sans_tete():
+            self.vivant = False
+            return True
+        return False
 
 
 # les tests du module

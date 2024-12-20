@@ -25,6 +25,7 @@ def fenetre_init(dim_x, dim_y, score_en_pxl, case_en_pxl) -> None:
     """
     global screen
     # dimensions de la fenêtre DIMX (en pxl)* DIMY(en pxl) + taille score (en pxl)  )
+    pygame.init()
     r_fenetre = Rect(0, 0, (dim_x+1)*case_en_pxl,
                      (dim_y+1)*case_en_pxl+score_en_pxl)
     screen = pygame.display.set_mode(r_fenetre.size, 0)
@@ -34,7 +35,6 @@ def fenetre_init(dim_x, dim_y, score_en_pxl, case_en_pxl) -> None:
     # ligne frontière avant le bandeau des scores
     pygame.draw.line(screen, (255, 255, 255), (0, (dim_y+1)*case_en_pxl),
                      ((dim_x+1)*case_en_pxl, (dim_y+1)*case_en_pxl))
-    pygame.init()
     pygame.display.flip()  # Mise à jour de l'affichage complet
 
 
