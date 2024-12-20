@@ -1,4 +1,5 @@
-SELECT Nom,Sejours.Station,Stations.Lieu,Stations.Region,Stations.Tarif
-FROM Sejours JOIN Clients ON Id_Client = Id
-JOIN Stations ON Sejours.Station = Nom_Station
-ORDER BY Stations.Tarif*Sejours.Nb_Places
+SELECT Nom_Station, Lieu, stations.Region, Clients.nom, Stations.Tarif * Sejours.Nb_Places
+FROM  Clients
+JOIN Sejours on Sejours.Id_Client = Clients.Id
+JOIN Stations on Nom_Station = Sejours.Station
+ORDER BY Stations.Tarif * Sejours.Nb_Places
