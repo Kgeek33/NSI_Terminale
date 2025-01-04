@@ -15,5 +15,6 @@ WHERE editeur = "Dargaud";
 -- Question d --
 SELECT min(annee)
 FROM livre
-JOIN auteur
+JOIN auteur_de.a_id ON livre.isbn = auteur_de.isbn
+JOIN auteur ON auteur_de.a_id = auteur.a_id
 WHERE auteur.nom = "Uderzo";
