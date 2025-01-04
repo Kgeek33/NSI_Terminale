@@ -15,4 +15,4 @@ SELECT livre.titre, emprunt.retour, usager.nom, usager.prenom
 FROM emprunt
 JOIN livre
 JOIN usager
-WHERE livre.isbn = emprunt.isbn AND emprunt.retour <= date("2020-02-01");
+WHERE livre.isbn = emprunt.isbn AND emprunt.retour <= date("2020-02-01");--c normal que ce soit pareil ici qu'à la b (Flo)--
