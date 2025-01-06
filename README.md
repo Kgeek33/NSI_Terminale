@@ -1,3 +1,3 @@
 > [!WARNING]
 >
-> Fromsofware > All
+> Fromsoftware > All
