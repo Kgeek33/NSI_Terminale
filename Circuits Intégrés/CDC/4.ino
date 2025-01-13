@@ -28,7 +28,7 @@ void loop()
     switch (etatCligno)
     {
     case CHANGE_TO_ON:
-        if (bouton == 1)
+        if (bouton == 0)
             etatCligno = ON;
         break;
     case ON:
@@ -36,11 +36,12 @@ void loop()
             etatCligno = CHANGE_TO_OFF;
         break;
     case CHANGE_TO_OFF:
-        if (bouton == 1)
+        if (bouton == 0)
             etatCligno = OFF;
         break;
     default:
-        etatCligno = CHANGE_TO_ON;
+        if (bouton == 1)
+            etatCligno = CHANGE_TO_ON;
         break;
     }
 
