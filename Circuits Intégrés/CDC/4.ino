@@ -24,23 +24,25 @@ void clignotement()
 void loop()
 {
     const int bouton = digitalRead(BROCHE_POUSSOIR);
-    const int etatCligno = digitalRead(BROCHE_LED_ROUGE);
+    int etatCligno = digitalRead(BROCHE_LED_ROUGE);
     switch (etatCligno)
     {
     case CHANGE_TO_ON:
         if (bouton == 1)
-            digitalWrite(BROCHE_LED_ROUGE, ON);
+            etatCligno = ON;
         break;
     case ON:
         if (bouton == 1)
-            digitalWrite(BROCHE_LED_ROUGE, CHANGE_TO_OFF);
+            etatCligno = CHANGE_TO_OFF;
         break;
     case CHANGE_TO_OFF:
         if (bouton == 1)
-            digitalWrite(BROCHE_LED_ROUGE, OFF);
+            etatCligno = OFF;
         break;
     default:
-        digitalWrite(BROCHE_LED_ROUGE, CHANGE_TO_ON);
+        etatCligno = CHANGE_TO_ON;
         break;
     }
+
+    digitalWrite(BROCHE_LED_ROUGE, etatCligno);
 }
