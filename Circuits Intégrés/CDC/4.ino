@@ -1,7 +1,6 @@
 const int BROCHE_LED_ROUGE = 2;
 const int BROCHE_POUSSOIR = 3;
 const int PERIOD = 500;
-bool statutBouton = false;
 
 void setup()
 {
@@ -19,28 +18,21 @@ void clignotement()
 
 void loop()
 {
-    int bouton = digitalRead(BROCHE_POUSSOIR);
+    const int bouton = digitalRead(BROCHE_POUSSOIR);
     const int etatCligno = digitalRead(BROCHE_LED_ROUGE);
-
-    if (bouton == 1)
+    switch (etatCligno)
     {
-        statutBouton = !statutBouton;
-    }
-
-    if (statutBouton)
-    {
-        clignotement();
-    }
-    else
-    {
-        switch (etatCligno)
-        {
-        case 1:
-            digitalWrite(BROCHE_LED_ROUGE, HIGH);
-            break;
-        default:
-            digitalWrite(BROCHE_LED_ROUGE, LOW);
-            break;
-        }
+    case 1:
+        if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, ON);
+        break;
+    case 2:
+        if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, CHANGE_TO_OFF);
+        break;
+    case 3:
+        if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, OFF);
+        break;
+    default:
+        digitalWrite(BROCHE_LED_ROUGE, CHANGE_TO_ON);
+        break;
     }
 }
