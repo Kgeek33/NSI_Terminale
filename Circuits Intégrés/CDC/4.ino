@@ -28,19 +28,19 @@ void loop()
     switch (etatCligno)
     {
     case CHANGE_TO_ON:
-        if (bouton == 0)
+        if (bouton == LOW)
             etatCligno = ON;
         break;
     case ON:
-        if (bouton == 1)
+        if (bouton == HIGH)
             etatCligno = CHANGE_TO_OFF;
         break;
     case CHANGE_TO_OFF:
-        if (bouton == 0)
+        if (bouton == LOW)
             etatCligno = OFF;
         break;
     default:
-        if (bouton == 1)
+        if (bouton == HIGH)
             etatCligno = CHANGE_TO_ON;
         break;
     }
