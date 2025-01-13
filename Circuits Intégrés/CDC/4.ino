@@ -28,13 +28,16 @@ void loop()
     switch (etatCligno)
     {
     case CHANGE_TO_ON:
-        if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, ON);
+        if (bouton == 1)
+            digitalWrite(BROCHE_LED_ROUGE, ON);
         break;
     case ON:
-        if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, CHANGE_TO_OFF);
+        if (bouton == 1)
+            digitalWrite(BROCHE_LED_ROUGE, CHANGE_TO_OFF);
         break;
     case CHANGE_TO_OFF:
-        if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, OFF);
+        if (bouton == 1)
+            digitalWrite(BROCHE_LED_ROUGE, OFF);
         break;
     default:
         digitalWrite(BROCHE_LED_ROUGE, CHANGE_TO_ON);
