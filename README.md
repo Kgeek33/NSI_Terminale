@@ -31,3 +31,5 @@ Une fois la pr faite, celui qui aura fait le meilleur travail aura sa pr accept�
 ### Qu'est-ce qui se passe quand une pr est acceptée ?
 
 Le travail proposé et qui a été accepté mettra son travail sur la branche `main` ! Pour rappel, la branche `main` est la branche principale, elle n'est donc pas modifiable !
+
+Pour rappel FromSoftWare < all
