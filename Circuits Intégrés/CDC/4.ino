@@ -35,7 +35,7 @@ void loop()
     {
         switch (etatCligno)
         {
-        case ON:
+        case 1:
             digitalWrite(BROCHE_LED_ROUGE, HIGH);
             break;
         default:
