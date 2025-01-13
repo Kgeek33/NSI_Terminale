@@ -1,6 +1,6 @@
 const int BROCHE_LED_ROUGE = 2;
 const int BROCHE_POUSSOIR = 3;
-const int PERIOD = 500;
+const int PERIOD = 100;
 
 const int OFF = 0;
 const int CHANGE_TO_ON = 1;
@@ -45,8 +45,8 @@ void loop()
         break;
     }
 
-    digitalWrite(BROCHE_LED_ROUGE, etatCligno);
-
     if (etatCligno == ON)
         clignotement();
+
+    digitalWrite(BROCHE_LED_ROUGE, etatCligno);
 }
