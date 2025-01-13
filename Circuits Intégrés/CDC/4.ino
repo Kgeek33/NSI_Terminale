@@ -11,7 +11,8 @@ void setup() {
 void loop() {
   int bouton = digitalRead(BROCHE_POUSSOIR);
   if (bouton == 1) {
-    fifi = !fifi;
+    if (fifi) fifi = false;
+    else fifi = true;
   }
 
   if (fifi) {
