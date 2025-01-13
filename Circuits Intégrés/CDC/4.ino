@@ -2,6 +2,11 @@ const int BROCHE_LED_ROUGE = 2;
 const int BROCHE_POUSSOIR = 3;
 const int PERIOD = 500;
 
+const int OFF = 0;
+const int CHANGE_TO_ON = 1;
+const int ON = 2;
+const int CHANGE_TO_OFF = 3;
+
 void setup()
 {
     pinMode(BROCHE_POUSSOIR, INPUT);
@@ -22,13 +27,13 @@ void loop()
     const int etatCligno = digitalRead(BROCHE_LED_ROUGE);
     switch (etatCligno)
     {
-    case 1:
+    case CHANGE_TO_ON:
         if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, ON);
         break;
-    case 2:
+    case ON:
         if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, CHANGE_TO_OFF);
         break;
-    case 3:
+    case CHANGE_TO_OFF:
         if (bouton == 1) digitalWrite(BROCHE_LED_ROUGE, OFF);
         break;
     default:
