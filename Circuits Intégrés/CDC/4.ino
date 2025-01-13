@@ -29,4 +29,8 @@ void loop()
     {
         clignotement();
     }
+    else
+    {
+        digitalWrite(BROCHE_LED_ROUGE, LOW);
+    }
 }
