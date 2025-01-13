@@ -46,4 +46,7 @@ void loop()
     }
 
     digitalWrite(BROCHE_LED_ROUGE, etatCligno);
+
+    if (etatCligno == ON)
+        clignotement();
 }
