@@ -1,3 +1,18 @@
+def a_doublon(tab: list[int]) -> bool:
+    for UNelm in range(len(tab)):
+        for JEbalaye in range(len(tab)):
+            if UNelm != JEbalaye and tab[UNelm] == tab[JEbalaye]:
+                return True
+    return False
+
+
+assert a_doublon([]) == False
+assert a_doublon([1]) == False
+assert a_doublon([1, 2, 4, 6, 6]) == True
+assert a_doublon([2, 5, 7, 7, 7, 9]) == True
+assert a_doublon([0, 2, 3]) == False
+
+
 def voisinage(n, ligne, colonne):
     """ Renvoie la liste des coordonnées des voisins de la case
     (ligne, colonne) en gérant les cases sur les bords. """
