@@ -1,3 +1,5 @@
+// Info, ce fichier ne fonctionne pas
+
 const int BROCHE_LED_ROUGE = 2;
 const int BROCHE_POUSSOIR = 3;
 const int PERIOD = 100;
