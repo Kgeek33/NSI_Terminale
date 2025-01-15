@@ -1,4 +1,4 @@
-> [!INFO]
+> [!NOTE]
 >
 > C'est la 1ère fois depuis que la spécialité `NSI` a été crée que GitHub est utilisé pour travailler 🤣
 
