@@ -1,54 +1,78 @@
-// Info, ce fichier ne fonctionne pas
+const int BROCHE_LED = 2;
+const int BROCHE_BP = 3;    // Bouton Poussoir
+const int DELAI_MAX_MS = 500;  // clignotement lent
+const int DELAI_MIN_MS = 10;  // clignotement rapide
+const int PAS = 30;
+int delai = DELAI_MAX_MS;
+int sens = -1;
+int etatBP;                 // etat du Bouton Poussoir
+// les etats possibles du clignotement
+const int CLIGNO_ON = 0;
+const int CLIGNO_CHANGE_TO_OFF = 1;
+const int CLIGNO_OFF = 2;
+const int CLIGNO_CHANGE_TO_ON = 3;
+// gestion du clignotement : le bouton provoque les transitions entre les quatre états
+int etatCligno = CLIGNO_OFF;
 
-const int BROCHE_LED_ROUGE = 2;
-const int BROCHE_POUSSOIR = 3;
-const int PERIOD = 100;
 
-const int OFF = 0;
-const int CHANGE_TO_ON = 1;
-const int ON = 2;
-const int CHANGE_TO_OFF = 3;
-
-void setup()
-{
-    pinMode(BROCHE_POUSSOIR, INPUT);
-    pinMode(BROCHE_LED_ROUGE, OUTPUT);
+void setup() {
+  pinMode(BROCHE_LED, OUTPUT);
+  pinMode(BROCHE_BP, INPUT);
 }
 
-void clignotement()
-{
-    digitalWrite(BROCHE_LED_ROUGE, HIGH);
-    delay(PERIOD);
-    digitalWrite(BROCHE_LED_ROUGE, LOW);
-    delay(PERIOD);
+void clignote (int del) {
+  digitalWrite(BROCHE_LED, HIGH);
+  delay(del);
+  digitalWrite(BROCHE_LED, LOW);
+  delay(del);
 }
 
-void loop()
-{
-    const int bouton = digitalRead(BROCHE_POUSSOIR);
-    int etatCligno = digitalRead(BROCHE_LED_ROUGE);
-    switch (etatCligno)
-    {
-    case CHANGE_TO_ON:
-        if (bouton == LOW)
-            etatCligno = ON;
-        break;
-    case ON:
-        if (bouton == HIGH)
-            etatCligno = CHANGE_TO_OFF;
-        break;
-    case CHANGE_TO_OFF:
-        if (bouton == LOW)
-            etatCligno = OFF;
-        break;
-    default:
-        if (bouton == HIGH)
-            etatCligno = CHANGE_TO_ON;
-        break;
-    }
+void loop() {
 
-    if (etatCligno == ON)
-        clignotement();
+  // lecture du bouton poussoir
+  etatBP = digitalRead(BROCHE_BP);
+  delai = delai + sens * PAS;
+  if (delai > DELAI_MAX_MS) {
+    delai = DELAI_MAX_MS;
+    sens = -sens;
+  }
+  if (delai < DELAI_MIN_MS) {
+    delai = DELAI_MIN_MS;
+    sens = -sens;
+  }
 
-    digitalWrite(BROCHE_LED_ROUGE, etatCligno);
+  // etat du clignotement en fonction de l'état du bouton
+  // *selon* etatCligno ...
+  switch (etatCligno) {
+    // dans le cas d'un clignotement en cours ...
+    case CLIGNO_ON:
+      if (etatBP == HIGH) {
+        etatCligno = CLIGNO_CHANGE_TO_OFF;
+      }
+      break;
+    // dans le cas d'une transition vers l'extinction de la led ...
+    case CLIGNO_CHANGE_TO_OFF:
+      if (etatBP == LOW) {
+        etatCligno = CLIGNO_OFF;
+      }
+      break;
+    // dans le cas d'une led éteinte...
+    case CLIGNO_OFF:
+      if (etatBP == HIGH) {
+        etatCligno = CLIGNO_CHANGE_TO_ON;
+      }
+      break;
+    // dans le cas d'une transition vers le clignotement de la led ...
+    case CLIGNO_CHANGE_TO_ON:
+      if (etatBP == LOW) {
+        etatCligno = CLIGNO_ON;
+      }
+      break;
+    default :
+      break;
+
+  }
+  if (etatCligno == CLIGNO_ON) {
+    clignote (delai);
+  }
 }
