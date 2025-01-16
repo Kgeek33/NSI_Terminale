@@ -22,7 +22,7 @@ void clignote(int del)
     delay(del);
 }
 <
-    void loop()
+void loop()
 {
     int luminosite = analogRead(A0);
     Serial.println(luminosite);
