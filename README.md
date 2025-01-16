@@ -20,16 +20,17 @@ Plutôt que de faire chacun de son côté et celui qui termine en 1er publie sur
   - `Kylian` (la branche uniquement pour Kylian)
   - `Raphael` (la branche uniquement pour Raphaël)
   - `Florent` (la branche uniquement pour Florent)
+  - `Lucas` (la branche uniquement pour Lucas)
 - Chacun travaillera sur sa branche durant chaque séance (_sauf si un chapitre ne nécessite pas la machine virtuelle_)
 
 ### Quand la séance est terminée...
 
 Vous allez devoir faire une `pull request` (pr), c'est-à-dire proposer le travail que vous avez fait. 
 
-Une fois la pr faite, celui qui aura fait le meilleur travail aura sa pr acceptée et les autres seront annulées
+Une fois la pr faite, chacun fera sa review de chaque PR et si tout le monde accepte, j'accepterai et je mergerai la pr
 
 ### Qu'est-ce qui se passe quand une pr est acceptée ?
 
-Le travail proposé et qui a été accepté mettra son travail sur la branche `main` ! Pour rappel, la branche `main` est la branche principale, elle n'est donc pas modifiable !
+Tout le travail proposé sera intégré sur la branche `main` ! Pour rappel, la branche `main` est la branche principale, elle n'est donc pas modifiable !
 
-Pour rappel FromSoftWare < all
+Pour rappel FromSoftWare > all
