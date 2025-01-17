@@ -1,3 +1,17 @@
+def recherche(elt, tab):
+    indice = None
+    for i in range(len(tab)):
+        if tab[i] == elt:
+            indice = i
+    return indice
+
+assert recherche(1, [2, 3, 4]) == None# renvoie None
+assert recherche(1, [10, 12, 1, 56]) == 2
+assert recherche(1, [1, 0, 42, 7]) == 0
+assert recherche(1, [1, 50, 1]) == 2
+assert recherche(1, [8, 1, 10, 1, 7, 1, 8]) == 5
+
+
 class AdresseIP:
     def __init__(self, adresse):
         self.adresse =... 
