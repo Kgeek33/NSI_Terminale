@@ -18,7 +18,12 @@ class Noeud:
     
     def est_vide(arbre):
         return arbre is Noeud.arbre_vide
+    
+
+    def est_feuille(self):
+        return self.gauche() is Noeud.arbre_vide and self.droit() is Noeud.arbre_vide
 
 A_g = Noeud("D",None,None)
-A_1 = Noeud("A","B",None)
-A_2 = Noeud("A","B","D")
+A_1 = Noeud("A",Noeud("B,",None,None),None)
+A_2 = Noeud("A",Noeud("B,","D",None),None)
+A_3 = Noeud("A",Noeud("B,","D",None),None)
