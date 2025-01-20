@@ -1,0 +1,39 @@
+name: Auto Tag on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  autotag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get changed files
+        id: files
+        run: |
+          echo "::set-output name=files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})"
+
+      - name: Set PR labels
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: |
+            ${{ steps.files.outputs.files }}
+
+      - name: Add labels based on changed files
+        run: |
+          files="${{ steps.files.outputs.files }}"
+          declare -A labels
+          labels=( ["Arbres"]="Arbres" ["Bases de Données"]="Bases de Données" ["Circuits Intégrés"]="Circuits Intégrés" ["Entraînement - Pratique"]="Epreuves pratiques" ["Listes Chainées"]="Listes Chainées" ["Modularité"]="Modularité" ["Piles et Files"]="Piles et Files" ["Programmation Orientée Objet"]="Programmation Orientée Objet" ["Récursivité"]="Récursivité" ["TD (Capytale)"]="TD (Capytale)" ["TD Snake"]="TD Snake" )
+          for folder in "${!labels[@]}"; do
+            if [[ "$files" == *"$folder/"* ]]; then
+              echo "Adding label ${labels[$folder]}"
+              gh pr edit ${{ github.event.pull_request.number }} --add-label "${labels[$folder]}"
+            fi
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
