@@ -2,7 +2,7 @@ class Noeud:
     #attribut de classe
     arbre_vide = None
 
-    """Co nstruct eu r d'un no eud d'u n arbre bin aire"""
+    """Constructeur d'un noeud d'un arbre binaire"""
     def __init__(self, v, g, d):
         self._valeur = v
         self._gauche = g
