@@ -21,5 +21,5 @@ class Noeud:
 
 A_g = Noeud('D', None, None)
 A_1 = Noeud('A', Noeud('B', None, None), None)
-A_2 = Noeud('A', Noeud('B', None, None), A_g)
-A_3 = Noeud('A', Noeud('B', Noeud('C', None, None), None), A_g)
+A_2 = Noeud('A', Noeud('B', None, None), Noeud('D', None, None))
+A_3 = Noeud('A', Noeud('B', None, Noeud('C', None, None)), Noeud('D', None, None))
