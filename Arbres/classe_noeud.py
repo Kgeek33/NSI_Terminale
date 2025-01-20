@@ -34,7 +34,7 @@ def compte_feuilles(arbre : Noeud):
         return 1
     return compte_feuilles(arbre.gauche()) + compte_feuilles(arbre.droit())
 
-A_g = Noeud("D",None,None)
+A_g = Noeud("D", None, None)
 A_N = None
 A_1 = Noeud("A", Noeud("B", None, None), None)
 A_2 = Noeud("A", Noeud("B", None, None), Noeud("D", None, None))
