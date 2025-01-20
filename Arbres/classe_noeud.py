@@ -4,8 +4,8 @@ class Noeud:
 
     def __init__(self, v, g, d):
         self._valeur = v
-        self._gauche = v
-        self._droit = v
+        self._gauche = g
+        self._droit = d
     
     def valeur(self):
         return self._valeur
@@ -19,3 +19,9 @@ class Noeud:
     def est_vide(arbre):
         return arbre is Noeud.arbre_vide
 
+A_g = Noeud("D",None,None)
+A_1 = Noeud("A",Noeud("B",None, None),None)
+A_2 = Noeud("A",Noeud("B",None, None),Noeud("D",None,None))
+A_3 = Noeud("A",Noeud("B",None, Noeud("C",None,None)),Noeud("D",None,None))
+
+print(A_3.gauche().droit().valeur())
