@@ -36,10 +36,10 @@ def compte_feuilles(arbre : Noeud):
 
 A_g = Noeud("D",None,None)
 A_N = None
-A_1 = Noeud("A",Noeud("B",None, None),None)
-A_2 = Noeud("A",Noeud("B",None, None),Noeud("D",None,None))
-A_3 = Noeud("A",Noeud("B",None, Noeud("C",None,None)),Noeud("D",None,None))
-A_4 = Noeud("A",Noeud("B",Noeud("E", None, None), Noeud("C",None,None)),Noeud("D",None,None))
+A_1 = Noeud("A", Noeud("B", None, None), None)
+A_2 = Noeud("A", Noeud("B", None, None), Noeud("D", None, None))
+A_3 = Noeud("A", Noeud("B", None, Noeud("C", None, None)), Noeud("D", None, None))
+A_4 = Noeud("A", Noeud("B", Noeud("E", None, None), Noeud("C", None, None)), Noeud("D", None, None))
 
 print(A_3.gauche().droit().valeur())
 print(A_3.est_feuille())
