@@ -27,11 +27,20 @@ jobs:
         run: |
           flake8 . --max-line-length=88 > flake8_errors.log || true
 
+      - name: 📋 Check if lint logs are empty
+        id: check_logs
+        run: |
+          if [ -s flake8_errors.log ]; then
+            echo "is_empty=false" >> $GITHUB_ENV
+          else
+            echo "is_empty=true" >> $GITHUB_ENV
+          fi
+
       - name: 📄 Output Logs
         run: cat flake8_errors.log
 
       - name: 👁️‍🗨️ Comment on Pull Request
-        if: failure()
+        if: env.is_empty == 'false'
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
