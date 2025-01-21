@@ -54,7 +54,7 @@ jobs:
       - name: 📄 Output Logs
         run: cat flake8_errors.log
 
-      - name: 👁️‍🗨️ Comment on Pull Request
+      - name: ❌ Request Changes on Pull Request
         if: env.is_empty == 'false'
         uses: actions/github-script@v7
         with:
@@ -62,11 +62,26 @@ jobs:
           script: |
             const fs = require('fs');
             const lintLogContent = fs.readFileSync('flake8_errors.log', 'utf8');
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `⚠️ Erreur(s) détectée(s) par Flake8 !\n\`\`\`\n${lintLogContent}\n\`\`\``
+              pull_number: context.issue.number,
+              body: `⚠️ Erreur(s) détectée(s) par Flake8 !\n\`\`\`\n${lintLogContent}\n\`\`\``,
+              event: 'REQUEST_CHANGES'
+            });
+
+      - name: ✅ Approve Pull Request
+        if: env.is_empty == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              body: 'LGTM 👍',
+              event: 'APPROVE'
             });
 
       - name: 🧹 Clean up
