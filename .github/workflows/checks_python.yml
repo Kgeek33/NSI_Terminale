@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
 
       - name: ⚙️ Set up Python
         uses: actions/setup-python@v2
@@ -29,7 +27,8 @@ jobs:
         id: get_modified_files
         run: |
           echo "Modified files:"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.py$' > modified_files.txt
+          git fetch origin main
+          git diff --name-only origin/main...${{ github.head_ref }} | grep '\.py$' > modified_files.txt
           cat modified_files.txt
           echo "files=$(< modified_files.txt)" >> $GITHUB_ENV
 
