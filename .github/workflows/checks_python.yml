@@ -23,15 +23,38 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8
 
+      - name: 🔍 Identify modified Python files
+        id: get_modified_files
+        run: |
+          echo "Modified files:"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.py$' > modified_files.txt
+          cat modified_files.txt
+          echo "::set-output name=files::$(cat modified_files.txt)"
+
       - name: 🔍 Run Flake8 checks
         run: |
-          flake8 . --max-line-length=88 > flake8_errors.log || true
+          if [ -s modified_files.txt ]; then
+            flake8 $(< modified_files.txt) --max-line-length=88 > flake8_errors.log || true
+          else
+            echo "Aucun fichier Python modifié."
+            echo "is_empty=true" >> $GITHUB_ENV
+            exit 0
+          fi
+
+      - name: 📋 Check if lint logs are empty
+        id: check_logs
+        run: |
+          if [ -s flake8_errors.log ]; then
+            echo "is_empty=false" >> $GITHUB_ENV
+          else
+            echo "is_empty=true" >> $GITHUB_ENV
+          fi
 
       - name: 📄 Output Logs
         run: cat flake8_errors.log
 
       - name: 👁️‍🗨️ Comment on Pull Request
-        if: failure()
+        if: env.is_empty == 'false'
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -47,4 +70,4 @@ jobs:
 
       - name: 🧹 Clean up
         if: always()
-        run: rm -f flake8_errors.log
+        run: rm -f flake8_errors.log modified_files.txt
