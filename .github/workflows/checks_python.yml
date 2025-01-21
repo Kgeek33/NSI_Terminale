@@ -29,7 +29,7 @@ jobs:
           echo "Modified files:"
           git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.py$' > modified_files.txt
           cat modified_files.txt
-          echo "::set-output name=files::$(cat modified_files.txt)"
+          echo "files=$(< modified_files.txt)" >> $GITHUB_ENV
 
       - name: 🔍 Run Flake8 checks
         run: |
