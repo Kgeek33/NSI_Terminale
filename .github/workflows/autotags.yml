@@ -1,4 +1,4 @@
-name: Auto Tag on PR
+name: 📝 Auto Tag on PR
 
 on:
   pull_request:
@@ -9,22 +9,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v2
 
-      - name: Get changed files
+      - name: 🔍 Get changed files
         id: files
         run: |
           echo "::set-output name=files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})"
 
-      - name: Set PR labels
+      - name: ⚙️ Set PR labels
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           labels: |
             ${{ steps.files.outputs.files }}
 
-      - name: Add labels based on changed files
+      - name: 👁️‍🗨️ Add labels based on changed files
         run: |
           files="${{ steps.files.outputs.files }}"
           declare -A labels
