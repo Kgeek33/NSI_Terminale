@@ -27,13 +27,20 @@ jobs:
         id: get_modified_files
         run: |
           git fetch origin
-          export LC_ALL=C.UTF-8
           git diff --name-status origin/main..origin/${{ github.head_ref }} \
             | grep '\.py$' \
             | grep -v 'Entraînement Pratique/Corrigés/' \
             | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
           files=$(cat modified_files.txt | sed 's/^/"/;s/$/"/')
           echo "files=$files" >> $GITHUB_ENV
+      
+      - name: 🔄 Decode file names
+        run: |
+          while IFS= read -r file; do
+            decoded=$(echo -e "$file")
+            echo "$decoded" >> clean_files.txt
+          done < modified_files.txt
+          mv clean_files.txt modified_files.txt
 
       - name: 🔍 Run Flake8 checks
         run: |
