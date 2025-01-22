@@ -31,7 +31,7 @@ jobs:
       - name: 👁️‍🗨️ Add labels based on changed files
         run: |
           declare -A labels
-          labels=( ["Arbres"]="Arbres" ["Bases de Données"]="Bases de Données" ["Circuits Intégrés"]="Circuits Intégrés" ["Entraînement - Pratique"]="Epreuves pratiques" ["Listes Chainées"]="Listes Chainées" ["Modularité"]="Modularité" ["Piles et Files"]="Piles et Files" ["Programmation Orientée Objet"]="Programmation Orientée Objet" ["Récursivité"]="Récursivité" ["TD (Capytale)"]="TD (Capytale)" ["TD Snake"]="TD Snake" )
+          labels=( ["Arbres"]="Arbres" ["Bases de Données"]="Bases de Données" ["Circuits Intégrés"]="Circuits Intégrés" ["Entraînement Pratique"]="Epreuves pratiques" ["Listes Chainées"]="Listes Chainées" ["Modularité"]="Modularité" ["Piles et Files"]="Piles et Files" ["Programmation Orientée Objet"]="Programmation Orientée Objet" ["Récursivité"]="Récursivité" ["TD (Capytale)"]="TD (Capytale)" ["TD Snake"]="TD Snake" )
           for folder in "${!labels[@]}"; do
             if [[ modified_files.txt == *"$folder/"* ]]; then
               echo "Adding label ${labels[$folder]}"
