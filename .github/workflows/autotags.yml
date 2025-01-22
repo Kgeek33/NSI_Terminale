@@ -49,6 +49,7 @@ jobs:
           done < modified_files.txt
 
           UNIQUE_LABELS=$(echo "${PR_LABELS[@]}" | tr ' ' '\n' | sort -u | tr '\n' ',' | sed 's/,$//')
+          echo $UNIQUE_LABELS
 
           echo "labels=$UNIQUE_LABELS" >> $GITHUB_ENV
 
