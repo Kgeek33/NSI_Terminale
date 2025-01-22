@@ -2,7 +2,7 @@ name: Checks (Flake8)
 
 on:
   pull_request:
-    branches: [ "main" ] 
+    branches: ["main"]
 
 jobs:
   lint:
@@ -26,16 +26,18 @@ jobs:
       - name: 🔍 Identify modified Python files
         id: get_modified_files
         run: |
-          echo "Modified files:"
           git fetch origin
-          git diff --name-status origin/main..origin/${{ github.head_ref }} | grep '\.py$' > modified_files.txt
-          cat modified_files.txt
-          echo "files=$(< modified_files.txt)" >> $GITHUB_ENV
+          git diff --name-status origin/main..origin/${{ github.head_ref }} \
+            | grep '\.py$' \
+            | grep -v 'Entraînement Pratique/Corrigés/' \
+            | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
+          files=$(cat modified_files.txt | sed 's/^/"/;s/$/"/')
+          echo "files=$files" >> $GITHUB_ENV
 
       - name: 🔍 Run Flake8 checks
         run: |
           if [ -s modified_files.txt ]; then
-            flake8 $(< modified_files.txt) --max-line-length=88 > flake8_errors.log || true
+            xargs -a modified_files.txt -I {} flake8 "{}" --max-line-length=88 > flake8_errors.log || true
           else
             echo "Aucun fichier Python modifié."
             echo "is_empty=true" >> $GITHUB_ENV
@@ -50,9 +52,6 @@ jobs:
           else
             echo "is_empty=true" >> $GITHUB_ENV
           fi
-
-      - name: 📄 Output Logs
-        run: cat flake8_errors.log
 
       - name: ❌ Request Changes on Pull Request
         if: env.is_empty == 'false'

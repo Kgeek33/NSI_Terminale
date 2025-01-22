@@ -13,27 +13,48 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 🔍 Get changed files
-        id: files
+        id: get_files
         run: |
-          echo "::set-output name=files::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})"
+          git fetch origin
+          git diff --name-status origin/main..origin/${{ github.head_ref }} \
+            | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
+          cat modified_files.txt
 
-      - name: ⚙️ Set PR labels
+      - name: 🔖 Determine labels
+        id: determine_labels
+        run: |
+          declare -A labels
+          labels=(
+            ["Arbres"]="Arbres"
+            ["Bases de Donn\303\251es"]="Bases_de_Données"
+            ["Circuits Int\303\251gr\303\251s"]="Circuits_Intégrés"
+            ["Entra\303\256nement Pratique"]="Epreuves_pratiques"
+            ["Listes Chain\303\251es"]="Listes_Chainées"
+            ["Modularit\303\251"]="Modularité"
+            ["Piles et Files"]="Piles_et_Files"
+            ["Programmation Orient\303\251e Objet"]="Programmation_Orientée_Objet"
+            ["R\303\251cursivit\303\251"]="Récursivité"
+            ["TD 50Capytale51"]="TD_Capytale"
+            ["TD Snake"]="TD_Snake"
+          )
+
+          PR_LABELS=()
+
+          while IFS= read -r file; do
+            for folder in "${!labels[@]}"; do
+              if [[ "$file" == *"$folder/"* ]]; then
+                PR_LABELS+=("${labels[$folder]}")
+              fi
+            done
+          done < modified_files.txt
+
+          UNIQUE_LABELS=$(echo "${PR_LABELS[@]}" | tr ' ' '\n' | sort -u | tr '\n' ',' | sed 's/,$//')
+          echo $UNIQUE_LABELS
+
+          echo "labels=$UNIQUE_LABELS" >> $GITHUB_ENV
+
+      - name: 🏷️ Add labels to PR
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          labels: |
-            ${{ steps.files.outputs.files }}
-
-      - name: 👁️‍🗨️ Add labels based on changed files
-        run: |
-          files="${{ steps.files.outputs.files }}"
-          declare -A labels
-          labels=( ["Arbres"]="Arbres" ["Bases de Données"]="Bases de Données" ["Circuits Intégrés"]="Circuits Intégrés" ["Entraînement - Pratique"]="Epreuves pratiques" ["Listes Chainées"]="Listes Chainées" ["Modularité"]="Modularité" ["Piles et Files"]="Piles et Files" ["Programmation Orientée Objet"]="Programmation Orientée Objet" ["Récursivité"]="Récursivité" ["TD (Capytale)"]="TD (Capytale)" ["TD Snake"]="TD Snake" )
-          for folder in "${!labels[@]}"; do
-            if [[ "$files" == *"$folder/"* ]]; then
-              echo "Adding label ${labels[$folder]}"
-              gh pr edit ${{ github.event.pull_request.number }} --add-label "${labels[$folder]}"
-            fi
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          labels: ${{ env.labels }}
