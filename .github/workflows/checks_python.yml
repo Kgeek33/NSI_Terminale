@@ -23,7 +23,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8
 
-            - name: 🔍 Identify modified Python files
+      - name: 🔍 Identify modified Python files
         id: get_modified_files
         run: |
           git fetch origin
