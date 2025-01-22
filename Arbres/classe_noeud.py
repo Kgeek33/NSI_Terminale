@@ -1,5 +1,5 @@
 class Noeud:
-    #attribut de classe
+    # attribut de classe
     arbre_vide = None
 
     """Constructeur d'un noeud d'un arbre binaire"""
@@ -9,7 +9,7 @@ class Noeud:
         self._gauche = g
         self._droit = d
 
-    #selecteurs
+    # selecteurs
     def valeur(self):
         return self._valeur
 
@@ -19,7 +19,7 @@ class Noeud:
     def droit(self):
         return self._droit
 
-    #methode de classe
+    # methode de classe
     def est_vide(arbre):
         return arbre is Noeud.arbre_vide
 
