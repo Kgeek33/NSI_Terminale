@@ -26,16 +26,16 @@ jobs:
           declare -A labels
           labels=(
             ["Arbres"]="Arbres"
-            ["Bases de Donn\303\251es"]="Bases de Données"
-            ["Circuits Int\303\251gr\303\251s"]="Circuits Intégrés"
-            ["Entra\303\256nement Pratique"]="Epreuves pratiques"
-            ["Listes Chain\303\251es"]="Listes Chainées"
+            ["Bases de Donn\303\251es"]="Bases_de_Données"
+            ["Circuits Int\303\251gr\303\251s"]="Circuits_Intégrés"
+            ["Entra\303\256nement Pratique"]="Epreuves_pratiques"
+            ["Listes Chain\303\251es"]="Listes_Chainées"
             ["Modularit\303\251"]="Modularité"
-            ["Piles et Files"]="Piles et Files"
-            ["Programmation Orient\303\251e Objet"]="Programmation Orientée Objet"
+            ["Piles et Files"]="Piles_et_Files"
+            ["Programmation Orient\303\251e Objet"]="Programmation_Orientée_Objet"
             ["R\303\251cursivit\303\251"]="Récursivité"
-            ["TD 50Capytale51"]="TD (Capytale)"
-            ["TD Snake"]="TD Snake"
+            ["TD 50Capytale51"]="TD_Capytale"
+            ["TD Snake"]="TD_Snake"
           )
 
           PR_LABELS=()
