@@ -27,14 +27,13 @@ jobs:
         id: get_modified_files
         run: |
           git fetch origin
-          git diff --name-status origin/main..origin/${{ github.head_ref }} | grep '\.py' | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
-          files=$(cat modified_files.txt | sed 's/^/"/;s/$/"/')
-          echo "files=$files" >> $GITHUB_ENV
+          git diff --name-status origin/main..origin/${{ github.head_ref }} | grep '\.py' > modified_files.txt
+          echo "files=$(< modified_files.txt)" >> $GITHUB_ENV
 
       - name: 🔍 Run Flake8 checks
         run: |
           if [ -s modified_files.txt ]; then
-            xargs -a modified_files.txt -I {} flake8 "{}" --max-line-length=88 > flake8_errors.log || true
+            flake8 $(< modified_files.txt) --max-line-length=88 > flake8_errors.log || true
           else
             echo "Aucun fichier Python modifié."
             echo "is_empty=true" >> $GITHUB_ENV
