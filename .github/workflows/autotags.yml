@@ -20,30 +20,21 @@ jobs:
             | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
           cat modified_files.txt
 
-      - name: 🔄 Decode file names
-        run: |
-          while IFS= read -r file; do
-            decoded=$(echo -e "$file")
-            echo "$decoded" >> clean_files.txt
-          done < modified_files.txt
-          mv clean_files.txt modified_files.txt
-          cat modified_files.txt
-
       - name: 🔖 Determine labels
         id: determine_labels
         run: |
           declare -A labels
           labels=(
             ["Arbres"]="Arbres"
-            ["Bases de Données"]="Bases de Données"
-            ["Circuits Intégrés"]="Circuits Intégrés"
-            ["Entraînement Pratique"]="Epreuves pratiques"
-            ["Listes Chainées"]="Listes Chainées"
-            ["Modularité"]="Modularité"
+            ["Bases de Donn\303\251es"]="Bases de Données"
+            ["Circuits Int\303\251gr\303\251s"]="Circuits Intégrés"
+            ["Entra\303\256nement Pratique"]="Epreuves pratiques"
+            ["Listes Chain\303\251es"]="Listes Chainées"
+            ["Modularit\303\251"]="Modularité"
             ["Piles et Files"]="Piles et Files"
-            ["Programmation Orientée Objet"]="Programmation Orientée Objet"
-            ["Récursivité"]="Récursivité"
-            ["TD (Capytale)"]="TD (Capytale)"
+            ["Programmation Orient\303\251e Objet"]="Programmation Orientée Objet"
+            ["R\303\251cursivit\303\251"]="Récursivité"
+            ["TD 50Capytale51"]="TD (Capytale)"
             ["TD Snake"]="TD Snake"
           )
 
