@@ -16,6 +16,7 @@ jobs:
         id: get_files
         run: |
           git fetch origin
+          export LC_ALL=C.UTF-8
           git diff --name-status origin/main..origin/${{ github.head_ref }} \
             | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
           cat modified_files.txt
@@ -38,10 +39,8 @@ jobs:
             ["TD Snake"]="TD Snake"
           )
 
-          # Initialise une liste vide pour les labels
           PR_LABELS=()
 
-          # Parcours des fichiers modifiés et association avec des labels
           while IFS= read -r file; do
             for folder in "${!labels[@]}"; do
               if [[ "$file" == *"$folder/"* ]]; then
@@ -50,7 +49,6 @@ jobs:
             done
           done < modified_files.txt
 
-          # Supprime les doublons
           UNIQUE_LABELS=$(echo "${PR_LABELS[@]}" | tr ' ' '\n' | sort -u | tr '\n' ',' | sed 's/,$//')
 
           echo "labels=$UNIQUE_LABELS" >> $GITHUB_ENV

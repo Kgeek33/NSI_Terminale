@@ -27,6 +27,7 @@ jobs:
         id: get_modified_files
         run: |
           git fetch origin
+          export LC_ALL=C.UTF-8
           git diff --name-status origin/main..origin/${{ github.head_ref }} \
             | grep '\.py$' \
             | grep -v 'Entraînement Pratique/Corrigés/' \
