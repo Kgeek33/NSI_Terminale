@@ -16,10 +16,17 @@ jobs:
         id: get_files
         run: |
           git fetch origin
-          export LC_ALL=C.UTF-8
           git diff --name-status origin/main..origin/${{ github.head_ref }} \
             | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
           cat modified_files.txt
+
+      - name: 🔄 Decode file names
+        run: |
+          while IFS= read -r file; do
+            decoded=$(echo -e "$file")
+            echo "$decoded" >> clean_files.txt
+          done < modified_files.txt
+          mv clean_files.txt modified_files.txt
 
       - name: 🔖 Determine labels
         id: determine_labels
