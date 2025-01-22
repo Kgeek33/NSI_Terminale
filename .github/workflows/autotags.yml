@@ -13,30 +13,50 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 🔍 Get changed files
-        id: files
+        id: get_files
         run: |
-          echo "Modified files:"
           git fetch origin
-          git diff --name-status origin/main..origin/${{ github.head_ref }} | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
+          git diff --name-status origin/main..origin/${{ github.head_ref }} \
+            | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
           cat modified_files.txt
-          echo "files=$(< modified_files.txt)" >> $GITHUB_ENV
 
-      - name: ⚙️ Set PR labels
+      - name: 🔖 Determine labels
+        id: determine_labels
+        run: |
+          declare -A labels
+          labels=(
+            ["Arbres"]="Arbres"
+            ["Bases de Données"]="Bases de Données"
+            ["Circuits Intégrés"]="Circuits Intégrés"
+            ["Entraînement Pratique"]="Epreuves pratiques"
+            ["Listes Chainées"]="Listes Chainées"
+            ["Modularité"]="Modularité"
+            ["Piles et Files"]="Piles et Files"
+            ["Programmation Orientée Objet"]="Programmation Orientée Objet"
+            ["Récursivité"]="Récursivité"
+            ["TD (Capytale)"]="TD (Capytale)"
+            ["TD Snake"]="TD Snake"
+          )
+
+          # Initialise une liste vide pour les labels
+          PR_LABELS=()
+
+          # Parcours des fichiers modifiés et association avec des labels
+          while IFS= read -r file; do
+            for folder in "${!labels[@]}"; do
+              if [[ "$file" == *"$folder/"* ]]; then
+                PR_LABELS+=("${labels[$folder]}")
+              fi
+            done
+          done < modified_files.txt
+
+          # Supprime les doublons
+          UNIQUE_LABELS=$(echo "${PR_LABELS[@]}" | tr ' ' '\n' | sort -u | tr '\n' ',' | sed 's/,$//')
+
+          echo "labels=$UNIQUE_LABELS" >> $GITHUB_ENV
+
+      - name: 🏷️ Add labels to PR
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          labels: |
-            ${{ steps.files.outputs.files }}
-
-      - name: 👁️‍🗨️ Add labels based on changed files
-        run: |
-          declare -A labels
-          labels=( ["Arbres"]="Arbres" ["Bases de Données"]="Bases de Données" ["Circuits Intégrés"]="Circuits Intégrés" ["Entraînement Pratique"]="Epreuves pratiques" ["Listes Chainées"]="Listes Chainées" ["Modularité"]="Modularité" ["Piles et Files"]="Piles et Files" ["Programmation Orientée Objet"]="Programmation Orientée Objet" ["Récursivité"]="Récursivité" ["TD (Capytale)"]="TD (Capytale)" ["TD Snake"]="TD Snake" )
-          for folder in "${!labels[@]}"; do
-            if [[ modified_files.txt == *"$folder/"* ]]; then
-              echo "Adding label ${labels[$folder]}"
-              gh pr edit ${{ github.event.pull_request.number }} --add-label "${labels[$folder]}"
-            fi
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          labels: ${{ env.labels }}
