@@ -27,6 +27,7 @@ jobs:
             echo "$decoded" >> clean_files.txt
           done < modified_files.txt
           mv clean_files.txt modified_files.txt
+          cat modified_files.txt
 
       - name: 🔖 Determine labels
         id: determine_labels
