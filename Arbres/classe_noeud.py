@@ -35,6 +35,16 @@ def taille(self: Noeud):
     return 1 + taille(self.gauche()) + taille(self.droit())
 
 
+def hauteur(self: Noeud):
+    if self.est_feuille():
+        return 0
+    elif self.droit() == Noeud.arbre_vide:
+        return 1 + hauteur(self.gauche())
+    elif self.gauche() == Noeud.arbre_vide:
+        return 1 + hauteur(self.droit())
+    return 1 + max(hauteur(self.droit()), hauteur(self.gauche()))
+
+
 def compte_feuilles(arbre: Noeud):
     if arbre == Noeud.arbre_vide:
         return 0
@@ -59,15 +69,25 @@ A_1 = Noeud("A", Noeud("B", None, None), None)
 A_2 = Noeud("A", Noeud("B", None, None), Noeud("D", None, None))
 A_3 = Noeud("A", Noeud("B", None, Noeud("C", None, None)),
             Noeud("D", None, None))
-A_4 = Noeud("1", Noeud("2", Noeud("4", Noeud("8", None, None), Noeud(
-    "9", None, None)), Noeud("5", Noeud("10", None, None), None)), Noeud("3", None, None))
+A_4 = Noeud(1,
+            Noeud(2,
+                  Noeud(4,
+                        Noeud(8, Noeud.arbre_vide, Noeud.arbre_vide),
+                        Noeud(9, Noeud.arbre_vide, Noeud.arbre_vide)),
+                  Noeud(5,
+                        Noeud(10, Noeud.arbre_vide, Noeud.arbre_vide),
+                        Noeud.arbre_vide)),
+            Noeud(3,
+                  Noeud(6, Noeud.arbre_vide, Noeud.arbre_vide),
+                  Noeud(7, Noeud.arbre_vide, Noeud.arbre_vide)))
 
-# print(A_3.gauche().droit().valeur())
-# print(A_3.est_feuille())
-# print(compte_feuilles(A_N))
-# print(compte_feuilles(A_g))
-# print(compte_feuilles(A_3))
-# print(compte_feuilles(A_4))
-# print(taille(A_N))
-print(hauteur(A_1))
+print(A_3.gauche().droit().valeur())
+print(A_3.est_feuille())
+print(compte_feuilles(A_N))
+print(compte_feuilles(A_g))
+print(compte_feuilles(A_3))
+print(compte_feuilles(A_4))
+print(taille(A_N))
 print(hauteur(A_4))
+print(hauteur(A_2))
+print(hauteur(A_3))
