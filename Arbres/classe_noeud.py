@@ -29,6 +29,12 @@ class Noeud:
         return False
 
 
+def taille(self: Noeud):
+    if self == Noeud.arbre_vide:
+        return 0
+    return 1 + taille(self.gauche()) + taille(self.droit())
+
+
 def compte_feuilles(arbre: Noeud):
     if arbre == Noeud.arbre_vide:
         return 0
@@ -52,3 +58,4 @@ print(compte_feuilles(A_N))
 print(compte_feuilles(A_g))
 print(compte_feuilles(A_3))
 print(compte_feuilles(A_4))
+print(taille(A_N))
