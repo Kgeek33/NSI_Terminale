@@ -57,7 +57,11 @@ def parcours_infixe(self: Noeud):
     """ affiche les valeurs de chaque noeud exploré séparées par des espaces """
     if self == Noeud.arbre_vide:
         return ""
-    return parcours_infixe(self.gauche()) + str(self.valeur()) + ' ' + parcours_infixe(self.droit())
+    return (
+        parcours_infixe(self.gauche()) +
+        str(self.valeur()) + ' ' +
+        parcours_infixe(self.droit())
+    )
 
 
 A_g = Noeud("D", None, None)
