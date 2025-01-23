@@ -42,12 +42,13 @@ def compte_feuilles(arbre: Noeud):
         return 1
     return compte_feuilles(arbre.gauche()) + compte_feuilles(arbre.droit())
 
+
 def hauteur(arbre: Noeud):
     if arbre == Noeud.arbre_vide:
         return 0
-    if arbre.droit() == None:
+    if arbre.droit() is None:
         return hauteur(arbre.gauche()) + 1
-    if arbre.gauche() == None:
+    if arbre.gauche() is None:
         return hauteur(arbre.droit()) + 1
     return hauteur(arbre.gauche()) + hauteur(arbre.droit()) + 1
 
