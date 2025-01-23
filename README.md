@@ -7,11 +7,10 @@ Bienvenue dans le repo `NSI_Terminale` !
 # Règles
 
 - Merci de ne pas faire n'importe quoi sur le repo (même s'il y a un historique des commits et qu'il est facile de revert)
-- Travaille d'abord avant de regarder ce que les autres ont fait ! Après on apprend pas
+- Travaille d'abord avant de regarder ce que les autres ont fait ! Après on apprend pas (_selon le prof_)
+- Faire des review sérieuses des pr
 
-## Si on rendait tout ça drôle...
-
-Plutôt que de faire chacun de son côté et celui qui termine en 1er publie sur le repo, pourquoi ne pas faire un "concours" ?
+## Concours entre nous
 
 ### Organisation
 
@@ -23,14 +22,31 @@ Plutôt que de faire chacun de son côté et celui qui termine en 1er publie sur
   - `Lucas` (la branche uniquement pour Lucas)
 - Chacun travaillera sur sa branche durant chaque séance (_sauf si un chapitre ne nécessite pas la machine virtuelle_)
 
-### Quand la séance est terminée...
+### Quand tu as terminé un exo avant les autres
 
-Vous allez devoir faire une `pull request` (pr), c'est-à-dire proposer le travail que vous avez fait. 
+Déjà bravo ! Ensuite, tu vas faire faire une `pull request` (pr) pour proposer le travail que tu as fait.
 
-Une fois la pr faite, chacun fera sa review de chaque PR et si tout le monde accepte, j'accepterai et je mergerai la pr
+Une fois la pr faite, chacun fera sa review de chaque PR et si tout le monde accepte, la pr sera automatiquement merge dans la branche `main`
 
-### Qu'est-ce qui se passe quand une pr est acceptée ?
+### C'est qui "github-actions[bot]" ?
 
-Tout le travail proposé sera intégré sur la branche `main` ! Pour rappel, la branche `main` est la branche principale, elle n'est donc pas modifiable !
+C'est un `workflow`, c'est-à-dire un programme automatique qui, en fonction du code que t'as fait, va refuser ou non ta pr.
+
+> [!WARNING]
+>
+> Pour le moment, le `workflow` analyse uniquement les fichiers Python
+
+- Si t'as pr est refusé :
+
+  > [!NOTE]
+  >
+  > "github-actions[bot]" indiquera quel(s) fichier(s) et quelle(s) modification(s) à faire pour que ton code soit correct
+
+- Si t'as pr est accepté :
+  > [!NOTE]
+  >
+  > Parfait, ton code est bien optimisé ! Mais il faut tout de même attendre la review des autres avant que ta pr soit automatiquement merge dans la branche `main`
+
+#### By @Lascar-png
 
 Pour rappel FromSoftWare > all
