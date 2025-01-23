@@ -42,6 +42,15 @@ def compte_feuilles(arbre: Noeud):
         return 1
     return compte_feuilles(arbre.gauche()) + compte_feuilles(arbre.droit())
 
+def hauteur(arbre: Noeud):
+    if arbre == Noeud.arbre_vide:
+        return 0
+    if arbre.droit() == None:
+        return hauteur(arbre.gauche()) + 1
+    if arbre.gauche() == None:
+        return hauteur(arbre.droit()) + 1
+    return hauteur(arbre.gauche()) + hauteur(arbre.droit()) + 1
+
 
 A_g = Noeud("D", None, None)
 A_N = None
@@ -52,10 +61,12 @@ A_3 = Noeud("A", Noeud("B", None, Noeud("C", None, None)),
 A_4 = Noeud("A", Noeud("B", Noeud("E", None, None),
             Noeud("C", None, None)), Noeud("D", None, None))
 
-print(A_3.gauche().droit().valeur())
-print(A_3.est_feuille())
-print(compte_feuilles(A_N))
-print(compte_feuilles(A_g))
-print(compte_feuilles(A_3))
-print(compte_feuilles(A_4))
-print(taille(A_N))
+# print(A_3.gauche().droit().valeur())
+# print(A_3.est_feuille())
+# print(compte_feuilles(A_N))
+# print(compte_feuilles(A_g))
+# print(compte_feuilles(A_3))
+# print(compte_feuilles(A_4))
+# print(taille(A_N))
+print(hauteur(A_N))
+print(hauteur(A_4))
