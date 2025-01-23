@@ -59,8 +59,8 @@ A_1 = Noeud("A", Noeud("B", None, None), None)
 A_2 = Noeud("A", Noeud("B", None, None), Noeud("D", None, None))
 A_3 = Noeud("A", Noeud("B", None, Noeud("C", None, None)),
             Noeud("D", None, None))
-A_4 = Noeud("A", Noeud("B", Noeud("E", None, None),
-            Noeud("C", None, None)), Noeud("D", None, None))
+A_4 = Noeud("1", Noeud("2", Noeud("4", Noeud("8", None, None), Noeud(
+    "9", None, None)), Noeud("5", Noeud("10", None, None), None)), Noeud("3", None, None))
 
 print(A_3.gauche().droit().valeur())
 print(A_3.est_feuille())
