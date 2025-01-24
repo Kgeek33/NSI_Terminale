@@ -75,6 +75,16 @@ def parcours_prefixe(self: Noeud):
     )
 
 
+def parcours_posfixe(self: Noeud):
+    if self == Noeud.arbre_vide:
+        return ""
+    return (
+        parcours_posfixe(self.gauche()) +
+        parcours_posfixe(self.droit()) +
+        str(self.valeur()) + " "
+    )
+
+
 A_g = Noeud("D", None, None)
 A_N = None
 A_1 = Noeud("A", Noeud("B", None, None), None)
@@ -105,3 +115,4 @@ print(hauteur(A_2))
 print(hauteur(A_3))
 print(parcours_infixe(A_4))
 print(parcours_prefixe(A_4))
+print(parcours_posfixe(A_4))
