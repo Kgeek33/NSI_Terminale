@@ -2,7 +2,7 @@ name: 🤖 Enable Auto-merge
 
 on:
   pull_request:
-    branches: ["main"]
+    types: [opened]
 
 jobs:
   automerge:
