@@ -1,7 +1,7 @@
-from classe_noeud import *
+from classe_noeud import Noeud, hauteur, compte_feuilles, taille
+
 
 def parcours_infixe(self: Noeud):
-    """ affiche les valeurs de chaque noeud exploré séparées par des espaces """
     if self == Noeud.arbre_vide:
         return ""
     return (
@@ -12,7 +12,6 @@ def parcours_infixe(self: Noeud):
 
 
 def parcours_prefixe(self: Noeud):
-    """ affiche les valeurs de chaque noeud exploré séparées par des espaces """
     if self == Noeud.arbre_vide:
         return ""
     return (
@@ -30,6 +29,31 @@ def parcours_posfixe(self: Noeud):
         parcours_posfixe(self.droit()) +
         str(self.valeur()) + " "
     )
+
+
+def parcours_en_largeur(a):
+    if a is None:
+        return
+    h = hauteur(a)
+    print("hauteur =", h)
+    for i in range(0, h+1):
+        # i = 0 -> niveau de la racine --- i=h -> niveau des feuilles
+        parcourir_niveau(a, i)
+    print()
+
+
+def parcourir_niveau(a, n):
+    if a is None:
+        return
+    if n == 0:
+        # on est descendu de n niveaux depuis la racine de a : on affiche
+        # la valeur du noeud
+        print(a.valeur(), end=" ")
+    elif n > 0:
+        # on est au-dessus du niveau n à afficher : on descend sur l'arbre
+        # gauche, puis sur l'arbre droit
+        parcourir_niveau(a.gauche(), n-1)
+        parcourir_niveau(a.droit(), n-1)
 
 
 A_g = Noeud("D", None, None)
@@ -64,3 +88,4 @@ if __name__ == "__main__":
     print(parcours_infixe(A_4))
     print(parcours_prefixe(A_4))
     print(parcours_posfixe(A_4))
+    parcours_en_largeur(A_4)
