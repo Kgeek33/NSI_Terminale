@@ -36,7 +36,8 @@ def parcours_en_largeur(a):
         return
     h = hauteur(a)
     print("hauteur =", h)
-    for i in range(0, h+1):      # i = 0 -> niveau de la racine --- i=h -> niveau des feuilles
+    for i in range(0, h+1):
+        # i = 0 -> niveau de la racine --- i=h -> niveau des feuilles
         parcourir_niveau(a, i)
     print()
 
@@ -44,9 +45,13 @@ def parcours_en_largeur(a):
 def parcourir_niveau(a, n):
     if a is None:
         return
-    if n == 0:           # on est descendu de n niveaux depuis la racine de a : on affiche la valeur du noeud
+    if n == 0:
+        # on est descendu de n niveaux depuis la racine de a : on affiche
+        # la valeur du noeud
         print(a.valeur(), end=" ")
-    elif n > 0:          # on est au-dessus du niveau n à afficher : on descend sur l'arbre gauche, puis sur l'arbre droit
+    elif n > 0:
+        # on est au-dessus du niveau n à afficher : on descend sur l'arbre
+        # gauche, puis sur l'arbre droit
         parcourir_niveau(a.gauche(), n-1)
         parcourir_niveau(a.droit(), n-1)
 
