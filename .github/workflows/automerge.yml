@@ -9,20 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ✅ Enable Auto-merge
-        uses: octokit/request-action@v2.x
-        with:
-          route: POST /graphql
-          graphql: |
-            mutation($pullRequestId: ID!) {
-              enablePullRequestAutoMerge(input: { pullRequestId: $pullRequestId, mergeMethod: MERGE }) {
-                pullRequest {
-                  autoMergeRequest {
-                    enabledAt
-                  }
-                }
-              }
-            }
-          parameters: |
-            pullRequestId=${{ github.event.pull_request.node_id }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "query": "mutation($pullRequestId: ID!) { enablePullRequestAutoMerge(input: { pullRequestId: $pullRequestId, mergeMethod: MERGE }) { pullRequest { autoMergeRequest { enabledAt } } } }",
+            "variables": {
+              "pullRequestId": "'${{ github.event.pull_request.node_id }}'"
+            }
+          }' https://api.github.com/graphql
