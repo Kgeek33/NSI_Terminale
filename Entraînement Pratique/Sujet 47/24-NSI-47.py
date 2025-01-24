@@ -10,9 +10,8 @@ def max_dico(dico: dict[str, int]):
             if dico[cle] > valeur:
                 nom = cle
                 valeur = dico[cle]
-    
-    return (nom, valeur)
 
+    return (nom, valeur)
 
 
 assert max_dico({'Bob': 102, 'Ada': 201, 'Alice': 103,
@@ -46,13 +45,18 @@ class Pile:
 
 def eval_expression(tab):
     p = Pile()
-    for ... in tab:
-        if element != '+' ... element != '*':
-            p.empiler(...)
+    for element in tab:
+        if element != '+' and element != '*':
+            p.empiler(element)
         else:
-            if element == ...:
-                resultat = ... + ...
+            if element == "+":
+                resultat = p.depiler() + p.depiler()
             else:
-                resultat = ...
-            p.empiler(...)
-    return ...
+                resultat = p.depiler() * p.depiler()
+            p.empiler(resultat)
+    return p.depiler()
+
+
+assert eval_expression([2, 3, '+', 5, '*']) == 25
+assert eval_expression([1, 2, '+', 3, '*']) == 9
+assert eval_expression([1, 2, 3, '+', '*']) == 5
