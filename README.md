@@ -14,13 +14,11 @@ Bienvenue dans le repo `NSI_Terminale` !
 
 ### Organisation
 
-- Chacun dispose de sa branche :
-  - `main` (la branche principale)
-  - `Kylian` (la branche uniquement pour Kylian)
-  - `Raphael` (la branche uniquement pour Raphaël)
-  - `Florent` (la branche uniquement pour Florent)
-  - `Lucas` (la branche uniquement pour Lucas)
 - Chacun travaillera sur sa branche durant chaque séance (_sauf si un chapitre ne nécessite pas la machine virtuelle_)
+
+> [!WARNING]
+> 
+> Pour éviter des PR complexes à review ET des conflits tout le temps, une branche doit être utilisée uniquement pour un thème
 
 ### Quand tu as terminé un exo avant les autres
 
