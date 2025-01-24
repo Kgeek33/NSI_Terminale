@@ -74,7 +74,8 @@ def parcours_prefixe(self: Noeud):
         parcours_prefixe(self.droit())
     )
 
-def parcours_posfixe(self:Noeud):
+
+def parcours_posfixe(self: Noeud):
     if self == Noeud.arbre_vide:
         return ""
     return (
@@ -82,6 +83,7 @@ def parcours_posfixe(self:Noeud):
         parcours_posfixe(self.droit()) +
         str(self.valeur()) + " "
     )
+
 
 A_g = Noeud("D", None, None)
 A_N = None
