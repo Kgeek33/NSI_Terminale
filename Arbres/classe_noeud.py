@@ -59,7 +59,7 @@ def parcours_infixe(self: Noeud):
         return ""
     return (
         parcours_infixe(self.gauche()) +
-        str(self.valeur()) + ' ' +
+        str(self.valeur()) + " " +
         parcours_infixe(self.droit())
     )
 
@@ -69,7 +69,7 @@ def parcours_prefixe(self: Noeud):
     if self == Noeud.arbre_vide:
         return ""
     return (
-        str(self.valeur()) + ' ' +
+        str(self.valeur()) + " " +
         parcours_prefixe(self.gauche()) +
         parcours_prefixe(self.droit())
     )
