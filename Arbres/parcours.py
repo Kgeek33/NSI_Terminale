@@ -1,4 +1,4 @@
-from classe_noeud import *
+from classe_noeud import Noeud, hauteur, compte_feuilles, taille
 
 
 def parcours_infixe(self: Noeud):
