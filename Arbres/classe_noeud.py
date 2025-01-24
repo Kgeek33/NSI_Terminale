@@ -59,8 +59,19 @@ def parcours_infixe(self: Noeud):
         return ""
     return (
         parcours_infixe(self.gauche()) +
-        str(self.valeur()) + ' ' +
+        str(self.valeur()) + " " +
         parcours_infixe(self.droit())
+    )
+
+
+def parcours_prefixe(self: Noeud):
+    """ affiche les valeurs de chaque noeud exploré séparées par des espaces """
+    if self == Noeud.arbre_vide:
+        return ""
+    return (
+        str(self.valeur()) + " " +
+        parcours_prefixe(self.gauche()) +
+        parcours_prefixe(self.droit())
     )
 
 
@@ -82,14 +93,15 @@ A_4 = Noeud(1,
                   Noeud(6, Noeud.arbre_vide, Noeud.arbre_vide),
                   Noeud(7, Noeud.arbre_vide, Noeud.arbre_vide)))
 
-# print(A_3.gauche().droit().valeur())
-# print(A_3.est_feuille())
-# print(compte_feuilles(A_N))
-# print(compte_feuilles(A_g))
-# print(compte_feuilles(A_3))
-# print(compte_feuilles(A_4))
-# print(taille(A_N))
-# print(hauteur(A_4))
-# print(hauteur(A_2))
-# print(hauteur(A_3))
+print(A_3.gauche().droit().valeur())
+print(A_3.est_feuille())
+print(compte_feuilles(A_N))
+print(compte_feuilles(A_g))
+print(compte_feuilles(A_3))
+print(compte_feuilles(A_4))
+print(taille(A_N))
+print(hauteur(A_4))
+print(hauteur(A_2))
+print(hauteur(A_3))
 print(parcours_infixe(A_4))
+print(parcours_prefixe(A_4))
