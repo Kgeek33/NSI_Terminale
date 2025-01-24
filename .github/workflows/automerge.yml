@@ -2,15 +2,27 @@ name: 🤖 Enable Auto-merge
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, synchronize]
 
 jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - name: Action-Automerge
-        uses: mtanzi/action-automerge@v1
+      - name: ✅ Enable Auto-merge
+        uses: octokit/request-action@v2.x
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source: "main"
-          target: "release"
+          route: POST /graphql
+          graphql: |
+            mutation($pullRequestId: ID!) {
+              enablePullRequestAutoMerge(input: { pullRequestId: $pullRequestId, mergeMethod: MERGE }) {
+                pullRequest {
+                  autoMergeRequest {
+                    enabledAt
+                  }
+                }
+              }
+            }
+          parameters: |
+            pullRequestId=${{ github.event.pull_request.node_id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
