@@ -1,0 +1,16 @@
+name: 🤖 Enable Auto-merge
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Action-Automerge
+        uses: mtanzi/action-automerge@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source: "main"
+          target: "release"
