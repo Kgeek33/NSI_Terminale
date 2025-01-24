@@ -6,7 +6,7 @@ class Noeud:
 
 
 def taille(a: Noeud):
-    if a == None:
+    if a is None:
         return 0
 
     return 1 + taille(a.gauche) + taille(a.droit)
