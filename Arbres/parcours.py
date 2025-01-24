@@ -81,4 +81,4 @@ if __name__ == "__main__":
     print(parcours_infixe(A_4))
     print(parcours_prefixe(A_4))
     print(parcours_posfixe(A_4))
-    print(parcours_en_largeur(A_4))
+    parcours_en_largeur(A_4)
