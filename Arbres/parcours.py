@@ -56,6 +56,15 @@ def parcourir_niveau(a, n):
         parcourir_niveau(a.droit(), n-1)
 
 
+def table_infixe(a, tab=None):
+    """ renvoie la liste des éléments de a lus dans un parcours infixe """
+    if a is None:
+        return []
+    if tab is None:
+        tab = []
+    return parcours_infixe(a).split(" ")[:-1]
+
+
 A_g = Noeud("D", None, None)
 A_N = None
 A_1 = Noeud("A", Noeud("B", None, None), None)
@@ -89,3 +98,4 @@ if __name__ == "__main__":
     print(parcours_prefixe(A_4))
     print(parcours_posfixe(A_4))
     parcours_en_largeur(A_4)
+    print(table_infixe(A_4))
