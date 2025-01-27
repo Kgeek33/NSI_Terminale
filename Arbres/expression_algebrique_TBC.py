@@ -12,17 +12,22 @@ def expression(a):
     return e
 
 
-def evaluer(a):
+def evaluer(a: Noeud):
     """renvoie l'évaluation de l'expression décrite par l'arbre a"""
     if est_feuille(a):
-        res =  # à completer
+        res = a.valeur()
     elif a.valeur() == '+':
-        res =  # à completer
+        res = evaluer(a.gauche()) + evaluer(a.droit())
     elif a.valeur() == '-':
-        res =  # à completer
-    elif  # à completer
-
-    else: raise ValueError("opérateur inattendu")
+        res = evaluer(a.gauche()) - evaluer(a.droit())
+    elif a.valeur() == "/":
+        res = evaluer(a.gauche()) / evaluer(a.droit())
+    elif a.valeur() == "*":
+        res = evaluer(a.gauche()) * evaluer(a.droit())
+    elif a.valeur() == "^":
+        res = evaluer(a.gauche()) ** evaluer(a.droit())
+    else:
+        raise ValueError("opérateur inattendu")
     return res
 
 
