@@ -24,7 +24,10 @@ class Noeud:
         return arbre is Noeud.arbre_vide
 
     def est_feuille(arbre):
-        if arbre.gauche() == Noeud.arbre_vide and arbre.droit() == Noeud.arbre_vide:
+        if (
+            arbre.gauche() == Noeud.arbre_vide and
+            arbre.droit() == Noeud.arbre_vide
+        ):
             return True
         return False
 
