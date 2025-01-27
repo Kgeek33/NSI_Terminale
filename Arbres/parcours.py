@@ -56,6 +56,10 @@ def parcourir_niveau(a, n):
         parcourir_niveau(a.droit(), n-1)
 
 
+def parcours_suffixe(a):
+    parcours_postfixe(a)
+
+
 def table_infixe(a, tab=None):
     """ renvoie la liste des éléments de a lus dans un parcours infixe """
     if a is None:
