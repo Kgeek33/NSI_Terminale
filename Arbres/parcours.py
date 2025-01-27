@@ -62,7 +62,8 @@ def table_infixe(a, tab=None):
         return []
     if tab is None:
         tab = []
-    return parcours_infixe(a).split(" ")[:-1]
+    # return parcours_infixe(a).split(" ")[:-1]
+    return table_infixe(a.gauche(), tab) + [a.valeur()] + table_infixe(a.droit(), tab)
 
 
 A_g = Noeud("D", None, None)
