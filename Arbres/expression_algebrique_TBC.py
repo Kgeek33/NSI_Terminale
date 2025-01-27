@@ -12,7 +12,7 @@ def expression(a):
     """renvoie l'expression parenthésée sous forme de chaine de caractères"""
     if a is None:
         return ""
-# à compléter
+    e = parcours_infixe(a)
 
     return e
 
