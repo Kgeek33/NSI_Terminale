@@ -20,11 +20,11 @@ def expression(a):
 def evaluer(a: Noeud):
     """renvoie l'évaluation de l'expression décrite par l'arbre a"""
     if est_feuille(a):
-        assert a.valeur() not in ['+', '-', '/']
+        assert a.valeur() not in ["+", "-", "/"]
         res = a.valeur()
-    elif a.valeur() == '+':
+    elif a.valeur() == "+":
         res = evaluer(a.gauche()) + evaluer(a.droit())
-    elif a.valeur() == '-':
+    elif a.valeur() == "-":
         res = evaluer(a.gauche()) - evaluer(a.droit())
     elif a.valeur() == "/":
         res = evaluer(a.gauche()) / evaluer(a.droit())
@@ -37,8 +37,7 @@ def evaluer(a: Noeud):
     return res
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     def test(a):
         print("parcours infixe : ", end="")
         print(parcours_infixe(a))
