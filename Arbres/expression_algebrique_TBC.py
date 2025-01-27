@@ -20,6 +20,7 @@ def expression(a):
 def evaluer(a: Noeud):
     """renvoie l'évaluation de l'expression décrite par l'arbre a"""
     if est_feuille(a):
+        assert a.valeur() not in ['+', '-', '/']
         res = a.valeur()
     elif a.valeur() == '+':
         res = evaluer(a.gauche()) + evaluer(a.droit())
