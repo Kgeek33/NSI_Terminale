@@ -1,5 +1,5 @@
-from classe_noeud import *
-from parcours import *
+from classe_noeud import Noeud
+from parcours import parcours_infixe, parcours_prefixe, parcours_postfixe
 from arbre_operations import est_feuille
 
 
@@ -34,11 +34,20 @@ def evaluer(a: Noeud):
 if __name__ == '__main__':
 
     def test(a):
-        print("parcours infixe : ", end=""); parcours_infixe(a); print()
-        print("parcours prefixe : ", end=""); parcours_prefixe(a); print()
-        print("parcours postfixe : ", end=""); parcours_postfixe(a); print()
-        print("parcours suffixe : ", end=""); parcours_suffixe(a); print()
-        print("expression évaluée : ", end=""); print(
+        print("parcours infixe : ", end="")
+        print(parcours_infixe(a))
+        print()
+        print("parcours prefixe : ", end="")
+        print(parcours_prefixe(a))
+        print()
+        print("parcours postfixe : ", end="")
+        print(parcours_postfixe(a))
+        print()
+        print("parcours suffixe : ", end="")
+        print(parcours_suffixe(a))
+        print()
+        print("expression évaluée : ", end="")
+        print(
             expression(a), "=", evaluer(a))
 
     A = Noeud('+',  Noeud(2, None, None), Noeud("/", Noeud(3, None, None),
@@ -46,8 +55,8 @@ if __name__ == '__main__':
 
     test(A)     # -> (2)+((3)/((4)-(7))) = 1
 
-    B = Noeud('^',  # à completer)
-    test(B)     # -> (1.2+6.8)^(4+(-2)) = 64
+    # B = Noeud('^',  # à completer)
+    # test(B)     # -> (1.2+6.8)^(4+(-2)) = 64
 
-    C=Noeud('**',  # à completer)
-    test(C)  # -> ((-4)*(-2)-6)**(5*2) =1024
+    # C=Noeud('**',  # à completer)
+    # test(C)  # -> ((-4)*(-2)-6)**(5*2) =1024
