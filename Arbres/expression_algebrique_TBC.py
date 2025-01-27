@@ -60,8 +60,10 @@ if __name__ == '__main__':
 
     test(A)     # -> (2)+((3)/((4)-(7))) = 1
 
-    # B = Noeud('^',  # à completer)
-    # test(B)     # -> (1.2+6.8)^(4+(-2)) = 64
+    B = Noeud('^', Noeud("+", Noeud(1.2, None, None), Noeud(6.8, None, None)),
+              Noeud("+", Noeud(4, None, None), Noeud(-2, None, None)))
+    test(B)     # -> (1.2+6.8)^(4+(-2)) = 64
 
-    # C=Noeud('**',  # à completer)
-    # test(C)  # -> ((-4)*(-2)-6)**(5*2) =1024
+    C = Noeud('**', Noeud("-", Noeud("*", -4, -2),
+              Noeud(6, None, None)), Noeud("*", 5, 2))
+    test(C)  # -> ((-4)*(-2)-6)**(5*2) =1024
