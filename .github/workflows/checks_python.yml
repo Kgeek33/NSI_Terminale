@@ -37,7 +37,7 @@ jobs:
       - name: 🔍 Run Flake8 checks
         run: |
           if [ -s modified_files.txt ]; then
-            xargs -a modified_files.txt -I {} flake8 "{}" --max-line-length=88 > flake8_errors.log || true
+            xargs -a modified_files.txt -I {} flake8 "{}" --max-line-length=84 > flake8_errors.log || true
           else
             echo "Aucun fichier Python modifié."
             echo "is_empty=true" >> $GITHUB_ENV
