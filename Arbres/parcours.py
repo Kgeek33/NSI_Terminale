@@ -21,12 +21,12 @@ def parcours_prefixe(self: Noeud):
     )
 
 
-def parcours_posfixe(self: Noeud):
+def parcours_postfixe(self: Noeud):
     if self == Noeud.arbre_vide:
         return ""
     return (
-        parcours_posfixe(self.gauche()) +
-        parcours_posfixe(self.droit()) +
+        parcours_postfixe(self.gauche()) +
+        parcours_postfixe(self.droit()) +
         str(self.valeur()) + " "
     )
 
@@ -63,7 +63,11 @@ def table_infixe(a, tab=None):
     if tab is None:
         tab = []
     # return parcours_infixe(a).split(" ")[:-1]
-    return table_infixe(a.gauche(), tab) + [a.valeur()] + table_infixe(a.droit(), tab)
+    return (
+        table_infixe(a.gauche(), tab) +
+        [a.valeur()] +
+        table_infixe(a.droit(), tab)
+    )
 
 
 A_g = Noeud("D", None, None)
@@ -97,6 +101,6 @@ if __name__ == "__main__":
     print(hauteur(A_3))
     print(parcours_infixe(A_4))
     print(parcours_prefixe(A_4))
-    print(parcours_posfixe(A_4))
+    print(parcours_postfixe(A_4))
     parcours_en_largeur(A_4)
     print(table_infixe(A_4))
