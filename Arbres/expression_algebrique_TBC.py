@@ -1,5 +1,10 @@
 from classe_noeud import Noeud
-from parcours import parcours_infixe, parcours_prefixe, parcours_postfixe
+from parcours import (
+    parcours_infixe,
+    parcours_prefixe,
+    parcours_postfixe,
+    parcours_suffixe
+)
 from arbre_operations import est_feuille
 
 
