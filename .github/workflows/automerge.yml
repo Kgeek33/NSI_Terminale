@@ -1,22 +1,25 @@
-name: 🤖 Enable Auto-merge
+name: 🤖 Auto-merge PR if 4 approvals
 
 on:
   pull_request:
-    types: [opened]
+    types: [submitted]
 
 jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - name: ✅ Enable Auto-merge
+      - name: 📥 Check reviews
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "query": "mutation($pullRequestId: ID!) { enablePullRequestAutoMerge(input: { pullRequestId: $pullRequestId, mergeMethod: MERGE }) { pullRequest { autoMergeRequest { enabledAt } } } }",
-            "variables": {
-              "pullRequestId": "'${{ github.event.pull_request.node_id }}'"
-            }
-          }' https://api.github.com/graphql
+          APPROVALS=$(gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+            --jq '[.[] | select(.state=="APPROVED")] | length')
+
+          echo "Nombre d'approbations: $APPROVALS"
+
+          if [ "$APPROVALS" -ge 4 ]; then
+            echo "Merging PR..."
+            gh pr merge ${{ github.event.pull_request.number }} --merge --repo ${{ github.repository }}
+          else
+            echo "Pas assez d'approbations pour merger."
+          fi
