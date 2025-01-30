@@ -23,6 +23,16 @@ def construire(valeurs: list) -> Noeud:
     return UNarbre
 
 
+def appartient(x: int, a: Noeud) -> bool:
+    if a is None:
+        return False
+    if x == a.valeur():
+        return True
+    if x < a.valeur():
+        return appartient(x, a.gauche())
+    return appartient(x, a.droit())
+
+
 if __name__ == "__main__":
     L0 = [6, 8, 3, 1, 4, 9, 2, 7, 5]
     arbreL0 = construire(L0)
@@ -36,3 +46,6 @@ if __name__ == "__main__":
     L.sort()
     arbreLS = construire(L)
     print(parcours_infixe(arbreLS))
+    print(appartient(4, arbreL0))
+    print(appartient(19, arbreL))
+    print(appartient(2, arbreLR))
