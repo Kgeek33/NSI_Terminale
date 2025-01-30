@@ -18,17 +18,20 @@ jobs:
           REVIEWERS=()
           for user in "${COLLABORATORS[@]}"; do
             if [[ "$user" != "$PR_AUTHOR" ]]; then
-              REVIEWERS+=("$user")
+              REVIEWERS+=("\"$user\"")
             fi
           done
 
-          REVIEWERS_JSON=$(printf '%s\n' "${REVIEWERS[@]}" | jq -R . | jq -s .)
+          REVIEWERS_JSON="[$(IFS=,; echo "${REVIEWERS[*]}")]"
 
           echo "Auteur de la PR : $PR_AUTHOR"
           echo "Reviewers assignés : ${REVIEWERS[@]}"
+          echo "Reviewers JSON : $REVIEWERS_JSON"
 
+          # Assigner l'auteur à sa propre PR
           gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }} \
-            -X PATCH -f assignees=[$PR_AUTHOR]
+            -X PATCH -F assignees='["'"$PR_AUTHOR"'"]'
 
+          # Ajouter les reviewers
           gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
-            -X POST -f reviewers=$REVIEWERS_JSON
+            -X POST -F reviewers="$REVIEWERS_JSON"
