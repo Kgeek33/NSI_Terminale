@@ -2,7 +2,7 @@ name: 🤖 Auto-merge PR if 4 approvals
 
 on:
   pull_request:
-    types: [submitted]
+    types: [submitted, synchronize]
 
 jobs:
   automerge:
