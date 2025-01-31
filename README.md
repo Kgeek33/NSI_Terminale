@@ -46,6 +46,4 @@ C'est un `workflow`, c'est-à-dire un programme automatique qui, en fonction du 
 >
 > Parfait, ton code est bien optimisé ! Mais il faut tout de même attendre la review des autres avant que ta pr soit automatiquement merge dans la branche `main`
 
-#### By @Lascar-png
-
 Pour rappel FromSoftWare > all

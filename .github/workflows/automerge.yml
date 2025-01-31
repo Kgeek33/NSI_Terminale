@@ -1,8 +1,8 @@
 name: 🤖 Auto-merge PR if 4 approvals
 
 on:
-  pull_request:
-    types: [submitted]
+  pull_request_review:
+    types: [submitted, edited]
 
 jobs:
   automerge:
