@@ -33,6 +33,26 @@ def appartient(x: any, a: Noeud) -> bool:
     return appartient(x, a.droit())
 
 
+def premier(abr: Noeud):
+    if abr.est_feuille() or abr.gauche() is None:
+        return abr.valeur()
+    return premier(abr.gauche())
+
+
+def ordre_alphabetique(abr):
+    if abr == Noeud.arbre_vide:
+        return []
+    return (
+        ordre_alphabetique(abr.gauche()) +
+        [abr.valeur()] +
+        ordre_alphabetique(abr.droit())
+    )
+
+
+def trier_par_ABR(tab: list):
+    tab.sort()
+
+
 if __name__ == "__main__":
     L0 = [6, 8, 3, 1, 4, 9, 2, 7, 5]
     arbreL0 = construire(L0)
@@ -54,3 +74,5 @@ if __name__ == "__main__":
     A_animaux = construire(L_animaux)
     print(appartient("zèbre", A_animaux))
     print(appartient("éléphant", A_animaux))
+    print(premier(A_animaux))
+    print(ordre_alphabetique(A_animaux))
