@@ -12,7 +12,7 @@ def ajouter(x: int, a: Noeud) -> Noeud:
 
 
 def construire(valeurs: list) -> Noeud:
-    """renvoie l'ABR constitué des valeurs prises successivement
+    """renvoie l"ABR constitué des valeurs prises successivement
     dans la liste valeurs.
     valeurs[0] est la racine"""
     UNarbre = Noeud(valeurs[0], None, None)
@@ -23,7 +23,7 @@ def construire(valeurs: list) -> Noeud:
     return UNarbre
 
 
-def appartient(x: int, a: Noeud) -> bool:
+def appartient(x: any, a: Noeud) -> bool:
     if a is None:
         return False
     if x == a.valeur():
@@ -49,3 +49,8 @@ if __name__ == "__main__":
     print(appartient(4, arbreL0))
     print(appartient(19, arbreL))
     print(appartient(2, arbreLR))
+    L_animaux = ["chat", "chien", "souris",
+                 "araignée", "grenouille", "lézard", "zèbre"]
+    A_animaux = construire(L_animaux)
+    print(appartient("zèbre", A_animaux))
+    print(appartient("éléphant", A_animaux))
