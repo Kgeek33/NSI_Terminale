@@ -23,7 +23,7 @@ def construire(valeurs: list) -> Noeud:
     return UNarbre
 
 
-def appartient(x: int, a: Noeud) -> bool:
+def appartient(x: any, a: Noeud) -> bool:
     if a is None:
         return False
     if x == a.valeur():
@@ -31,6 +31,16 @@ def appartient(x: int, a: Noeud) -> bool:
     if x < a.valeur():
         return appartient(x, a.gauche())
     return appartient(x, a.droit())
+
+
+def premier(abr: Noeud):
+    if abr.est_feuille() or abr.gauche() is None:
+        return abr.valeur()
+    return premier(abr.gauche())
+
+
+L_Animaux = ['chat', 'chien', 'souris', 'araignée',
+             'crapaud', 'grenouille', 'lézard', 'zèbre']
 
 
 if __name__ == "__main__":
@@ -49,3 +59,7 @@ if __name__ == "__main__":
     print(appartient(4, arbreL0))
     print(appartient(19, arbreL))
     print(appartient(2, arbreLR))
+    A_Animaux = construire(L_Animaux)
+    print(appartient("éléphant", A_Animaux))
+    print(appartient("zèbre", A_Animaux))
+    print(premier(A_Animaux))
