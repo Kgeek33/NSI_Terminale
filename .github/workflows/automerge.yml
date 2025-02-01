@@ -1,4 +1,4 @@
-name: 🤖 Auto-merge PR if 4 approvals
+name: 🤖 Auto-merge PR if all assigned reviewers approve
 
 on:
   pull_request_review:
@@ -8,18 +8,31 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Check reviews
+      - name: 📥 Check if all assigned reviewers approved
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          APPROVALS=$(gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
-            --jq '[.[] | select(.state=="APPROVED")] | length')
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          REPO=${{ github.repository }}
 
-          echo "Nombre d'approbations: $APPROVALS"
+          ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login')
 
-          if [ "$APPROVALS" -ge 4 ]; then
-            echo "Merging PR..."
-            gh pr merge ${{ github.event.pull_request.number }} --merge --repo ${{ github.repository }}
+          APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="APPROVED") | .user.login] | unique')
+
+          echo "Reviewers assignés: $ASSIGNED_REVIEWERS"
+          echo "Reviewers ayant approuvé: $APPROVED_REVIEWERS"
+
+          ALL_APPROVED=true
+          for reviewer in $ASSIGNED_REVIEWERS; do
+            if ! echo "$APPROVED_REVIEWERS" | grep -q "$reviewer"; then
+              ALL_APPROVED=false
+              break
+            fi
+          done
+
+          if [ "$ALL_APPROVED" = true ]; then
+            echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
+            gh pr merge $PR_NUMBER --merge --repo $REPO
           else
-            echo "Pas assez d'approbations pour merger."
+            echo "❌ Tous les reviewers n'ont pas encore approuvé, on attend."
           fi
