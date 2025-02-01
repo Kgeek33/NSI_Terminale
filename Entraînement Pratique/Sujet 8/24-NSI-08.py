@@ -1,3 +1,16 @@
+def delta(tab: list[int]) -> list[int]:
+    UNEsoustration = 0
+    UNEliste = []
+    for Lelement in tab:
+        UNEliste.append(Lelement - UNEsoustration)
+        UNEsoustration = Lelement
+    return UNEliste
+
+
+assert delta([1000, 800, 802, 1000, 1003]) == [1000, -200, 2, 198, 3]
+assert delta([42]) == [42]
+
+
 class Expr:
     """Classe implémentant un arbre d'expression."""
 
@@ -18,12 +31,10 @@ class Expr:
     def infixe(self):
         """renvoie la représentation infixe de l'expression en
         chaine de caractères"""
-        s = ... 
+        s = ...
         if self.gauche is not None:
-            s = '(' + s + ... .infixe() 
-        s = s + ... 
-        if ... is not None: 
-            s = s + ... + ... 
+            s = '(' + s + ... .infixe()
+        s = s + ...
+        if ... is not None:
+            s = s + ... + ...
         return s
-
-
