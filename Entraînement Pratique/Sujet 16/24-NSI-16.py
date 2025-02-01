@@ -1,3 +1,16 @@
+def ecriture_binaire_entier_positif(n: int) -> str:
+    binaire = ""
+    while n >= 1:
+        binaire = str(n % 2) + binaire
+        n = n // 2
+    return "0" if binaire == "" else binaire
+
+
+assert ecriture_binaire_entier_positif(0) == "0"
+assert ecriture_binaire_entier_positif(2) == "10"
+assert ecriture_binaire_entier_positif(105) == "1101001"
+
+
 def echange(tab, i, j):
     '''Echange les éléments d'indice i et j dans le tableau tab.'''
     temp = ...
