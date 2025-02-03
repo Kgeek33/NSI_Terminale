@@ -1,5 +1,6 @@
 import csv
 from TD_Villes_classe_ville import Ville
+from parcours import parcours_infixe
 
 
 class Abr_ville:
@@ -14,6 +15,15 @@ class Abr_ville:
 
     def __str__(self):
         return str(self._ville.affiche_nom())
+
+    def gauche(self):
+        return self._gauche
+
+    def droit(self):
+        return self._droit
+
+    def valeur(self):
+        return self._ville
 
     def inserer(self, v: Ville):
         if self is None:
@@ -48,3 +58,4 @@ for LAville in liste_villes:
         villesClass.inserer(UNEclass)
 
 print(villesClass)
+print(parcours_infixe(villesClass))
