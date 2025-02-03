@@ -16,7 +16,19 @@ class Abr_ville:
         return str(self._ville.affiche_nom())
 
     def inserer(self, v: Ville):
-        pass
+        if self is None:
+            self = Abr_ville(v, None, None)
+        else:
+            if v.get_rang() < self._ville.get_rang():
+                if self._gauche is None:
+                    self._gauche = Abr_ville(v, None, None)
+                else:
+                    self._gauche.inserer(v)
+            else:
+                if self._droit is None:
+                    self._droit = Abr_ville(v, None, None)
+                else:
+                    self._droit.inserer(v)
 
 
 liste_villes = []
