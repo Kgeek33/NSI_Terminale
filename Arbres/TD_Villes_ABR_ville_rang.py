@@ -39,10 +39,12 @@ with open("Arbres/villes.csv", "r", encoding="UTF-8") as fichier:
 
 for villes in liste_villes:
     if Ville(villes).rang == 100:
+        ville_racine = Ville(villes)
         villesClass = Abr_ville(Ville(villes))
 
-for LAville in liste_villes:
+for LAville in liste_villes: 
     UNEclass = Ville(LAville)
-    villesClass.inserer(UNEclass)
+    if UNEclass.rang != ville_racine.rang:
+        villesClass.inserer(UNEclass)
 
 print(villesClass)
