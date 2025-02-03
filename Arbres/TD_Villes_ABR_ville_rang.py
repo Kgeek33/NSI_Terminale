@@ -37,7 +37,10 @@ with open("Arbres/villes.csv", "r", encoding="UTF-8") as fichier:
     for ligne in lecteur:
         liste_villes.append(ligne)
 
-villesClass = Abr_ville(Ville(liste_villes[0]))
+for villes in liste_villes:
+    if Ville(villes).rang == 100:
+        villesClass = Abr_ville(Ville(villes))
+
 for LAville in liste_villes:
     UNEclass = Ville(LAville)
     villesClass.inserer(UNEclass)
