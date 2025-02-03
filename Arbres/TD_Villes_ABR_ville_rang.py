@@ -1,0 +1,26 @@
+import csv
+from TD_Villes_classe_ville import Ville
+
+
+class Abr_ville:
+    def __init__(self, v: Ville, g=None, d=None):
+        """ prend en paramètre
+        v l'instance de la classe Ville correspondant à une ligne de ville
+        extraite du fichier, g un arbre gauche et
+        d un arbre droit"""
+        self._ville = v
+        self._gauche = g
+        self._droit = d
+
+    def __str__(self):
+        return str(self._ville.affiche_nom())
+
+    def inserer(self, v: Ville):
+        pass
+
+
+liste_villes = []
+with open("villes.csv", "r", encoding="UTF-8") as fichier:
+    lecteur = csv.reader(fichier, delimiter=",")
+    for ligne in lecteur:
+        liste_villes.append(ligne)
