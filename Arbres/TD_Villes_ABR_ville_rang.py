@@ -36,3 +36,10 @@ with open("Arbres/villes.csv", "r", encoding="UTF-8") as fichier:
     lecteur = csv.reader(fichier, delimiter=",")
     for ligne in lecteur:
         liste_villes.append(ligne)
+
+villesClass = Abr_ville(Ville(liste_villes[0]))
+for LAville in liste_villes:
+    UNEclass = Ville(LAville)
+    villesClass.inserer(UNEclass)
+
+print(villesClass)
