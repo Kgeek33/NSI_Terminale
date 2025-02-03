@@ -42,7 +42,7 @@ for villes in liste_villes:
         ville_racine = Ville(villes)
         villesClass = Abr_ville(Ville(villes))
 
-for LAville in liste_villes: 
+for LAville in liste_villes:
     UNEclass = Ville(LAville)
     if UNEclass.rang != ville_racine.rang:
         villesClass.inserer(UNEclass)
