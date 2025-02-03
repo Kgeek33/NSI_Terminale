@@ -32,7 +32,7 @@ class Abr_ville:
 
 
 liste_villes = []
-with open("villes.csv", "r", encoding="UTF-8") as fichier:
+with open("Arbres/villes.csv", "r", encoding="UTF-8") as fichier:
     lecteur = csv.reader(fichier, delimiter=",")
     for ligne in lecteur:
         liste_villes.append(ligne)
