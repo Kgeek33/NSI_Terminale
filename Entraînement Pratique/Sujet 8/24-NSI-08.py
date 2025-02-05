@@ -1,11 +1,10 @@
-def delta(tab):
-    L = []
-    for i in range(len(tab)):
-        if len(L) == 0:
-            L.append(tab[i])
-        else:
-            L.append(-(tab[i-1]-tab[i]))
-    return L
+def delta(tab: list[int]) -> list[int]:
+    UNEsoustration = 0
+    UNEliste = []
+    for Lelement in tab:
+        UNEliste.append(Lelement - UNEsoustration)
+        UNEsoustration = Lelement
+    return UNEliste
 
 
 assert delta([1000, 800, 802, 1000, 1003]) == [1000, -200, 2, 198, 3]
@@ -25,7 +24,7 @@ class Expr:
         self.droite = d
 
     def est_une_feuille(self):
-        """renvoie True si et seulement 
+        """renvoie True si et seulement
         si le noeud est une feuille"""
         return self.gauche is None and self.droite is None
 
@@ -34,21 +33,31 @@ class Expr:
         chaine de caractères"""
         s = ""
         if self.gauche is not None:
-            s = '(' + s + self.gauche.infixe()
+            s = "(" + s + self.gauche.infixe()
         s = s + str(self.valeur)
         if self.droite is not None:
-            s = s + self.droite.infixe() + ')'
+            s = s + self.droite.infixe() + ")"
         return s
 
 
 a = Expr(Expr(None, 1, None), '+', Expr(None, 2, None))
-
+assert a.infixe() == "(1+2)"
 b = Expr(Expr(Expr(None, 1, None), '+', Expr(None, 2, None)),
          '*', Expr(Expr(None, 3, None), '+', Expr(None, 4, None)))
-
-e = Expr(Expr(Expr(None, 3, None), '*', Expr(Expr(None, 8, None), '+',
-         Expr(None, 7, None))), '-', Expr(Expr(None, 2, None), '+', Expr(None, 1, None)))
-
-assert a.infixe() == "(1+2)"
 assert b.infixe() == "((1+2)*(3+4))"
+e = Expr(
+    Expr(
+        Expr(None, 3, None),
+        '*',
+        Expr(
+            Expr(None, 8, None),
+            '+',
+            Expr(None, 7, None)
+        )),
+    '-',
+    Expr(
+        Expr(None, 2, None),
+        '+',
+        Expr(None, 1, None))
+)
 assert e.infixe() == "((3*(8+7))-(2+1))"
