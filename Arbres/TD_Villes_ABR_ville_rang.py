@@ -45,7 +45,7 @@ def parcours_infixe2(self: Ville):
         return ""
     return (
         parcours_infixe2(self.gauche()) +
-        self.__str__() + " " +
+        self.__str__() + "\n" +
         parcours_infixe2(self.droit())
     )
 
