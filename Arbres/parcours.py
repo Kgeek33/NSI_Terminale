@@ -10,7 +10,6 @@ def parcours_infixe(self: Noeud):
         parcours_infixe(self.droit())
     )
 
-
 def parcours_prefixe(self: Noeud):
     if self == Noeud.arbre_vide:
         return ""
