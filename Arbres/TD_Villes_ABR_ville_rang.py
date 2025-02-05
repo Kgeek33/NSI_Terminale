@@ -1,6 +1,5 @@
 import csv
 from TD_Villes_classe_ville import Ville
-from parcours import parcours_infixe
 
 
 class Abr_ville:
@@ -41,6 +40,16 @@ class Abr_ville:
                     self._droit.inserer(v)
 
 
+def parcours_infixe2(self: Ville):
+    if self is None:
+        return ""
+    return (
+        parcours_infixe2(self.gauche()) +
+        self.__str__() + "\n" +
+        parcours_infixe2(self.droit())
+    )
+
+
 liste_villes = []
 with open("Arbres/villes.csv", "r", encoding="UTF-8") as fichier:
     lecteur = csv.reader(fichier, delimiter=",")
@@ -56,6 +65,8 @@ for LAville in liste_villes:
     UNEclass = Ville(LAville)
     if UNEclass.rang != ville_racine.rang:
         villesClass.inserer(UNEclass)
+        print(villesClass.gauche())
+        print(villesClass.droit())
 
 print(villesClass)
-print(parcours_infixe(villesClass))
+print(parcours_infixe2(villesClass))
