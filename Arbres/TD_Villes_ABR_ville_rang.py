@@ -39,6 +39,15 @@ class Abr_ville:
                 else:
                     self._droit.inserer(v)
 
+    def recherche(self, rg: int):
+        if self is None:
+            return None
+        if rg == self._ville.get_rang():
+            return self
+        if rg < self._ville.get_rang():
+            return self.gauche().recherche(rg)
+        return self.droit().recherche(rg)
+
 
 def parcours_infixe2(self: Ville):
     if self is None:
@@ -65,8 +74,9 @@ for LAville in liste_villes:
     UNEclass = Ville(LAville)
     if UNEclass.rang != ville_racine.rang:
         villesClass.inserer(UNEclass)
-        print(villesClass.gauche())
-        print(villesClass.droit())
 
-print(villesClass)
-print(parcours_infixe2(villesClass))
+
+print(villesClass.recherche(100))
+print(villesClass.recherche(200))
+print(villesClass.recherche(3))
+print(villesClass.recherche(1))
