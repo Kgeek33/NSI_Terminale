@@ -77,6 +77,8 @@ for LAville in liste_villes:
         print(villesClass.gauche())
         print(villesClass.droit())
 
+print(villesClass)
+print(parcours_infixe2(villesClass))
 print(villesClass.recherche(100))
 print(villesClass.recherche(200))
 print(villesClass.recherche(3))
