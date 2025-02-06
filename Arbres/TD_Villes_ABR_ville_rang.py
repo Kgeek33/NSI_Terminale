@@ -74,7 +74,8 @@ for LAville in liste_villes:
     UNEclass = Ville(LAville)
     if UNEclass.rang != ville_racine.rang:
         villesClass.inserer(UNEclass)
-
+        print(villesClass.gauche())
+        print(villesClass.droit())
 
 print(villesClass.recherche(100))
 print(villesClass.recherche(200))
