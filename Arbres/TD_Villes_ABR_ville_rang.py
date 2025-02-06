@@ -82,4 +82,3 @@ print(parcours_infixe2(villesClass))
 print(villesClass.rechercher(1))
 print(villesClass.rechercher(100))
 print(villesClass.rechercher(200))
-
