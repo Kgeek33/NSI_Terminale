@@ -39,11 +39,11 @@ class Abr_ville:
                 else:
                     self._droit.inserer(v)
 
-    def rechercher(self, rg):
+    def rechercher(self, rg: int):
         if self._ville.get_rang() == rg:
             return self.__str__()
         else:
-            if self._gauche is not None:
+            if self._ville.get_rang() < rg:
                 return self._gauche.rechercher(rg)
             else:
                 return self._droit.rechercher(rg)
@@ -80,3 +80,6 @@ for LAville in liste_villes:
 print(villesClass)
 print(parcours_infixe2(villesClass))
 print(villesClass.rechercher(1))
+print(villesClass.rechercher(100))
+print(villesClass.rechercher(200))
+
