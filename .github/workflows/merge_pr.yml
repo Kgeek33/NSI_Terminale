@@ -33,6 +33,12 @@ jobs:
           if [ "$ALL_APPROVED" = true ]; then
             echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
             gh pr merge $PR_NUMBER --merge --repo $REPO
+
+            curl -X POST \
+              -H "Accept: application/vnd.github.v3+json" \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              https://api.github.com/repos/$REPO/actions/workflows/update_branches.yml/dispatches \
+              -d '{"ref":"main"}'
           else
             echo "❌ Tous les reviewers n'ont pas encore approuvé, on attend."
           fi
