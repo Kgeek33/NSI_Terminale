@@ -37,17 +37,19 @@ jobs:
       - name: 🔍 Run Flake8 checks
         run: |
           if [ -s modified_files.txt ]; then
+            echo "is_empty=null" >> $GITHUB_ENV
             xargs -a modified_files.txt -I {} flake8 "{}" --max-line-length=84 > flake8_errors.log || true
           else
             echo "Aucun fichier Python modifié."
-            echo "is_empty=true" >> $GITHUB_ENV
+            echo "is_empty=undefined" >> $GITHUB_ENV
             exit 0
           fi
 
       - name: 📋 Check if lint logs are empty
+        if: env.is_empty == 'null'
         id: check_logs
         run: |
-          if [ -s flake8_errors.log ]; then
+          if [ -s flake8_errors.log]; then
             echo "is_empty=false" >> $GITHUB_ENV
           else
             echo "is_empty=true" >> $GITHUB_ENV
