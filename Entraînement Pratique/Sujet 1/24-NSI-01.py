@@ -10,11 +10,19 @@ def tri_selection(tab):
     N = len(tab)
     for k in range(N - 1):  
         imin = k 
-        for i in range(k + 1, N):  
-            if tab[i] < tab[imin]:  
+        for i in range(k + 1, N): 
+            if tab[i] < tab[imin]: 
                 imin = i  
         echange(tab, k, imin)  
-    return tab
+    
+
+def taille(arbre, lettre):
+    '''Renvoie la taille de l'arbre binaire.'''
+    if lettre == '':
+        return 0
+    gauche = arbre[lettre][0]
+    droite = arbre[lettre][1]
+    return 1 + taille(arbre, gauche) + taille(arbre, droite)
 
 
 print(tri_selection([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]))  
