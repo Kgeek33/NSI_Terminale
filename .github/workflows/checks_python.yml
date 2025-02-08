@@ -47,7 +47,7 @@ jobs:
       - name: 📋 Check if lint logs are empty
         id: check_logs
         run: |
-          if [ -s flake8_errors.log ]; then
+          if [ -s flake8_errors.log]; then
             echo "is_empty=false" >> $GITHUB_ENV
           else
             echo "is_empty=true" >> $GITHUB_ENV
@@ -70,7 +70,7 @@ jobs:
             });
 
       - name: ✅ Approve Pull Request
-        if: env.is_empty == 'true'
+        if: env.is_empty == 'true' && steps.get_modified_files.outputs.is_empty != 'true'
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
