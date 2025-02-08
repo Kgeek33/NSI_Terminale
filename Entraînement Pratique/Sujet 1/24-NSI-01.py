@@ -14,7 +14,8 @@ def tri_selection(tab):
             if tab[i] < tab[imin]:  
                 imin = i  
         echange(tab, k, imin)  
+    return tab
 
 
-
-print(tri_selection([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]))  # [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+print(tri_selection([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]))  
+# [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
