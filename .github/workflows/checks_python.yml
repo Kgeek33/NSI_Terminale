@@ -28,7 +28,7 @@ jobs:
         run: |
           git fetch origin
           git diff --name-status origin/main..origin/${{ github.head_ref }} \
-            | grep '\.py$' \
+            | grep '\.py' \
             | grep -v 'Entraînement Pratique/Corrigés/' \
             | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
           files=$(cat modified_files.txt | sed 's/^/"/;s/$/"/')
