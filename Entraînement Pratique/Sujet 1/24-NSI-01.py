@@ -1,3 +1,21 @@
+a = {'F': ['B', 'G'], 'B': ['A', 'D'], 'A': ['', ''], 'D': ['C', 'E'], 'C': [
+    '', ''], 'E': ['', ''], 'G': ['', 'I'], 'I': ['', 'H'], 'H': ['', '']}
+
+
+def taille(arbre, lettre):
+    '''Renvoie la taille de l'arbre binaire.'''
+    if lettre == '':
+        return 0
+    gauche = arbre[lettre][0]
+    droite = arbre[lettre][1]
+    return 1 + taille(arbre, gauche) + taille(arbre, droite)
+
+
+assert taille(a, "F") == 9
+assert taille(a, "B") == 5
+assert taille(a, "I") == 2
+
+
 def echange(tab, i, j):
     '''Échange les éléments d'indice i et j dans le tableau tab.'''
     temp = tab[i]
@@ -15,15 +33,6 @@ def tri_selection(tab):
             if tab[i] < tab[imin]:
                 imin = i
         echange(tab, k, imin)
-
-
-def taille(arbre, lettre):
-    '''Renvoie la taille de l'arbre binaire.'''
-    if lettre == '':
-        return 0
-    gauche = arbre[lettre][0]
-    droite = arbre[lettre][1]
-    return 1 + taille(arbre, gauche) + taille(arbre, droite)
 
 
 tab = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
