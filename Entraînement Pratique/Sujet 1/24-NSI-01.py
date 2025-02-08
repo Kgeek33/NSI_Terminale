@@ -26,5 +26,6 @@ def taille(arbre, lettre):
     return 1 + taille(arbre, gauche) + taille(arbre, droite)
 
 
-print(tri_selection([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]))
-# [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+tab = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+tri_selection(tab)
+assert tab == [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
