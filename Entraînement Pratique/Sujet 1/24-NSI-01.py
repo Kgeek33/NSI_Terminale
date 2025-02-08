@@ -1,18 +1,40 @@
+a = {"F": ["B", "G"], "B": ["A", "D"], "A": ["", ""], "D": ["C", "E"], "C": [
+    "", ""], "E": ["", ""], "G": ["", "I"], "I": ["", "H"], "H": ["", ""]}
+
+
+def taille(arbre, lettre):
+    """Renvoie la taille de l'arbre binaire."""
+    if lettre == "":
+        return 0
+    gauche = arbre[lettre][0]
+    droite = arbre[lettre][1]
+    return 1 + taille(arbre, gauche) + taille(arbre, droite)
+
+
+assert taille(a, "F") == 9
+assert taille(a, "B") == 5
+assert taille(a, "I") == 2
+
+
 def echange(tab, i, j):
-    '''Echange les éléments d'indice i et j dans le tableau tab.'''
-    temp = ... 
-    tab[i] = ... 
-    tab[j] = ... 
+    """Échange les éléments d"indice i et j dans le tableau tab."""
+    temp = tab[i]
+    tab[i] = tab[j]
+    tab[j] = temp
+
 
 def tri_selection(tab):
-    '''Trie le tableau tab dans l'ordre croissant
-    par la méthode du tri par sélection.'''
+    """Trie le tableau tab dans l"ordre croissant
+    par la méthode du tri par sélection."""
     N = len(tab)
-    for k in range(...): 
-        imin = ... 
-        for i in range(..., N): 
-            if tab[i] < ...: 
+    for k in range(N - 1):
+        imin = k
+        for i in range(k + 1, N):
+            if tab[i] < tab[imin]:
                 imin = i
-        echange(tab, ..., ...) 
+        echange(tab, k, imin)
 
 
+tab = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+tri_selection(tab)
+assert tab == [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
