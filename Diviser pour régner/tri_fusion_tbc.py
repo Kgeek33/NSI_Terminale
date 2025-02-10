@@ -1,7 +1,16 @@
 def fusion_iter(L,R):
     """prend deux listes L et R triées et renvoie la fusion T triée des deux listes """
     """a completer..."""
-    T="à completer"
+    T=[]
+    i_L = 0
+    i_R = 0
+    while i_L< len(L) and i_R < len(R):
+        if L[i_L ] < R[i_R]:
+            T.append(L[i_L])
+            i_L += 1
+        else:
+            T.append(L[i_R])
+            i_L += 1
     #une des deux listes est entièrement traitée
     T="a completer..."    
     print(T)
