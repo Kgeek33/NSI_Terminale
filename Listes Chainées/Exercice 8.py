@@ -8,7 +8,10 @@ class Maillon:
         if Maillon.est_vide(self._suivant):
             return chaine+str(self._valeur)+"|"
         else:
-            return chaine+"{}->{}".format(self.valeur(), Maillon.__str__(self.suite(), ""))
+            return chaine+"{}->{}".format(
+                self.valeur(),
+                Maillon.__str__(self.suite(), "")
+            )
 
     # retourne la valeur du maillon
     def valeur(self) -> any:
@@ -20,7 +23,7 @@ class Maillon:
 
     # methode de classe (partagée par toutes les instances)
     def est_vide(lst) -> bool:
-        return lst == None
+        return lst is None
 
 
 def concatener_iter(lst1: Maillon, lst2: Maillon) -> Maillon:
@@ -30,7 +33,7 @@ def concatener_iter(lst1: Maillon, lst2: Maillon) -> Maillon:
     lst3: Maillon = lst1
     n: int = 0
     m: int = 0
-    while lst3.suite() != None:
+    while lst3.suite() is not None:
         lst3 = lst3.suite()
         n += 1
         m += 1
@@ -45,7 +48,7 @@ def concatener_iter(lst1: Maillon, lst2: Maillon) -> Maillon:
 
 
 def concatener_rec(lst1: Maillon, lst2: Maillon) -> Maillon:
-    if lst1 == None:
+    if lst1 is None:
         return lst2
 
     return Maillon(concatener_rec(lst1.valeur(), lst2))
