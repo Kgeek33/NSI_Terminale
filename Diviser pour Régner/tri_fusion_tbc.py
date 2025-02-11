@@ -3,9 +3,24 @@ def fusion_iter(L, R):
     prend deux listes L et R triées
     renvoie la fusion T triée des deux listes
     """
-    T = "à completer"
+    T = []
+    i_L = 0
+    i_R = 0
+    while i_L < len(L) and i_R < len(R):
+        if L[i_L] < R[i_R]:
+            T.append(L[i_L])
+            i_L += 1
+        else:
+            T.append(R[i_R])
+            i_R += 1
+    if i_L == len(L):
+        for i in range(i_L, len(R)):
+            T.append(R[i])
+    elif i_R == len(R):
+        for i in range(i_R, len(L)):
+            T.append(L[i])
     # une des deux listes est entièrement traitée
-    T = "a completer..."
+    T = T
     print(T)
     return T
 
