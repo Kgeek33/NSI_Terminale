@@ -5,6 +5,7 @@ from random import choice
 
 colors = ["blue", "white", "yellow", "red", "pink", "purple"]
 
+
 def segment_vk(lg, n_p):
     if n_p == 0:
         t.color(choice(colors))
