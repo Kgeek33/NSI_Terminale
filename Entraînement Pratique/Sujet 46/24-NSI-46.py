@@ -6,7 +6,7 @@ def recherche(tab: list[int], n: int) -> int:
 
 
 assert recherche([2, 3, 4, 5, 6], 5) == 3
-assert recherche([2, 3, 4, 6, 7], 5) == None
+assert recherche([2, 3, 4, 6, 7], 5) is None
 
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 

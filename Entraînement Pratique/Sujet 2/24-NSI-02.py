@@ -12,10 +12,10 @@ def correspond(mot: str, mot_a_trous: str) -> bool:
     return mot == mot_a_trous
 
 
-assert correspond("INFORMATIQUE", "INFO*MA*IQUE") == True
-assert correspond("AUTOMATIQUE", "INFO*MA*IQUE") == False
-assert correspond("STOP", "S*") == False
-assert correspond("AUTO", "*UT*") == True
+assert correspond("INFORMATIQUE", "INFO*MA*IQUE") is True
+assert correspond("AUTOMATIQUE", "INFO*MA*IQUE") is False
+assert correspond("STOP", "S*") is False
+assert correspond("AUTO", "*UT*") is True
 
 
 def est_cyclique(plan):
@@ -36,10 +36,10 @@ def est_cyclique(plan):
 
 
 assert est_cyclique({'A': 'E', 'F': 'A', 'C': 'D',
-                    'E': 'B', 'B': 'F', 'D': 'C'}) == False
+                    'E': 'B', 'B': 'F', 'D': 'C'}) is False
 assert est_cyclique({'A': 'E', 'F': 'C', 'C': 'D',
-                    'E': 'B', 'B': 'F', 'D': 'A'}) == True
+                    'E': 'B', 'B': 'F', 'D': 'A'}) is True
 assert est_cyclique({'A': 'B', 'F': 'C', 'C': 'D',
-                    'E': 'A', 'B': 'F', 'D': 'E'}) == True
+                    'E': 'A', 'B': 'F', 'D': 'E'}) is True
 assert est_cyclique({'A': 'B', 'F': 'A', 'C': 'D',
-                    'E': 'C', 'B': 'F', 'D': 'E'}) == False
+                    'E': 'C', 'B': 'F', 'D': 'E'}) is False

@@ -22,7 +22,7 @@ class Pile:
 
 
 def parentheses_correctes(expression: str) -> bool:
-    """Renvoie un booléen indiquant si la chaîne ch 
+    """Renvoie un booléen indiquant si la chaîne ch
     est bien parenthésée"""
     p = Pile()
     for c in expression:
@@ -46,5 +46,5 @@ def parentheses_correctes(expression: str) -> bool:
     return p.est_vide()
 
 
-assert parentheses_correctes("[(x)+(y)]/{2*a-sin(x)}") == True
-assert parentheses_correctes("[-(b)+sqrt(b**2-4*(a*c)])/(2*a)") == False
+assert parentheses_correctes("[(x)+(y)]/{2*a-sin(x)}") is True
+assert parentheses_correctes("[-(b)+sqrt(b**2-4*(a*c)])/(2*a)") is False

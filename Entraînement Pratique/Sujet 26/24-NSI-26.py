@@ -43,4 +43,5 @@ def nombre_coups():
         n = n + 1
     return n
 
+
 print(nombre_coups())
