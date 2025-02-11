@@ -9,24 +9,16 @@ def fusion_iter(L,R):
             T.append(L[i_L])
             i_L += 1
         else:
-            T.append(L[i_R])
+            T.append(R[i_R])
             i_R += 1
     if i_L == len(L):
-        for i_R in range(len(R)):
-            if i_R in T:
-                i_R +=1
-            else:
-                T.append(R[i_R]) 
-                i_R +=1
+        for i in range(i_L, len(R)):
+            T.append(R[i])
     elif i_R == len(R):
-        for i_L in range(len(L)):
-            if i_L in T:
-                i_L +=1
-            else:
-                T.append(L[i_L]) 
-                i_L +=1
+        for i in range(i_R, len(L)):
+            T.append(L[i])
     #une des deux listes est entièrement traitée
-    T = T 
+    T = T
     print(T)
     return T
 
