@@ -35,7 +35,7 @@ class Pile:
 
 
 def bon_parenthesage(ch):
-    """Renvoie un booléen indiquant si la chaîne ch 
+    """Renvoie un booléen indiquant si la chaîne ch
     est bien parenthésée"""
     p = Pile()
     for c in ch:
@@ -49,6 +49,6 @@ def bon_parenthesage(ch):
     return p.est_vide()
 
 
-assert bon_parenthesage("((()())(()))") == True
-assert bon_parenthesage("())(()") == False
-assert bon_parenthesage("(())(()") == False
+assert bon_parenthesage("((()())(()))") is True
+assert bon_parenthesage("())(()") is False
+assert bon_parenthesage("(())(()") is False

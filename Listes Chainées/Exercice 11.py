@@ -8,7 +8,10 @@ class Maillon:
         if Maillon.est_vide(self._suivant):
             return chaine+str(self._valeur)+"|"
         else:
-            return chaine+"{}->{}".format(self.valeur(), Maillon.__str__(self.suite(), ""))
+            return chaine+"{}->{}".format(
+                self.valeur(),
+                Maillon.__str__(self.suite(), "")
+            )
 
     # retourne la valeur du maillon
     def valeur(self) -> any:
@@ -20,7 +23,7 @@ class Maillon:
 
     # methode de classe (partagée par toutes les instances)
     def est_vide(lst) -> bool:
-        return lst == None
+        return lst is None
 
 
 def renverser(lst):

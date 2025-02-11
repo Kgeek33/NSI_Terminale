@@ -5,7 +5,7 @@ def recherche(elt: int, tab: list[int]) -> int:
     return None
 
 
-assert recherche(1, [2, 3, 4]) == None
+assert recherche(1, [2, 3, 4]) is None
 assert recherche(1, [10, 12, 1, 56]) == 2
 assert recherche(1, [1, 0, 42, 7]) == 0
 assert recherche(1, [1, 50, 1]) == 2
@@ -44,6 +44,6 @@ adresse2 = AdresseIP("192.168.0.2")
 adresse3 = AdresseIP("192.168.0.0")
 
 assert adresse1.liste_octets() == [192, 168, 0, 1]
-assert adresse1.est_reservee() == False
-assert adresse3.est_reservee() == True
+assert adresse1.est_reservee() is False
+assert adresse3.est_reservee() is True
 assert adresse2.adresse_suivante().adresse == "192.168.0.3"

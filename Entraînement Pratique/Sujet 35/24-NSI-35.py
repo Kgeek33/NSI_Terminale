@@ -30,14 +30,14 @@ def est_palindrome(chaine):
 
 
 def est_nbre_palindrome(nbre):
-    '''Renvoie un booléen indiquant si le nombre nbre 
+    '''Renvoie un booléen indiquant si le nombre nbre
     est un palindrome'''
     chaine = str(nbre)
     return est_palindrome(chaine)
 
 
 assert inverse_chaine("bac") == "cab"
-assert est_palindrome("NSI") == False
-assert est_palindrome("ISN-NSI") == True
-assert est_nbre_palindrome(214312) == False
-assert est_nbre_palindrome(213312) == True
+assert est_palindrome("NSI") is False
+assert est_palindrome("ISN-NSI") is True
+assert est_nbre_palindrome(214312) is False
+assert est_nbre_palindrome(213312) is True

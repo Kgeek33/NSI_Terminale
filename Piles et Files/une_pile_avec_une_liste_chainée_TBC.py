@@ -1,5 +1,5 @@
 from random import randint, shuffle
-from classe_maillon import *
+from classe_maillon import Maillon
 from copy import deepcopy
 
 
@@ -54,13 +54,15 @@ def inverser_pile(p: Pile) -> Pile:
 
 
 def haut_bas_bas_haut(p):
-    """ Échange le sommet et le fond de la pile p (p[-1] <-> p[0]) en temps O(n)."""
+    """ Échange le sommet et le fond de la pile p (p[-1] <-> p[0])
+    en temps O(n)."""
     # On dépile p pour remplir une pile p2
     haut = p.depiler()
     p_2 = Pile()
     while not p.est_vide():
         p_2.empiler(p.depiler())
-    # le bas de p est maintenant le sommet de p_2. On le récupère et on le garde pour la fin
+    # le bas de p est maintenant le sommet de p_2.
+    # On le récupère et on le garde pour la fin
     bas = p_2.depiler()
     # on pose le haut au fond de p
     p.empiler(haut)

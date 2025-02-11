@@ -8,7 +8,7 @@ class Personnage:
     nb_personnages = 0
 
     def __init__(self, nom) -> None:
-        self.vie =randint(0, Personnage.max_vies)
+        self.vie = randint(0, Personnage.max_vies)
         self.nom = nom
         Personnage.nb_personnages += 1
         Personnage.vies_utilisees += self.vie
@@ -22,6 +22,7 @@ class Personnage:
         if p1.vie > p2.vie:
             return p1
         return p2
+
 
 kylian = Personnage("Kylian")
 lucas = Personnage("Lucas")

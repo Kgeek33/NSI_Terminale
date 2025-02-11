@@ -6,30 +6,30 @@ def a_doublon(tab: list[int]) -> bool:
     return False
 
 
-assert a_doublon([]) == False
-assert a_doublon([1]) == False
-assert a_doublon([1, 2, 4, 6, 6]) == True
-assert a_doublon([2, 5, 7, 7, 7, 9]) == True
-assert a_doublon([0, 2, 3]) == False
+assert a_doublon([]) is False
+assert a_doublon([1]) is False
+assert a_doublon([1, 2, 4, 6, 6]) is True
+assert a_doublon([2, 5, 7, 7, 7, 9]) is True
+assert a_doublon([0, 2, 3]) is False
 
 
 def voisinage(n, ligne, colonne):
     """ Renvoie la liste des coordonnées des voisins de la case
     (ligne, colonne) en gérant les cases sur les bords. """
     voisins = []
-    for l in range(max(0, ligne-1), min(n, ligne+2)):
+    for li in range(max(0, ligne-1), min(n, ligne+2)):
         for c in range(max(0, colonne-1), min(n, colonne+2)):
-            if (l, c) != (ligne, colonne):
-                voisins.append((l, c))
+            if (li, c) != (ligne, colonne):
+                voisins.append((li, c))
     return voisins
 
 
 def incremente_voisins(grille, ligne, colonne):
     """ Incrémente de 1 toutes les cases voisines d'une bombe."""
     voisins = [(ligne, colonne)]
-    for l, c in voisins:
-        if grille[l][c] != -1:  # si ce n'est pas une bombe
-            grille[l][c] += 1  # on ajoute 1 à sa valeur
+    for li, c in voisins:
+        if grille[li][c] != -1:  # si ce n'est pas une bombe
+            grille[li][c] += 1  # on ajoute 1 à sa valeur
 
 
 def genere_grille(bombes: list[tuple[int]]):

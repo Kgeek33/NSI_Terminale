@@ -34,5 +34,5 @@ def dichotomie(tab, x):
     return False
 
 
-assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33], 28) == True
-assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33], 27) == False
+assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33], 28) is True
+assert dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33], 27) is False

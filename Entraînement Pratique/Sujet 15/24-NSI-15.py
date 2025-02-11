@@ -11,7 +11,7 @@ assert moyenne([1.0, 2.0, 4.0]) == 2.3333333333333335
 
 
 def binaire(a):
-    '''convertit un nombre entier a en sa representation 
+    '''convertit un nombre entier a en sa representation
     binaire sous forme de chaine de caractères.'''
     if a == 0:
         return "0"

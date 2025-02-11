@@ -8,7 +8,10 @@ class Maillon:
         if Maillon.est_vide(self._suivant):
             return chaine+str(self._valeur)+"|"
         else:
-            return chaine+"{}->{}".format(self.valeur(), Maillon.__str__(self.suite(), ""))
+            return chaine+"{}->{}".format(
+                self.valeur(),
+                Maillon.__str__(self.suite(), "")
+            )
 
     # retourne la valeur du maillon
     def valeur(self) -> any:
@@ -20,7 +23,7 @@ class Maillon:
 
     # methode de classe (partagée par toutes les instances)
     def est_vide(lst) -> bool:
-        return lst == None
+        return lst is None
 
 
 def taille_iter(L: Maillon) -> int:
@@ -34,17 +37,17 @@ def taille_iter(L: Maillon) -> int:
 
 
 def taille_rec(lst: Maillon) -> int:
-    if lst == None:
+    if lst is None:
         return 0
     return taille_rec(lst.suite()) + 1
 
 
 def nieme_element_iter(n: int, list: Maillon) -> int:
-    if list == None:
+    if list is None:
         raise IndexError("ahlala, c grave")
 
     for _ in range(n):
-        if list.suite() == None:
+        if list.suite() is None:
             raise IndexError("C pas possible, tu sais pas compter")
 
         list = list.suite()
@@ -53,7 +56,7 @@ def nieme_element_iter(n: int, list: Maillon) -> int:
 
 
 def nieme_element_rec(n: int, list: Maillon) -> int:
-    if list == None:
+    if list is None:
         raise IndexError("ahlala, c grave")
 
     if n == 0:
@@ -69,7 +72,7 @@ def concatener(lst1: Maillon, lst2: Maillon) -> Maillon:
     lst3: Maillon = lst1
     n: int = 0
     m: int = 0
-    while lst3.suite() != None:
+    while lst3.suite() is not None:
         lst3 = lst3.suite()
         n += 1
         m += 1

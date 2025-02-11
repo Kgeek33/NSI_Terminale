@@ -1,4 +1,4 @@
-from une_pile_avec_une_liste_chainée_TBC import *
+from une_pile_avec_une_liste_chainée_TBC import Pile, inverser_pile
 
 
 class File:

@@ -10,11 +10,11 @@ def verifie(L):
     return True
 
 
-assert verifie([0, 5, 8, 8, 9]) == True
-assert verifie([8, 12, 4]) == False
-assert verifie([-1, 4]) == True
-assert verifie([]) == True
-assert verifie([5]) == True
+assert verifie([0, 5, 8, 8, 9]) is True
+assert verifie([8, 12, 4]) is False
+assert verifie([-1, 4]) is True
+assert verifie([]) is True
+assert verifie([5]) is True
 
 
 def depouille(urne):

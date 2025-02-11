@@ -6,7 +6,7 @@ Module pygame pour SNAKE
 """
 
 import pygame
-from pygame.locals import QUIT, Rect
+from pygame.locals import Rect
 
 COLOR_JARDIN = (29, 108, 5)  # vert pelouse
 # screen est la fenêtre pygame
@@ -19,12 +19,14 @@ event, keys = None, None
 def fenetre_init(dim_x, dim_y, score_en_pxl, case_en_pxl) -> None:
     """
     entrée :dim_x,dim_y le nombre de points en x, et en y,
-    score_en_pxl la hauteur du panneau de score en pixels, et case_en_pxl la taille d'un point en pixel
+    score_en_pxl la hauteur du panneau de score en pixels,
+    et case_en_pxl la taille d'un point en pixel
     sortie : -
     creation de la fenetre graphique
     """
     global screen
-    # dimensions de la fenêtre DIMX (en pxl)* DIMY(en pxl) + taille score (en pxl)  )
+    # dimensions de la fenêtre DIMX (en pxl)* DIMY(en pxl) +
+    # taille score (en pxl)  )
     pygame.init()
     r_fenetre = Rect(0, 0, (dim_x+1)*case_en_pxl,
                      (dim_y+1)*case_en_pxl+score_en_pxl)
@@ -51,7 +53,8 @@ def sortie() -> bool:
     """
     entrée : -
     sortie : booléen
-    renvoie True si le joueur ferme la fenêtre ou appuie sur la touche Echap, False sinon
+    renvoie True si le joueur ferme la fenêtre ou appuie sur la touche Echap,
+    False sinon
     """
     global event, keys
     if event.type == pygame.QUIT:
@@ -76,7 +79,8 @@ def maj_evts_souris_clavier() -> None:
     """
     entrée : -
     sortie : -
-    mise à jour des variables event & keys du module décrivant les evenements souris et clavier
+    mise à jour des variables event & keys du module décrivant
+    les evenements souris et clavier
     """
     global event, keys
     # pour obtenir un seul événement de la file d'attente.
@@ -84,16 +88,20 @@ def maj_evts_souris_clavier() -> None:
     # pour obtenir une liste de l'état de toutes les clés.
     # La liste contient 0 pour toutes les touches qui ne sont pas enfoncées
     # et 1 pour toutes les touches sur lesquelles vous appuyez.
-    # Son index dans la liste est défini par des constantes dans le module pygame,
+    # Son index dans la liste est défini par
+    # des constantes dans le module pygame,
     # toutes préfixées par K_ et le nom de la clé.
     keys = pygame.key.get_pressed()
 
 
 def mouvement(debug=False):
     """
-    entrée : debug, un booléeen, autorisant ou non l'affichage de l'interprétation des flèches
-    sortie : le couple (deplacement horizontal (+1 ou -1), deplacement vertical (+1 ou -1))
-    interprète les fleches enfoncées sous forme de deplacements attendus du serpent
+    entrée : debug, un booléeen, autorisant ou non
+    l'affichage de l'interprétation des flèches
+    sortie : le couple (deplacement horizontal (+1 ou -1),
+    deplacement vertical (+1 ou -1))
+    interprète les fleches enfoncées sous forme
+    de deplacements attendus du serpent
     """
     global keys
     if keys[pygame.K_RIGHT]:
@@ -119,7 +127,8 @@ def affiche_point(p, color):
     """
     entrée : p un Point, color une couleur en RGB (par défaut bleu)
     sortie : -
-    colore un carré de la taille p.taille_pxl (en pixels) de couleur color aux coordonnées du point p, puis l'affiche
+    colore un carré de la taille p.taille_pxl (en pixels) de couleur color
+    aux coordonnées du point p, puis l'affiche
     """
     global screen
     rect = Rect(p.taille_pxl*p.abs, p.taille_pxl *
@@ -130,9 +139,11 @@ def affiche_point(p, color):
 
 def score(pos_x, pos_y, case_en_pxl, s, color):
     """
-    entrée : pos_x,pos_y les coordonnées de la position en haut à gauche du bandeau de score,
+    entrée : pos_x,pos_y les coordonnées de la position en haut à gauche
+    du bandeau de score,
     case_en_pxl la taille d'une case en pixels,
-    s un entier désignant le score à afficher, color une couleur en RGB désignant la couleur de l'affichage
+    s un entier désignant le score à afficher, color une couleur en RGB
+    désignant la couleur de l'affichage
     sortie : -
     affiche le score s dans le bandeau défini par pos_x,pos_y
     """
