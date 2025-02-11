@@ -27,7 +27,7 @@ def taille_iter(L: Maillon) -> int:
 
 
 def taille_rec(lst: Maillon) -> int:
-    if lst == None:
+    if lst is None:
         return 0
     print(lst.valeur())
     return taille_rec(lst.suite()) + 1
