@@ -34,7 +34,11 @@ def exercice4():
             return self
 
         def egale(self, deuxieme):
-            if self.heu == deuxieme.heu and self.min == deuxieme.min and self.sec == deuxieme.sec:
+            if (
+                self.heu == deuxieme.heu and
+                self.min == deuxieme.min and
+                self.sec == deuxieme.sec
+            ):
                 return True
             return False
 
@@ -52,7 +56,11 @@ def exercice4():
             self.time = [heu, min, sec]
 
         def __str__(self) -> str:
-            return ("{}h {}m {}s".format(self.time[0], self.time[1], self.time[2]))
+            return ("{}h {}m {}s".format(
+                self.time[0],
+                self.time[1],
+                self.time[2]
+            ))
 
         def clone(self):
             sec = self.time[2]
@@ -80,7 +88,11 @@ def exercice4():
             return self
 
         def egale(self, deuxieme):
-            if self.time[0] == deuxieme.time[0] and self.time[1] == deuxieme.time[1] and self.time[2] == deuxieme.time[2]:
+            if (
+                self.time[0] == deuxieme.time[0] and
+                self.time[1] == deuxieme.time[1] and
+                self.time[2] == deuxieme.time[2]
+            ):
                 return True
             return False
 
@@ -140,7 +152,9 @@ def exercice5():
 
 def exercice6():
     class Fraction:
-        def __init__(self, num, denom) -> None: # `-> None` signifie le typage, tu peux skip
+        def __init__(self, num, denom) -> None:
+            # `-> None` signifie le typage, tu peux skip
+
             # La condition d'abord avant de créer l'erreur
             if denom <= 0:
                 raise ValueError()
@@ -148,27 +162,39 @@ def exercice6():
             self.num = num
             self.denom = denom
 
-        def __str__(self) -> str: # `-> str` signifie le typage, tu peux skip
+        def __str__(self) -> str:
+            # `-> str` signifie le typage, tu peux skip
+
             # J'ai généralisé, mais tu peux laisser ta condition
             return ("{}/{}").format(self.num, self.denom)
 
-        def __eq__(self, f2: object) -> bool: # `f2: object` + `-> bool` signifient le typage, tu peux skip
+        def __eq__(self, f2: object) -> bool:
+            # `f2: object` + `-> bool` signifient le typage, tu peux skip
+
             if self.num / self.denom == f2.num / f2.denom:
                 return True
 
             return False
 
-        def __lt__(self, f2: object) -> bool: # `f2: object` + `-> bool` signifient le typage, tu peux skip
+        def __lt__(self, f2: object) -> bool:
+            # `f2: object` + `-> bool` signifient le typage, tu peux skip
+
             return (self.num * f2.denom - self.denom * f2.num < 0)
-        
-        def __add__(self, f2: object) -> None: # `f2: object` + `-> None` signifient le typage, tu peux skip
+
+        def __add__(self, f2: object) -> None:
+            # `f2: object` + `-> None` signifient le typage, tu peux skip
+
             self.num = self.num * f2.denom + f2.num * self.denom
-            self.denom *= f2.denom # `*=` plutôt que `= self.denom *`
-        
-        def __mul__(self, f2: object) -> None: # `f2: object` + `-> None` signifient le typage, tu peux skip
+            self.denom *= f2.denom  # `*=` plutôt que `= self.denom *`
+
+        def __mul__(self, f2: object) -> None:
+            # `f2: object` + `-> None` signifient le typage, tu peux skip
+
             return Fraction(self.num * f2.num, self.denom * f2.denom)
-        
-        def irreductible(self) -> None: # `-> None` signifie le typage, tu peux skip
+
+        def irreductible(self) -> None:
+            # `-> None` signifie le typage, tu peux skip
+
             a = self.num
             b = self.denom
             while self.denom > 0:
@@ -177,10 +203,10 @@ def exercice6():
                 self.denom = r
             self.denom = b // self.num
             self.num = a // self.num
-        
+
         def inverse(self) -> None:
             return Fraction(self.denom, self.num)
-    
+
     f = Fraction(12, 2)
     print(f.inverse())
     t = Fraction(15, 13)
@@ -188,7 +214,8 @@ def exercice6():
     print(str(t))
     f.__add__(t)
     print(str(f))
-    print(f == t) # à la place de `__eq__(t)`, faire `== t` exécute automatiquement `__eq__`
+    # à la place de `__eq__(t)`, faire `== t` exécute automatiquement `__eq__`
+    print(f == t)
     print(f.__lt__(t))
     f.__mul__(t)
     print(str(f))
