@@ -54,12 +54,12 @@ def palindrome(s):
 
 le_resutat = palindrome("kayak")
 # print(le_resutat)
-assert le_resutat == True
+assert le_resutat is True
 le_resutat = palindrome("engageetgagne")
 # print(le_resutat)
-assert le_resutat == False
+assert le_resutat is False
 le_resutat = palindrome("engagelejeuquejelegagne")
-assert le_resutat == True
+assert le_resutat is True
 # print(le_resutat)
 
 

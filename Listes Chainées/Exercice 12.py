@@ -8,7 +8,10 @@ class Maillon:
         if Maillon.est_vide(self._suivant):
             return chaine+str(self._valeur)+"|"
         else:
-            return chaine+"{}->{}".format(self.valeur(), Maillon.__str__(self.suite(), ""))
+            return chaine+"{}->{}".format(
+                self.valeur(),
+                Maillon.__str__(self.suite(), "")
+            )
 
     # retourne la valeur du maillon
     def valeur(self) -> any:
@@ -20,7 +23,7 @@ class Maillon:
 
     # methode de classe (partagée par toutes les instances)
     def est_vide(lst) -> bool:
-        return lst == None
+        return lst is None
 
 
 def taille_iter(L: Maillon) -> int:
@@ -35,7 +38,7 @@ def taille_iter(L: Maillon) -> int:
 
 def trouve_iter(x: any, lst: Maillon):
     k = 0
-    while lst != None:
+    while lst is not None:
         if x == lst.valeur():
             return k
 
@@ -45,13 +48,13 @@ def trouve_iter(x: any, lst: Maillon):
 
 
 def trouve_rec(x: any, lst: Maillon):
-    if lst == None:
+    if lst is None:
         return None
     if x == lst.valeur():
         return 0
-    
+
     rec = trouve_rec(x, lst.suite())
-    if rec == None:
+    if rec is None:
         return None
 
     return rec + 1

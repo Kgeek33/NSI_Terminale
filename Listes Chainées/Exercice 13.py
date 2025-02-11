@@ -8,7 +8,10 @@ class Maillon:
         if Maillon.est_vide(self._suivant):
             return chaine+str(self._valeur)+"|"
         else:
-            return chaine+"{}->{}".format(self.valeur(), Maillon.__str__(self.suite(), ""))
+            return chaine+"{}->{}".format(
+                self.valeur(),
+                Maillon.__str__(self.suite(), "")
+            )
 
     # retourne la valeur du maillon
     def valeur(self) -> any:
@@ -20,26 +23,28 @@ class Maillon:
 
     # methode de classe (partagée par toutes les instances)
     def est_vide(lst) -> bool:
-        return lst == None
+        return lst is None
 
 
 def occurences_iter(x: any, lst: Maillon) -> int:
     a = 0
-    while lst != None:
+    while lst is not None:
         if lst.valeur() == x:
             a += 1
         lst = lst.suite()
 
     return None if a == 0 else a
 
+
 def occurences_rec(x: any, lst: Maillon) -> int:
     s = 0
-    if lst == None:
+    if lst is None:
         return 0
     elif lst.valeur() == x:
         s += 1
 
     return occurences_rec(x, lst.suite()) + s
+
 
 m = Maillon(9, None)
 L1 = m

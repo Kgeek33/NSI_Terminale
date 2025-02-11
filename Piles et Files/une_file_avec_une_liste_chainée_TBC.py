@@ -1,4 +1,4 @@
-from classe_maillon import *
+from classe_maillon import Maillon, taille_iter
 
 
 class File:
@@ -13,7 +13,7 @@ class File:
 
     def retirer(self):
         """ retire le maillon de tête """
-        if self.tete == None:
+        if self.tete is None:
             raise ValueError("self.tete est vide !!")
         v = self.tete.valeur()
         self.tete = self.tete.suite()
@@ -24,7 +24,7 @@ class File:
     def ajouter(self, x):
         """ajoute un maillon en queue de la file"""
         m = Maillon(x, None)
-        if self.tete != None:
+        if self.tete is not None:
             self.queue._suivant = m
         else:
             self.tete = m
@@ -36,6 +36,7 @@ class File:
 
     def __len__(self):
         return taille_iter(self.tete)
+
 
 if __name__ == "__main__":
     F = File()

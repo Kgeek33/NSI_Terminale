@@ -1,17 +1,17 @@
-import module6
-
 def exercice4():
-    erra = 2/0
-    errb = "nsi" + 20
+    2/0
+    "nsi" + 20
     testc = [0]
-    errc = testc[1]
-    errd = testd
+    testc[1]
+    # testd
     teste = {"kylian": "20/20"}
-    erre = teste["lucas"]
-    assert True == False  # errf
-    errg = int("^poihgf")
+    teste["lucas"]
+    assert True is False  # errf
+    int("^poihgf")
+
 
 def exercice6():
     pass
+
 
 exercice6()

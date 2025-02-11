@@ -64,5 +64,11 @@ test(factorielle_iter, jeu_test)
 # print("bench factorielle recursive :",
 # timeit.timeit(functools.partial(test,factorielle_rec,jeu_test),number=10))
 
-# print("bench factorielle imperative :",timeit.timeit(functools.partial(factorielle_iter,900),number=1000))
-# print("bench factorielle recursive :",timeit.timeit(functools.partial(factorielle_rec,900),number=1000))
+# print(
+#   "bench factorielle imperative :",
+#   timeit.timeit(functools.partial(factorielle_iter,900),number=1000)
+# )
+# print(
+#   "bench factorielle recursive :",
+#   timeit.timeit(functools.partial(factorielle_rec,900),number=1000)
+# )

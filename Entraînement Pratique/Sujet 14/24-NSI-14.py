@@ -23,20 +23,20 @@ assert min_et_max([-1, -1, -1, -1, -1]) == {'min': -1, 'max': -1}
 
 class Carte:
     def __init__(self, c, v):
-        """Initialise les attributs couleur (entre 1 et 4), 
+        """Initialise les attributs couleur (entre 1 et 4),
         et valeur (entre 1 et 13). """
         self.couleur = c
         self.valeur = v
 
     def recuperer_valeur(self):
-        """ Renvoie la valeur de la carte : 
+        """ Renvoie la valeur de la carte :
         As, 2, ..., 10, Valet, Dame, Roi """
         valeurs = ['As', '2', '3', '4', '5', '6', '7', '8',
                    '9', '10', 'Valet', 'Dame', 'Roi']
         return valeurs[self.valeur - 1]
 
     def recuperer_couleur(self):
-        """ Renvoie la couleur de la carte 
+        """ Renvoie la couleur de la carte
         (parmi pique, coeur, carreau, trèfle). """
         couleurs = ['pique', 'coeur', 'carreau', 'trèfle']
         return couleurs[self.couleur - 1]
@@ -53,16 +53,23 @@ class Paquet_de_cartes:
                 self.contenu.append(Carte(LAcouleur, LAvaleur))
 
     def recuperer_carte(self, pos: int):
-        """ Renvoie la carte qui se trouve à la position pos 
+        """ Renvoie la carte qui se trouve à la position pos
         (entier compris entre 0 et 51). """
-        assert pos >= 0 and pos <= 51, f"la variable pos est en dehors des critères ! (entre 0 et 51, actuellement {
-            pos})"
+        assert pos >= 0 and pos <= 51, (
+            "la variable pos est en dehors des critères !"
+            f"(entre 0 et 51, actuellement {pos})"
+        )
         return self.contenu[pos]
 
 
 jeu = Paquet_de_cartes()
 carte1 = jeu.recuperer_carte(20)
-assert carte1.recuperer_valeur() + " de " + carte1.recuperer_couleur() == "8 de coeur"
+assert (
+    carte1.recuperer_valeur() +
+    " de " +
+    carte1.recuperer_couleur()
+) == "8 de coeur"
 carte2 = jeu.recuperer_carte(0)
-assert carte2.recuperer_valeur() + " de " + carte2.recuperer_couleur() == "As de pique"
+assert carte2.recuperer_valeur() + " de " + \
+    carte2.recuperer_couleur() == "As de pique"
 carte3 = jeu.recuperer_carte(52)

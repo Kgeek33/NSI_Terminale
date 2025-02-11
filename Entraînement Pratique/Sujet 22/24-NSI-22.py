@@ -36,8 +36,8 @@ resultats = {
 
 
 def moyenne(nom, resultats):
-    '''Renvoie la moyenne de l'élève nom, selon le dictionnaire 
-    resultats. Si nom n'est pas dans le dictionnaire, 
+    '''Renvoie la moyenne de l'élève nom, selon le dictionnaire
+    resultats. Si nom n'est pas dans le dictionnaire,
     la fonction renvoie None.'''
     if nom in resultats:
         notes = resultats[nom]

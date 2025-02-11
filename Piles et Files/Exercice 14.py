@@ -1,5 +1,5 @@
 from random import choice
-from une_file_avec_une_liste_chainée_TBC import *
+from une_file_avec_une_liste_chainée_TBC import File
 
 T_ALIM_MIN = 7
 TPS_CTS = [4, 6, 8, 12]
@@ -8,7 +8,8 @@ NB_TYPES = len(TPS_CTS)
 
 def simuler(duree_h: int) -> str:
     """
-    prend en parametre la duree en heures, duree_h, d'alimentation en pièces du poste de ctl
+    prend en parametre la duree en heures, duree_h
+    d'alimentation en pièces du poste de ctl
     """
     tmps_minutes = 0
     duree_minutes = duree_h * 60
@@ -38,8 +39,10 @@ def simuler(duree_h: int) -> str:
                 tps_restant_en_ctl = en_attente.tete.valeur()
 
         print(
-            f"time ={tmps_minutes // 60}:{tmps_minutes % 60}, tps_restant_ctl = {tps_restant_en_ctl} et durées successives des pièces en attente : {
-                en_attente} pour {len(en_attente)} pièce{"s" if len(en_attente) > 1 else ""}"
+            f"time ={tmps_minutes // 60}:{tmps_minutes % 60},"
+            f"tps_restant_ctl = {tps_restant_en_ctl} et "
+            f"durées successives des pièces en attente : {en_attente}"
+            f"pour {len(en_attente)} pièce{"s" if len(en_attente) > 1 else ""}"
         )
         tmps_minutes += 1
         tps_total_en_ctl += 1
@@ -47,8 +50,11 @@ def simuler(duree_h: int) -> str:
         duree_minutes -= 1
 
     return (
-        f"\nC'est la fin !\nLa durée de séjour moyenne des pièces dans le poste de contrôle a été de {
-            round(tps_continu_en_ctl / nb_pieces_controlees, 2)} minutes"
+        "\n"
+        f"C'est la fin !\n"
+        "La durée de séjour moyenne des pièces dans le poste de contrôle"
+        f"a été de {round(tps_continu_en_ctl / nb_pieces_controlees, 2)}"
+        "minutes"
     )
 
 

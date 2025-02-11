@@ -18,7 +18,7 @@ def max_et_indice(tab):
     a = None
     b = None
     for i in range(len(tab)):
-        if a == None or tab[i] > a:
+        if a is None or tab[i] > a:
             a = tab[i]
             b = i
     return a, b
@@ -32,19 +32,20 @@ assert max_et_indice([1, 1, 1, 1]) == (1, 0)
 
 def nombre_points_rupture(ordre):
     '''
-    Renvoie le nombre de point de rupture de ordre qui représente 
+    Renvoie le nombre de point de rupture de ordre qui représente
     un ordre de gènes de chromosome
     '''
     # on vérifie que ordre est un ordre de gènes
-    assert est_un_ordre([1, 6, 2, 8, 3, 7]) == False
-    assert est_un_ordre([5, 4, 3, 6, 7, 2, 1, 8, 9]) == True
+    assert est_un_ordre([1, 6, 2, 8, 3, 7]) is False
+    assert est_un_ordre([5, 4, 3, 6, 7, 2, 1, 8, 9]) is True
     n = len(ordre)
     nb = 0
     if ordre[0] != 1:  # le premier n'est pas 1
         nb = nb + 1
     i = 0
     while i < n - 1:
-        if i != 0 and ordre[i] - ordre[i - 1] not in [-1, 1]:  # l'écart n'est pas 1
+        # l'écart n'est pas 1
+        if i != 0 and ordre[i] - ordre[i - 1] not in [-1, 1]:
             nb = nb + 1
         i = i + 1
     if ordre[i] != n:  # le dernier n'est pas n

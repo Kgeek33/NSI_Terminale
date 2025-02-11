@@ -7,10 +7,10 @@ def exercice4():
         # print("listetriée")
         return True
 
-    assert estTrie([17, 28, 39, 54, 59, 72]) == True
-    assert estTrie([17, 28, 9, 54, 59, 72]) == False
-    assert estTrie([1, 1, 1]) == True
-    assert estTrie([]) == True
+    assert estTrie([17, 28, 39, 54, 59, 72]) is True
+    assert estTrie([17, 28, 9, 54, 59, 72]) is False
+    assert estTrie([1, 1, 1]) is True
+    assert estTrie([]) is True
 
     def docstring():
         pass
@@ -58,16 +58,16 @@ def exercice2():
             if i in d2 and d1[i] != d2[i]:
                 return False
         return True
-    assert identiques({1: 1, 2: 1, 3: 1}, {1: 1, 2: 1, 3: 1, 4: 1}) == False
+    assert identiques({1: 1, 2: 1, 3: 1}, {1: 1, 2: 1, 3: 1, 4: 1}) is False
 
     def test(t):
         a = occurrences(t)
         tri_insertion(t)
         b_verif = occurrences(t)
-        if identiques(a, b_verif) == False:
+        if identiques(a, b_verif) is False:
             return False
 
-        if estTrie(t) == False:
+        if estTrie(t) is False:
             return False
         return True
 

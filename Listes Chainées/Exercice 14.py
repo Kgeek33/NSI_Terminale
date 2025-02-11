@@ -8,7 +8,10 @@ class Maillon:
         if Maillon.est_vide(self._suivant):
             return chaine+str(self._valeur)+"|"
         else:
-            return chaine+"{}->{}".format(self.valeur(), Maillon.__str__(self.suite(), ""))
+            return chaine+"{}->{}".format(
+                self.valeur(),
+                Maillon.__str__(self.suite(), "")
+            )
 
     # retourne la valeur du maillon
     def valeur(self) -> any:
@@ -20,7 +23,7 @@ class Maillon:
 
     # methode de classe (partagée par toutes les instances)
     def est_vide(lst) -> bool:
-        return lst == None
+        return lst is None
 
 
 def taille_iter(L: Maillon) -> int:
@@ -35,7 +38,8 @@ def taille_iter(L: Maillon) -> int:
 
 def identiques(lst1: Maillon, lst2: Maillon) -> bool:
     """
-    retourne un booléen précisant si les listes lst1 et lst2 contiennent les mêmes éléments dans le même ordre
+    retourne un booléen précisant si les listes
+    lst1 et lst2 contiennent les mêmes éléments dans le même ordre
     """
     if taille_iter(lst1) != taille_iter(lst2):
         return None

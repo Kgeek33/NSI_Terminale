@@ -14,7 +14,7 @@ assert nb_repetitions(12, [1, 3, 7, 21, 36, 44]) == 0
 
 
 def binaire(a: int) -> str:
-    '''convertit un nombre entier a en sa representation 
+    '''convertit un nombre entier a en sa representation
     binaire sous forme de chaine de caractères.'''
     if a == 0:
         return '0'

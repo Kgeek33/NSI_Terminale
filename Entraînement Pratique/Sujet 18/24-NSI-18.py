@@ -17,7 +17,7 @@ assert multiplication(-2, 0) == 0
 
 
 def chercher(tab, x, i, j):
-    '''Renvoie l'indice de x dans tab, si x est dans tab, 
+    '''Renvoie l'indice de x dans tab, si x est dans tab,
     None sinon.
     On suppose que tab est trié dans l'ordre croissant.'''
     if i > j:
@@ -31,7 +31,7 @@ def chercher(tab, x, i, j):
         return m
 
 
-assert chercher([1, 5, 6, 6, 9, 12], 7, 0, 10) == None
-assert chercher([1, 5, 6, 6, 9, 12], 7, 0, 5) == None
+assert chercher([1, 5, 6, 6, 9, 12], 7, 0, 10) is None
+assert chercher([1, 5, 6, 6, 9, 12], 7, 0, 5) is None
 assert chercher([1, 5, 6, 6, 9, 12], 9, 0, 5) == 4
 assert chercher([1, 5, 6, 6, 9, 12], 6, 0, 5) == 2

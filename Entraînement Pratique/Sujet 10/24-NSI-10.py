@@ -11,7 +11,7 @@ def moyenne(notes):
 
 
 assert moyenne([(8, 2), (12, 0), (13.5, 1), (5, 0.5)]) == 9.142857142857142
-assert moyenne([(3, 0), (5, 0)]) == None
+assert moyenne([(3, 0), (5, 0)]) is None
 
 coeur = [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
          [0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0],
@@ -26,7 +26,7 @@ coeur = [[0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
 
 
 def affiche(dessin):
-    ''' affichage d'une grille : les 1 sont représentés par 
+    ''' affichage d'une grille : les 1 sont représentés par
         des "*" , les 0 par un espace " " '''
     for ligne in dessin:
         affichage = ''
@@ -52,7 +52,7 @@ def liste_zoom(liste_depart, k):
 
 
 def dessin_zoom(grille, k):
-    '''renvoie une grille où les lignes sont zoomées k fois 
+    '''renvoie une grille où les lignes sont zoomées k fois
        ET répétées k fois'''
     grille_zoomee = []
     for ligne in grille:
