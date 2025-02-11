@@ -14,7 +14,7 @@ class Personnage:
 
     def blesser(self, max_blessures):
         nbPoint = random.randint(1, max_blessures)
-        if random.choice([True, False]) == True:
+        if random.choice([True, False]) is True:
             print("Bilbo a doublé les dégâts !!!!" if self.nom ==
                   "Gollum" else "Gollum a doublé les dégâts !!!!")
             nbPoint *= 2
@@ -36,11 +36,15 @@ def game():
         bilbo.boire_potion(random.randint(0, 5))
         gollum.boire_potion(random.randint(0, 5))
     if bilbo.get_etat() <= 0 and gollum.get_etat() > 0:
-        msg = "Gollum est vainqueur, il lui reste encore {} points alors que Bilbo est mort".format(
-            gollum.get_etat())
+        msg = (
+            "Gollum est vainqueur, il lui reste encore"
+            "{} points alors que Bilbo est mort"
+        ).format(gollum.get_etat())
     elif gollum.get_etat() <= 0 and bilbo.get_etat() > 0:
-        msg = "Bilbo est vainqueur, il lui reste encore {} points alors que Gollum est mort".format(
-            bilbo.get_etat())
+        msg = (
+            "Bilbo est vainqueur, il lui reste encore"
+            "{} points alors que Gollum est mort"
+        ).format(bilbo.get_etat())
     else:
         msg = "Les deux combattants sont morts en même temps"
     return msg
