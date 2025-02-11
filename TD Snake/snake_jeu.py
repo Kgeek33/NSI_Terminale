@@ -1,9 +1,19 @@
 import snake_pygame as spg
-from snake_classes import *
+from snake_classes import (
+    Point,
+    BLACK,
+    YELLOW,
+    RED,
+    PURPLE,
+    Snake,
+    Pomme,
+    WHITE,
+)
 from random import randint
 
 LEVEL = 1
-# dimensions de la fenêtre DIM_X (en pxl)* DIM_Y(en pxl) + taille score (en pxl)  )
+# dimensions de la fenêtre DIM_X (en pxl)* DIM_Y(en pxl) +
+# taille score (en pxl)  )
 
 # nombre de cases (point) en x et en y dans la fenetre
 DIM_X, DIM_Y = 40, 30
@@ -42,14 +52,24 @@ def jouer():
                 snake.avale(LApomme)
                 LEscore += 1
                 spg.score(0, snake.y_max, Point.taille_pxl, LEscore, WHITE)
-            DEScoor = Point(20, 10, randint(0, H_SCORE_EN_PXL - 10), randint(0,
-                            H_SCORE_EN_PXL - 10), L_COLORS[randint(1, len(L_COLORS))-1])
+            DEScoor = Point(
+                20,
+                10,
+                randint(0, H_SCORE_EN_PXL - 10),
+                randint(0, H_SCORE_EN_PXL - 10),
+                L_COLORS[randint(1, len(L_COLORS))-1]
+            )
             LApomme = Pomme(DEScoor, 50)
             LApomme.placer()
         if LApomme.pourrie(0.5):
             LApomme.jeter()
-            DEScoor = Point(20, 10, randint(0, H_SCORE_EN_PXL - 10), randint(0,
-                            H_SCORE_EN_PXL - 10), L_COLORS[randint(1, len(L_COLORS))-1])
+            DEScoor = Point(
+                20,
+                10,
+                randint(0, H_SCORE_EN_PXL - 10),
+                randint(0, H_SCORE_EN_PXL - 10),
+                L_COLORS[randint(1, len(L_COLORS))-1]
+            )
             LApomme = Pomme(DEScoor, 5)
             LApomme.placer()
 
