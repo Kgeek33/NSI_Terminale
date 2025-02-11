@@ -1,4 +1,4 @@
-from classe_maillon import *
+from classe_maillon import Maillon
 
 
 class Liste:
@@ -19,8 +19,8 @@ class Liste:
     def queue(self):
         return self.tete.suite()
 
-    #permet l'appel str(L1) equivalent à L1.__str__()
-    def __str__(self, chaine = "[") -> str:
+    # permet l'appel str(L1) equivalent à L1.__str__()
+    def __str__(self, chaine="[") -> str:
         # fait appel à la méthode __str__() de la classe Maillon
         return str(self.tete)
 
