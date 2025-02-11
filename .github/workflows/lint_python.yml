@@ -18,11 +18,7 @@ jobs:
 
       - name: ⚙️ Set up Flake8
         run: |
-          pip install flake8-simplify flake8-unused-arguments flake8-quotes
-
-      - name: 🔍 Run Flake8 checks
-        run: |
-          flake8 . --output-file=flake8_output.txt || true
+          pip install flake8-simplify flake8-unused-arguments
 
       - name: 📋 Report Flake8 results with reviewdog
         uses: reviewdog/action-flake8@v3
