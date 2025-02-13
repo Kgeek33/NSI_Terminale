@@ -81,8 +81,8 @@ if __name__ == '__main__':
     # from triSelectionMinimum import triSelection
 
     from random import randint
-    import timeit
-    import functools
+    # import timeit
+    # import functools
     from time import perf_counter
 
     def unTableau(min, max, n):
@@ -106,7 +106,7 @@ if __name__ == '__main__':
         # print(timeit.timeit(functools.partial(f, x),number=1))
         print("perf_counter de {} avec n={}".format(f, len(x)))
         t1 = perf_counter()
-        r = f(x)
+        # r = f(x)
         t2 = perf_counter()
         print("temps écoulé=", t2-t1)
     A = 0
