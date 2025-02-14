@@ -1,0 +1,71 @@
+# Chapitre sur les Arbres
+Arbres:
+- changed-files:
+  - any-glob-to-any-file: Arbres/**
+  - reviewver: SaiKido33
+
+# Chapitre sur les Bases de Données
+Bases_de_Données:
+- changed-files:
+  - any-glob-to-any-file: Bases de Données/**
+  - reviewver: Lascar-png
+
+# Chapitre sur les Circuits Intégrés
+Circuits_Intégrés:
+- changed-files:
+  - any-glob-to-any-file: Circuits Intégrés/**
+  - reviewver: Kgeek33
+
+# Chapitre sur Diviser pour Régner
+Diviser_pour_Régner:
+- changed-files:
+  - any-glob-to-any-file: Diviser pour Régner/**
+  - reviewver: Skyniraph
+
+# Les devoirs du jeudi pour se préparer au bac
+Epreuves_pratiques:
+- changed-files:
+  - any-glob-to-any-file: Entraînement Pratique/**
+  - reviewver: Kgeek33
+
+# Chapitre sur les Listes Chainées
+Listes_Chainées:
+- changed-files:
+  - any-glob-to-any-file: Listes Chainées/**
+  - reviewver: Kgeek33
+
+# Chapitre sur la Modularité
+Modularité:
+- changed-files:
+  - any-glob-to-any-file: Modularité/**
+  - reviewver: SaiKido33
+
+# Chapitre sur les Piles et Files
+Piles_et_Files:
+- changed-files:
+  - any-glob-to-any-file: Piles et Files/**
+  - reviewver: Lascar-png
+
+# Chapitre sur les Processus et Ressources
+Processus_et_Ressources:
+- changed-files:
+  - any-glob-to-any-file: Processus et Ressources/**
+  - reviewver: Lascar-png
+
+# Chapitre sur la Programmation Orientée Objet
+Programmation_Orientée_Objet:
+- changed-files:
+  - any-glob-to-any-file: Programmation Orientée Objet/**
+  - reviewver: SaiKido33
+
+# Chapitre sur la Récursivité
+Récursivité:
+- changed-files:
+  - any-glob-to-any-file: Récursivité/**
+  - reviewver: Skyniraph
+
+# Chapitre sur le TD Snake
+TD_Snake:
+- changed-files:
+  - any-glob-to-any-file: TD Snake/**
+  - reviewver: Skyniraph
