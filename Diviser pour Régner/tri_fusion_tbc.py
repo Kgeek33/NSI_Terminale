@@ -31,9 +31,13 @@ def fusion_rec(L, R):
     renvoie la fusion T triée des deux listes
     """
     print(L, R)
-    T = "a completer..."
-    print(T)
-    return T
+    if R == []:
+        return L
+    if L == []:
+        return R
+    if L[0] <= R[0]:
+        return [L[0]] + fusion_rec(L[1:], R)
+    return [R[0]] + fusion_rec(L, R[1:])
 
 
 def diviser(lst):
