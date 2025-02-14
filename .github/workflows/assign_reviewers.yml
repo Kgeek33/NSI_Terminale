@@ -21,7 +21,7 @@ jobs:
     - name: 📥 Get changed files
       id: get-changed-files
       run: |
-        files=$(git diff --name-only origin/main..${{ github.head_ref }})
+        files=$(git diff --name-only origin/main..origin/${{ github.head_ref }})
         echo "changed_files=$files" >> $GITHUB_ENV
 
     - name: 🔄 Assign author and reviewers
