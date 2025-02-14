@@ -41,11 +41,15 @@ def diviser(lst):
     prend une liste lst
     renvoie deux listes correspondant à la moitié droite et à la moitié gauche
     """
-    return "à compléter"
+    return lst[len(lst) // 2:], lst[:len(lst) // 2]
 
 
 def tri_fusion(lst):
-    return "à compléter"
+    if len(lst) < 2:
+        return lst
+    left, right = diviser(lst)
+    print(left, right)
+    return fusion_rec(tri_fusion(left), tri_fusion(right))
 
 
 if __name__ == '__main__':
