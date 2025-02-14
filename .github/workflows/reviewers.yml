@@ -1,0 +1,24 @@
+name: 👀 Auto Request Review
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, synchronize]
+
+jobs:
+  auto-request-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🙋 Define author
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }} \
+            -X PATCH -f assignees[]="$PR_AUTHOR"
+
+      - name: 🔄 Request review based on files changes
+        uses: necojackarc/auto-request-review@v0.13.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          config: .github/reviewers.yml
+          use_local: true
