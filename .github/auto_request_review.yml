@@ -1,0 +1,38 @@
+reviewers:
+  # The default reviewers
+  # defaults:
+  #   - Kgeek33
+
+files:
+  '.github/**':
+    - Kgeek33
+  'Arbres/**':
+    - SaiKido33
+  'Bases de Données/**':
+    - Lascar-png
+  'Circuits Intégrés/**':
+    - Kgeek33
+  'Diviser pour Régner/**':
+    - Skyniraph
+  'Entraînement Pratique/**':
+    - Kgeek33
+  'Listes Chainées/**':
+    - Kgeek33
+  'Modularité/**':
+    - SaiKido33
+  'Piles et Files/**':
+    - Lascar-png
+  'Processus et Ressources/**':
+    - Lascar-png
+  'Programmation Orientée Objet/**':
+    - SaiKido33
+  'Récursivité/**':
+    - Skyniraph
+  'TD Snake/**':
+    - Skyniraph
+
+options:
+  ignore_draft: true
+  ignored_keywords:
+    - DO NOT REVIEW
+  enable_group_assignment: false
