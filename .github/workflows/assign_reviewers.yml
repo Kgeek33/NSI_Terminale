@@ -1,4 +1,4 @@
-name: Auto Assign Reviewers
+name: 👀 Auto Assign Reviewers
 
 on:
   pull_request:
@@ -18,9 +18,10 @@ jobs:
         reviewers=$(yq e '.[] | .[] | .reviewver' .github/reviewer.yml | sort | uniq)
         echo "reviewers=$reviewers" >> $GITHUB_ENV
 
-    - name: 📥 Get changed files
+    - name: 📝 Get changed files
       id: get-changed-files
       run: |
+        git fetch origin
         files=$(git diff --name-only origin/main..origin/${{ github.head_ref }})
         echo "changed_files=$files" >> $GITHUB_ENV
 
