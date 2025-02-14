@@ -31,9 +31,13 @@ def fusion_rec(L, R):
     renvoie la fusion T triée des deux listes
     """
     print(L, R)
-    T = "a completer..."
-    print(T)
-    return T
+    if R == []:
+        return L
+    if L == []:
+        return R
+    if L[0] <= R[0]:
+        return [L[0]] + fusion_rec(L[1:], R)
+    return [R[0]] + fusion_rec(L, R[1:])
 
 
 def diviser(lst):
@@ -81,8 +85,8 @@ if __name__ == '__main__':
     # from triSelectionMinimum import triSelection
 
     from random import randint
-    import timeit
-    import functools
+    # import timeit
+    # import functools
     from time import perf_counter
 
     def unTableau(min, max, n):
@@ -106,7 +110,7 @@ if __name__ == '__main__':
         # print(timeit.timeit(functools.partial(f, x),number=1))
         print("perf_counter de {} avec n={}".format(f, len(x)))
         t1 = perf_counter()
-        r = f(x)
+        # r = f(x)
         t2 = perf_counter()
         print("temps écoulé=", t2-t1)
     A = 0
