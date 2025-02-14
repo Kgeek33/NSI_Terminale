@@ -13,14 +13,10 @@ def fusion_iter(L, R):
         else:
             T.append(R[i_R])
             i_R += 1
-    if i_L == len(L):
-        for i in range(i_L, len(R)):
-            T.append(R[i])
-    elif i_R == len(R):
-        for i in range(i_R, len(L)):
-            T.append(L[i])
-    # une des deux listes est entièrement traitée
-    T = T
+    if i_L >= len(L):
+        T += R[i_R:]
+    if i_R >= len(R):
+        T += L[i_L:]
     print(T)
     return T
 
