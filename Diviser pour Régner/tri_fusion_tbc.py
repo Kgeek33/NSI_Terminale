@@ -48,7 +48,7 @@ def tri_fusion(lst):
     if len(lst) < 2:
         return lst
     left, right = diviser(lst)
-    print(left, right)
+    # print(left, right)
     return fusion_rec(tri_fusion(left), tri_fusion(right))
 
 
