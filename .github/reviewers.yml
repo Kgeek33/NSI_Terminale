@@ -1,3 +1,7 @@
+reviewers:
+  defaults:
+    - Kgeek33
+
 files:
   '.github/**':
     - Kgeek33
