@@ -25,12 +25,4 @@ Déjà bravo ! Ensuite, tu vas faire faire une `pull request` (pr) pour proposer
 
 Une fois la pr faite, une personne spécialisée dans le chapitre fera une review de ta pr et s'il accepte, ta pr sera automatiquement merge dans la branche `main`
 
-### C'est qui "github-actions[bot]" ?
-
-C'est un `workflow`, c'est-à-dire un programme automatique qui, en fonction du code que t'as fait, va te suggérer des améliorations du code proposé.
-
-> [!WARNING]
->
-> Pour le moment, le `workflow` analyse uniquement les fichiers Python
-
 Pour rappel FromSoftWare > all
