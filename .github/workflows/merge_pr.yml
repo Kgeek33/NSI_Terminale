@@ -18,9 +18,11 @@ jobs:
           ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login')
 
           APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="APPROVED") | .user.login] | unique')
+          CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
 
           echo "Reviewers assignés: $ASSIGNED_REVIEWERS"
           echo "Reviewers ayant approuvé: $APPROVED_REVIEWERS"
+          echo "Reviewers ayant demandé des changements: $CHANGES_REQUESTED_REVIEWERS"
 
           ALL_APPROVED=true
           for reviewer in $ASSIGNED_REVIEWERS; do
@@ -30,7 +32,7 @@ jobs:
             fi
           done
 
-          if [ "$ALL_APPROVED" = true ]; then
+          if [ "$ALL_APPROVED" = true ] && [ -z "$CHANGES_REQUESTED_REVIEWERS" ]; then
             echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
             gh pr merge $PR_NUMBER --merge --repo $REPO
 
@@ -40,5 +42,5 @@ jobs:
               https://api.github.com/repos/$REPO/actions/workflows/update_branches.yml/dispatches \
               -d '{"ref":"main"}'
           else
-            echo "❌ Tous les reviewers n'ont pas encore approuvé, on attend."
+            echo "❌ Tous les reviewers n'ont pas encore approuvé ou des changements ont été demandés, on attend."
           fi
