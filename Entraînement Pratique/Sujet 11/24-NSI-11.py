@@ -28,19 +28,28 @@ class Noeud:
         '''Méthode constructeur pour la classe Noeud.
         Crée une feuille d'étiquette donnée.'''
         self.etiquette = etiquette
-        self.gauche = None
-        self.droit = None
+        self.gauche: None | Noeud = None
+        self.droit: None | Noeud = None
 
     def inserer(self, cle):
         '''Insère la clé dans l'arbre binaire de recherche
         en préservant sa structure.'''
         if cle < self.etiquette:
-            if self.gauche != None:
-                ...
+            if self.gauche is not None:
+                self.gauche.inserer(cle)
             else:
-                self.gauche = ...
+                self.gauche = Noeud(cle)
         else:
-            ...
-            ...
+            if self.droit is not None:
+                self.droit.inserer(cle)
             else:
-                ... = Noeud(cle)
+                self.droit = Noeud(cle)
+
+
+arbre = Noeud(7)
+for cle in (3, 9, 1, 6):
+    arbre.inserer(cle)
+assert arbre.gauche.etiquette == 3
+assert arbre.droit.etiquette == 9
+assert arbre.gauche.gauche.etiquette == 1
+assert arbre.gauche.droit.etiquette == 6
