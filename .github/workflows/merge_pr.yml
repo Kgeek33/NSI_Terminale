@@ -27,18 +27,10 @@ jobs:
           CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
           echo "Reviewers ayant demandé des changements: $CHANGES_REQUESTED_REVIEWERS"
 
-          ALL_APPROVED=true
-          for reviewer in $ASSIGNED_REVIEWERS; do
-            if ! echo "$APPROVED_REVIEWERS" | grep -q "$reviewer"; then
-              ALL_APPROVED=false
-              break
-            fi
-          done
-
-          echo "ALL_APPROVED: $ALL_APPROVED"
+          echo "ASSIGNED_REVIEWERS: $ASSIGNED_REVIEWERS"
           echo "CHANGES_REQUESTED_REVIEWERS: $CHANGES_REQUESTED_REVIEWERS"
 
-          if [ "$ALL_APPROVED" = true ] && [ -z "$CHANGES_REQUESTED_REVIEWERS" ]; then
+          if [ -z "$ASSIGNED_REVIEWERS" ] && [ -z "$CHANGES_REQUESTED_REVIEWERS" ]; then
             echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
             gh pr merge $PR_NUMBER --merge --repo $REPO
 
