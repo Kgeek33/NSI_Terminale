@@ -1,4 +1,4 @@
-def recherche_dichotomique(t, v):
+def recherche_dichotomique(t: list, v: any):
     pass
 
 
