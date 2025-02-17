@@ -23,6 +23,11 @@ Epreuves_pratiques:
 - changed-files:
   - any-glob-to-any-file: Entraînement Pratique/**
 
+# Chapitre sur Les Graphes
+Les_Graphes:
+- changed-files:
+  - any-glob-to-any-file: Les Graphes/**
+
 # Chapitre sur les Listes Chainées
 Listes_Chainées:
 - changed-files:
