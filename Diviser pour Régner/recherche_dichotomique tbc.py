@@ -1,5 +1,25 @@
-def recherche_dichotomique(t, v):
-    pass
+def diviser(lst):
+    """
+    prend une liste lst
+    renvoie deux listes correspondant à la moitié droite et à la moitié gauche
+    """
+    milieu = len(lst)//2
+    return lst[:milieu], lst[milieu:]
+
+
+def recherche_dichotomique(t: list[int], v: int, g: int = 0):
+    if len(t) == 0:
+        return None
+    moitie = len(t) // 2
+
+    if v < t[moitie]:
+        return recherche_dichotomique(t[:moitie], v, g)
+
+    if v > t[moitie]:
+        return recherche_dichotomique(t[moitie + 1:], v, g + moitie + 1)
+
+    print("dico copie trouvé!", g + moitie)
+    return g + moitie
 
 
 if __name__ == '__main__':
