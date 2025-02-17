@@ -30,7 +30,7 @@ jobs:
           echo "ASSIGNED_REVIEWERS: $ASSIGNED_REVIEWERS"
           echo "CHANGES_REQUESTED_REVIEWERS: $CHANGES_REQUESTED_REVIEWERS"
 
-          if [ -z "$ASSIGNED_REVIEWERS" ] && [ -z "$CHANGES_REQUESTED_REVIEWERS" ]; then
+          if [ "$ASSIGNED_REVIEWERS" = "[]" ] && [ "$CHANGES_REQUESTED_REVIEWERS" = "[]" ]; then
             echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
             gh pr merge $PR_NUMBER --merge --repo $REPO
 
