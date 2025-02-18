@@ -15,24 +15,14 @@ jobs:
           PR_NUMBER=${{ github.event.pull_request.number }}
           REPO=${{ github.repository }}
 
-          echo "Fetching assigned reviewers..."
-          UNPRINT=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers)
-          echo "ASSIGNED_REVIEWERS: $UNPRINT"
           ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login')
-          echo "Reviewers assignés: $ASSIGNED_REVIEWERS"
 
-          echo "Fetching approved reviewers..."
-          APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="APPROVED") | .user.login] | unique')
-          echo "Reviewers ayant approuvé: $APPROVED_REVIEWERS"
-
-          echo "Fetching reviewers who requested changes..."
           CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
-          echo "Reviewers ayant demandé des changements: $CHANGES_REQUESTED_REVIEWERS"
 
           echo "ASSIGNED_REVIEWERS: $ASSIGNED_REVIEWERS"
           echo "CHANGES_REQUESTED_REVIEWERS: $CHANGES_REQUESTED_REVIEWERS"
 
-          if [ "$ASSIGNED_REVIEWERS" = "[]" ] && [ "$CHANGES_REQUESTED_REVIEWERS" = "[]" ]; then
+          if [ -z "$ASSIGNED_REVIEWERS" ] && [ -z "$CHANGES_REQUESTED_REVIEWERS" ]; then
             echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
             gh pr merge $PR_NUMBER --merge --repo $REPO
 
