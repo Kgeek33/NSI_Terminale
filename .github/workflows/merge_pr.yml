@@ -16,18 +16,18 @@ jobs:
           REPO=${{ github.repository }}
 
           echo "Fetching assigned reviewers..."
-          ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login')
-          ASSIGNED_REVIEWERS_ARRAY=($ASSIGNED_REVIEWERS)
+          ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login' | tr '\n' ' ')
+          IFS=' ' read -r -a ASSIGNED_REVIEWERS_ARRAY <<< "$ASSIGNED_REVIEWERS"
           echo "Reviewers assignés: ${ASSIGNED_REVIEWERS_ARRAY[@]}"
 
           echo "Fetching approved reviewers..."
-          APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="APPROVED") | .user.login] | unique')
-          APPROVED_REVIEWERS_ARRAY=($APPROVED_REVIEWERS)
+          APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="APPROVED") | .user.login] | unique' | tr '\n' ' ')
+          IFS=' ' read -r -a APPROVED_REVIEWERS_ARRAY <<< "$APPROVED_REVIEWERS"
           echo "Reviewers ayant approuvé: ${APPROVED_REVIEWERS_ARRAY[@]}"
 
           echo "Fetching reviewers who requested changes..."
-          CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
-          CHANGES_REQUESTED_REVIEWERS_ARRAY=($CHANGES_REQUESTED_REVIEWERS)
+          CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="CHANGES_REQUESTED") | .user.login] | unique' | tr '\n' ' ')
+          IFS=' ' read -r -a CHANGES_REQUESTED_REVIEWERS_ARRAY <<< "$CHANGES_REQUESTED_REVIEWERS"
           echo "Reviewers ayant demandé des changements: ${CHANGES_REQUESTED_REVIEWERS_ARRAY[@]}"
 
           if [ ${#CHANGES_REQUESTED_REVIEWERS_ARRAY[@]} -eq 0 ]; then
