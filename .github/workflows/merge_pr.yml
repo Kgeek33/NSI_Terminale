@@ -15,7 +15,7 @@ jobs:
           PR_NUMBER=${{ github.event.pull_request.number }}
           REPO=${{ github.repository }}
 
-          ASSIGNED_REVIEWERS=[$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login' | tr '\n' ',')]
+          ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '[.[] | .user.login] | unique')
 
           CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
 
