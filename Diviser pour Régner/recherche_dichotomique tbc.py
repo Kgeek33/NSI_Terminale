@@ -22,6 +22,26 @@ def recherche_dichotomique(t: list[int], v: int, g: int = 0):
     return g + moitie
 
 
+def recherche_dichotomique_rapide(t: list[int], v: int, d: int, g: int = 0):
+    if g > d:
+        return None
+    moitie = (g + d) // 2
+
+    if v < t[moitie]:
+        return recherche_dichotomique_rapide(t, v, moitie - 1, g)
+
+    if v > t[moitie]:
+        return recherche_dichotomique_rapide(
+            t,
+            v,
+            d,
+            moitie + 1
+        )
+
+    print("dico copie trouvé!", g + moitie)
+    return g + moitie
+
+
 if __name__ == '__main__':
     def nextFibo(um2, um1):
         return um1, um2+um1
@@ -49,3 +69,30 @@ if __name__ == '__main__':
     print("55 est à la position", recherche_dichotomique(T, 55))
     # -> 27
     print("196418 est à la position", recherche_dichotomique(T, 196418))
+    print("Nouvelle fonction =>\n")
+    print(T)
+    # -> 10
+    print(
+        "55 est à la position",
+        recherche_dichotomique_rapide(T, 55, len(T))
+    )
+    # -> None
+    print(
+        "56 est à la position",
+        recherche_dichotomique_rapide(T, 56, len(T))
+    )
+    # -> 14
+    print(
+        "377 est à la position",
+        recherche_dichotomique_rapide(T, 377, len(T))
+    )
+    # -> 14
+    print(
+        "610 est à la position",
+        recherche_dichotomique_rapide(T, 610, len(T))
+    )
+    # -> None
+    print(
+        "10000 est à la position",
+        recherche_dichotomique_rapide(T, 10000, len(T))
+    )
