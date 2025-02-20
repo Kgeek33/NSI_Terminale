@@ -36,8 +36,13 @@ def maximum_dpr_rapide(lst, debut=0, fin=-1):
 
 # version balayage
 def maximum_balayage(lst):
-    pass
-    return "a completer"
+    if len(lst) == 0:
+        return None
+    THEmax = lst[0]
+    for elm in lst:
+        if elm > THEmax:
+            THEmax = elm
+    return THEmax
 
 
 if __name__ == '__main__':
