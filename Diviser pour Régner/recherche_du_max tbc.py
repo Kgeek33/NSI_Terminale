@@ -5,21 +5,20 @@ def diviser(lst):
     prend une liste lst
     renvoie deux listes correspondant à la moitié droite et à la moitié gauche
     """
-
-    return "a completer", "a completer"
+    milieu = len(lst)//2
+    return lst[:milieu], lst[milieu:]
 
 
 def maximum_dpr(lst):
     if len(lst) == 0:
-        return "a completer"
+        return None
     if len(lst) == 1:
-        return "a completer"
-    left = "a completer"
-    right = "a completer"
-    max_left == "a completer"
-    max_right == "a completer"
-    pass
-    "a completer"
+        return lst[0]
+    left, right = diviser(lst)
+    max_left = maximum_dpr(left)
+    max_right = maximum_dpr(right)
+
+    return max_left if max_left > max_right else max_right
 
 
 #  version diviser pour regner rapide (sans copie de listes)
@@ -68,8 +67,8 @@ if __name__ == '__main__':
     mesure_perfs = False
 
     from random import randint
-    import timeit
-    import functools
+    # import timeit
+    # import functools
     from time import perf_counter
 
     def unTableau(min, max, n):
