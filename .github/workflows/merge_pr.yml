@@ -1,0 +1,45 @@
+name: Auto Merge PR
+
+on:
+  pull_request:
+    types:
+      - review_requested
+      - review
+      - closed
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v2
+
+    - name: ✏ Get PR details
+      id: pr
+      uses: peter-evans/pull-request-merge@v2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        pull-request-number: ${{ github.event.number }}
+        log-http: true
+
+    - name: 👀 Check PR reviews
+      id: check-reviews
+      run: |
+        PR_REVIEWS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }}/reviews)
+        APPROVED=$(echo "$PR_REVIEWS" | jq -r 'map(select(.state == "APPROVED")) | length')
+        REQUEST_CHANGES=$(echo "$PR_REVIEWS" | jq -r 'map(select(.state == "CHANGES_REQUESTED")) | length')
+        echo "approved=$APPROVED" >> $GITHUB_ENV
+        echo "changes_requested=$REQUEST_CHANGES" >> $GITHUB_ENV
+
+    - name: ✔ Auto Merge
+      if: ${{ env.approved == 0 && env.changes_requested == 0 }}
+      uses: actions/github-script@v3
+      with:
+        script: |
+          const result = await github.pulls.merge({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number,
+            merge_method: 'merge'
+          })
