@@ -14,11 +14,15 @@ jobs:
 
     - name: ✏ Get PR details
       id: pr
-      uses: peter-evans/pull-request-merge@v2
+      uses: actions/github-script@v3
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        pull-request-number: ${{ github.event.number }}
-        log-http: true
+        script: |
+          const pr = await github.pulls.get({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number
+          });
+          return pr.data;
 
     - name: 👀 Check PR reviews
       id: check-reviews
@@ -29,14 +33,10 @@ jobs:
         echo "approved=$APPROVED" >> $GITHUB_ENV
         echo "changes_requested=$REQUEST_CHANGES" >> $GITHUB_ENV
 
-    - name: ✔ Auto Merge
+    - name: ✔ Enable Auto Merge
       if: ${{ env.approved == 0 && env.changes_requested == 0 }}
-      uses: actions/github-script@v3
+      uses: peter-evans/enable-pull-request-automerge@v3
       with:
-        script: |
-          const result = await github.pulls.merge({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            pull_number: context.issue.number,
-            merge_method: 'merge'
-          })
+        token: ${{ secrets.GITHUB_TOKEN }}
+        pull-request-number: ${{ github.event.number }}
+        merge-method: merge
