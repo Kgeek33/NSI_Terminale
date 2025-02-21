@@ -1,4 +1,4 @@
-name: Auto Merge PR
+name: 🤖 Auto Merge PR
 
 on:
   pull_request_review:
@@ -24,10 +24,16 @@ jobs:
           });
           return pr.data;
 
+    - name: ✏ Get PR reviews
+      id: get-reviews
+      run: |
+        curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }}/reviews > reviews.json
+        cat reviews.json
+
     - name: 👀 Check PR reviews
       id: check-reviews
       run: |
-        PR_REVIEWS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }}/reviews)
+        PR_REVIEWS=$(cat reviews.json)
         APPROVED=$(echo "$PR_REVIEWS" | jq -r 'map(select(.state == "APPROVED")) | length')
         REQUEST_CHANGES=$(echo "$PR_REVIEWS" | jq -r 'map(select(.state == "CHANGES_REQUESTED")) | length')
         echo "approved=$APPROVED" >> $GITHUB_ENV
