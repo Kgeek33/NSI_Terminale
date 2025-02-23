@@ -1,8 +1,6 @@
 name: 🤖 Auto-merge PR if all assigned reviewers approve
 
 on:
-  pull_request:
-    types: [opened, synchronize]
   pull_request_review:
     types: [submitted, edited]
 
