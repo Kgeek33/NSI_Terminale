@@ -1,0 +1,54 @@
+name: 🤖 Auto-merge PR if all assigned reviewers approve
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  pull_request_review:
+    types: [submitted, edited]
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Check if all assigned reviewers approved
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          REPO=${{ github.repository }}
+
+          ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login')
+
+          ASSIGNED_REVIEWERS_LIST=()
+
+          for reviewer in $ASSIGNED_REVIEWERS; do
+            ASSIGNED_REVIEWERS_LIST+=("$reviewer")
+          done
+
+          APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="APPROVED") | .user.login] | unique')
+          CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
+
+          echo "Reviewers assignés: ${ASSIGNED_REVIEWERS_LIST[@]}"
+          echo "Reviewers ayant approuvé: $APPROVED_REVIEWERS"
+          echo "Reviewers ayant demandé des changements: $CHANGES_REQUESTED_REVIEWERS"
+
+          ALL_APPROVED=true
+          for reviewer in "${ASSIGNED_REVIEWERS_LIST[@]}"; do
+            if ! echo "$APPROVED_REVIEWERS" | grep -q "$reviewer"; then
+              ALL_APPROVED=false
+              break
+            fi
+          done
+
+          if [ "$ALL_APPROVED" = true ] && [ "$CHANGES_REQUESTED_REVIEWERS" = [] ]; then
+            echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
+            gh pr merge $PR_NUMBER --merge --repo $REPO
+
+            curl -X POST \
+              -H "Accept: application/vnd.github.v3+json" \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              https://api.github.com/repos/$REPO/actions/workflows/update_branches.yml/dispatches \
+              -d '{"ref":"main"}'
+          else
+            echo "❌ Tous les reviewers n'ont pas encore approuvé ou des changements ont été demandés, on attend."
+          fi
