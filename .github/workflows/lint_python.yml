@@ -30,7 +30,7 @@ jobs:
           git diff --name-status origin/main..origin/${{ github.head_ref }} \
             | grep '\.py' \
             | grep -v 'Entraînement Pratique/Corrigés/' \
-            | sed -E 's/^[A-Z]+\t//g' | tr '\n' '\0' > modified_files.txt
+            | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
           files=$(cat modified_files.txt | sed 's/^/"/;s/$/"/')
           echo "files=$files" >> $GITHUB_ENV
 
@@ -38,7 +38,9 @@ jobs:
         run: |
           if [ -s modified_files.txt ]; then
             echo "is_empty=null" >> $GITHUB_ENV
-            xargs -0 -a modified_files.txt -I {} flake8 "{}" --max-line-length=84 > flake8_errors.log || true
+            while IFS= read -r file; do
+              flake8 "$file" --max-line-length=84 >> flake8_errors.log || true
+            done < modified_files.txt
           else
             echo "Aucun fichier Python modifié."
             echo "is_empty=undefined" >> $GITHUB_ENV
