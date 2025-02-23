@@ -17,20 +17,23 @@ jobs:
           PR_NUMBER=${{ github.event.pull_request.number }}
           REPO=${{ github.repository }}
 
-          UNPRINT=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers)
-          echo "Voilà => $UNPRINT"
-
           ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login')
+
+          ASSIGNED_REVIEWERS_LIST=()
+
+          for reviewer in $ASSIGNED_REVIEWERS; do
+            ASSIGNED_REVIEWERS_LIST+=("$reviewer")
+          done
 
           APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="APPROVED") | .user.login] | unique')
           CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[.[] | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
 
-          echo "Reviewers assignés: $ASSIGNED_REVIEWERS"
+          echo "Reviewers assignés: ${ASSIGNED_REVIEWERS_LIST[@]}"
           echo "Reviewers ayant approuvé: $APPROVED_REVIEWERS"
           echo "Reviewers ayant demandé des changements: $CHANGES_REQUESTED_REVIEWERS"
 
           ALL_APPROVED=true
-          for reviewer in $ASSIGNED_REVIEWERS; do
+          for reviewer in "${ASSIGNED_REVIEWERS_LIST[@]}"; do
             if ! echo "$APPROVED_REVIEWERS" | grep -q "$reviewer"; then
               ALL_APPROVED=false
               break
