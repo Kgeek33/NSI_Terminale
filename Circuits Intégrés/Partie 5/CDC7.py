@@ -6,6 +6,6 @@ for i in range(10):
     octetsRecus = serial_port.readline()
     print("trame: ", octetsRecus)
     chaine_recu = octetsRecus.decode()
-    print(chaine_recu)
+    print(chaine_recu) 
 
 serial_port.close()
