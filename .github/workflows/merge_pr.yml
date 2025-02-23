@@ -40,7 +40,7 @@ jobs:
             fi
           done
 
-          if [ "$ALL_APPROVED" = true ] && [ -z "$CHANGES_REQUESTED_REVIEWERS" ]; then
+          if [ "$ALL_APPROVED" = true ] && [ "$CHANGES_REQUESTED_REVIEWERS" = [] ]; then
             echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
             gh pr merge $PR_NUMBER --merge --repo $REPO
 
