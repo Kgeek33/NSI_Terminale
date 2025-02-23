@@ -49,7 +49,7 @@ jobs:
         if: env.is_empty == 'null'
         id: check_logs
         run: |
-          if [ -s flake8_errors.log]; then
+          if [ -s flake8_errors.log ]; then
             echo "is_empty=false" >> $GITHUB_ENV
           else
             echo "is_empty=true" >> $GITHUB_ENV
