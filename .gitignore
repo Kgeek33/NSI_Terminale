@@ -1,0 +1,2 @@
+# Ignore les dossiers de cache générés par Python
+__pycache__/
