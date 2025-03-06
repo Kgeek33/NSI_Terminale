@@ -1,20 +1,21 @@
-#exo 1
+# exo 1
 def delta(tab):
-    #precondition : tableau non vide
-    assert len(tab)!=0
-    #le tab à retourner contient en position 0 la première valeur du tableau a encoder
-    tab_comp=[tab[0]]
-    for k in range (1, len(tab)):
-        #on rajoute la différence de elemenst consécutifs de tab
+    # precondition : tableau non vide
+    assert len(tab) != 0
+    # le tab à retourner contient en position 0
+    # la première valeur du tableau a encoder
+    tab_comp = [tab[0]]
+    for k in range(1, len(tab)):
+        # on rajoute la différence de elemenst consécutifs de tab
         tab_comp.append(tab[k]-tab[k-1])
     return tab_comp
-    
-    
-assert delta([1000, 800, 802, 1000, 1003])==[1000, -200, 2, 198, 3]
-assert delta([42])==[42]
 
 
-#exo 2
+assert delta([1000, 800, 802, 1000, 1003]) == [1000, -200, 2, 198, 3]
+assert delta([42]) == [42]
+
+
+# exo 2
 class Expr:
     """Classe implémentant un arbre d'expression."""
 
@@ -28,25 +29,26 @@ class Expr:
         self.droite = d
 
     def est_une_feuille(self):
-        """renvoie True si et seulement 
+        """renvoie True si et seulement
         si le noeud est une feuille"""
         return self.gauche is None and self.droite is None
 
     def infixe(self):
         """renvoie la représentation infixe de l'expression en
         chaine de caractères"""
-        s = '' 
+        s = ''
         if self.gauche is not None:
-            s = '(' + s + self.gauche.infixe() 
+            s = '(' + s + self.gauche.infixe()
         s = s + str(self.valeur)
-        if self.droite is not None: 
+        if self.droite is not None:
             s = s + self.droite.infixe() + ')'
         return s
+
 
 a = Expr(Expr(None, 1, None),
          '+',
          Expr(None, 2, None))
-assert a.infixe()=='(1+2)'
+assert a.infixe() == '(1+2)'
 
 b = Expr(Expr(Expr(None, 1, None),
               '+',
@@ -55,16 +57,16 @@ b = Expr(Expr(Expr(None, 1, None),
          Expr(Expr(None, 3, None),
               '+',
               Expr(None, 4, None)))
-assert b.infixe()=='((1+2)*(3+4))'
+assert b.infixe() == '((1+2)*(3+4))'
 e = Expr(Expr(Expr(None, 3, None),
               '*',
               Expr(
                   Expr(None, 8, None),
                   '+',
                   Expr(None, 7, None))),
-             '-',
-             Expr(
-                 Expr(None, 2, None),
-                 '+',
-                 Expr(None, 1, None)))
-assert e.infixe()=='((3*(8+7))-(2+1))'
+         '-',
+         Expr(
+    Expr(None, 2, None),
+    '+',
+    Expr(None, 1, None)))
+assert e.infixe() == '((3*(8+7))-(2+1))'

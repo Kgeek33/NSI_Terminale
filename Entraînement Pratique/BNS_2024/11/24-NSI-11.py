@@ -20,4 +20,3 @@ class Noeud:
             else:
                 ... = Noeud(cle) 
 
-

@@ -1,5 +1,6 @@
 class Pile:
     """Classe définissant une structure de pile."""
+
     def __init__(self):
         self.contenu = []
 
@@ -19,17 +20,16 @@ class Pile:
         assert not self.est_vide()
         return self.contenu.pop()
 
+
 def eval_expression(tab):
     p = Pile()
-    for ... in tab: 
-        if element != '+' ... element != '*': 
-            p.empiler(...) 
+    for ... in tab:
+        if element != '+' ... element != '*':
+            p.empiler(...)
         else:
-            if element == ...: 
-                resultat = ... + ... 
+            if element == ...:
+                resultat = ... + ...
             else:
-                resultat = ... 
-            p.empiler(...) 
-    return ... 
-
-
+                resultat = ...
+            p.empiler(...)
+    return ...

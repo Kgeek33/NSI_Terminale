@@ -1,6 +1,8 @@
 from random import randint
 
-#exo 1
+# exo 1
+
+
 def tri_selection(tab):
     for i in range(len(tab)-1):
         indice_min = i
@@ -10,26 +12,28 @@ def tri_selection(tab):
         tab[i], tab[indice_min] = tab[indice_min], tab[i]
     return tab
 
+
 tab = [1, 52, 6, -9, 12]
 tri_selection(tab)
-assert tab==[-9, 1, 6, 12, 52]
+assert tab == [-9, 1, 6, 12, 52]
 
-#exo 2
+# exo 2
+
+
 def plus_ou_moins():
-    nb_mystere = randint(1, ...) 
+    nb_mystere = randint(1, ...)
     nb_test = int(input("Proposez un nombre entre 1 et 99 : "))
-    compteur = ... 
+    compteur = ...
 
-    while nb_mystere != ... and compteur < ...: 
+    while nb_mystere != ... and compteur < ...:
         compteur = compteur + 1
-        if nb_mystere ... nb_test: 
+        if nb_mystere ... nb_test:
             nb_test = int(input("Trop petit ! Testez encore : "))
         else:
             nb_test = int(input("Trop grand ! Testez encore : "))
 
     if nb_mystere == nb_test:
-        print ("Bravo ! Le nombre était ", ...) 
-        print("Nombre d'essais: ", ...) 
+        print("Bravo ! Le nombre était ", ...)
+        print("Nombre d'essais: ", ...)
     else:
-        print ("Perdu ! Le nombre était ", ...) 
-
+        print("Perdu ! Le nombre était ", ...)
