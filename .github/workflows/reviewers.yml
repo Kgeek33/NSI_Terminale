@@ -2,7 +2,7 @@ name: 👀 Auto Request Review
 
 on:
   pull_request:
-    types: [ready_for_review, synchronize]
+    types: [opened, synchronize]
 
 jobs:
   auto-request-review:
