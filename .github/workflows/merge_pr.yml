@@ -3,6 +3,12 @@ name: 🤖 Auto-merge PR if all assigned reviewers approve
 on:
   pull_request_review:
     types: [submitted, edited]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Numéro de la pull request"
+        required: true
+        default: ""
 
 jobs:
   automerge:
@@ -12,7 +18,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          PR_NUMBER=${{ github.event.pull_request.number }}
+          PR_NUMBER=${{ github.event.pull_request.number || github.event.inputs.pr_number }}
           REPO=${{ github.repository }}
 
           ASSIGNED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers --jq '.users[].login')
@@ -39,7 +45,7 @@ jobs:
           done
 
           if [ "$ALL_APPROVED" = true ] && [ "$CHANGES_REQUESTED_REVIEWERS" = [] ]; then
-            echo "✅ Tous les reviewers ont approuvé, on merge la PR..."
+            echo "✅ Tous les reviewers ont approuvé"
             gh pr merge $PR_NUMBER --merge --repo $REPO
 
             curl -X POST \
@@ -48,5 +54,5 @@ jobs:
               https://api.github.com/repos/$REPO/actions/workflows/update_branches.yml/dispatches \
               -d '{"ref":"main"}'
           else
-            echo "❌ Tous les reviewers n'ont pas encore approuvé ou des changements ont été demandés, on attend."
+            echo "❌ Tous les reviewers n'ont pas encore approuvé/n'ont pas encore fait une review"
           fi
