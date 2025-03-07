@@ -23,6 +23,11 @@ Epreuves_pratiques:
 - changed-files:
   - any-glob-to-any-file: Entraînement Pratique/**
 
+# Informations sur le Grand Oral
+Grand_Oral:
+- changed-files:
+  - any-glob-to-any-file: Grand Oral/**
+
 # Chapitre sur Les Graphes
 Les_Graphes:
 - changed-files:
