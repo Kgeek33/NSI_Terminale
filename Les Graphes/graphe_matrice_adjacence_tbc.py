@@ -8,12 +8,12 @@ class Graphe:
     def __init__(self, n):
         """construit une matrice d'ordre n, représentant un graphe
         à n sommets sans arêtes"""
-        self.n = [[False for _ in range(n)] for _ in range(n)]
+        self.adj = [[False for _ in range(n)] for _ in range(n)]
 
     def ajouter_arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie la matrice afin de créer un arc de s1 à s2"""
-        
+
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         renvoie un booléen précisant l'existence ou non d'un arc de s1 à s2"""
