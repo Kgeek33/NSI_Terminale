@@ -13,20 +13,26 @@ class Graphe:
     def ajouter_arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie la matrice afin de créer un arc de s1 à s2"""
-        
+        self.n[s1][s2] = True
+
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         renvoie un booléen précisant l'existence ou non d'un arc de s1 à s2"""
-
+        return self.n[s1][s2]
+    
     def ajouter_arete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie la matrice afin de créer une arete de s1 à s2"""
+        self.n[s1][s2] = True
+        self.n[s2][s1] = True
 
     def voisins(self, s):
+
         """prend en parametre un sommet s et
         renvoie la liste de ses voisins
         (il existe une arc de s à chaque voisin)"""
-
+        return [i for i in range(len(self.n[s])) if self.n[s][i]]
+    
     def affiche(self):
         """affiche sur une ligne pour chaque sommet l'ensemble de ses voisins
         (dans un ordre indifférent)
@@ -37,4 +43,14 @@ class Graphe:
         3 --> 1
         """
         # à compléter...
-        pass
+        for i in range(len(self.n)):
+            print(i, "-->", " ".join(map(str, self.voisins(i))))
+# test
+
+g = Graphe(4)
+g.ajouter_arete(0, 1)
+g.ajouter_arete(0, 3)
+g.ajouter_arete(1, 2)
+g.ajouter_arete(1, 3)
+g.ajouter_arete(2, 3)
+g.affiche()
