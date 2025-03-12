@@ -16,5 +16,5 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: 📋 Flake8 with annotations
-        uses: TrueBrain/actions-flake8@v2.4
+      - name: 📋 Flake8 checks files
+        uses: usama2490/lintly-flake8-github-action@v1.1
