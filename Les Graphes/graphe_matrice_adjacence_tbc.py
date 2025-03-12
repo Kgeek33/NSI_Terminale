@@ -43,7 +43,9 @@ class Graphe:
         """
         # à compléter...
         for i in range(len(self.adj)):
-            print(i, "-->", " ".join(map(str, self.voisins(i))))
+            print(i, "-->", " ".join(
+                str(self.voisins(i))
+            ))
 
 
 # test
