@@ -19,7 +19,7 @@ class Graphe:
         """prend en parametres les sommets s1 et s2 et
         renvoie un booléen précisant l'existence ou non d'un arc de s1 à s2"""
         return self.adj[s1][s2]
-    
+
     def ajouter_arete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie la matrice afin de créer une arete de s1 à s2"""
@@ -27,7 +27,6 @@ class Graphe:
         self.adj[s2][s1] = True
 
     def voisins(self, s):
-
         """prend en parametre un sommet s et
         renvoie la liste de ses voisins
         (il existe une arc de s à chaque voisin)"""
@@ -45,13 +44,15 @@ class Graphe:
         # à compléter...
         for i in range(len(self.adj)):
             print(i, "-->", " ".join(map(str, self.voisins(i))))
+
+
 # test
-if __name__ == "__main__":  
-    g = Graphe(4)  
-    g.ajouter_arete(0, 1)  
-    g.ajouter_arete(0, 3)  
-    g.ajouter_arete(1, 2)  
-    g.ajouter_arete(1, 3)  
+if __name__ == "__main__":
+    g = Graphe(4)
+    g.ajouter_arete(0, 1)
+    g.ajouter_arete(0, 3)
+    g.ajouter_arete(1, 2)
+    g.ajouter_arete(1, 3)
     g.ajouter_arete(2, 3)
     g.affiche()
 
