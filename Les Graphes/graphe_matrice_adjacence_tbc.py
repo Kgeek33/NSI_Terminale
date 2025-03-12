@@ -42,7 +42,7 @@ class Graphe:
         3 --> 1
         """
         for i in range(len(self.adj)):
-            print(i, "-->", " ".join(
+            print(i, "-->", "".join(
                 str(self.voisins(i))
             ))
 
