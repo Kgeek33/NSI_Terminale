@@ -2,9 +2,9 @@ reviewers:
   defaults:
     - Kgeek33
   
-  per_author:
-    Kgeek33:
-      - SaiKido33
+  # per_author:
+  #   Kgeek33:
+  #     - SaiKido33
 
 files:
   '.github/**':
