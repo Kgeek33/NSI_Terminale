@@ -54,8 +54,9 @@ if __name__ == "__main__":
     g.ajouter_arete(1, 2)
     g.ajouter_arete(1, 3)
     g.ajouter_arete(2, 3)
+    g.ajouter_arc(3, 1)
     g.affiche()
-
+    print(g.arc(3, 1))
     g2 = Graphe(3)
     g2.ajouter_arete(0, 1)
     g2.ajouter_arete(1, 2)
