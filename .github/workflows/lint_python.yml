@@ -1,20 +1,90 @@
-name: 🛠️ Check Python Lint via Flake8
+name: Checks (Flake8)
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  flake8-lint:
+  lint:
+    name: 🛠️ Flake8 on Pull Request
     runs-on: ubuntu-latest
+
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: ⚙️ Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v2
         with:
           python-version: "3.13"
 
-      - name: 📋 Flake8 checks files
-        uses: usama2490/lintly-flake8-github-action@v1.1
+      - name: ⚙️ Set up Flake8
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+
+      - name: 🔍 Identify modified Python files
+        id: get_modified_files
+        run: |
+          git fetch origin
+          git diff --name-status origin/main..origin/${{ github.head_ref }} \
+            | grep '\.py' \
+            | grep -v 'Entraînement Pratique/Corrigés/' \
+            | sed -E 's/^[A-Z]+\t//g' > modified_files.txt
+          files=$(cat modified_files.txt | sed 's/^/"/;s/$/"/')
+          echo "files=$files" >> $GITHUB_ENV
+
+      - name: 🔍 Run Flake8 checks
+        run: |
+          if [ -s modified_files.txt ]; then
+            echo "is_empty=null" >> $GITHUB_ENV
+            xargs -a modified_files.txt -I {} flake8 "{}" --max-line-length=84 > flake8_errors.log || true
+          else
+            echo "Aucun fichier Python modifié."
+            echo "is_empty=undefined" >> $GITHUB_ENV
+            exit 0
+          fi
+
+      - name: 📋 Check if lint logs are empty
+        if: env.is_empty == 'null'
+        id: check_logs
+        run: |
+          if [ -s flake8_errors.log]; then
+            echo "is_empty=false" >> $GITHUB_ENV
+          else
+            echo "is_empty=true" >> $GITHUB_ENV
+          fi
+
+      - name: ❌ Request Changes on Pull Request
+        if: env.is_empty == 'false'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const lintLogContent = fs.readFileSync('flake8_errors.log', 'utf8');
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              body: `⚠️ Erreur(s) détectée(s) par Flake8 !\n\`\`\`\n${lintLogContent}\n\`\`\``,
+              event: 'REQUEST_CHANGES'
+            });
+
+      - name: ✅ Approve Pull Request
+        if: env.is_empty == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              body: 'LGTM 👍',
+              event: 'APPROVE'
+            });
+
+      - name: 🧹 Clean up
+        if: always()
+        run: rm -f flake8_errors.log modified_files.txt
