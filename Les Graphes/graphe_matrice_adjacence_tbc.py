@@ -41,14 +41,12 @@ class Graphe:
         2 --> 3
         3 --> 1
         """
-        # à compléter...
         for i in range(len(self.adj)):
             print(i, "-->", " ".join(
                 str(self.voisins(i))
             ))
 
 
-# test
 if __name__ == "__main__":
     g = Graphe(4)
     g.ajouter_arete(0, 1)
