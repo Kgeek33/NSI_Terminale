@@ -18,7 +18,7 @@ class Graphe:
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         renvoie un booléen précisant l'existence ou non d'un arc de s1 à s2"""
-        return self.adj[s1][s2]
+        return self.adj[s1][s2] > 0
 
     def ajouter_arete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
