@@ -20,7 +20,7 @@ class Graphe:
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         renvoie un booléen précisant l'existence ou non d'un arc de s1 à s2"""
-        return self.n[s1][s2]
+        return self.adj[s1][s2]
     
     def ajouter_arete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
@@ -48,11 +48,21 @@ class Graphe:
         for i in range(len(self.adj)):
             print(i, "-->", "", self.voisins(i))
 # test
+if __name__ == "__main__":  
+    g = Graphe(4)  
+    g.ajouter_arete(0, 1)  
+    g.ajouter_arete(0, 3)  
+    g.ajouter_arete(1, 2)  
+    g.ajouter_arete(1, 3)  
+    g.ajouter_arete(2, 3)
+    g.affiche()
 
-g = Graphe(4)
-g.ajouter_arete(0, 1)
-g.ajouter_arete(0, 3)
-g.ajouter_arete(1, 2)
-g.ajouter_arete(1, 3)
-g.ajouter_arete(2, 3)
-g.affiche()
+    g2 = Graphe(3)
+    g2.ajouter_arete(0, 1)
+    g2.ajouter_arete(1, 2)
+    g2.affiche()
+
+    g3 = Graphe(5)
+    g3.ajouter_arete(0, 4)
+    g3.ajouter_arete(2, 3)
+    g3.affiche()
