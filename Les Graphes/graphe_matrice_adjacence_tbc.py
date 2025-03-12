@@ -15,13 +15,11 @@ class Graphe:
         modifie la matrice afin de créer un arc de s1 à s2"""
         self.adj[s1][s2] = True
 
-
-
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         renvoie un booléen précisant l'existence ou non d'un arc de s1 à s2"""
         return self.n[s1][s2]
-    
+
     def ajouter_arete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie la matrice afin de créer une arete de s1 à s2"""
@@ -34,7 +32,7 @@ class Graphe:
         renvoie la liste de ses voisins
         (il existe une arc de s à chaque voisin)"""
         return [i for i in range(len(self.adj[s])) if self.adj[s][i]]
-    
+
     def affiche(self):
         """affiche sur une ligne pour chaque sommet l'ensemble de ses voisins
         (dans un ordre indifférent)
@@ -48,6 +46,7 @@ class Graphe:
         for i in range(len(self.adj)):
             print(i, "-->", " ".join(map(str, self.voisins(i))))
 # test
+
 
 g = Graphe(4)
 g.ajouter_arete(0, 1)
