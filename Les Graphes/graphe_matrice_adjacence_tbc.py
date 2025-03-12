@@ -13,7 +13,7 @@ class Graphe:
     def ajouter_arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie la matrice afin de créer un arc de s1 à s2"""
-        self.adj[s1][s2] = True
+        self.adj[s1][s2] = 1
 
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
