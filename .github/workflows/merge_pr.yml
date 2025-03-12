@@ -29,13 +29,9 @@ jobs:
             ASSIGNED_REVIEWERS_LIST+=("$reviewer")
           done
 
-          APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[
-  group_by(.user.login)[] | max_by(.submitted_at) | select(.state=="APPROVED") | .user.login
-] | unique')
+          APPROVED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[group_by(.user.login)[] | max_by(.submitted_at) | select(.state=="APPROVED") | .user.login] | unique')
 
-          CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[
-  group_by(.user.login)[] | max_by(.submitted_at) | select(.state=="CHANGES_REQUESTED") | .user.login
-] | unique')
+          CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[group_by(.user.login)[] | max_by(.submitted_at) | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
 
           echo "Reviewers assignés: ${ASSIGNED_REVIEWERS_LIST[@]}"
           echo "Reviewers ayant approuvé: $APPROVED_REVIEWERS"
