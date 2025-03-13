@@ -119,3 +119,4 @@ if __name__ == "__main__":
     g2_test.ajouter_arc(5, 4)
     g2_test.affiche()
     print(g2_test.nb_arcs())
+    print(g2_test.nb_arcs_db_sens())
