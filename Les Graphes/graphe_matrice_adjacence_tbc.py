@@ -61,6 +61,9 @@ class Graphe:
                 if self.adj[i][j] is True and self.adj[j][i] is True:
                     s += 1
         return s//2
+    
+    def degre(self, s):
+        return len(self.voisins(s))
 
 
 def num(car: str):
@@ -126,4 +129,5 @@ if __name__ == "__main__":
     g2_test.affiche()
     print(g2_test.nb_arcs())
     print(g2_test.nb_arcs_db_sens())
+    print(g2_test.degre(0))
     print("-----")
