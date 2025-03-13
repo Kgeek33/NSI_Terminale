@@ -52,7 +52,7 @@ def num(car: str):
     return (ord(car_maj)-ord('A'))
 
 
-def crac(n: int):
+def carac(n: int):
     return chr(ord('A')+n)
 
 
