@@ -54,6 +54,14 @@ class Graphe:
                     s += 1
         return s
 
+    def nb_arcs(self):
+        s = 0
+        for i in range(len(self.adj)):
+            for j in range(len(self.adj[i])):
+                if self.adj[i][j] is True and self.adj[j][i] is True:
+                    s += 1
+        return s
+
 
 def num(car: str):
     car_maj = car.upper()
