@@ -86,7 +86,7 @@ if __name__ == "__main__":
     g1_test.ajouter_arete(4, 6)
     g1_test.ajouter_arete(5, 6)
     g1_test.ajouter_arete(6, 7)
-    
+
     g2_test = Graphe(7)
     g2_test.ajouter_arc(0, 2)
     g2_test.ajouter_arc(2, 0)
@@ -98,7 +98,6 @@ if __name__ == "__main__":
     g2_test.ajouter_arc(6, 3)
     g2_test.ajouter_arc(6, 1)
     g2_test.ajouter_arc(4, 1)
-    g2_test.ajouter_arc(4, 1)
-    g2_test.ajouter_arc(4, 1)
-    g2_test.ajouter_arc(4, 1)
-    g2_test.ajouter_arc(4, 1)
+    g2_test.ajouter_arc(4, 5)
+    g2_test.ajouter_arc(5, 4)
+    g2_test.affiche()
