@@ -46,13 +46,15 @@ class Graphe:
                 str(self.voisins(i))
             ))
 
+    def nb_arcs(g):
+
 
 def num(car: str):
     car_maj = car.upper()
     return (ord(car_maj)-ord('A'))
 
 
-def crac(n: int):
+def carac(n: int):
     return chr(ord('A')+n)
 
 
