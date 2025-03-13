@@ -23,8 +23,8 @@ class Graphe:
     def ajouter_arete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie la matrice afin de créer une arete de s1 à s2"""
-        self.adj[s1][s2] += 1
-        self.adj[s2][s1] += 1
+        self.adj[s1][s2] += True
+        self.adj[s2][s1] += True
 
     def voisins(self, s):
         """prend en parametre un sommet s et
@@ -57,6 +57,7 @@ if __name__ == "__main__":
     g.ajouter_arc(3, 1)
     g.affiche()
     print(g.arc(3, 1))
+    print(g.adj)
     g2 = Graphe(3)
     g2.ajouter_arete(0, 1)
     g2.ajouter_arete(1, 2)
