@@ -46,6 +46,14 @@ class Graphe:
                 str(self.voisins(i))
             ))
 
+    def nb_arcs(self):
+        s = 0
+        for i in range(len(self.adj)):
+            for j in range(len(self.adj[i])):
+                if self.adj[i][j] is True:
+                    s += 1
+        return s
+
 
 def num(car: str):
     car_maj = car.upper()
@@ -102,3 +110,4 @@ if __name__ == "__main__":
     g2_test.ajouter_arc(4, 5)
     g2_test.ajouter_arc(5, 4)
     g2_test.affiche()
+    print(g2_test.nb_arcs())
