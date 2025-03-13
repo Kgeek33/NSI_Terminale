@@ -52,7 +52,7 @@ def num(car: str):
     return (ord(car_maj)-ord('A'))
 
 
-def carac(n: int):
+def crac(n: int):
     return chr(ord('A')+n)
 
 
@@ -86,3 +86,18 @@ if __name__ == "__main__":
     g1_test.ajouter_arete(4, 6)
     g1_test.ajouter_arete(5, 6)
     g1_test.ajouter_arete(6, 7)
+
+    g2_test = Graphe(8)
+    g2_test.ajouter_arc(num('A'), num('C'))
+    g2_test.ajouter_arc(num('A'), num('D'))
+    g2_test.ajouter_arc(num('B'), num('A'))
+    g2_test.ajouter_arc(num('B'), num('F'))
+    g2_test.ajouter_arc(num('B'), num('G'))
+    g2_test.ajouter_arc(num('C'), num('A'))
+    g2_test.ajouter_arc(num('D'), num('G'))
+    g2_test.ajouter_arc(num('E'), num('B'))
+    g2_test.ajouter_arc(num('E'), num('F'))
+    g2_test.ajouter_arc(num('F'), num('E'))
+    g2_test.ajouter_arc(num('G'), num('B'))
+    g2_test.ajouter_arc(num('G'), num('D'))
+    g2_test.affiche()
