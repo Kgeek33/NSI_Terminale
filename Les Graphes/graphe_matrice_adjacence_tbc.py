@@ -47,7 +47,7 @@ class Graphe:
             ))
 
     def nb_arcs(g):
-
+        pass
 
 def num(car: str):
     car_maj = car.upper()
