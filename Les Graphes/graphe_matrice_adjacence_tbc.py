@@ -60,7 +60,7 @@ class Graphe:
             for j in range(len(self.adj[i])):
                 if self.adj[i][j] is True and self.adj[j][i] is True:
                     s += 1
-        return s
+        return s//2
 
 
 def num(car: str):
