@@ -54,7 +54,7 @@ class Graphe:
                     s += 1
         return s
 
-    def nb_arcs(self):
+    def nb_arcs_db_sens(self):
         s = 0
         for i in range(len(self.adj)):
             for j in range(len(self.adj[i])):
