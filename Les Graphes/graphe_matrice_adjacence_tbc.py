@@ -73,4 +73,4 @@ if __name__ == "__main__":
     g3.ajouter_arete(2, 3)
     g3.affiche()
     g1_test = Graphe(7)
-    g1_test.ajouter_arete(0,1)
+    g1_test.ajouter_arete(0, 1)
