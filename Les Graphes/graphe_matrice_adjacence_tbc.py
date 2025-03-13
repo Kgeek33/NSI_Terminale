@@ -46,9 +46,11 @@ class Graphe:
                 str(self.voisins(i))
             ))
 
-def num(car):
-    car_maj=car.upper()
+
+def num(car: str):
+    car_maj = car.upper()
     return (ord(car_maj)-ord('A'))
+
 
 if __name__ == "__main__":
     g = Graphe(4)
