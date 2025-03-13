@@ -30,7 +30,7 @@ class Graphe:
         """prend en parametre un sommet s et
         renvoie la liste de ses voisins
         (il existe une arc de s à chaque voisin)"""
-        return [i for i in range(len(self.adj[s])) if self.adj[s][i] > 0]
+        return [i for i in range(len(self.adj[s])) if self.adj[s][i]]
 
     def affiche(self):
         """affiche sur une ligne pour chaque sommet l'ensemble de ses voisins
