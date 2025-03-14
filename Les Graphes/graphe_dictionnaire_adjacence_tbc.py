@@ -42,7 +42,7 @@ class Graphe:
     def sommets(self):
         """renvoie la liste des sommets"""
         # à compléter...
-        pass
+        s =[]
 
     def voisins(self, s):
         """prend en parametre un sommet s et
