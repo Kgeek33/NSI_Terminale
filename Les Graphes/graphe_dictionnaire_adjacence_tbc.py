@@ -60,8 +60,8 @@ class Graphe:
         C --> D
         D --> A
         """
-        # à compléter...
-        pass
+        for key in self.adj:
+            print(key, "-->", self.voisins(key))
 
 
 G = {"A": -2, "B": 3, "C": 5}
@@ -72,7 +72,6 @@ print("affiche les clés,valeurs dans une liste", list(G.items()))
 print("affiche les clés dans une liste", list(G.keys()))
 print("affiche les valeurs dans une liste", list(G.values()))
 print(len(G))  # affiche le nombre de clés
-print(G["e"])  # affiche la valeur de la clé "e"
 # G.keys() et G.values() sont itérables
 # # affiche les valeurs du dictionnaire
 for el in G.values():
