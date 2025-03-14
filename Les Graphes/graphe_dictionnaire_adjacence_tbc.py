@@ -15,7 +15,9 @@ class Graphe:
     def ajouter_arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
-        if s1 in self.adj and s2 in self.adj:
+        self.ajouter_sommet(s1)
+        self.ajouter_sommet(s2)
+        if s2 not in self.adj(s1):
             self.adj[s1].append(s2)
 
     def arc(self, s1, s2):
@@ -27,16 +29,28 @@ class Graphe:
             return False
         return False
 
+    def ajouter_arrête(self, s1, s2):
+        """prend en parametres les sommets s1 et s2 et
+        modifie le dictionnaire afin de créer un arc de s1 à s2"""
+        self.ajouter_sommet(s1)
+        self.ajouter_sommet(s2)
+        if s2 not in self.adj[s1]:
+            self.adj[s1].append(s2)
+        if s1 not in self.adj[s2]:
+            self.adj[s2].append(s1)
+
     def sommets(self):
         """renvoie la liste des sommets"""
-        # à compléter...
-        pass
+        s = []
+        for key in self.adj:
+            s.append(key)
+        return s
 
     def voisins(self, s):
         """prend en parametre un sommet s et
         renvoie la liste de ses voisins"""
         # à compléter...
-        pass
+        return self.adj[s]
 
     def affiche(self):
         """affiche sur une ligne pour chaque sommet l'ensemble de ses voisins

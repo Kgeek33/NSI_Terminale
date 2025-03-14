@@ -61,10 +61,10 @@ class Graphe:
                 if self.adj[i][j] is True and self.adj[j][i] is True:
                     s += 1
         return s//2
-    
+
     def degre(self, s):
         return len(self.voisins(s))
-    
+
     def sommet_degre_max(self):
         s = 0
         for i in range(len(self.adj)):
