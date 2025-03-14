@@ -46,6 +46,18 @@ class Graphe:
             s.append(key)
         return s
 
+    def ordre(self):
+        return len(self.adj)
+
+    def degre(self, s):
+        return len(self.adj[s])
+
+    def nb_arcs(self):
+        s = 0
+        for key in self.adj:
+            s += len(self.adj[key])
+        return s
+
     def voisins(self, s):
         """prend en parametre un sommet s et
         renvoie la liste de ses voisins"""
