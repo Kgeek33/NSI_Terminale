@@ -48,7 +48,7 @@ class Graphe:
         """prend en parametre un sommet s et
         renvoie la liste de ses voisins"""
         # à compléter...
-        pass
+        return self.adj[s]
 
     def affiche(self):
         """affiche sur une ligne pour chaque sommet l'ensemble de ses voisins
