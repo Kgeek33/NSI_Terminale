@@ -64,6 +64,13 @@ class Graphe:
     
     def degre(self, s):
         return len(self.voisins(s))
+    
+    def sommet_degre_max(self):
+        s = 0
+        for i in range(len(self.adj)):
+            if len(self.voisins(s)) < len(self.voisins(i)):
+                s = i
+        return s
 
 
 def num(car: str):
@@ -130,4 +137,5 @@ if __name__ == "__main__":
     print(g2_test.nb_arcs())
     print(g2_test.nb_arcs_db_sens())
     print(g2_test.degre(0))
+    print(g2_test.sommet_degre_max())
     print("-----")
