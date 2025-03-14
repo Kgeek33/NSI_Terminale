@@ -5,6 +5,11 @@ reviewers:
   per_author:
     Kgeek33:
       - SaiKido33
+    
+    SaiKido33:
+      - Kgeek33
+      - Lascar-png
+      - Skyniraph
 
 files:
   '.github/**':
