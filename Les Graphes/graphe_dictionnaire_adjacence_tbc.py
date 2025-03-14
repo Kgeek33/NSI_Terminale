@@ -9,20 +9,23 @@ class Graphe:
     def ajouter_sommet(self, s):
         """ajoute, s'il n'existe pas déjà, le sommet s,
         sans arcs en provenance ou vers les autres sommets"""
-        # à compléter...
-        pass
+        if s not in self.adj:
+            self.adj[s] = []
 
     def ajouter_arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
-        # à compléter...
-        pass
+        if s1 in self.adj and s2 in self.adj:
+            self.adj[s1].append(s2)
 
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         renvoie un booléen précisant l'existence ou non d'un arc de s1 à s2"""
-        # à compléter...
-        pass
+        if s1 in self.adj and s2 in self.adj:
+            if s2 in self.adj[s1]:
+                return True
+            return False
+        return False
 
     def sommets(self):
         """renvoie la liste des sommets"""
