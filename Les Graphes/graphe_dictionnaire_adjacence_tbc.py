@@ -17,7 +17,8 @@ class Graphe:
         """prend en parametres les sommets s1 et s2 et
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
         # à compléter...
-        if s1 
+        if s1 and s2 in self.adj:
+            self.adj[s1].append(s2)
 
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
