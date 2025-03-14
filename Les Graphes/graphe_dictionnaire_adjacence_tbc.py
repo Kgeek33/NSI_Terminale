@@ -10,13 +10,14 @@ class Graphe:
         """ajoute, s'il n'existe pas déjà, le sommet s,
         sans arcs en provenance ou vers les autres sommets"""
         # à compléter...
-        pass
+        if s not in self.adj:
+            s = {}
 
     def ajouter_arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
         # à compléter...
-        pass
+        if s1 
 
     def arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et

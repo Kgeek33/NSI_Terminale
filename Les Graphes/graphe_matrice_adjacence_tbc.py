@@ -61,7 +61,7 @@ class Graphe:
                 if self.adj[i][j] is True and self.adj[j][i] is True:
                     s += 1
         return s//2
-    
+
     def degre(self, s):
         return len(self.voisins(s))
 
