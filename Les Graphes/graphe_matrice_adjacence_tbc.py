@@ -20,7 +20,7 @@ class Graphe:
         renvoie un booléen précisant l'existence ou non d'un arc de s1 à s2"""
         return self.adj[s1][s2]
 
-    def ajouter_arete(self, s1, s2):
+    def ajouter_arrete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie la matrice afin de créer une arete de s1 à s2"""
         self.adj[s1][s2] = True
@@ -84,39 +84,39 @@ def carac(n: int):
 
 if __name__ == "__main__":
     g = Graphe(4)
-    g.ajouter_arete(0, 1)
-    g.ajouter_arete(0, 3)
-    g.ajouter_arete(1, 2)
-    g.ajouter_arete(1, 3)
-    g.ajouter_arete(2, 3)
+    g.ajouter_arrete(0, 1)
+    g.ajouter_arrete(0, 3)
+    g.ajouter_arrete(1, 2)
+    g.ajouter_arrete(1, 3)
+    g.ajouter_arrete(2, 3)
     g.ajouter_arc(3, 1)
     g.affiche()
     print(g.arc(3, 1))
     print("-----")
 
     g2 = Graphe(3)
-    g2.ajouter_arete(0, 1)
-    g2.ajouter_arete(1, 2)
+    g2.ajouter_arrete(0, 1)
+    g2.ajouter_arrete(1, 2)
     g2.affiche()
     print("-----")
 
     g3 = Graphe(5)
-    g3.ajouter_arete(0, 4)
-    g3.ajouter_arete(2, 3)
+    g3.ajouter_arrete(0, 4)
+    g3.ajouter_arrete(2, 3)
     g3.affiche()
     print("-----")
 
     g1_test = Graphe(8)
-    g1_test.ajouter_arete(0, 1)
-    g1_test.ajouter_arete(0, 2)
-    g1_test.ajouter_arete(1, 3)
-    g1_test.ajouter_arete(2, 3)
-    g1_test.ajouter_arete(1, 4)
-    g1_test.ajouter_arete(3, 4)
-    g1_test.ajouter_arete(4, 5)
-    g1_test.ajouter_arete(4, 6)
-    g1_test.ajouter_arete(5, 6)
-    g1_test.ajouter_arete(6, 7)
+    g1_test.ajouter_arrete(0, 1)
+    g1_test.ajouter_arrete(0, 2)
+    g1_test.ajouter_arrete(1, 3)
+    g1_test.ajouter_arrete(2, 3)
+    g1_test.ajouter_arrete(1, 4)
+    g1_test.ajouter_arrete(3, 4)
+    g1_test.ajouter_arrete(4, 5)
+    g1_test.ajouter_arrete(4, 6)
+    g1_test.ajouter_arrete(5, 6)
+    g1_test.ajouter_arrete(6, 7)
     g1_test.affiche()
     print("-----")
 
