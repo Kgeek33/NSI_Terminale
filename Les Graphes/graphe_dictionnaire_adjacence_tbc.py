@@ -17,7 +17,7 @@ class Graphe:
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
         self.ajouter_sommet(s1)
         self.ajouter_sommet(s2)
-        if s2 not in self.adj(s1):
+        if s2 not in self.adj[s1]:
             self.adj[s1].append(s2)
 
     def arc(self, s1, s2):
@@ -29,7 +29,7 @@ class Graphe:
             return False
         return False
 
-    def ajouter_arrête(self, s1, s2):
+    def ajouter_arrete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
         self.ajouter_sommet(s1)
@@ -76,20 +76,37 @@ class Graphe:
             print(key, "-->", self.voisins(key))
 
 
-G = {"A": -2, "B": 3, "C": 5}
-# G est un dictionnaire
-print("affiche les clés", G.keys())  # affiche les clés
-print("affiche les valeurs", G.values())  # affiche les valeurs
-print("affiche les clés,valeurs dans une liste", list(G.items()))
-print("affiche les clés dans une liste", list(G.keys()))
-print("affiche les valeurs dans une liste", list(G.values()))
-print(len(G))  # affiche le nombre de clés
-# G.keys() et G.values() sont itérables
-# # affiche les valeurs du dictionnaire
-for el in G.values():
-    print(el)
-# affiche les clés et les valeurs des clés
-for key in G.keys():
-    print(key, G[key])
-for key in G:
-    print(key, G[key])
+if __name__ == "__main__":
+    g1_test = Graphe()
+    g1_test.ajouter_arrete("A", "B")
+    g1_test.ajouter_arrete("A", "C")
+    g1_test.ajouter_arrete("B", "D")
+    g1_test.ajouter_arrete("B", "E")
+    g1_test.ajouter_arrete("C", "D")
+    g1_test.ajouter_arrete("D", "E")
+    g1_test.ajouter_arrete("E", "F")
+    g1_test.ajouter_arrete("E", "G")
+    g1_test.ajouter_arrete("F", "G")
+    g1_test.ajouter_arrete("G", "H")
+    g1_test.affiche()
+    print("-----")
+
+    g2_test = Graphe()
+    g2_test.ajouter_arc(0, 2)
+    g2_test.ajouter_arc(2, 0)
+    g2_test.ajouter_arc(1, 0)
+    g2_test.ajouter_arc(1, 6)
+    g2_test.ajouter_arc(1, 5)
+    g2_test.ajouter_arc(0, 3)
+    g2_test.ajouter_arc(3, 6)
+    g2_test.ajouter_arc(6, 3)
+    g2_test.ajouter_arc(6, 1)
+    g2_test.ajouter_arc(4, 1)
+    g2_test.ajouter_arc(4, 5)
+    g2_test.ajouter_arc(5, 4)
+    g2_test.affiche()
+    print(g2_test.nb_arcs())
+    print(g2_test.nb_arcs_db_sens())
+    print(g2_test.degre(0))
+    print(g2_test.sommet_degre_max())
+    print("-----")
