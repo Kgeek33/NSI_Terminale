@@ -93,3 +93,9 @@ for key in G.keys():
     print(key, G[key])
 for key in G:
     print(key, G[key])
+
+if __name__ == "__main__":
+    g1_test = Graphe()
+    g1_test.ajouter_sommet("A")
+    g1_test.ajouter_sommet("B")
+    g1_test.ajouter_arc("A", "B")
