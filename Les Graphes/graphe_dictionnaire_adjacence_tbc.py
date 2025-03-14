@@ -41,8 +41,10 @@ class Graphe:
 
     def sommets(self):
         """renvoie la liste des sommets"""
-        # à compléter...
-        s =[]
+        s = []
+        for key in self.adj:
+            s.append(key)
+        return s
 
     def voisins(self, s):
         """prend en parametre un sommet s et
