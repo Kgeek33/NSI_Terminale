@@ -4,7 +4,7 @@ class Graphe:
 
     def __init__(self):
         # crée un dictionnaire vide
-        self.adj = {}
+        self.adj: dict[str, list[str]] = {}
 
     def ajouter_sommet(self, s):
         """ajoute, s'il n'existe pas déjà, le sommet s,
