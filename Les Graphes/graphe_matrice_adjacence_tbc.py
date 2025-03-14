@@ -64,7 +64,7 @@ class Graphe:
 
     def degre(self, s):
         return len(self.voisins(s))
-    
+
     def sommet_degre_max(self):
         s = 0
         for i in range(len(self.adj)):
