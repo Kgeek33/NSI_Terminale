@@ -49,7 +49,6 @@ class Graphe:
     def voisins(self, s):
         """prend en parametre un sommet s et
         renvoie la liste de ses voisins"""
-        # à compléter...
         return self.adj[s]
 
     def affiche(self):
