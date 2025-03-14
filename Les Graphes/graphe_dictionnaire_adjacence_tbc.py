@@ -11,7 +11,7 @@ class Graphe:
         sans arcs en provenance ou vers les autres sommets"""
         # à compléter...
         if s not in self.adj:
-            s = {}
+            self.adj[s] = []
 
     def ajouter_arc(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
