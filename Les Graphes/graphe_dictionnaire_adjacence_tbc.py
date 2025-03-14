@@ -17,7 +17,7 @@ class Graphe:
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
         self.ajouter_sommet(s1)
         self.ajouter_sommet(s2)
-        if s2 not in self.adj(s1):
+        if s2 not in self.adj[s1]:
             self.adj[s1].append(s2)
 
     def arc(self, s1, s2):
@@ -99,3 +99,4 @@ if __name__ == "__main__":
     g1_test.ajouter_sommet("A")
     g1_test.ajouter_sommet("B")
     g1_test.ajouter_arc("A", "B")
+    g1_test.affiche()
