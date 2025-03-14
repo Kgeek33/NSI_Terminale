@@ -32,8 +32,11 @@ class Graphe:
     def ajouter_arrête(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
-        if s1 and s2 in self.adj:
+        self.ajouter_sommet(s1)
+        self.ajouter_sommet(s2)
+        if s2 not in self.adj[s1]:
             self.adj[s1].append(s2)
+        if s1 not in self.adj[s2]:
             self.adj[s2].append(s1)
 
     def sommets(self):
