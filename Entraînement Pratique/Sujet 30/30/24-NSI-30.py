@@ -14,6 +14,16 @@ def traduire_romain(nombre):
     return total
 
 
+assert (traduire_romain('XIV')) == 14
+assert (traduire_romain('XVII')) == 17
+assert (traduire_romain('XIX')) == 19
+assert (traduire_romain('XX')) == 20
+assert (traduire_romain('XXI')) == 21
+assert (traduire_romain('XXV')) == 25
+assert (traduire_romain('XXIX')) == 29
+assert (traduire_romain('XXX')) == 30
+
+
 def fusion(tab1, tab2):
     i, j = 0, 0
     resultat = []
@@ -38,13 +48,3 @@ assert (fusion([-2, 4], [-3, 5, 10])) == [-3, -2, 4, 5, 10]
 assert (fusion([4], [2, 6]))
 assert (fusion([], [])) == []
 assert (fusion([1, 2, 3], []))
-
-
-assert (traduire_romain('XIV')) == 14
-assert (traduire_romain('XVII')) == 17
-assert (traduire_romain('XIX')) == 19
-assert (traduire_romain('XX')) == 20
-assert (traduire_romain('XXI')) == 21
-assert (traduire_romain('XXV')) == 25
-assert (traduire_romain('XXIX')) == 29
-assert (traduire_romain('XXX')) == 30
