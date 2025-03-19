@@ -33,8 +33,18 @@ def fusion(tab1, tab2):
     return resultat
 
 
-print(fusion([3, 5], [2, 5]))  # [2, 3, 5, 5]
-print(fusion([-2, 4], [-3, 5, 10]))  # [-3, -2, 4, 5, 10]
-print(fusion([4], [2, 6]))
-print(fusion([], []))  # []
-print(fusion([1, 2, 3], []))
+assert (fusion([3, 5], [2, 5])) == [2, 3, 5, 5]
+assert (fusion([-2, 4], [-3, 5, 10])) == [-3, -2, 4, 5, 10]
+assert (fusion([4], [2, 6]))
+assert (fusion([], [])) == []
+assert (fusion([1, 2, 3], []))
+
+
+assert (traduire_romain('XIV')) == 14
+assert (traduire_romain('XVII')) == 17
+assert (traduire_romain('XIX')) == 19
+assert (traduire_romain('XX')) == 20
+assert (traduire_romain('XXI')) == 21
+assert (traduire_romain('XXV')) == 25
+assert (traduire_romain('XXIX')) == 29
+assert (traduire_romain('XXX')) == 30
