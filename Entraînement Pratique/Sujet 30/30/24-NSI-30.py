@@ -1,12 +1,17 @@
 def traduire_romain(nombre):
     """ Renvoie l'écriture décimale du nombre donné en chiffres
     romains """
-    if len(nombre) == 1:
-        return ... 
-    elif romains[nombre[0]] >= ...: 
-        return romains[nombre[0]] + ... 
-    else:
-        return ... 
+    romains = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    total = 0
+    i = 0
+    while i < len(nombre):
+        if i + 1 < len(nombre) and romains[nombre[i]] < romains[nombre[i + 1]]:
+            total += romains[nombre[i + 1]] - romains[nombre[i]]
+            i += 2
+        else:
+            total += romains[nombre[i]]
+            i += 1
+    return total
 
 
 def fusion(tab1, tab2):
