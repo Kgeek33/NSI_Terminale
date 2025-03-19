@@ -1,4 +1,4 @@
-def traduire_romain(nombre):
+def traduire_romain(nombre: str) -> int:
     """ Renvoie l'écriture décimale du nombre donné en chiffres
     romains """
     romains = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
@@ -24,7 +24,7 @@ assert traduire_romain("XXIX") == 29
 assert traduire_romain("XXX") == 30
 
 
-def fusion(tab1, tab2):
+def fusion(tab1: list[int], tab2: list[int]) -> list[int]:
     i, j = 0, 0
     resultat = []
     while i < len(tab1) and j < len(tab2):
