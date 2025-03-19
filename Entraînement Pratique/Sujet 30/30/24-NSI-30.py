@@ -1,7 +1,7 @@
 def traduire_romain(nombre):
     """ Renvoie l'écriture décimale du nombre donné en chiffres
     romains """
-    romains = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    romains = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
     total = 0
     i = 0
     while i < len(nombre):
@@ -14,14 +14,14 @@ def traduire_romain(nombre):
     return total
 
 
-assert (traduire_romain('XIV')) == 14
-assert (traduire_romain('XVII')) == 17
-assert (traduire_romain('XIX')) == 19
-assert (traduire_romain('XX')) == 20
-assert (traduire_romain('XXI')) == 21
-assert (traduire_romain('XXV')) == 25
-assert (traduire_romain('XXIX')) == 29
-assert (traduire_romain('XXX')) == 30
+assert traduire_romain("XIV") == 14
+assert traduire_romain("XVII") == 17
+assert traduire_romain("XIX") == 19
+assert traduire_romain("XX") == 20
+assert traduire_romain("XXI") == 21
+assert traduire_romain("XXV") == 25
+assert traduire_romain("XXIX") == 29
+assert traduire_romain("XXX") == 30
 
 
 def fusion(tab1, tab2):
@@ -43,8 +43,8 @@ def fusion(tab1, tab2):
     return resultat
 
 
-assert (fusion([3, 5], [2, 5])) == [2, 3, 5, 5]
-assert (fusion([-2, 4], [-3, 5, 10])) == [-3, -2, 4, 5, 10]
-assert (fusion([4], [2, 6]))
-assert (fusion([], [])) == []
-assert (fusion([1, 2, 3], []))
+assert fusion([3, 5], [2, 5]) == [2, 3, 5, 5]
+assert fusion([-2, 4], [-3, 5, 10]) == [-3, -2, 4, 5, 10]
+assert fusion([4], [2, 6])
+assert fusion([], []) == []
+assert fusion([1, 2, 3], [])
