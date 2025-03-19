@@ -45,6 +45,6 @@ def fusion(tab1, tab2):
 
 assert fusion([3, 5], [2, 5]) == [2, 3, 5, 5]
 assert fusion([-2, 4], [-3, 5, 10]) == [-3, -2, 4, 5, 10]
-assert fusion([4], [2, 6])
+assert fusion([4], [2, 6]) == [2, 4, 6]
 assert fusion([], []) == []
-assert fusion([1, 2, 3], [])
+assert fusion([1, 2, 3], []) == [1, 2, 3]
