@@ -1,78 +1,82 @@
-from une_file_avec_une_liste_chainée import *
-from graphe_dictionnaire_adjacence import *
+from random import randint
+# from une_file_avec_une_liste_chainée import *
+from graphe_dictionnaire_adjacence_tbc import Graphe
 
-g_chifoumi=Graphe()
-verbe={}
-g_chifoumi.ajouter_arc('la Pierre','les Ciseaux')
-verbe[('la Pierre','les Ciseaux')]='casse'
-#construction du graphe a completer...
-
-
-
+g_chifoumi = Graphe()
+verbe = {}
+g_chifoumi.ajouter_arc('la Pierre', 'les Ciseaux')
+verbe[('la Pierre', 'les Ciseaux')] = 'casse'
+# construction du graphe a completer...
 
 
 def plus_fort(s1, s2):
     pass
     return "a completer"
 
-def resultat(s1, s2) :
+
+def resultat(s1, s2):
     pass
     return "nul"
 
-from random import *
-choix=[s for s in g_chifoumi.sommets()]
+
+choix = [s for s in g_chifoumi.sommets()]
+
 
 def le_jeu():
-    #initiailisation des scores
-    
+    # initiailisation des scores
+
     # tant que personne n'est à 3 points
-    while  "à completer" :
+    while "à completer":
         # le joueur joue
-        ta_main=str(input("ta main ? "))
+        ta_main = str(input("ta main ? "))
         # ta_main n'est pas une main valide
         while "à completer":
-            ta_main=str(input(" fais une main qui existe, stp : "))
+            ta_main = str(input(" fais une main qui existe, stp : "))
 
         # la machine joue (sans tricher cad sans tenir compte de ta_main !)
-        ma_main=choix[randint(0,len(choix)-1)]
+        ma_main = choix[randint(0, len(choix)-1)]
         # arbitrage, affichages, calcul des scores à compléter....
-        
-        
-        
-        #affichage du nouveau score
-        print("ton score :",ton_score,"--- mon score :",mon_score)
 
-    if "a completer" :
-        #la machine a gagné
+        # affichage du nouveau score
+        print("ton score :", ton_score, "--- mon score :", mon_score)
+
+    if "a completer":
+        # la machine a gagné
         print("perdu !")
     else:
         print("Gagné")
-    
-        
 
-        
 
-testing=True;
-if __name__ == '__main__' and testing :
+testing = True
+if __name__ == '__main__' and testing:
     print(g_chifoumi.adj)
-    s='la Pierre';t='les Ciseaux';print(s,"gagne contre",t,"?",plus_fort(s, t))
-    s='les Ciseaux';t='la Pierre';print(s,"gagne contre",t,"?",plus_fort(s, t))
-    s='le Papier';t='la Pierre';print(s,"gagne contre",t,"?",plus_fort(s, t))
-    s='la Pierre';t='le Papier';print(s,"gagne contre",t,"?",plus_fort(s, t))
-    s='les Ciseaux';t='le Papier';print(s,"gagne contre",t,"?",plus_fort(s, t))
-    s='le Papier';t='les Ciseaux';print(s,"gagne contre",t,"?",plus_fort(s, t))
-    
+    s = 'la Pierre'
+    t = 'les Ciseaux'
+    print(s, "gagne contre", t, "?", plus_fort(s, t))
+    s = 'les Ciseaux'
+    t = 'la Pierre'
+    print(s, "gagne contre", t, "?", plus_fort(s, t))
+    s = 'le Papier'
+    t = 'la Pierre'
+    print(s, "gagne contre", t, "?", plus_fort(s, t))
+    s = 'la Pierre'
+    t = 'le Papier'
+    print(s, "gagne contre", t, "?", plus_fort(s, t))
+    s = 'les Ciseaux'
+    t = 'le Papier'
+    print(s, "gagne contre", t, "?", plus_fort(s, t))
+    s = 'le Papier'
+    t = 'les Ciseaux'
+    print(s, "gagne contre", t, "?", plus_fort(s, t))
+
     for s in g_chifoumi.sommets():
         for t in g_chifoumi.sommets():
-            print(s,"gagne contre",t,"?",plus_fort(s, t))
+            print(s, "gagne contre", t, "?", plus_fort(s, t))
             print(resultat(s, t))
- 
- 
+
     for s in g_chifoumi.sommets():
         for t in g_chifoumi.sommets():
-            if plus_fort(s, t) : print(resultat(s, t))
+            if plus_fort(s, t):
+                print(resultat(s, t))
 
-#le_jeu()
-    
-    
-
+# le_jeu()
