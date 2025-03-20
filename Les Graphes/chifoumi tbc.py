@@ -28,8 +28,8 @@ verbe[("Lézard", "Spock")] = "empoisonne"
 
 def plus_fort(s1, s2):
     if s2 in g_chifoumi.voisins(s1):
-        return s1
-    return s2
+        return True
+    return False
 
 
 def resultat(s1, s2):
@@ -56,7 +56,7 @@ def le_jeu():
         # la machine joue (sans tricher cad sans tenir compte de ta_main !)
         ma_main = choix[randint(0, len(choix)-1)]
         # arbitrage, affichages, calcul des scores à compléter....
-        if resultat(ma_main, ta_main) is ma_main:
+        if resultat(ma_main, ta_main) == ma_main:
             mon_score += 1
         else:
             ton_score += 1
