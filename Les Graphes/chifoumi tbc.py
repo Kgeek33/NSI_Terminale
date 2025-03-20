@@ -15,7 +15,8 @@ def plus_fort(s1, s2):
 
 
 def resultat(s1, s2):
-    pass
+    if not plus_fort(s1, s2) == plus_fort(s2, s1):
+        return plus_fort(s1, s2)
     return "nul"
 
 
