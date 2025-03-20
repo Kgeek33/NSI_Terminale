@@ -25,7 +25,6 @@ verbe[('Lézard', 'le Papier')] = 'mange'
 g_chifoumi.ajouter_arc('Lézard', 'Spock')
 verbe[('Lézard', 'Spock')] = 'empoisonne'
 
-
 def plus_fort(s1, s2):
     pass
     return "a completer"
