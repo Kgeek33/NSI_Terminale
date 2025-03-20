@@ -12,7 +12,6 @@ g_chifoumi.ajouter_arc('le Papier', 'la Pierre')
 verbe[('le Papier', 'la Pierre')] = 'casse'
 
 
-
 def plus_fort(s1, s2):
     pass
     return "a completer"
