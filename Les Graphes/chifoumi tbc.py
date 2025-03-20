@@ -38,11 +38,14 @@ def le_jeu():
         # la machine joue (sans tricher cad sans tenir compte de ta_main !)
         ma_main = choix[randint(0, len(choix)-1)]
         # arbitrage, affichages, calcul des scores à compléter....
-
+        if resultat(ma_main, ta_main) is ma_main:
+            mon_score += 1
+        else:
+            ton_score += 1
         # affichage du nouveau score
         print("ton score :", ton_score, "--- mon score :", mon_score)
 
-    if "a completer":
+    if mon_score < ton_score:
         # la machine a gagné
         print("perdu !")
     else:
