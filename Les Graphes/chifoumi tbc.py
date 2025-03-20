@@ -36,7 +36,9 @@ def plus_fort(s1, s2):
 
 def resultat(s1, s2):
     if plus_fort(s1, s2) is True:
-        return print(f"{s1} {verbe} {s2}")
+        return f"{s1} {verbe[(s1, s2)]} {s2}"
+    if plus_fort(s1, s2) is False:
+        return f"{s2} {verbe[(s2, s1)]} {s1}"
     return "nul"
 
 
@@ -45,24 +47,27 @@ choix = [s for s in g_chifoumi.sommets()]
 
 def le_jeu():
     # initiailisation des scores
-    ton_score = None
-    mon_score = None
+    ton_score = 0
+    mon_score = 0
     # tant que personne n'est à 3 points
-    while "à completer":
+    while mon_score < 3 or ton_score < 3:
         # le joueur joue
         ta_main = str(input("ta main ? "))
         # ta_main n'est pas une main valide
-        while "à completer":
+        while ta_main not in choix:
             ta_main = str(input(" fais une main qui existe, stp : "))
 
         # la machine joue (sans tricher cad sans tenir compte de ta_main !)
         ma_main = choix[randint(0, len(choix)-1)]
         # arbitrage, affichages, calcul des scores à compléter....
-
+        if resultat(ma_main, ta_main) == ma_main:
+            mon_score += 1
+        else:
+            ton_score += 1
         # affichage du nouveau score
         print("ton score :", ton_score, "--- mon score :", mon_score)
 
-    if "a completer":
+    if mon_score < ton_score:
         # la machine a gagné
         print("perdu !")
     else:
