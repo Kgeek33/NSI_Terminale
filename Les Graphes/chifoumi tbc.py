@@ -49,8 +49,9 @@ def le_jeu():
     # initiailisation des scores
     ton_score = 0
     mon_score = 0
+    nb_manches = 1
     # tant que personne n'est à 3 points
-    while mon_score < 3 or ton_score < 3:
+    while nb_manches < 5 and (mon_score < 3 or ton_score < 3):
         # le joueur joue
         ta_main = str(input("ta main ? "))
         # ta_main n'est pas une main valide
@@ -72,6 +73,7 @@ def le_jeu():
         print("perdu !")
     else:
         print("Gagné")
+    nb_manches += 1
 
 
 testing = True
