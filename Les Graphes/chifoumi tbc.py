@@ -29,6 +29,8 @@ verbe[("Lézard", "Spock")] = "empoisonne"
 def plus_fort(s1, s2):
     if s2 in g_chifoumi.voisins(s1):
         return True
+    if s1 == s2:
+        return None
     return False
 
 
