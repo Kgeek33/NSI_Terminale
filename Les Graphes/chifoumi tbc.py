@@ -15,7 +15,7 @@ def plus_fort(s1, s2):
 
 
 def resultat(s1, s2):
-    if not plus_fort(s1, s2) == plus_fort(s2, s1):
+    if plus_fort(s1, s2) != plus_fort(s2, s1):
         return plus_fort(s1, s2)
     return "nul"
 
@@ -25,13 +25,14 @@ choix = [s for s in g_chifoumi.sommets()]
 
 def le_jeu():
     # initiailisation des scores
-
+    ton_score = 0
+    mon_score = 0
     # tant que personne n'est à 3 points
-    while "à completer":
+    while mon_score < 3 or ton_score < 3:
         # le joueur joue
         ta_main = str(input("ta main ? "))
         # ta_main n'est pas une main valide
-        while "à completer":
+        while ta_main not in choix:
             ta_main = str(input(" fais une main qui existe, stp : "))
 
         # la machine joue (sans tricher cad sans tenir compte de ta_main !)
