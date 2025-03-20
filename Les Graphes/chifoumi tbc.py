@@ -15,7 +15,7 @@ verbe[("Spock", "la Pierre")] = "vaporise"
 g_chifoumi.ajouter_arc("Spock", "les Ciseaux")
 verbe[("Spock", "les Ciseaux")] = "écrabouille"
 g_chifoumi.ajouter_arc("le Papier", "Spock")
-verbe[("Spock", "la Pierre")] = "discrédite"
+verbe[("le Papier", "Spock")] = "discrédite"
 g_chifoumi.ajouter_arc("les Ciseaux", "Lézard")
 verbe[("les Ciseaux", "Lézard")] = "décapitent"
 g_chifoumi.ajouter_arc("la Pierre", "Lézard")
