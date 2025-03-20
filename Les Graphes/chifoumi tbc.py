@@ -6,7 +6,11 @@ g_chifoumi = Graphe()
 verbe = {}
 g_chifoumi.ajouter_arc('la Pierre', 'les Ciseaux')
 verbe[('la Pierre', 'les Ciseaux')] = 'casse'
-# construction du graphe a completer...
+g_chifoumi.ajouter_arc('les Ciseaux', 'le Papier')
+verbe[('les Ciseaux', 'le Papier')] = 'casse'
+g_chifoumi.ajouter_arc('le Papier', 'la Pierre')
+verbe[('le Papier', 'la Pierre')] = 'casse'
+
 
 
 def plus_fort(s1, s2):
@@ -24,7 +28,8 @@ choix = [s for s in g_chifoumi.sommets()]
 
 def le_jeu():
     # initiailisation des scores
-
+    ton_score = 
+    mon_score = 
     # tant que personne n'est à 3 points
     while "à completer":
         # le joueur joue
