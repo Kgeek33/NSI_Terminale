@@ -28,8 +28,8 @@ choix = [s for s in g_chifoumi.sommets()]
 
 def le_jeu():
     # initiailisation des scores
-    ton_score = 
-    mon_score = 
+    ton_score = None
+    mon_score = None
     # tant que personne n'est à 3 points
     while "à completer":
         # le joueur joue
