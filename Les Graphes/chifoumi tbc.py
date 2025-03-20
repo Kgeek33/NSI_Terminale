@@ -7,7 +7,7 @@ verbe = {}
 g_chifoumi.ajouter_arc("la Pierre", "les Ciseaux")
 verbe[("la Pierre", "les Ciseaux")] = "casse"
 g_chifoumi.ajouter_arc("les Ciseaux", "le Papier")
-verbe[("les Ciseaux", "le Papier")] = "coupe"
+verbe[("les Ciseaux", "le Papier")] = "coupent"
 g_chifoumi.ajouter_arc("le Papier", "la Pierre")
 verbe[("le Papier", "la Pierre")] = "enveloppe"
 g_chifoumi.ajouter_arc("Spock", "la Pierre")
@@ -17,7 +17,7 @@ verbe[("Spock", "les Ciseaux")] = "écrabouille"
 g_chifoumi.ajouter_arc("le Papier", "Spock")
 verbe[("Spock", "la Pierre")] = "discrédite"
 g_chifoumi.ajouter_arc("les Ciseaux", "Lézard")
-verbe[("les Ciseaux", "Lézard")] = "décapite"
+verbe[("les Ciseaux", "Lézard")] = "décapitent"
 g_chifoumi.ajouter_arc("la Pierre", "Lézard")
 verbe[("la Pierre", "Lézard")] = "écrase"
 g_chifoumi.ajouter_arc("Lézard", "le Papier")
@@ -33,7 +33,8 @@ def plus_fort(s1, s2):
 
 
 def resultat(s1, s2):
-    pass
+    if plus_fort(s1, s2) is True:
+        return print(f"{s1} {verbe} {s2}")
     return "nul"
 
 
