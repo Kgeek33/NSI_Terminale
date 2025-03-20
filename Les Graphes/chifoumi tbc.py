@@ -4,26 +4,27 @@ from graphe_dictionnaire_adjacence_tbc import Graphe
 
 g_chifoumi = Graphe()
 verbe = {}
-g_chifoumi.ajouter_arc('la Pierre', 'les Ciseaux')
-verbe[('la Pierre', 'les Ciseaux')] = 'casse'
-g_chifoumi.ajouter_arc('les Ciseaux', 'le Papier')
-verbe[('les Ciseaux', 'le Papier')] = 'coupe'
-g_chifoumi.ajouter_arc('le Papier', 'la Pierre')
-verbe[('le Papier', 'la Pierre')] = 'enveloppe'
-g_chifoumi.ajouter_arc('Spock', 'la Pierre')
-verbe[('Spock', 'la Pierre')] = 'vaporise'
-g_chifoumi.ajouter_arc('Spock', 'les Ciseaux')
-verbe[('Spock', 'les Ciseaux')] = 'écrabouille'
-g_chifoumi.ajouter_arc('le Papier', 'Spock')
-verbe[('Spock', 'la Pierre')] = 'discrédite'
-g_chifoumi.ajouter_arc('les Ciseaux', 'Lézard')
-verbe[('les Ciseaux', 'Lézard')] = 'décapite'
-g_chifoumi.ajouter_arc('la Pierre', 'Lézard')
-verbe[('la Pierre', 'Lézard')] = 'écrase'
-g_chifoumi.ajouter_arc('Lézard', 'le Papier')
-verbe[('Lézard', 'le Papier')] = 'mange'
-g_chifoumi.ajouter_arc('Lézard', 'Spock')
-verbe[('Lézard', 'Spock')] = 'empoisonne'
+g_chifoumi.ajouter_arc("la Pierre", "les Ciseaux")
+verbe[("la Pierre", "les Ciseaux")] = "casse"
+g_chifoumi.ajouter_arc("les Ciseaux", "le Papier")
+verbe[("les Ciseaux", "le Papier")] = "coupe"
+g_chifoumi.ajouter_arc("le Papier", "la Pierre")
+verbe[("le Papier", "la Pierre")] = "enveloppe"
+g_chifoumi.ajouter_arc("Spock", "la Pierre")
+verbe[("Spock", "la Pierre")] = "vaporise"
+g_chifoumi.ajouter_arc("Spock", "les Ciseaux")
+verbe[("Spock", "les Ciseaux")] = "écrabouille"
+g_chifoumi.ajouter_arc("le Papier", "Spock")
+verbe[("Spock", "la Pierre")] = "discrédite"
+g_chifoumi.ajouter_arc("les Ciseaux", "Lézard")
+verbe[("les Ciseaux", "Lézard")] = "décapite"
+g_chifoumi.ajouter_arc("la Pierre", "Lézard")
+verbe[("la Pierre", "Lézard")] = "écrase"
+g_chifoumi.ajouter_arc("Lézard", "le Papier")
+verbe[("Lézard", "le Papier")] = "mange"
+g_chifoumi.ajouter_arc("Lézard", "Spock")
+verbe[("Lézard", "Spock")] = "empoisonne"
+
 
 def plus_fort(s1, s2):
     if s2 in g_chifoumi.voisins(s1):
@@ -66,25 +67,25 @@ def le_jeu():
 
 
 testing = True
-if __name__ == '__main__' and testing:
+if __name__ == "__main__" and testing:
     print(g_chifoumi.adj)
-    s = 'la Pierre'
-    t = 'les Ciseaux'
+    s = "la Pierre"
+    t = "les Ciseaux"
     print(s, "gagne contre", t, "?", plus_fort(s, t))
-    s = 'les Ciseaux'
-    t = 'la Pierre'
+    s = "les Ciseaux"
+    t = "la Pierre"
     print(s, "gagne contre", t, "?", plus_fort(s, t))
-    s = 'le Papier'
-    t = 'la Pierre'
+    s = "le Papier"
+    t = "la Pierre"
     print(s, "gagne contre", t, "?", plus_fort(s, t))
-    s = 'la Pierre'
-    t = 'le Papier'
+    s = "la Pierre"
+    t = "le Papier"
     print(s, "gagne contre", t, "?", plus_fort(s, t))
-    s = 'les Ciseaux'
-    t = 'le Papier'
+    s = "les Ciseaux"
+    t = "le Papier"
     print(s, "gagne contre", t, "?", plus_fort(s, t))
-    s = 'le Papier'
-    t = 'les Ciseaux'
+    s = "le Papier"
+    t = "les Ciseaux"
     print(s, "gagne contre", t, "?", plus_fort(s, t))
 
     for s in g_chifoumi.sommets():
