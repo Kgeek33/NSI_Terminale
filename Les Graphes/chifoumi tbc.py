@@ -35,8 +35,10 @@ def plus_fort(s1, s2):
 
 
 def resultat(s1, s2):
-    if plus_fort(s1, s2) is not plus_fort(s2, s1):
-        return plus_fort(s1, s2)
+    if plus_fort(s1, s2) is True:
+        return f"{s1} {verbe[(s1, s2)]} {s2}"
+    if plus_fort(s1, s2) is False:
+        return f"{s2} {verbe[(s2, s1)]} {s1}"
     return "nul"
 
 
