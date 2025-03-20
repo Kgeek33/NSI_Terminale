@@ -10,8 +10,9 @@ verbe[('la Pierre', 'les Ciseaux')] = 'casse'
 
 
 def plus_fort(s1, s2):
-    pass
-    return "a completer"
+    if s2 in g_chifoumi[s1]:
+        return s1
+    return s2
 
 
 def resultat(s1, s2):
