@@ -10,7 +10,7 @@ verbe[('la Pierre', 'les Ciseaux')] = 'casse'
 
 
 def plus_fort(s1, s2):
-    if s2 in g_chifoumi[s1]:
+    if s2 in g_chifoumi.voisins(s1):
         return s1
     return s2
 
