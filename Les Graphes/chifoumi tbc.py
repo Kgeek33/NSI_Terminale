@@ -7,7 +7,7 @@ verbe = {}
 g_chifoumi.ajouter_arc("la Pierre", "les Ciseaux")
 verbe[("la Pierre", "les Ciseaux")] = "casse"
 g_chifoumi.ajouter_arc("les Ciseaux", "le Papier")
-verbe[("les Ciseaux", "le Papier")] = "coupe"
+verbe[("les Ciseaux", "le Papier")] = "coupent"
 g_chifoumi.ajouter_arc("le Papier", "la Pierre")
 verbe[("le Papier", "la Pierre")] = "enveloppe"
 g_chifoumi.ajouter_arc("Spock", "la Pierre")
@@ -15,9 +15,9 @@ verbe[("Spock", "la Pierre")] = "vaporise"
 g_chifoumi.ajouter_arc("Spock", "les Ciseaux")
 verbe[("Spock", "les Ciseaux")] = "écrabouille"
 g_chifoumi.ajouter_arc("le Papier", "Spock")
-verbe[("Spock", "la Pierre")] = "discrédite"
+verbe[("le Papier", "Spock")] = "discrédite"
 g_chifoumi.ajouter_arc("les Ciseaux", "Lézard")
-verbe[("les Ciseaux", "Lézard")] = "décapite"
+verbe[("les Ciseaux", "Lézard")] = "décapitent"
 g_chifoumi.ajouter_arc("la Pierre", "Lézard")
 verbe[("la Pierre", "Lézard")] = "écrase"
 g_chifoumi.ajouter_arc("Lézard", "le Papier")
