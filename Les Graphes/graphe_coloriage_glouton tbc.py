@@ -31,8 +31,14 @@ def colorier(g: Graphe) -> tuple[dict, int]:
     associées à chaque sommet (clé), ainsi que
     le nb total de couleurs utilisées
     """
+    d = {}
+    nb_couleurs = 0
+    for key in g.sommets():
+        if d[key] == d[]
 
-    return "à compléter", "à compléter"
+        else:
+            d[key] = 
+    return (d, nb_couleurs)
 
 
 g_regions = Graphe()
@@ -61,7 +67,7 @@ g_regions.ajouter_arrete("Nouvelle-Aquitaine", "Occitanie")
 g_regions.ajouter_arrete("Occitanie", "Auvergne-Rhône-Alpes")
 
 g_regions.affiche()
-# # print("{} régions, {} arêtes".format(
+# print("{} régions, {} arêtes".format(
 #     g_regions.ordre(), int(g_regions.nb_arcs_db_sens())))
 
 print()
