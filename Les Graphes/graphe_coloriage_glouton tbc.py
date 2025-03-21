@@ -1,16 +1,16 @@
 # from une_file_avec_une_liste_chainée import *
 from graphe_dictionnaire_adjacence_tbc import Graphe
+from random import randint
+
+couleurs = [1, 2, 3, 4]
 
 
 def valide(g: Graphe, dico_loriage: dict[str, int]) -> bool:
-    for key in dico_loriage:
-        LESvoisins = g.voisins(key)
-        LEScouleurs = []
-        for LEvoisin in LESvoisins:
-            if dico_loriage[LEvoisin] in LEScouleurs:
-                return False
-            else:
-                LEScouleurs.append(dico_loriage[LEvoisin])
+    for s in g.sommets():
+        for v in g.voisins(s):
+            if s in dico_loriage and v in dico_loriage:
+                if dico_loriage[s] == dico_loriage[v]:
+                    return False
     return True
 
 
@@ -32,8 +32,17 @@ def colorier(g: Graphe) -> tuple[dict, int]:
     associées à chaque sommet (clé), ainsi que
     le nb total de couleurs utilisées
     """
+    d = {}
+    nb_couleurs = len(couleurs)
+    for key in g.sommets():
+        for v in g.voisins(key):
+            if d[key] == d[v]:
+                while d[key] == d[v]:
+                    d[key] = randint(couleurs[0], couleurs[len(couleurs)-1])
+        else:
+            d[key] = randint(couleurs[0], couleurs[len(couleurs)-1])
 
-    return "à compléter", "à compléter"
+    return (d, nb_couleurs)
 
 
 g_regions = Graphe()
@@ -68,6 +77,38 @@ g_regions.affiche()
 print()
 print("les régions:", g_regions.sommets())
 
-print()
-couleurs, nb_couleurs = colorier(g_regions)
-print("coloriage :\n", couleurs, "\nen", nb_couleurs, "couleurs")
+
+dicotest = {
+    "Centre-Val de Loire": 1,
+    "Nouvelle-Aquitaine": 2,
+    "Pays de la Loire": 3,
+    "Auvergne-Rhône-Alpes": 4,
+    "Normandie": 1,
+    "Île-de-France": 2,
+    "Bougone-Franche-Comte": 3,
+    "Bretagne": 4,
+    "Hauts de-France": 1,
+    "Grand Est": 2,
+    "Provence-Ales-Côte-d'Azure": 3,
+    "Occitanie": 4,
+}
+
+dicotest2 = {
+    "Centre-Val de Loire": 4,
+    "Nouvelle-Aquitaine": 1,
+    "Pays de la Loire": 3,
+    "Auvergne-Rhône-Alpes": 3,
+    "Normandie": 2,
+    "Île-de-France": 3,
+    "Bougone-Franche-Comte": 2,
+    "Bretagne": 1,
+    "Hauts de-France": 4,
+    "Grand Est": 1,
+    "Provence-Ales-Côte-d'Azure": 4,
+    "Occitanie": 2,
+}
+
+print(valide(g_regions, dicotest))
+print(valide(g_regions, dicotest2))
+# couleurs, nb_couleurs = colorier(g_regions)
+# print("coloriage :\n", couleurs, "\nen", nb_couleurs, "couleurs")
