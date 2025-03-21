@@ -13,7 +13,7 @@ def min_exclu(voisins, coloriage):
     return "à compléter"
 
 
-def colorier(g):
+def colorier(g: Graphe) -> tuple[dict, int]:
     """
     colorie le graphe g avec un algorithme glouton
     renvoie le dctionnaire des couleurs (valeur)
@@ -21,15 +21,34 @@ def colorier(g):
     le nb total de couleurs utilisées
     """
 
-    "à compléter"
     return "à compléter", "à compléter"
 
 
 g_regions = Graphe()
-g_regions.ajouter_arete('Centre-Val de Loire', 'Nouvelle-Aquitaine')
-g_regions.ajouter_arete('Nouvelle-Aquitaine', 'Pays de la Loire')
-g_regions.ajouter_arete('Nouvelle-Aquitaine', 'Auvergne-Rhône-Alpes')
-g_regions.ajouter_arete('Nouvelle-Aquitaine', 'Occitanie')
+g_regions.ajouter_arrete("Centre-Val de Loire", "Nouvelle-Aquitaine")
+g_regions.ajouter_arrete("Nouvelle-Aquitaine", "Pays de la Loire")
+g_regions.ajouter_arrete("Nouvelle-Aquitaine", "Auvergne-Rhône-Alpes")
+g_regions.ajouter_arrete("Centre-Val de Loire", "Pays de la Loire")
+g_regions.ajouter_arrete("Centre-Val de Loire", "Normandie")
+g_regions.ajouter_arrete("Centre-Val de Loire", "Île-de-France")
+g_regions.ajouter_arrete("Centre-Val de Loire", "Auvergne-Rhône-Alpes")
+g_regions.ajouter_arrete("Centre-Val de Loire", "Bougone-Franche-Comte")
+g_regions.ajouter_arrete("Pays de la Loire", "Normandie")
+g_regions.ajouter_arrete("Pays de la Loire", "Bretagne")
+g_regions.ajouter_arrete("Bretagne", "Normandie")
+g_regions.ajouter_arrete("Normandie", "Île-de-France")
+g_regions.ajouter_arrete("Normandie", "Hauts de-France")
+g_regions.ajouter_arrete("Hauts de-France", "Grand Est")
+g_regions.ajouter_arrete("Hauts de-France", "Île-de-France")
+g_regions.ajouter_arrete("Île-de-France", "Grand Est")
+g_regions.ajouter_arrete("Île-de-France", "Bougone-Franche-Comte")
+g_regions.ajouter_arrete("Bougone-Franche-Comte", "Grand Est")
+g_regions.ajouter_arrete("Bougone-Franche-Comte", "Auvergne-Rhône-Alpes")
+g_regions.ajouter_arrete("Auvergne-Rhône-Alpes", "Provence-Ales-Côte-d'Azure")
+g_regions.ajouter_arrete("Provence-Ales-Côte-d'Azure", "Occitanie")
+g_regions.ajouter_arrete("Nouvelle-Aquitaine", "Occitanie")
+g_regions.ajouter_arrete("Occitanie", "Auvergne-Rhône-Alpes")
+
 # a compléter...
 
 
