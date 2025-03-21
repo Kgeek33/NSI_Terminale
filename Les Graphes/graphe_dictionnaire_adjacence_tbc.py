@@ -75,6 +75,14 @@ class Graphe:
         for key in self.adj:
             print(key, "-->", self.voisins(key))
 
+    def nb_arcs_db_sens(self):
+        s = 0
+        for i in range(len(self.adj)):
+            for j in range(len(self.adj[i])):
+                if self.adj[i][j] is True and self.adj[j][i] is True:
+                    s += 1
+        return s//2
+
 
 if __name__ == "__main__":
     g1_test = Graphe()

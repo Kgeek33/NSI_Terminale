@@ -61,12 +61,9 @@ g_regions.ajouter_arrete("Provence-Ales-Côte-d'Azure", "Occitanie")
 g_regions.ajouter_arrete("Nouvelle-Aquitaine", "Occitanie")
 g_regions.ajouter_arrete("Occitanie", "Auvergne-Rhône-Alpes")
 
-# a compléter...
-
-
 g_regions.affiche()
-print("{} régions, {} arêtes".format(
-    g_regions.ordre(), int(g_regions.nb_arcs_db_sens())))
+# print("{} régions, {} arêtes".format(
+#     g_regions.ordre(), int(g_regions.nb_arcs_db_sens())))
 
 print()
 print("les régions:", g_regions.sommets())
