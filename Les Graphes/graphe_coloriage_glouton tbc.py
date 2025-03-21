@@ -1,5 +1,6 @@
 # from une_file_avec_une_liste_chainée import *
 from graphe_dictionnaire_adjacence_tbc import Graphe
+from random import randint
 
 couleurs = [1, 2, 3, 4]
 
@@ -32,10 +33,12 @@ def colorier(g: Graphe) -> tuple[dict, int]:
     le nb total de couleurs utilisées
     """
     d = {}
-    nb_couleurs = 0
+    nb_couleurs = len(couleurs)
     for key in g.sommets():
-        if d[key] == d[]
-
+        for v in g.voisins(key):
+            if d[key] == d[v]:
+                while d[key] == d[v]:
+                    d[key] = randint(couleurs[0], couleurs[len(couleurs)-1])
         else:
             d[key] = 
     return (d, nb_couleurs)
