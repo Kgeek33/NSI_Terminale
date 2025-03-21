@@ -1,16 +1,15 @@
 # from une_file_avec_une_liste_chainée import *
 from graphe_dictionnaire_adjacence_tbc import Graphe
 
+couleurs = [1, 2, 3, 4]
+
 
 def valide(g: Graphe, dico_loriage: dict[str, int]) -> bool:
-    for key in dico_loriage:
-        LESvoisins = g.voisins(key)
-        LEScouleurs = []
-        for LEvoisin in LESvoisins:
-            if dico_loriage[LEvoisin] in LEScouleurs:
-                return False
-            else:
-                LEScouleurs.append(dico_loriage[LEvoisin])
+    for s in g.sommets():
+        for v in g.voisins(s):
+            if s in dico_loriage and v in dico_loriage:
+                if dico_loriage[s] == dico_loriage[v]:
+                    return False
     return True
 
 
@@ -62,12 +61,44 @@ g_regions.ajouter_arrete("Nouvelle-Aquitaine", "Occitanie")
 g_regions.ajouter_arrete("Occitanie", "Auvergne-Rhône-Alpes")
 
 g_regions.affiche()
-# print("{} régions, {} arêtes".format(
+# # print("{} régions, {} arêtes".format(
 #     g_regions.ordre(), int(g_regions.nb_arcs_db_sens())))
 
 print()
 print("les régions:", g_regions.sommets())
 
-print()
-couleurs, nb_couleurs = colorier(g_regions)
-print("coloriage :\n", couleurs, "\nen", nb_couleurs, "couleurs")
+
+dicotest = {
+    "Centre-Val de Loire": 1,
+    "Nouvelle-Aquitaine": 2,
+    "Pays de la Loire": 3,
+    "Auvergne-Rhône-Alpes": 4,
+    "Normandie": 1,
+    "Île-de-France": 2,
+    "Bougone-Franche-Comte": 3,
+    "Bretagne": 4,
+    "Hauts de-France": 1,
+    "Grand Est": 2,
+    "Provence-Ales-Côte-d'Azure": 3,
+    "Occitanie": 4,
+}
+
+dicotest2 = {
+    "Centre-Val de Loire": 4,
+    "Nouvelle-Aquitaine": 1,
+    "Pays de la Loire": 3,
+    "Auvergne-Rhône-Alpes": 3,
+    "Normandie": 2,
+    "Île-de-France": 3,
+    "Bougone-Franche-Comte": 2,
+    "Bretagne": 1,
+    "Hauts de-France": 4,
+    "Grand Est": 1,
+    "Provence-Ales-Côte-d'Azure": 4,
+    "Occitanie": 2,
+}
+
+print(valide(g_regions, dicotest))
+print(valide(g_regions, dicotest2))
+# couleurs, nb_couleurs = colorier(g_regions)
+# print("coloriage :\n", couleurs, "\nen", nb_couleurs, "couleurs")
