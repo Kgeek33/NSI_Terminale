@@ -40,7 +40,8 @@ def colorier(g: Graphe) -> tuple[dict, int]:
                 while d[key] == d[v]:
                     d[key] = randint(couleurs[0], couleurs[len(couleurs)-1])
         else:
-            d[key] = 
+            d[key] = randint(couleurs[0], couleurs[len(couleurs)-1])
+            
     return (d, nb_couleurs)
 
 
