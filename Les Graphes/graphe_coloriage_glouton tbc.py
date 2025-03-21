@@ -2,6 +2,18 @@
 from graphe_dictionnaire_adjacence_tbc import Graphe
 
 
+def valide(g: Graphe, dico_loriage: dict[str, int]) -> bool:
+    for key in dico_loriage:
+        LESvoisins = g.voisins(key)
+        LEScouleurs = []
+        for LEvoisin in LESvoisins:
+            if dico_loriage[LEvoisin] in LEScouleurs:
+                return False
+            else:
+                LEScouleurs.append(dico_loriage[LEvoisin])
+    return True
+
+
 def min_exclu(voisins, coloriage):
     """
     choix glouton de la couleur d'une sommet
