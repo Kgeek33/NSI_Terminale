@@ -58,6 +58,11 @@ Programmation_Orientée_Objet:
 - changed-files:
   - any-glob-to-any-file: Programmation Orientée Objet/**
 
+# Chapitre sur les Protocoles de Routages
+Protocoles_de_Routages:
+- changed-files:
+  - any-glob-to-any-file: Protocoles de Routages/**
+
 # Chapitre sur la Récursivité
 Récursivité:
 - changed-files:
