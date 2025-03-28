@@ -12,7 +12,8 @@ def parcours_profondeur(G: Graphe, sommet) -> list:
             sommets_coches.append(s)
         voisins = G.voisins(s)
         for elm in voisins:
-            pile.empiler(elm)
+            if elm not in sommets_coches:
+                pile.empiler(elm)
     return sommets_coches
 
 
