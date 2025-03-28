@@ -27,6 +27,7 @@ if __name__ == "__main__":
     G_1.ajouter_arc("C", "E")
     G_1.ajouter_arc("C", "F")
     G_1.ajouter_arc("G", "C")
+    G_1.affiche()
     print(parcours_profondeur(G_1, "A"))
 
     G_2 = Graphe()
