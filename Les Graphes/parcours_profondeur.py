@@ -27,6 +27,4 @@ if __name__ == "__main__":
     G_1.ajouter_arrete("C", "E")
     G_1.ajouter_arrete("C", "F")
     G_1.ajouter_arrete("G", "C")
-    G_1.ajouter_arrete("F", "G")
-    G_1.ajouter_arrete("G", "H")
     print(parcours_profondeur(G_1, "A"))
