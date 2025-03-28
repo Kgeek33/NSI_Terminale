@@ -41,4 +41,5 @@ if __name__ == "__main__":
     G_2.ajouter_arrete("E", "G")
     G_2.ajouter_arrete("F", "G")
     G_2.ajouter_arrete("G", "H")
+    G_2.affiche()
     print(parcours_profondeur(G_2, "G"))
