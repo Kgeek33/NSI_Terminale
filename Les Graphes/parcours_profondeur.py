@@ -17,6 +17,19 @@ def parcours_profondeur(G: Graphe, sommet) -> list:
     return sommets_coches
 
 
+# Parcours en prodondeur en version récursive
+def parcours_profondeur_rec(G: Graphe, sommet, sommets_coches=None) -> list:
+    if sommets_coches is None:
+        sommets_coches = []
+    if sommet not in sommets_coches:
+        sommets_coches.append(sommet)
+        voisins = G.voisins(sommet)
+        for elm in voisins:
+            if elm not in sommets_coches:
+                parcours_profondeur_rec(G, elm, sommets_coches)
+    return sommets_coches
+
+
 if __name__ == "__main__":
     G_1 = Graphe()
     G_1.ajouter_arc("A", "B")
@@ -28,7 +41,8 @@ if __name__ == "__main__":
     G_1.ajouter_arc("C", "F")
     G_1.ajouter_arc("G", "C")
     G_1.affiche()
-    print(parcours_profondeur(G_1, "A"))
+    # print(parcours_profondeur(G_1, "A"))
+    print(parcours_profondeur_rec(G_1, "A"))
 
     G_2 = Graphe()
     G_2.ajouter_arrete("A", "B")
@@ -43,3 +57,4 @@ if __name__ == "__main__":
     G_2.ajouter_arrete("G", "H")
     G_2.affiche()
     print(parcours_profondeur(G_2, "G"))
+    print(parcours_profondeur_rec(G_2, "G"))
