@@ -17,6 +17,10 @@ def parcours_profondeur(G: Graphe, sommet) -> list:
     return sommets_coches
 
 
+def existe_chemin(g: Graphe, s, t):
+    return t in parcours_profondeur(g, s)
+
+
 if __name__ == "__main__":
     G_1 = Graphe()
     G_1.ajouter_arc("A", "B")
@@ -43,3 +47,5 @@ if __name__ == "__main__":
     G_2.ajouter_arrete("G", "H")
     G_2.affiche()
     print(parcours_profondeur(G_2, "G"))
+    print(existe_chemin(G_1, "A", "G"))
+    print(existe_chemin(G_1, "A", "F"))
