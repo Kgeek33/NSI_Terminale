@@ -1,48 +1,48 @@
 reviewers:
   defaults:
     - Kgeek33
-  
+
   per_author:
     Kgeek33:
       - SaiKido33
-    
+
     SaiKido33:
       - Kgeek33
       - Lascar-png
       - Skyniraph
 
 files:
-  '.github/**':
+  ".github/**":
     - Kgeek33
-  'Arbres/**':
+  "Arbres/**":
     - SaiKido33
-  'Bases de Données/**':
+  "Bases de Données/**":
     - Lascar-png
-  'Circuits Intégrés/**':
+  "Circuits Intégrés/**":
     - Kgeek33
-  'Diviser pour Régner/**':
+  "Diviser pour Régner/**":
     - Skyniraph
-  'Entraînement Pratique/**':
+  "Entraînement Pratique/**":
     - Kgeek33
-  'Grand Oral/**':
+  "Grand Oral/**":
     - Kgeek33
-  'Les Graphes/**':
+  "Les Graphes/**":
     - Skyniraph
-  'Listes Chainées/**':
+  "Listes Chainées/**":
     - Kgeek33
-  'Modularité/**':
+  "Modularité/**":
     - SaiKido33
-  'Piles et Files/**':
+  "Piles et Files/**":
     - Lascar-png
-  'Processus et Ressources/**':
+  "Processus et Ressources/**":
     - Lascar-png
-  'Programmation Orientée Objet/**':
+  "Programmation Orientée Objet/**":
     - SaiKido33
-  'Protocoles de Routages/**':
+  "Protocoles de Routages/**":
     - Lascar-png
-  'Récursivité/**':
+  "Récursivité/**":
     - Skyniraph
-  'TD Snake/**':
+  "TD Snake/**":
     - Skyniraph
 
 options:
