@@ -1,0 +1,105 @@
+name: 🐍 Flake8 Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  flake8-review:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4.2.2
+
+    - name: ⚙️ Set up Python
+      uses: actions/setup-python@v5.5.0
+      with:
+        python-version: "3.13"
+
+    - name: 📥 Install Flake8
+      run: pip install flake8
+
+    - name: ▶️ Run Flake8 on modified files
+      id: flake8_check
+      run: |
+        git fetch origin main
+        git diff --name-only origin/main | grep "\.py" > modified_files.txt || true
+        files=$(cat modified_files.txt)
+
+        if [ -z "$files" ]; then
+          echo "No Python files modified."
+          echo "flake8_passed=null" >> $GITHUB_ENV
+        else
+          flake8_passed=true
+          > flake8_output.txt
+          while IFS= read -r file; do
+            if [ -f "$file" ]; then
+              echo "Checking $file"
+              flake8 "$file" >> flake8_output.txt || flake8_passed=false
+            else
+              echo "File $file does not exist, skipping."
+            fi
+          done < modified_files.txt
+
+          if [ "$flake8_passed" = true ]; then
+            echo "flake8_passed=true" >> $GITHUB_ENV
+          else
+            echo "flake8_passed=false" >> $GITHUB_ENV
+          fi
+        fi
+
+    - name: ✅ Approve PR if Flake8 passes
+      if: env.flake8_passed == 'true'
+      uses: actions/github-script@v7.0.1
+      with:
+        script: |
+          github.rest.pulls.createReview({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.payload.pull_request.number,
+            event: "APPROVE",
+            body: "Flake8 est content, LGTM 👍"
+          });
+
+          github.rest.actions.createWorkflowDispatch({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            workflow_id: "merge_pr.yml",
+            ref: "main",
+            inputs: {
+              pr_number: context.payload.pull_request.number.toString()
+            }
+          });
+
+    - name: ❌ Request changes with comment(s) if Flake8 fails
+      if: env.flake8_passed == 'false'
+      uses: actions/github-script@v7.0.1
+      with:
+        script: |
+          const fs = require("fs");
+          const flake8Output = fs.readFileSync("flake8_output.txt", "utf8");
+          const comments = [];
+
+          flake8Output.split("\n").forEach((line) => {
+            const match = line.match(/^(.*?):(\d+):(\d+): (.*)$/);
+            if (match) {
+              const [_, path, line, column, message] = match;
+              comments.push({
+                path: path,
+                line: parseInt(line, 10),
+                body: `Column ${column} ➡️ ${message}`
+              });
+            }
+          });
+
+          if (comments.length > 0) {
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              event: "REQUEST_CHANGES",
+              body: "Aïe, Flake8 n'est pas content, corrige ça 👎",
+              comments: comments
+            });
+          }

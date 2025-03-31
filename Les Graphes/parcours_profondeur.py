@@ -29,11 +29,11 @@ def parcours_profondeur_rec(G: Graphe, sommet, sommets_coches=None) -> list:
     return sommets_coches
 
 
-def existe_chemin(g: Graphe, s, t):
+def existe_chemin(g: Graphe, s, t) -> bool:
     return t in parcours_profondeur(g, s)
 
 
-def est_connexe_noriente(g: Graphe):
+def est_connexe_noriente(g: Graphe) -> bool:
     cpt = 0
     s1 = g.sommets()[0]
     for s in g.sommets():

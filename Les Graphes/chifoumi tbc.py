@@ -1,5 +1,4 @@
 from random import randint
-# from une_file_avec_une_liste_chainée import *
 from graphe_dictionnaire_adjacence_tbc import Graphe
 
 g_chifoumi = Graphe()
