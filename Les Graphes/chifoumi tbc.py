@@ -1,5 +1,5 @@
 from random import randint
-from graphe_dictionnaire_adjacence_tbc import Graphe
+from graphe_dictionnaire_adjacence_tbc import Graphe 
 
 g_chifoumi = Graphe()
 verbe = {}
