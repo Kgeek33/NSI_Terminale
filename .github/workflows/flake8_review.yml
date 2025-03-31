@@ -27,7 +27,7 @@ jobs:
         git diff --name-only origin/main | grep '\.py$' > modified_files.txt || true
         echo "files=$(cat modified_files.txt | tr '\n' ' ')" >> $GITHUB_ENV
 
-        - name: ▶️ Run Flake8 on modified files
+    - name: ▶️ Run Flake8 on modified files
       id: flake8_check
       run: |
         if [ -z "$files" ]; then
