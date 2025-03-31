@@ -1,0 +1,64 @@
+name: 🐍 Flake8 Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  flake8-review:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4.2.2
+
+    - name: ⚙️ Set up Python
+      uses: actions/setup-python@v5.5.0
+      with:
+        python-version: "3.13"
+
+    - name: 📥 Install Flake8
+      run: pip install flake8
+
+    - name: 🔍 Find modified Python files
+      id: find_files
+      run: |
+        git fetch origin main
+        git diff --name-only origin/main | grep '\.py$' > modified_files.txt || true
+        echo "files=$(cat modified_files.txt | tr '\n' ' ')" >> $GITHUB_ENV
+
+    - name: ▶️ Run Flake8 on modified files
+      id: flake8_check
+      run: |
+        if [ -z "$files" ]; then
+          echo "No Python files modified."
+          echo "flake8_passed=true" >> $GITHUB_ENV
+        else
+          flake8 $files || echo "flake8_passed=false" >> $GITHUB_ENV
+        fi
+
+    - name: ✅ Approve PR if Flake8 passes
+      if: env.flake8_passed == 'true'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.pulls.createReview({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.payload.pull_request.number,
+            event: 'APPROVE',
+            body: 'Flake8 checks passed. PR approved!'
+          })
+
+    - name: ❌ Request changes if Flake8 fails
+      if: env.flake8_passed != 'true'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.pulls.createReview({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.payload.pull_request.number,
+            event: 'REQUEST_CHANGES',
+            body: 'Flake8 checks failed. Please fix the issues before merging.'
+          })
