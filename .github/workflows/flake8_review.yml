@@ -34,6 +34,7 @@ jobs:
           echo "No Python files modified."
           echo "flake8_passed=true" >> $GITHUB_ENV
         else
+          ls -alp
           valid_files=""
           for file in "$files"; do
             echo "$file"
