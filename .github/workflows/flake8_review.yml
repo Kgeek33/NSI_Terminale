@@ -24,7 +24,7 @@ jobs:
       id: flake8_check
       run: |
         git fetch origin main
-        git diff --name-only origin/main | grep '\.py' > modified_files.txt || true
+        git diff --name-only origin/main | grep "\.py" > modified_files.txt || true
         files=$(cat modified_files.txt)
 
         if [ -z "$files" ]; then
@@ -58,8 +58,8 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: context.payload.pull_request.number,
-            event: 'APPROVE',
-            body: 'Flake8 est content, LGTM 👍'
+            event: "APPROVE",
+            body: "Flake8 est content, LGTM 👍"
           })
 
     - name: ❌ Request changes with comment(s) if Flake8 fails
@@ -67,11 +67,11 @@ jobs:
       uses: actions/github-script@v7.0.1
       with:
         script: |
-          const fs = require('fs');
-          const flake8Output = fs.readFileSync('flake8_output.txt', 'utf8');
+          const fs = require("fs");
+          const flake8Output = fs.readFileSync("flake8_output.txt", "utf8");
           const comments = [];
 
-          flake8Output.split('\n').forEach(line => {
+          flake8Output.split("\n").forEach(line => {
             const match = line.match(/^(.*?):(\d+):(\d+): (.*)$/);
             if (match) {
               const [_, path, line, column, message] = match;
@@ -88,8 +88,8 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number,
-              event: 'REQUEST_CHANGES',
-              body: 'Aïe, Flake8 n'est pas content, corrige ça 👎'
+              event: "REQUEST_CHANGES",
+              body: "Aïe, Flake8 n"est pas content, corrige ça 👎"
               comments: comments
             });
           }
