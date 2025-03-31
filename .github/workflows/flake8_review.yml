@@ -81,7 +81,7 @@ jobs:
           const flake8Output = fs.readFileSync("flake8_output.txt", "utf8");
           const comments = [];
 
-          flake8Output.split("\n").forEach(line => {
+          flake8Output.split("\n").forEach((line) => {
             const match = line.match(/^(.*?):(\d+):(\d+): (.*)$/);
             if (match) {
               const [_, path, line, column, message] = match;
