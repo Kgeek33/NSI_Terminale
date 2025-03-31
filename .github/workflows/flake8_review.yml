@@ -45,6 +45,7 @@ jobs:
             echo "No valid Python files to check."
             echo "flake8_passed=true" >> $GITHUB_ENV
           else
+            echo $valid_files
             flake8 $valid_files || echo "flake8_passed=false" >> $GITHUB_ENV
           fi
         fi
