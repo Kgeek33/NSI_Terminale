@@ -39,7 +39,7 @@ jobs:
 
     - name: ✅ Approve PR if Flake8 passes
       if: env.flake8_passed == 'true'
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7.0.1
       with:
         script: |
           github.rest.pulls.createReview({
@@ -52,7 +52,7 @@ jobs:
 
     - name: ❌ Request changes if Flake8 fails
       if: env.flake8_passed != 'true'
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7.0.1
       with:
         script: |
           github.rest.pulls.createReview({
