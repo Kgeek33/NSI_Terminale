@@ -33,13 +33,13 @@ def existe_chemin(g: Graphe, s, t):
     return t in parcours_profondeur(g, s)
 
 
-def est_connexe_noriente(g):
+def est_connexe_noriente(g: Graphe):
     cpt = 0
-    s1 = Graphe.sommets(g)[0]
-    for s in Graphe.sommets(g):
+    s1 = g.sommets()[0]
+    for s in g.sommets():
         if s in parcours_profondeur(g, s1):
             cpt += 1
-    if cpt == len(Graphe.sommets(g)):
+    if cpt == len(g.sommets()):
         return True
     return False
 
