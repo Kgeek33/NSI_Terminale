@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     print(existe_chemin(G_1, "A", "G"))
     print(existe_chemin(G_1, "A", "F"))
-    
+
     G_3 = Graphe()
     G_3.ajouter_arrete("A", "B")
     G_3.ajouter_arrete("D", "C")
