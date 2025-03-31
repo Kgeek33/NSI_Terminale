@@ -20,36 +20,18 @@ jobs:
     - name: 📥 Install Flake8
       run: pip install flake8
 
-    - name: 🔍 Find modified Python files
-      id: find_files
-      run: |
-        git fetch origin main
-        git diff --name-only origin/main | grep '\.py' > modified_files.txt || true
-        echo "files=$(cat modified_files.txt | sed 's/.*/\"&\"/' | tr '\n' ' ')" >> $GITHUB_ENV
-
     - name: ▶️ Run Flake8 on modified files
       id: flake8_check
       run: |
+        git fetch origin main
+        git diff --name-only origin/main | grep '\.py' > modified_files.txt || true
+        files=$(cat modified_files.txt | sed 's/.*/\"&\"/')
+
         if [ -z "$files" ]; then
           echo "No Python files modified."
           echo "flake8_passed=true" >> $GITHUB_ENV
         else
-          ls -alp
-          valid_files=""
-          for file in "$files"; do
-            echo "$file"
-            if [ -f "$file" ]; then
-              valid_files="$valid_files $file"
-            fi
-          done
-
-          if [ -z "$valid_files" ]; then
-            echo "No valid Python files to check."
-            echo "flake8_passed=null" >> $GITHUB_ENV
-          else
-            echo $valid_files
-            flake8 $valid_files || echo "flake8_passed=false" >> $GITHUB_ENV
-          fi
+          flake8 files || echo "flake8_passed=false" >> $GITHUB_ENV
         fi
 
     - name: ✅ Approve PR if Flake8 passes
