@@ -89,7 +89,7 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number,
               event: "REQUEST_CHANGES",
-              body: "Aïe, Flake8 n"est pas content, corrige ça 👎"
+              body: "Aïe, Flake8 n'est pas content, corrige ça 👎"
               comments: comments
             });
           }
