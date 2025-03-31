@@ -17,7 +17,7 @@ def parcours_profondeur(G: Graphe, sommet) -> list:
     return sommets_coches
 
 
-def parcours_profondeur_rec(G: Graphe, sommet, sommets_coches = None) -> list:
+def parcours_profondeur_rec(G: Graphe, sommet, sommets_coches=None) -> list:
     if sommets_coches is None:
         sommets_coches = []
     if sommet not in sommets_coches:
