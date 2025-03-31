@@ -33,6 +33,17 @@ def existe_chemin(g: Graphe, s, t):
     return t in parcours_profondeur(g, s)
 
 
+def est_connexe_noriente(g: Graphe):
+    cpt = 0
+    s1 = g.sommets()[0]
+    for s in g.sommets():
+        if s in parcours_profondeur(g, s1):
+            cpt += 1
+    if cpt == len(g.sommets()):
+        return True
+    return False
+
+
 if __name__ == "__main__":
     G_1 = Graphe()
     G_1.ajouter_arc("A", "B")
@@ -61,6 +72,14 @@ if __name__ == "__main__":
     G_2.affiche()
     print(parcours_profondeur(G_2, "G"))
     print(parcours_profondeur_rec(G_2, "G"))
+    print(parcours_profondeur_rec(G_2, "A"))
 
     print(existe_chemin(G_1, "A", "G"))
     print(existe_chemin(G_1, "A", "F"))
+
+    G_3 = Graphe()
+    G_3.ajouter_arrete("A", "B")
+    G_3.ajouter_arrete("D", "C")
+    G_3.affiche()
+    print(est_connexe_noriente(G_2))
+    print(est_connexe_noriente(G_3))
