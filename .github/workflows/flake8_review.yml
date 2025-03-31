@@ -27,14 +27,26 @@ jobs:
         git diff --name-only origin/main | grep '\.py$' > modified_files.txt || true
         echo "files=$(cat modified_files.txt | tr '\n' ' ')" >> $GITHUB_ENV
 
-    - name: ▶️ Run Flake8 on modified files
+        - name: ▶️ Run Flake8 on modified files
       id: flake8_check
       run: |
         if [ -z "$files" ]; then
           echo "No Python files modified."
           echo "flake8_passed=true" >> $GITHUB_ENV
         else
-          flake8 $files || echo "flake8_passed=false" >> $GITHUB_ENV
+          valid_files=""
+          for file in $files; do
+            if [ -f "$file" ]; then
+              valid_files="$valid_files $file"
+            fi
+          done
+
+          if [ -z "$valid_files" ]; then
+            echo "No valid Python files to check."
+            echo "flake8_passed=true" >> $GITHUB_ENV
+          else
+            flake8 $valid_files || echo "flake8_passed=false" >> $GITHUB_ENV
+          fi
         fi
 
     - name: ✅ Approve PR if Flake8 passes
