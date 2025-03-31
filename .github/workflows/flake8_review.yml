@@ -59,7 +59,7 @@ jobs:
             repo: context.repo.repo,
             pull_number: context.payload.pull_request.number,
             event: 'APPROVE',
-            body: 'Flake8 checks passed. PR approved!'
+            body: 'Flake8 est content, LGTM 👍'
           })
 
     - name: ❌ Request changes with comment(s) if Flake8 fails
@@ -78,7 +78,7 @@ jobs:
               comments.push({
                 path: path,
                 line: parseInt(line, 10),
-                body: `Flake8: ${message}`
+                body: `Column ${column} ➡️ ${message}`
               });
             }
           });
@@ -89,6 +89,7 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number,
               event: 'REQUEST_CHANGES',
+              body: 'Aïe, Flake8 n'est pas content, corrige ça 👎'
               comments: comments
             });
           }
