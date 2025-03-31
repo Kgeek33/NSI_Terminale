@@ -31,7 +31,7 @@ jobs:
           echo "No Python files modified."
           echo "flake8_passed=true" >> $GITHUB_ENV
         else
-          flake8 files || echo "flake8_passed=false" >> $GITHUB_ENV
+          flake8 $files || echo "flake8_passed=false" >> $GITHUB_ENV
         fi
 
     - name: ✅ Approve PR if Flake8 passes
