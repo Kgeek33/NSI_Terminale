@@ -60,7 +60,17 @@ jobs:
             pull_number: context.payload.pull_request.number,
             event: "APPROVE",
             body: "Flake8 est content, LGTM 👍"
-          })
+          });
+
+          github.rest.actions.createWorkflowDispatch({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            workflow_id: "merge_pr.yml",
+            ref: "main",
+            inputs: {
+              pr_number: context.payload.pull_request.number.toString()
+            }
+          });
 
     - name: ❌ Request changes with comment(s) if Flake8 fails
       if: env.flake8_passed == 'false'
