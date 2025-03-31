@@ -36,6 +36,7 @@ jobs:
         else
           valid_files=""
           for file in $files; do
+            echo "$file"
             if [ -f "$file" ]; then
               valid_files="$valid_files $file"
             fi
@@ -43,7 +44,7 @@ jobs:
 
           if [ -z "$valid_files" ]; then
             echo "No valid Python files to check."
-            echo "flake8_passed=true" >> $GITHUB_ENV
+            echo "flake8_passed=null" >> $GITHUB_ENV
           else
             echo $valid_files
             flake8 $valid_files || echo "flake8_passed=false" >> $GITHUB_ENV
