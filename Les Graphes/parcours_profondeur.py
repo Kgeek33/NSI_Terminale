@@ -28,7 +28,8 @@ def parcours_profondeur_rec(G: Graphe, sommet, sommets_coches=None) -> list:
                 parcours_profondeur_rec(G, elm, sommets_coches)
     return sommets_coches
 
- def existe_chemin(g: Graphe, s, t):
+
+def existe_chemin(g: Graphe, s, t):
     return t in parcours_profondeur(g, s)
 
 
