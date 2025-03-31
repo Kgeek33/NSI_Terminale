@@ -32,10 +32,11 @@ jobs:
           echo "flake8_passed=null" >> $GITHUB_ENV
         else
           flake8_passed=true
+          > flake8_output.txt
           while IFS= read -r file; do
             if [ -f "$file" ]; then
               echo "Checking $file"
-              flake8 "$file" || flake8_passed=false
+              flake8 "$file" >> flake8_output.txt || flake8_passed=false
             else
               echo "File $file does not exist, skipping."
             fi
@@ -61,15 +62,33 @@ jobs:
             body: 'Flake8 checks passed. PR approved!'
           })
 
-    - name: ❌ Request changes if Flake8 fails
+    - name: ❌ Request changes with comment(s) if Flake8 fails
       if: env.flake8_passed == 'false'
       uses: actions/github-script@v7.0.1
       with:
         script: |
-          github.rest.pulls.createReview({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            pull_number: context.payload.pull_request.number,
-            event: 'REQUEST_CHANGES',
-            body: 'Flake8 checks failed. Please fix the issues before merging.'
-          })
+          const fs = require('fs');
+          const flake8Output = fs.readFileSync('flake8_output.txt', 'utf8');
+          const comments = [];
+
+          flake8Output.split('\n').forEach(line => {
+            const match = line.match(/^(.*?):(\d+):(\d+): (.*)$/);
+            if (match) {
+              const [_, path, line, column, message] = match;
+              comments.push({
+                path: path,
+                line: parseInt(line, 10),
+                body: `Flake8: ${message}`
+              });
+            }
+          });
+
+          if (comments.length > 0) {
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              event: 'REQUEST_CHANGES',
+              comments: comments
+            });
+          }
