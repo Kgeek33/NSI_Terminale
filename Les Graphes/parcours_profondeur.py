@@ -43,6 +43,7 @@ def est_connexe_noriente(g: Graphe) -> bool:
         return True
     return False
 
+
 def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
     if arcs_parcourus is None:
         arcs_parcourus = {}
