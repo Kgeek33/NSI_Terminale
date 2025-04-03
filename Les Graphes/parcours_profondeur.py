@@ -64,6 +64,8 @@ def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
 
 def chemin(s, d: dict) -> list:
     L = []
+    if s not in d:
+        return
     for elm in d:
         if s not in L:
             L.append(elm)
