@@ -43,6 +43,14 @@ def est_connexe_noriente(g: Graphe) -> bool:
         return True
     return False
 
+
+def est_connexe(g: Graphe):
+    for s in g.sommets():
+        if s not in parcours_profondeur(g, s):
+            return False
+    return True
+
+
 def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
     if arcs_parcourus is None:
         arcs_parcourus = {}
@@ -69,8 +77,9 @@ if __name__ == "__main__":
     print("Existe chemin (A => F) ===>", existe_chemin(G_1, "A", "F"))
     print("Profondeur (itératif) ===>", parcours_profondeur(G_1, "A"))
     print("Profondeur (récursif) ===>", parcours_profondeur_rec(G_1, "A"))
+    print("arc ===>", parcours_profondeur_rec(G_1, "A"))
     print("Est connexe ===>", est_connexe_noriente(G_1))
-    print("Arcs parcourus (A) ===>", parcours_arcs(G_1, "A"))
+    print("Est connexe ===>", est_connexe(G_1))
     print("-------------------------------------------------")
 
     G_2 = Graphe()
@@ -88,7 +97,7 @@ if __name__ == "__main__":
     print("Profondeur (itératif) ===>", parcours_profondeur(G_2, "G"))
     print("Profondeur (récursif) ===>", parcours_profondeur_rec(G_2, "G"))
     print("Est connexe ===>", est_connexe_noriente(G_2))
-    print("Arcs parcourus (G) ===>", parcours_arcs(G_2, "G"))
+    print("Est connexe ===>", est_connexe_noriente(G_2))
     print("-------------------------------------------------")
 
     G_3 = Graphe()
@@ -98,5 +107,6 @@ if __name__ == "__main__":
     print("Profondeur (itératif) ===>", parcours_profondeur(G_3, "A"))
     print("Profondeur (récursif) ===>", parcours_profondeur_rec(G_3, "A"))
     print("Est connexe ===>", est_connexe_noriente(G_3))
-    print("Arcs parcourus (A) ===>", parcours_arcs(G_3, "A"))
     print("-------------------------------------------------")
+
+
