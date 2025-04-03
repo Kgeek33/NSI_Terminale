@@ -62,6 +62,14 @@ def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
     return arcs_parcourus
 
 
+def chemin(s, d: dict) -> list:
+    L = []
+    for elm in d:
+        if s not in L:
+            L.append(elm)
+    return L
+
+
 if __name__ == "__main__":
     G_1 = Graphe()
     G_1.ajouter_arc("A", "B")
@@ -80,6 +88,8 @@ if __name__ == "__main__":
     print("Est connexe ===>", est_connexe_noriente(G_1))
     print("Est connexe ===>", est_connexe(G_1))
     print("Arcs parcourus (A) ===>", parcours_arcs(G_1, "A"))
+    d = parcours_arcs(G_1, 'A')
+    print(chemin('F', d))
     print("-------------------------------------------------")
 
     G_2 = Graphe()
