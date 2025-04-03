@@ -44,6 +44,13 @@ def est_connexe_noriente(g: Graphe) -> bool:
     return False
 
 
+def est_connexe(g: Graphe):
+    for s in g.sommets():
+        if s not in parcours_profondeur(g, s):
+            return False
+    return True
+
+
 def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
     if arcs_parcourus is None:
         arcs_parcourus = {sommet: None}
@@ -71,6 +78,7 @@ if __name__ == "__main__":
     print("Profondeur (itératif) ===>", parcours_profondeur(G_1, "A"))
     print("Profondeur (récursif) ===>", parcours_profondeur_rec(G_1, "A"))
     print("Est connexe ===>", est_connexe_noriente(G_1))
+    print("Est connexe ===>", est_connexe(G_1))
     print("Arcs parcourus (A) ===>", parcours_arcs(G_1, "A"))
     print("-------------------------------------------------")
 
@@ -88,6 +96,7 @@ if __name__ == "__main__":
     G_2.affiche()
     print("Profondeur (itératif) ===>", parcours_profondeur(G_2, "G"))
     print("Profondeur (récursif) ===>", parcours_profondeur_rec(G_2, "G"))
+    print("Est connexe ===>", est_connexe(G_2))
     print("Est connexe ===>", est_connexe_noriente(G_2))
     print("Arcs parcourus (G) ===>", parcours_arcs(G_2, "G"))
     print("-------------------------------------------------")
