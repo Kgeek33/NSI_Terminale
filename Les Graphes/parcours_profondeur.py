@@ -53,7 +53,7 @@ def est_connexe(g: Graphe):
 
 def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
     if arcs_parcourus is None:
-        arcs_parcourus = {}
+        arcs_parcourus = {sommet: None}
     voisins = G.voisins(sommet)
     for elm in voisins:
         if elm not in arcs_parcourus:
