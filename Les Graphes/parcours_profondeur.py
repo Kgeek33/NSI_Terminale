@@ -111,5 +111,3 @@ if __name__ == "__main__":
     print("Est connexe ===>", est_connexe_noriente(G_3))
     print("Arcs parcourus (A) ===>", parcours_arcs(G_3, "A"))
     print("-------------------------------------------------")
-
-
