@@ -111,7 +111,7 @@ if __name__ == "__main__":
     print("Est connexe ===>", est_connexe(G_2))
     print("Est connexe ===>", est_connexe_noriente(G_2))
     print("Arcs parcourus (G) ===>", parcours_arcs(G_2, "G"))
-    print("Chemin ===>", chemin(G_2, parcours_arcs(G_2, "A")))
+    print("Chemin ===>", chemin("F", parcours_arcs(G_2, "A")))
     print("-------------------------------------------------")
 
     G_3 = Graphe()
@@ -122,4 +122,5 @@ if __name__ == "__main__":
     print("Profondeur (récursif) ===>", parcours_profondeur_rec(G_3, "A"))
     print("Est connexe ===>", est_connexe_noriente(G_3))
     print("Arcs parcourus (A) ===>", parcours_arcs(G_3, "A"))
+    print("Chemin ===>", chemin("D", parcours_arcs(G_3, "A")))
     print("-------------------------------------------------")
