@@ -96,7 +96,7 @@ if __name__ == "__main__":
     G_2.affiche()
     print("Profondeur (itératif) ===>", parcours_profondeur(G_2, "G"))
     print("Profondeur (récursif) ===>", parcours_profondeur_rec(G_2, "G"))
-    print("Est connexe ===>", est_connexe_noriente(G_2))
+    print("Est connexe ===>", est_connexe(G_2))
     print("Est connexe ===>", est_connexe_noriente(G_2))
     print("Arcs parcourus (G) ===>", parcours_arcs(G_2, "G"))
     print("-------------------------------------------------")
