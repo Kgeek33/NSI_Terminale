@@ -54,6 +54,17 @@ def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
     return arcs_parcourus
 
 
+def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
+    if arcs_parcourus is None:
+        arcs_parcourus = {}
+    voisins = G.voisins(sommet)
+    for elm in voisins:
+        if elm not in arcs_parcourus:
+            arcs_parcourus[elm] = sommet
+            parcours_arcs(G, elm, arcs_parcourus)
+    return arcs_parcourus
+
+
 if __name__ == "__main__":
     G_1 = Graphe()
     G_1.ajouter_arc("A", "B")
