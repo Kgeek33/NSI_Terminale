@@ -77,7 +77,6 @@ if __name__ == "__main__":
     print("Existe chemin (A => F) ===>", existe_chemin(G_1, "A", "F"))
     print("Profondeur (itératif) ===>", parcours_profondeur(G_1, "A"))
     print("Profondeur (récursif) ===>", parcours_profondeur_rec(G_1, "A"))
-    print("arc ===>", parcours_profondeur_rec(G_1, "A"))
     print("Est connexe ===>", est_connexe_noriente(G_1))
     print("Est connexe ===>", est_connexe(G_1))
     print("Arcs parcourus (A) ===>", parcours_arcs(G_1, "A"))
