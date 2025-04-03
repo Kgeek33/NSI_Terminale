@@ -43,16 +43,6 @@ def est_connexe_noriente(g: Graphe) -> bool:
         return True
     return False
 
-def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
-    if arcs_parcourus is None:
-        arcs_parcourus = {}
-    voisins = G.voisins(sommet)
-    for elm in voisins:
-        if elm not in arcs_parcourus:  # Si l'arc n'a pas encore été parcouru
-            arcs_parcourus[elm] = sommet
-            parcours_arcs(G, elm, arcs_parcourus)
-    return arcs_parcourus
-
 
 def parcours_arcs(G: Graphe, sommet, arcs_parcourus=None) -> dict:
     if arcs_parcourus is None:
