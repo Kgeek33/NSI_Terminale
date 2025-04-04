@@ -21,6 +21,23 @@ def parcours_largeur(G: Graphe, source):
     return sommets_coches
 
 
+def parcours_arcs(G: Graphe, source):
+    sommets_coches = {source: None}
+    la_file_courante = File()
+    la_file_suivante = File()
+    la_file_courante.ajouter(source)
+    while not la_file_courante.est_vide():
+        sommet = la_file_courante.retirer()
+        for voisin in G.voisins(sommet):
+            if voisin not in sommets_coches:
+                sommets_coches[voisin] = sommet
+                la_file_suivante.ajouter(voisin)
+        if la_file_courante.est_vide():
+            la_file_courante = la_file_suivante
+            la_file_suivante = File()
+    return sommets_coches
+
+
 if __name__ == "__main__":
     G_1 = Graphe()
     G_1.ajouter_arc("A", "B")
@@ -32,6 +49,7 @@ if __name__ == "__main__":
     G_1.ajouter_arc("C", "F")
     G_1.ajouter_arc("G", "C")
     print("Largeur (itératif - 'A') ===>", parcours_largeur(G_1, "A"))
+    print("Parcours_arcs (itératif - 'A') ===>", parcours_arcs(G_1, "A"))
     print("-------------------------------------------------")
 
     G_2 = Graphe()
@@ -46,4 +64,5 @@ if __name__ == "__main__":
     G_2.ajouter_arrete("f", "g")
     G_2.ajouter_arrete("g", "h")
     print("Largeur (itératif - 'g') ===>", parcours_largeur(G_2, "g"))
+    print("Parcours_arcs (itératif - 'g') ===>", parcours_arcs(G_2, "g"))
     print("-------------------------------------------------")
