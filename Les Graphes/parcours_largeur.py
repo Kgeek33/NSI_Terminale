@@ -21,7 +21,12 @@ def parcours_largeur(G: Graphe, source):
     return sommets_coches
 
 
-def parcours_largeur_rec(g: Graphe, source, sommets_coches=None, file_a_visiter=None):
+def parcours_largeur_rec(
+    g: Graphe,
+    source,
+    sommets_coches=None,
+    file_a_visiter=None
+):
     if sommets_coches is None:
         sommets_coches = {source: 0}
     if file_a_visiter is None:
