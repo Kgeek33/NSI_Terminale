@@ -23,6 +23,20 @@ jobs:
           config: .github/reviewers.yml
           use_local: false
 
+      - name: 🔁 Re-request review for changes requested
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO="${{ github.repository }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          CHANGES_REQUESTED_REVIEWERS=$(gh api repos/$REPO/pulls/$PR_NUMBER/reviews --jq '[group_by(.user.login)[] | max_by(.submitted_at) | select(.state=="CHANGES_REQUESTED") | .user.login] | unique')
+          
+          for reviewer in $CHANGES_REQUESTED_REVIEWERS; do
+            echo "Re-requesting review from $reviewer"
+            gh api repos/$REPO/pulls/$PR_NUMBER/requested_reviewers \
+              -X POST -f reviewers[]="$reviewer"
+          done
+
       - name: ▶️ Launch workflow Auto Merge
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
