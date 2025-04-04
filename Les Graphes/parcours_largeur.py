@@ -38,6 +38,16 @@ def parcours_arcs(G: Graphe, source):
     return sommets_coches
 
 
+def un_chemin(g: Graphe, depart, arrivee):
+    UNdico = parcours_largeur(g, depart)
+    UNEliste = []
+    for key in UNdico:
+        UNEliste.append(key)
+        if key == arrivee:
+            return UNEliste
+    return UNEliste
+
+
 if __name__ == "__main__":
     G_1 = Graphe()
     G_1.ajouter_arc("A", "B")
@@ -50,6 +60,8 @@ if __name__ == "__main__":
     G_1.ajouter_arc("G", "C")
     print("Largeur (itératif - 'A') ===>", parcours_largeur(G_1, "A"))
     print("Parcours_arcs (itératif - 'A') ===>", parcours_arcs(G_1, "A"))
+    print("Parcours_arcs (itératif - 'A') ===>", parcours_arcs(G_1, "A"))
+    print("Chemin (A - E) ===>", un_chemin(G_1, "A", "E"))
     print("-------------------------------------------------")
 
     G_2 = Graphe()
@@ -65,4 +77,5 @@ if __name__ == "__main__":
     G_2.ajouter_arrete("g", "h")
     print("Largeur (itératif - 'g') ===>", parcours_largeur(G_2, "g"))
     print("Parcours_arcs (itératif - 'g') ===>", parcours_arcs(G_2, "g"))
+    print("Chemin (g - d) ===>", un_chemin(G_2, "g", "d"))
     print("-------------------------------------------------")
