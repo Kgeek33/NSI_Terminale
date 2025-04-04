@@ -64,5 +64,5 @@ if __name__ == "__main__":
     G_2.ajouter_arrete("f", "g")
     G_2.ajouter_arrete("g", "h")
     print("Largeur (itératif - 'g') ===>", parcours_largeur(G_2, "g"))
-    print("Parcours_arcs (itératif - 'A') ===>", parcours_arcs(G_2, "g"))
+    print("Parcours_arcs (itératif - 'g') ===>", parcours_arcs(G_2, "g"))
     print("-------------------------------------------------")
