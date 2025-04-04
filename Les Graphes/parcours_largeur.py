@@ -31,7 +31,7 @@ if __name__ == "__main__":
     G_1.ajouter_arc("C", "E")
     G_1.ajouter_arc("C", "F")
     G_1.ajouter_arc("G", "C")
-    print("Profondeur (itératif - 'A') ===>", parcours_largeur(G_1, "A"))
+    print("Largeur (itératif - 'A') ===>", parcours_largeur(G_1, "A"))
     print("-------------------------------------------------")
 
     G_2 = Graphe()
@@ -45,5 +45,5 @@ if __name__ == "__main__":
     G_2.ajouter_arrete("e", "g")
     G_2.ajouter_arrete("f", "g")
     G_2.ajouter_arrete("g", "h")
-    print("Profondeur (itératif - 'g') ===>", parcours_largeur(G_2, "g"))
+    print("Largeur (itératif - 'g') ===>", parcours_largeur(G_2, "g"))
     print("-------------------------------------------------")
