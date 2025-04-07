@@ -82,7 +82,6 @@ if __name__ == "__main__":
     G_1.ajouter_arc("C", "F")
     G_1.ajouter_arc("G", "C")
     print("Largeur (itératif - 'A') ===>", parcours_largeur(G_1, "A"))
-    print("Largeur (récursif - 'A') ===>", parcours_largeur_rec(G_1, "A"))
     print("Parcours_arcs (itératif - 'A') ===>", parcours_arcs(G_1, "A"))
     print("Parcours_arcs (itératif - 'A') ===>", parcours_arcs(G_1, "A"))
     print("Chemin (A - E) ===>", un_chemin(G_1, "A", "E"))
