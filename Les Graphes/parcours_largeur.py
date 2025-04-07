@@ -71,6 +71,46 @@ def un_chemin(g: Graphe, depart, arrivee):
     return UNEliste
 
 
+def existe_parcours_o_cylinque(G: Graphe, source):
+    sommets_coches = {source: 0}
+    la_file_courante = File()
+    la_file_suivante = File()
+    la_file_courante.ajouter(source)
+    d = 0
+    while not la_file_courante.est_vide():
+        sommet = la_file_courante.retirer()
+        for voisin in G.voisins(sommet):
+            if voisin not in sommets_coches:
+                sommets_coches[voisin] = d + 1
+                la_file_suivante.ajouter(voisin)
+        if la_file_courante.est_vide():
+            la_file_courante = la_file_suivante
+            la_file_suivante = File()
+            d += 1
+    return sommets_coches
+
+
+def existe_cycle(G: Graphe, source):
+    sommets_coches = {source: 0}
+    la_file_courante = File()
+    la_file_suivante = File()
+    la_file_courante.ajouter(source)
+    d = 0
+    while not la_file_courante.est_vide():
+        sommet = la_file_courante.retirer()
+        for voisin in G.voisins(sommet):
+            if voisin not in sommets_coches:
+                sommets_coches[voisin] = d + 1
+                la_file_suivante.ajouter(voisin)
+            elif voisin == source:
+                return True
+        if la_file_courante.est_vide():
+            la_file_courante = la_file_suivante
+            la_file_suivante = File()
+            d += 1
+    return False
+
+
 if __name__ == "__main__":
     G_1 = Graphe()
     G_1.ajouter_arc("A", "B")
@@ -86,6 +126,10 @@ if __name__ == "__main__":
     print("Parcours_arcs (itératif - 'A') ===>", parcours_arcs(G_1, "A"))
     print("Parcours_arcs (itératif - 'A') ===>", parcours_arcs(G_1, "A"))
     print("Chemin (A - E) ===>", un_chemin(G_1, "A", "E"))
+    print("Existe Parcours (A) ===>", existe_parcours_o_cylinque(G_1, "A"))
+    print("Existe Parcours (C) ===>", existe_parcours_o_cylinque(G_1, "C"))
+    print("Existe cycle (A) ===>", existe_cycle(G_1, "A"))
+    print("Existe cycle (C) ===>", existe_cycle(G_1, "C"))
     print("-------------------------------------------------")
 
     G_2 = Graphe()
@@ -103,4 +147,8 @@ if __name__ == "__main__":
     print("Largeur (récursif - 'g') ===>", parcours_largeur_rec(G_2, "g"))
     print("Parcours_arcs (itératif - 'g') ===>", parcours_arcs(G_2, "g"))
     print("Chemin (g - d) ===>", un_chemin(G_2, "g", "d"))
+    print("Existe Parcours (A) ===>", existe_parcours_o_cylinque(G_2, "a"))
+    print("Existe Parcours (C) ===>", existe_parcours_o_cylinque(G_2, "c"))
+    print("Existe cycle (A) ===>", existe_cycle(G_2, "a"))
+    print("Existe cycle (C) ===>", existe_cycle(G_2, "c"))
     print("-------------------------------------------------")
