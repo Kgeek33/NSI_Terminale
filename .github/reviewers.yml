@@ -1,7 +1,7 @@
 reviewers:
   defaults:
     - Kgeek33
-    - Copilot
+    - copilot-pull-request-reviewer
   
   per_author:
     Kgeek33:
