@@ -1,6 +1,7 @@
 reviewers:
   defaults:
     - Kgeek33
+    - Copilot
   
   per_author:
     Kgeek33:
