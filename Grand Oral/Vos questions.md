@@ -23,7 +23,7 @@
 
 | Question | Spécialités |
 | -------- | ----------- |
-| De quelle façon rendre son mot de passe plus sécurisé ? | Maths + NSI |
+| [De quelle façon rendre son mot de passe plus sécurisé ?](https://fr.scribd.com/document/649378591/Grand-Oral-NSI-Mathematiques) | Maths + NSI |
 | ... | ... |
 
 _J'hésite entre :_
