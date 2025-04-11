@@ -2,7 +2,7 @@
 
 | Question | Spécialités |
 | -------- | ----------- |
-| ... | ... |
+| ​     Pourquoi apprendre à calculer des probabilités alors que l'on peut faire des estimations à l'aide d'outils                    numériques?  | NSI |
 | ... | ... |
 
 - Raphaël
