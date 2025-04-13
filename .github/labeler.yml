@@ -1,79 +1,79 @@
 # Chapitre sur les Arbres
 Arbres:
-- changed-files:
-  - any-glob-to-any-file: Arbres/**
+  - changed-files:
+      - any-glob-to-any-file: Arbres/**
 
 # Chapitre sur les Bases de Données
 Bases_de_Données:
-- changed-files:
-  - any-glob-to-any-file: Bases de Données/**
+  - changed-files:
+      - any-glob-to-any-file: Bases de Données/**
 
 # Chapitre sur les Circuits Intégrés
 Circuits_Intégrés:
-- changed-files:
-  - any-glob-to-any-file: Circuits Intégrés/**
+  - changed-files:
+      - any-glob-to-any-file: Circuits Intégrés/**
 
 # Chapitre sur Diviser pour Régner
 Diviser_pour_Régner:
-- changed-files:
-  - any-glob-to-any-file: Diviser pour Régner/**
+  - changed-files:
+      - any-glob-to-any-file: Diviser pour Régner/**
 
 # Les devoirs du jeudi pour se préparer au bac
 Epreuves_pratiques:
-- changed-files:
-  - any-glob-to-any-file: Entraînement Pratique/**
+  - changed-files:
+      - any-glob-to-any-file: Entraînement Pratique/**
 
 # Informations sur le Grand Oral
 Grand_Oral:
-- changed-files:
-  - any-glob-to-any-file: Grand Oral/**
+  - changed-files:
+      - any-glob-to-any-file: Grand Oral/**
 
 # Chapitre sur Les Graphes
 Les_Graphes:
-- changed-files:
-  - any-glob-to-any-file: Les Graphes/**
+  - changed-files:
+      - any-glob-to-any-file: Les Graphes/**
 
 # Chapitre sur les Listes Chainées
 Listes_Chainées:
-- changed-files:
-  - any-glob-to-any-file: Listes Chainées/**
+  - changed-files:
+      - any-glob-to-any-file: Listes Chainées/**
 
 # Chapitre sur la Modularité
 Modularité:
-- changed-files:
-  - any-glob-to-any-file: Modularité/**
+  - changed-files:
+      - any-glob-to-any-file: Modularité/**
 
 # Chapitre sur les Piles et Files
 Piles_et_Files:
-- changed-files:
-  - any-glob-to-any-file: Piles et Files/**
+  - changed-files:
+      - any-glob-to-any-file: Piles et Files/**
 
 # Chapitre sur les Processus et Ressources
 Processus_et_Ressources:
-- changed-files:
-  - any-glob-to-any-file: Processus et Ressources/**
+  - changed-files:
+      - any-glob-to-any-file: Processus et Ressources/**
 
 # Chapitre sur la Programmation Orientée Objet
 Programmation_Orientée_Objet:
-- changed-files:
-  - any-glob-to-any-file: Programmation Orientée Objet/**
+  - changed-files:
+      - any-glob-to-any-file: Programmation Orientée Objet/**
 
 # Chapitre sur les Protocoles de Routages
 Protocoles_de_Routages:
-- changed-files:
-  - any-glob-to-any-file: Protocoles de Routages/**
+  - changed-files:
+      - any-glob-to-any-file: Protocoles de Routages/**
 
 # Chapitre sur la Récursivité
 Récursivité:
-- changed-files:
-  - any-glob-to-any-file: Récursivité/**
+  - changed-files:
+      - any-glob-to-any-file: Récursivité/**
 
 # Les TD effectués via Capytale
 TD_Capytale:
-- changed-files:
-  - any-glob-to-any-file: TD (Capytale)/**
+  - changed-files:
+      - any-glob-to-any-file: TD (Capytale)/**
 
 # Chapitre sur le TD Snake
 TD_Snake:
-- changed-files:
-  - any-glob-to-any-file: TD Snake/**
+  - changed-files:
+      - any-glob-to-any-file: TD Snake/**
