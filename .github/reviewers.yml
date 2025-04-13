@@ -43,6 +43,8 @@ files:
     - Lascar-png
   "Récursivité/**":
     - Skyniraph
+  "Sécurisation des Communications/**":
+    - Lascar-png
   "TD Snake/**":
     - Skyniraph
 
