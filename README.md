@@ -16,8 +16,8 @@ Bienvenue dans le repo `NSI_Terminale` !
 - Chacun travaillera sur sa branche durant chaque séance (_sauf si un chapitre ne nécessite pas la machine virtuelle_)
 
 > [!WARNING]
-> 
-> Pour éviter des PR complexes à review ET des conflits tout le temps, une branche doit être utilisée uniquement pour un chapitre 
+>
+> Pour éviter des PR complexes à review ET des conflits tout le temps, une branche doit être utilisée uniquement pour un chapitre
 
 ### Quand tu as terminé un exo avant les autres
 
