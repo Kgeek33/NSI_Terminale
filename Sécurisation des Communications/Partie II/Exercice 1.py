@@ -12,3 +12,4 @@ def cesar_symetrique(s: str):
 if __name__ == "__main__":
     assert cesar_symetrique("N") == "A"
     assert cesar_symetrique("A") == "N"
+    assert cesar_symetrique("NSI") == "AFV"
