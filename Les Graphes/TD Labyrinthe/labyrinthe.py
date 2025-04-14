@@ -1,6 +1,6 @@
 from tkinter import Tk, Canvas
 from graphe_dictionnaire_adjacence_tbc import Graphe
-from une_pile_avec_une_liste_chainée import Pile
+# from une_pile_avec_une_liste_chainée import Pile
 
 
 fen_princ = Tk()  # création d'une fenetre
@@ -10,9 +10,24 @@ monGraphe = Graphe()
 for i in range(8):
     for j in range(8):
         monGraphe.ajouter_sommet((i, j))
+
 # widget canvas
 # il permet de dessiner des formes diverses
 monCanvas.pack()  # place le widget dans la fenetre
+
+# Ajout des arêtes entre les sommets, sauf pour (4, 2) et (6, 6)
+for i in range(8):
+    for j in range(8):
+        if (i, j) not in [(4, 2), (6, 6)]:  # Exclure les sommets (4, 2) et (6, 6)
+            if i > 0 and (i - 1, j) not in [(4, 2), (6, 6)]:
+                monGraphe.ajouter_arrete((i, j), (i - 1, j))
+            if i < 7 and (i + 1, j) not in [(4, 2), (6, 6)]:
+                monGraphe.ajouter_arrete((i, j), (i + 1, j))
+            if j > 0 and (i, j - 1) not in [(4, 2), (6, 6)]:
+                monGraphe.ajouter_arrete((i, j), (i, j - 1))
+            if j < 7 and (i, j + 1) not in [(4, 2), (6, 6)]:
+                monGraphe.ajouter_arrete((i, j), (i, j + 1))
+
 
 def represente_laby(canevas: Canvas, G: Graphe):
     for elm in G.sommets():
@@ -23,7 +38,6 @@ def represente_laby(canevas: Canvas, G: Graphe):
             canevas.create_rectangle(x, y, x + 40, y + 40, fill='blue')
         else:
             canevas.create_rectangle(x, y, x + 40, y + 40, fill='white')
-
 
 
 def onkeypresse(event):  # ...
