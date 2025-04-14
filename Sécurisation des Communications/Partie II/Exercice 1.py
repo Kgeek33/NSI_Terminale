@@ -13,3 +13,4 @@ if __name__ == "__main__":
     assert cesar_symetrique("A") == "N"
     assert cesar_symetrique("NSI") == "AFV"
     assert cesar_symetrique("SANDRO") == "FNAQEB"
+    assert cesar_symetrique(cesar_symetrique("SANDRO")) == "SANDRO"
