@@ -2,12 +2,10 @@ d = {chr(i+ord('A')): chr((i+13) % 26+ord('A')) for i in range(26)}
 
 
 def cesar_symetrique(s: str):
-    num = 0
     chaine = ""
-    while num < len(s):
+    for num in range(len(s)):
         LAlettre = s[num]
         chaine += d[LAlettre]
-        num += 1
     return chaine
 
 
