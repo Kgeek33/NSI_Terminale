@@ -26,7 +26,7 @@ print(chiffre_cesar(chiffre_cesar("cyber cesar")))
 
 def unicode(s):
 
-    return "a completer", "a completer", "a completer"
+    return float(s), bin(s), hex(s)
 
 
 message = "logiciel"
