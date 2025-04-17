@@ -4,7 +4,7 @@ from graphe_dictionnaire_adjacence_tbc import Graphe
 
 
 # Fonctions d'initialisation
-def onkeypresse():
+def onkeypresse(_):
     """ Cette fonction s'exécute lorsque la touche `r` est cliquée """
     x = 100
     y = 200
