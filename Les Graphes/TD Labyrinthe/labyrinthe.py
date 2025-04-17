@@ -47,12 +47,19 @@ def configGraphe(THEgraphe: Graphe):
 
 
 # Initialisation de Tkinter
+TAILLE=8
+WIDTH=800
+MARGE=10
+TAILLE_CASE=(WIDTH-2*MARGE)//TAILLE
+w_ajustee=TAILLE_CASE*TAILLE
+h_ajustee=w_ajustee
+
 fen_princ = Tk()
 fen_princ.geometry("900x900")
 fen_princ.bind("<KeyPress-r>", onkeypresse)
 
 # Initialisation du Canvas
-monCanvas = Canvas(fen_princ, width=800, height=800, bg="green", border=10)
+monCanvas = Canvas(fen_princ, width=w_ajustee, height=h_ajustee, bg='grey', border = 10)
 monCanvas.pack()
 
 # Initialisation d'un Graphe
@@ -69,13 +76,13 @@ def represente_laby(canevas: Canvas, G: Graphe):
     sous forme de rectangles avec une couleur spécifique
     """
     for elm in G.sommets():
-        x, y = elm
-        x *= 100
-        y *= 100
+        ligne, colonne = elm
+        ligne *= TAILLE_CASE
+        colonne *= TAILLE_CASE
         if len(G.voisins(elm)) == 0:
-            canevas.create_rectangle(x, y, x + 40, y + 40, fill="blue")
+            canevas.create_rectangle(ligne, colonne, ligne + TAILLE_CASE, colonne + TAILLE_CASE, fill="blue")
         else:
-            canevas.create_rectangle(x, y, x + 40, y + 40, fill="white")
+            canevas.create_rectangle(ligne, colonne, ligne + TAILLE_CASE, colonne + TAILLE_CASE, fill="white")
 
 
 represente_laby(monCanvas, monGraphe)
