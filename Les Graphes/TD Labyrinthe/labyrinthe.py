@@ -22,17 +22,28 @@ def configGraphe(THEgraphe: Graphe):
             THEgraphe.ajouter_sommet((i, j))
 
     # Ajout des arrêtes des sommets
-    for i in range(8):
-        for j in range(8):
-            if (i, j) not in [(4, 2), (6, 6)]:
-                if i > 0 and (i - 1, j) not in [(4, 2), (6, 6)]:
-                    THEgraphe.ajouter_arrete((i, j), (i - 1, j))
-                if i < 7 and (i + 1, j) not in [(4, 2), (6, 6)]:
-                    THEgraphe.ajouter_arrete((i, j), (i + 1, j))
-                if j > 0 and (i, j - 1) not in [(4, 2), (6, 6)]:
-                    THEgraphe.ajouter_arrete((i, j), (i, j - 1))
-                if j < 7 and (i, j + 1) not in [(4, 2), (6, 6)]:
-                    THEgraphe.ajouter_arrete((i, j), (i, j + 1))
+    THEgraphe.ajouter_arete((0,0),(1,0))
+    THEgraphe.ajouter_arete((1,0),(1,1))
+    THEgraphe.ajouter_arete((1,1),(1,2))
+    THEgraphe.ajouter_arete((1,2),(0,2))
+    THEgraphe.ajouter_arete((0,2),(0,3))
+    THEgraphe.ajouter_arete((1,1),(2,1))
+    THEgraphe.ajouter_arete((2,1),(3,1))
+    THEgraphe.ajouter_arete((3,1),(3,2))
+    THEgraphe.ajouter_arete((3,2),(3,3))
+    THEgraphe.ajouter_arete((3,3),(2,3))
+    THEgraphe.ajouter_arete((2,3),(2,4))
+    THEgraphe.ajouter_arete((2,4),(2,5))
+    THEgraphe.ajouter_arete((2,5),(3,5))
+    THEgraphe.ajouter_arete((2,5),(1,5))
+    THEgraphe.ajouter_arete((1,5),(1,4))
+    THEgraphe.ajouter_arete((1,5),(1,6))
+    THEgraphe.ajouter_arete((1,5),(0,5))
+    THEgraphe.ajouter_arete((1,5),(1,6))
+    THEgraphe.ajouter_arete((1,6),(1,7))
+    THEgraphe.ajouter_arete((1,7),(0,7))
+    THEgraphe.ajouter_arete((1,7),(2,7))
+    THEgraphe.ajouter_arete((2,7),(3,7))
 
 
 # Initialisation de Tkinter
