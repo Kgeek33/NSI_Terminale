@@ -24,9 +24,12 @@ print(chiffre_cesar(chiffre_cesar("cyber cesar")))
 # chiffrement xor
 
 
-def unicode(s):
-
-    return ord(s), bin(s), hex(s)
+def unicode(s: str):
+    return (
+        [ord(c) for c in s],
+        [bin(ord(c)) for c in s],
+        [hex(ord(c)) for c in s]
+    )
 
 
 message = "logiciel"
