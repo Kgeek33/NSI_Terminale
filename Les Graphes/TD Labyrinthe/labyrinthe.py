@@ -72,8 +72,13 @@ fen_princ.geometry("900x900")
 fen_princ.bind("<KeyPress-r>", onkeypresse)
 
 # Initialisation du Canvas
-monCanvas = Canvas(fen_princ, width=w_ajustee,
-                   height=h_ajustee, bg='grey', border=10)
+monCanvas = Canvas(
+    fen_princ,
+    width=w_ajustee,
+    height=h_ajustee,
+    bg='grey',
+    border=10
+)
 monCanvas.pack()
 
 # Initialisation d'un Graphe
