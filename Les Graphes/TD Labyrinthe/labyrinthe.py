@@ -123,8 +123,36 @@ def represente_laby(canevas: Canvas, G: Graphe):
                 fill="white"
             )
 
+def represente_entree_sortie(canevas: Canvas, G: Graphe, entree: tuple, sortie: tuple):
+    listSommets = G.sommets()
+    if (
+        entree not in listSommets and
+        sortie not in listSommets
+    ):
+        return
+
+    ligne, colonne = entree
+    canevas.create_rectangle(
+        ligne,
+        colonne,
+        ligne + TAILLE_CASE,
+        colonne + TAILLE_CASE,
+        fill="orange"
+    )
+
+    ligne, colonne = sortie
+    canevas.create_rectangle(
+        ligne,
+        colonne,
+        ligne + TAILLE_CASE,
+        colonne + TAILLE_CASE,
+        fill="green"
+    )
+
+
 
 represente_laby(monCanvas, monGraphe)
+represente_entree_sortie(monCanvas, monGraphe, (2, 3), (4, 5))
 
 # Lancement de l'intéraction avec l'écran
 fen_princ.mainloop()
