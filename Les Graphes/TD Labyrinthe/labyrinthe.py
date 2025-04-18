@@ -22,44 +22,58 @@ def configGraphe(THEgraphe: Graphe):
             THEgraphe.ajouter_sommet((i, j))
 
     # Ajout des arrêtes des sommets
-    THEgraphe.ajouter_arrete((0,0),(1,0))
-    THEgraphe.ajouter_arrete((1,0),(1,1))
-    THEgraphe.ajouter_arrete((1,1),(1,2))
-    THEgraphe.ajouter_arrete((1,2),(0,2))
-    THEgraphe.ajouter_arrete((0,2),(0,3))
-    THEgraphe.ajouter_arrete((1,1),(2,1))
-    THEgraphe.ajouter_arrete((2,1),(3,1))
-    THEgraphe.ajouter_arrete((3,1),(3,2))
-    THEgraphe.ajouter_arrete((3,2),(3,3))
-    THEgraphe.ajouter_arrete((3,3),(2,3))
-    THEgraphe.ajouter_arrete((2,3),(2,4))
-    THEgraphe.ajouter_arrete((2,4),(2,5))
-    THEgraphe.ajouter_arrete((2,5),(3,5))
-    THEgraphe.ajouter_arrete((2,5),(1,5))
-    THEgraphe.ajouter_arrete((1,5),(1,4))
-    THEgraphe.ajouter_arrete((1,5),(1,6))
-    THEgraphe.ajouter_arrete((1,5),(0,5))
-    THEgraphe.ajouter_arrete((1,5),(1,6))
-    THEgraphe.ajouter_arrete((1,6),(1,7))
-    THEgraphe.ajouter_arrete((1,7),(0,7))
-    THEgraphe.ajouter_arrete((1,7),(2,7))
-    THEgraphe.ajouter_arrete((2,7),(3,7))
+    THEgraphe.ajouter_arrete((0, 0), (0, 1))
+    THEgraphe.ajouter_arrete((0, 1), (0, 2))
+    THEgraphe.ajouter_arrete((0, 2), (0, 3))
+    THEgraphe.ajouter_arrete((0, 3), (1, 3))
+    THEgraphe.ajouter_arrete((1, 3), (1, 4))
+    THEgraphe.ajouter_arrete((0, 0), (1, 0))
+    THEgraphe.ajouter_arrete((1, 0), (2, 0))
+    THEgraphe.ajouter_arrete((2, 0), (2, 1))
+    THEgraphe.ajouter_arrete((2, 1), (2, 2))
+    THEgraphe.ajouter_arrete((2, 2), (3, 2))
+    THEgraphe.ajouter_arrete((3, 2), (4, 2))
+    THEgraphe.ajouter_arrete((4, 2), (4, 1))
+    THEgraphe.ajouter_arrete((4, 1), (4, 0))
+    THEgraphe.ajouter_arrete((4, 0), (5, 0))
+    THEgraphe.ajouter_arrete((3, 4), (3, 5))
+    THEgraphe.ajouter_arrete((3, 5), (3, 6))
+    THEgraphe.ajouter_arrete((3, 4), (4, 4))
+    THEgraphe.ajouter_arrete((4, 4), (4, 3))
+    THEgraphe.ajouter_arrete((4, 3), (5, 3))
+    THEgraphe.ajouter_arrete((3, 6), (2, 6))
+    THEgraphe.ajouter_arrete((2, 6), (2, 7))
+    THEgraphe.ajouter_arrete((2, 6), (1, 6))
+    THEgraphe.ajouter_arrete((3, 6), (4, 6))
+    THEgraphe.ajouter_arrete((1, 6), (0, 6))
+    THEgraphe.ajouter_arrete((0, 6), (0, 7))
+    THEgraphe.ajouter_arrete((5, 3), (6, 3))
+    THEgraphe.ajouter_arrete((6, 1), (6, 0))
+    THEgraphe.ajouter_arrete((6, 1), (7, 1))
+    THEgraphe.ajouter_arrete((5, 7), (6, 7))
+    THEgraphe.ajouter_arrete((7, 1), (7, 2))
+    THEgraphe.ajouter_arrete((7, 4), (7, 5))
+    THEgraphe.ajouter_arrete((5, 7), (4, 7))
+    THEgraphe.ajouter_arrete((6, 5), (6, 6))
+    THEgraphe.ajouter_arrete((6, 5), (5, 5))
+    THEgraphe.ajouter_arrete((6, 7), (7, 7))
 
 
 # Initialisation de Tkinter
-TAILLE=8
-WIDTH=800
-MARGE=10
-TAILLE_CASE=(WIDTH-2*MARGE)//TAILLE
-w_ajustee=TAILLE_CASE*TAILLE
-h_ajustee=w_ajustee
+TAILLE = 8
+WIDTH = 800
+MARGE = 10
+TAILLE_CASE = (WIDTH-2*MARGE)//TAILLE
+w_ajustee = TAILLE_CASE*TAILLE
+h_ajustee = w_ajustee
 
 fen_princ = Tk()
 fen_princ.geometry("900x900")
 fen_princ.bind("<KeyPress-r>", onkeypresse)
 
 # Initialisation du Canvas
-monCanvas = Canvas(fen_princ, width=w_ajustee, height=h_ajustee, bg='grey', border = 10)
+monCanvas = Canvas(fen_princ, width=w_ajustee,
+                   height=h_ajustee, bg='grey', border=10)
 monCanvas.pack()
 
 # Initialisation d'un Graphe
@@ -80,9 +94,11 @@ def represente_laby(canevas: Canvas, G: Graphe):
         ligne *= TAILLE_CASE
         colonne *= TAILLE_CASE
         if len(G.voisins(elm)) == 0:
-            canevas.create_rectangle(ligne, colonne, ligne + TAILLE_CASE, colonne + TAILLE_CASE, fill="blue")
+            canevas.create_rectangle(
+                ligne, colonne, ligne + TAILLE_CASE, colonne + TAILLE_CASE, fill="blue")
         else:
-            canevas.create_rectangle(ligne, colonne, ligne + TAILLE_CASE, colonne + TAILLE_CASE, fill="white")
+            canevas.create_rectangle(
+                ligne, colonne, ligne + TAILLE_CASE, colonne + TAILLE_CASE, fill="white")
 
 
 represente_laby(monCanvas, monGraphe)
