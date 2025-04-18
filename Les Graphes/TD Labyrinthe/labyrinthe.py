@@ -6,9 +6,17 @@ from graphe_dictionnaire_adjacence_tbc import Graphe
 # Fonctions d'initialisation
 def onkeypresse(_):
     """ Cette fonction s'exécute lorsque la touche `r` est cliquée """
-    x = 100
-    y = 200
-    monCanvas.create_rectangle(x, y, x + 40, y + 40, fill="blue")
+    x = 4
+    y = 3
+    x *= TAILLE_CASE
+    y *= TAILLE_CASE
+    monCanvas.create_rectangle(
+        x,
+        y,
+        x + TAILLE_CASE,
+        y + TAILLE_CASE,
+        fill="blue"
+    )
 
 
 def configGraphe(THEgraphe: Graphe):
