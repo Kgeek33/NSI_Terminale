@@ -95,10 +95,20 @@ def represente_laby(canevas: Canvas, G: Graphe):
         colonne *= TAILLE_CASE
         if len(G.voisins(elm)) == 0:
             canevas.create_rectangle(
-                ligne, colonne, ligne + TAILLE_CASE, colonne + TAILLE_CASE, fill="blue")
+                ligne,
+                colonne,
+                ligne + TAILLE_CASE,
+                colonne + TAILLE_CASE,
+                fill="blue"
+            )
         else:
             canevas.create_rectangle(
-                ligne, colonne, ligne + TAILLE_CASE, colonne + TAILLE_CASE, fill="white")
+                ligne,
+                colonne,
+                ligne + TAILLE_CASE,
+                colonne + TAILLE_CASE,
+                fill="white"
+            )
 
 
 represente_laby(monCanvas, monGraphe)
