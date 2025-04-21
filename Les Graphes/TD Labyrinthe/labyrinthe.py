@@ -138,6 +138,8 @@ def represente_entree_sortie(
         return
 
     ligne, colonne = entree
+    ligne *= TAILLE_CASE
+    colonne *= TAILLE_CASE
     canevas.create_rectangle(
         ligne,
         colonne,
@@ -147,6 +149,8 @@ def represente_entree_sortie(
     )
 
     ligne, colonne = sortie
+    ligne *= TAILLE_CASE
+    colonne *= TAILLE_CASE
     canevas.create_rectangle(
         ligne,
         colonne,
