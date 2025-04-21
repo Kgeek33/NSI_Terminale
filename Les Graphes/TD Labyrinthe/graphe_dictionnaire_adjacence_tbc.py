@@ -29,7 +29,7 @@ class Graphe:
             return False
         return False
 
-    def ajouter_arrete(self, s1, s2):
+    def ajouter_arete(self, s1, s2):
         """prend en parametres les sommets s1 et s2 et
         modifie le dictionnaire afin de créer un arc de s1 à s2"""
         self.ajouter_sommet(s1)
@@ -86,16 +86,16 @@ class Graphe:
 
 if __name__ == "__main__":
     g1_test = Graphe()
-    g1_test.ajouter_arrete("A", "B")
-    g1_test.ajouter_arrete("A", "C")
-    g1_test.ajouter_arrete("B", "D")
-    g1_test.ajouter_arrete("B", "E")
-    g1_test.ajouter_arrete("C", "D")
-    g1_test.ajouter_arrete("D", "E")
-    g1_test.ajouter_arrete("E", "F")
-    g1_test.ajouter_arrete("E", "G")
-    g1_test.ajouter_arrete("F", "G")
-    g1_test.ajouter_arrete("G", "H")
+    g1_test.ajouter_arete("A", "B")
+    g1_test.ajouter_arete("A", "C")
+    g1_test.ajouter_arete("B", "D")
+    g1_test.ajouter_arete("B", "E")
+    g1_test.ajouter_arete("C", "D")
+    g1_test.ajouter_arete("D", "E")
+    g1_test.ajouter_arete("E", "F")
+    g1_test.ajouter_arete("E", "G")
+    g1_test.ajouter_arete("F", "G")
+    g1_test.ajouter_arete("G", "H")
     g1_test.affiche()
     print("-----")
 
