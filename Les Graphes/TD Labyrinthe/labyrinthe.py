@@ -123,7 +123,13 @@ def represente_laby(canevas: Canvas, G: Graphe):
                 fill="white"
             )
 
-def represente_entree_sortie(canevas: Canvas, G: Graphe, entree: tuple, sortie: tuple):
+
+def represente_entree_sortie(
+    canevas: Canvas,
+    G: Graphe,
+    entree: tuple,
+    sortie: tuple
+):
     listSommets = G.sommets()
     if (
         entree not in listSommets and
@@ -148,7 +154,6 @@ def represente_entree_sortie(canevas: Canvas, G: Graphe, entree: tuple, sortie: 
         colonne + TAILLE_CASE,
         fill="green"
     )
-
 
 
 represente_laby(monCanvas, monGraphe)
