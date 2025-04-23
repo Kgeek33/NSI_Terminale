@@ -29,6 +29,16 @@ def configGraphe(THEgraphe: Graphe):
     THEgraphe.ajouter_arete((7, 4), (7, 5))
     THEgraphe.ajouter_arete((7, 5), (7, 6))
     THEgraphe.ajouter_arete((7, 6), (7, 7))
+    THEgraphe.ajouter_arete((0, 0), (1, 0))
+    THEgraphe.ajouter_arete((0, 0), (2, 0))
+    THEgraphe.ajouter_arete((0, 0), (3, 0))
+    THEgraphe.ajouter_arete((0, 0), (4, 0))
+    THEgraphe.ajouter_arete((0, 0), (5, 0))
+    THEgraphe.ajouter_arete((0, 0), (6, 0))
+    THEgraphe.ajouter_arete((0, 0), (7, 0))
+    THEgraphe.ajouter_arete((0, 0), (7, 1))
+    THEgraphe.ajouter_arete((0, 0), (7, 2))
+    THEgraphe.ajouter_arete((0, 0), (7, 3))
 
 
 # Initialisation de Tkinter
