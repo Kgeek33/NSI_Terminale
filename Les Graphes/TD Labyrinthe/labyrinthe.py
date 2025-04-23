@@ -140,6 +140,9 @@ def represente_chemin(
     sortie: tuple
 ):
     chemin = un_chemin(G, entree, sortie)
+    if chemin is None:
+        print("Aucun chemin trouvé")
+        return
     print(chemin)
 
     for i in range(len(chemin) - 1):
