@@ -1,6 +1,6 @@
 from tkinter import Tk, Canvas
 from graphe_dictionnaire_adjacence_tbc import Graphe
-from parcours_largeur import parcours_largeur
+from parcours_largeur import un_chemin
 
 
 # Fonctions d'initialisation
@@ -17,39 +17,18 @@ def configGraphe(THEgraphe: Graphe):
     # Ajout des arrêtes des sommets
     THEgraphe.ajouter_arete((0, 0), (0, 1))
     THEgraphe.ajouter_arete((0, 1), (0, 2))
-    THEgraphe.ajouter_arete((0, 2), (0, 3))
-    THEgraphe.ajouter_arete((0, 3), (1, 3))
-    THEgraphe.ajouter_arete((1, 3), (1, 4))
-    THEgraphe.ajouter_arete((0, 0), (1, 0))
-    THEgraphe.ajouter_arete((1, 0), (2, 0))
-    THEgraphe.ajouter_arete((2, 0), (2, 1))
-    THEgraphe.ajouter_arete((2, 1), (2, 2))
+    THEgraphe.ajouter_arete((0, 2), (1, 2))
+    THEgraphe.ajouter_arete((1, 2), (2, 2))
     THEgraphe.ajouter_arete((2, 2), (3, 2))
-    THEgraphe.ajouter_arete((3, 2), (4, 2))
-    THEgraphe.ajouter_arete((4, 2), (4, 1))
-    THEgraphe.ajouter_arete((4, 1), (4, 0))
-    THEgraphe.ajouter_arete((4, 0), (5, 0))
-    THEgraphe.ajouter_arete((3, 4), (3, 5))
-    THEgraphe.ajouter_arete((3, 5), (3, 6))
+    THEgraphe.ajouter_arete((3, 2), (3, 3))
+    THEgraphe.ajouter_arete((3, 3), (3, 4))
     THEgraphe.ajouter_arete((3, 4), (4, 4))
-    THEgraphe.ajouter_arete((4, 4), (4, 3))
-    THEgraphe.ajouter_arete((4, 3), (5, 3))
-    THEgraphe.ajouter_arete((3, 6), (2, 6))
-    THEgraphe.ajouter_arete((2, 6), (2, 7))
-    THEgraphe.ajouter_arete((2, 6), (1, 6))
-    THEgraphe.ajouter_arete((3, 6), (4, 6))
-    THEgraphe.ajouter_arete((1, 6), (0, 6))
-    THEgraphe.ajouter_arete((0, 6), (0, 7))
-    THEgraphe.ajouter_arete((5, 3), (6, 3))
-    THEgraphe.ajouter_arete((6, 1), (6, 0))
-    THEgraphe.ajouter_arete((6, 1), (7, 1))
-    THEgraphe.ajouter_arete((5, 7), (6, 7))
-    THEgraphe.ajouter_arete((7, 1), (7, 2))
+    THEgraphe.ajouter_arete((4, 4), (5, 4))
+    THEgraphe.ajouter_arete((5, 4), (6, 4))
+    THEgraphe.ajouter_arete((6, 4), (7, 4))
     THEgraphe.ajouter_arete((7, 4), (7, 5))
-    THEgraphe.ajouter_arete((5, 7), (4, 7))
-    THEgraphe.ajouter_arete((6, 5), (6, 6))
-    THEgraphe.ajouter_arete((6, 5), (5, 5))
-    THEgraphe.ajouter_arete((6, 7), (7, 7))
+    THEgraphe.ajouter_arete((7, 5), (7, 6))
+    THEgraphe.ajouter_arete((7, 6), (7, 7))
 
 
 # Initialisation de Tkinter
@@ -150,41 +129,35 @@ def represente_chemin(
     entree: tuple,
     sortie: tuple
 ):
-    chemin = parcours_largeur(G, entree)
-    cheminSortie = parcours_largeur(G, sortie)
-    for elm in cheminSortie:
-        if elm not in chemin:
-            chemin[elm] = cheminSortie[elm]
-
+    chemin = un_chemin(G, entree, sortie)
     print(chemin)
 
-    for elm in chemin:
-        ligne, colonne = elm
-        ligne *= TAILLE_CASE
-        colonne *= TAILLE_CASE
-        canevas.create_oval(
-            ligne,
-            colonne,
-            ligne + TAILLE_CASE,
-            colonne + TAILLE_CASE,
-            fill="red"
+    for i in range(len(chemin) - 1):
+        x1, y1 = chemin[i]
+        x2, y2 = chemin[i + 1]
+        x1 *= TAILLE_CASE
+        y1 *= TAILLE_CASE
+        x2 *= TAILLE_CASE
+        y2 *= TAILLE_CASE
+        canevas.create_line(
+            x1 + TAILLE_CASE // 2,
+            y1 + TAILLE_CASE // 2,
+            x2 + TAILLE_CASE // 2,
+            y2 + TAILLE_CASE // 2,
+            fill="red",
+            width=5
         )
 
 
-# Définitiion de l'entrée et de la sortie
-ENTREE = (0, 0)
-SORTIE = (7, 7)
-
-# Représentation du labyrinthe
 represente_laby(monCanvas, monGraphe)
-represente_entree_sortie(monCanvas, monGraphe, ENTREE, SORTIE)
+represente_entree_sortie(monCanvas, monGraphe, (0, 0), (7, 7))
 fen_princ.bind(
     "<KeyPress-r>",
     lambda _: represente_chemin(
         monCanvas,
         monGraphe,
-        ENTREE,
-        SORTIE,
+        (0, 0),
+        (7, 7),
     )
 )
 
