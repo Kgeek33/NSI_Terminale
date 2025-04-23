@@ -61,14 +61,20 @@ def parcours_arcs(G: Graphe, source):
     return sommets_coches
 
 
-def un_chemin(g: Graphe, depart, arrivee):
-    UNdico = parcours_largeur(g, depart)
-    UNEliste = []
-    for key in UNdico:
-        UNEliste.append(key)
-        if key == arrivee:
-            return UNEliste
-    return UNEliste
+def un_chemin(g, depart, arrivee):
+    """ prend en paramètre le graphe, les sommets de depart et d’arrivée,
+    et renvoie un chemin sous forme de liste des sommets qui le constituent """
+    ch = []
+    # construit le dictionnaire des arcs du parcours à partir du depart
+    arcs = parcours_arcs(g, depart)
+    # reconstitue le chemin à faire
+    if arrivee not in arcs.keys():
+        return None
+    s = arrivee
+    while s is not None:
+        ch = [s]+ch
+        s = arcs[s]
+    return ch
 
 
 if __name__ == "__main__":
