@@ -1,24 +1,9 @@
 from tkinter import Tk, Canvas
 from graphe_dictionnaire_adjacence_tbc import Graphe
-# from une_pile_avec_une_liste_chainée import Pile
+from parcours_largeur import parcours_largeur
 
 
 # Fonctions d'initialisation
-def onkeypresse(_):
-    """ Cette fonction s'exécute lorsque la touche `r` est cliquée """
-    x = 4
-    y = 3
-    x *= TAILLE_CASE
-    y *= TAILLE_CASE
-    monCanvas.create_rectangle(
-        x,
-        y,
-        x + TAILLE_CASE,
-        y + TAILLE_CASE,
-        fill="blue"
-    )
-
-
 def configGraphe(THEgraphe: Graphe):
     """
     Cette fonction configure les sommets et les arrêtes
@@ -69,15 +54,14 @@ def configGraphe(THEgraphe: Graphe):
 
 # Initialisation de Tkinter
 TAILLE = 8
-WIDTH = 800
+WIDTH = 600
 MARGE = 10
 TAILLE_CASE = (WIDTH-2*MARGE)//TAILLE
 w_ajustee = TAILLE_CASE*TAILLE
 h_ajustee = w_ajustee
 
 fen_princ = Tk()
-fen_princ.geometry("900x900")
-fen_princ.bind("<KeyPress-r>", onkeypresse)
+fen_princ.geometry("700x700")
 
 # Initialisation du Canvas
 monCanvas = Canvas(
@@ -160,8 +144,49 @@ def represente_entree_sortie(
     )
 
 
+def represente_chemin(
+    canevas: Canvas,
+    G: Graphe,
+    entree: tuple,
+    sortie: tuple
+):
+    chemin = parcours_largeur(G, entree)
+    cheminSortie = parcours_largeur(G, sortie)
+    for elm in cheminSortie:
+        if elm not in chemin:
+            chemin[elm] = cheminSortie[elm]
+
+    print(chemin)
+
+    for elm in chemin:
+        ligne, colonne = elm
+        ligne *= TAILLE_CASE
+        colonne *= TAILLE_CASE
+        canevas.create_oval(
+            ligne,
+            colonne,
+            ligne + TAILLE_CASE,
+            colonne + TAILLE_CASE,
+            fill="red"
+        )
+
+
+# Définitiion de l'entrée et de la sortie
+ENTREE = (0, 0)
+SORTIE = (7, 7)
+
+# Représentation du labyrinthe
 represente_laby(monCanvas, monGraphe)
-represente_entree_sortie(monCanvas, monGraphe, (2, 3), (4, 5))
+represente_entree_sortie(monCanvas, monGraphe, ENTREE, SORTIE)
+fen_princ.bind(
+    "<KeyPress-r>",
+    lambda _: represente_chemin(
+        monCanvas,
+        monGraphe,
+        ENTREE,
+        SORTIE,
+    )
+)
 
 # Lancement de l'intéraction avec l'écran
 fen_princ.mainloop()
