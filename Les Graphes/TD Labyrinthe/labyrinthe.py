@@ -83,8 +83,8 @@ CHOIX = "matrice"  # Choix entre "graphe" et "matrice"
 TAILLE = 8
 WIDTH = 600
 MARGE = 10
-TAILLE_CASE = (WIDTH-2*MARGE)//TAILLE
-w_ajustee = TAILLE_CASE*TAILLE
+TAILLE_CASE = (WIDTH - 2 * MARGE) // TAILLE
+w_ajustee = TAILLE_CASE * TAILLE
 h_ajustee = w_ajustee
 
 fen_princ = Tk()
@@ -95,7 +95,7 @@ monCanvas = Canvas(
     fen_princ,
     width=w_ajustee,
     height=h_ajustee,
-    bg='grey',
+    bg="grey",
     border=10
 )
 monCanvas.pack()
@@ -152,6 +152,10 @@ def represente_entree_sortie(
     entree: tuple,
     sortie: tuple
 ):
+    """
+    Cette fonction configure l'écran pour représenter
+    l'entrée et la sortie du labyrinthe
+    """
     listSommets = G.sommets()
     if (
         entree not in listSommets and
@@ -188,6 +192,11 @@ def represente_chemin(
     entree: tuple,
     sortie: tuple
 ):
+    """
+    Cette fonction représente le chemin trouvé entre
+    l'entrée et la sortie du labyrinthe
+    lorsque l'on appuie sur 'r'
+    """
     chemin = un_chemin(G, entree, sortie)
     if chemin is None:
         print("Aucun chemin trouvé")
