@@ -57,12 +57,34 @@ def configGraphe(THEgraphe: Graphe):
     THEgraphe.ajouter_arete((7, 5), (7, 4))
 
 
+def generation_graphe(M: list[list[int]]) -> Graphe:
+    """
+    Cette fonction crée un graphe depuis une matrice et
+    configure les sommets et les arrêtes du graphe
+    """
+    UNgraphe = Graphe()
+    for i in range(len(M)):
+        for j in range(len(M[i])):
+            UNgraphe.ajouter_sommet((i, j))
+            if M[i][j] == 1:
+                if i > 0 and M[i - 1][j] == 1:
+                    UNgraphe.ajouter_arete((i, j), (i - 1, j))
+                if j > 0 and M[i][j - 1] == 1:
+                    UNgraphe.ajouter_arete((i, j), (i, j - 1))
+                if i < len(M) - 1 and M[i + 1][j] == 1:
+                    UNgraphe.ajouter_arete((i, j), (i + 1, j))
+                if j < len(M[i]) - 1 and M[i][j + 1] == 1:
+                    UNgraphe.ajouter_arete((i, j), (i, j + 1))
+    return UNgraphe
+
+
 # Initialisation de Tkinter
+CHOIX = "matrice"  # Choix entre "graphe" et "matrice"
 TAILLE = 8
 WIDTH = 600
 MARGE = 10
-TAILLE_CASE = (WIDTH-2*MARGE)//TAILLE
-w_ajustee = TAILLE_CASE*TAILLE
+TAILLE_CASE = (WIDTH - 2 * MARGE) // TAILLE
+w_ajustee = TAILLE_CASE * TAILLE
 h_ajustee = w_ajustee
 
 fen_princ = Tk()
@@ -73,7 +95,7 @@ monCanvas = Canvas(
     fen_princ,
     width=w_ajustee,
     height=h_ajustee,
-    bg='grey',
+    bg="grey",
     border=10
 )
 monCanvas.pack()
@@ -81,8 +103,19 @@ monCanvas.pack()
 # Initialisation d'un Graphe
 monGraphe = Graphe()
 configGraphe(monGraphe)
-print("👇Voici le graphe 👇\n")
-monGraphe.affiche()
+
+# Initialisation d'une matrice sous forme de graphe
+maMatrice = [
+    [1, 1, 1, 0, 0, 0, 0, 0],
+    [1, 0, 0, 1, 1, 1, 0, 0],
+    [1, 0, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 1, 0, 1, 1, 1],
+    [0, 1, 1, 1, 0, 0, 0, 0],
+    [0, 1, 0, 1, 1, 1, 1, 1],
+    [0, 1, 0, 0, 0, 0, 0, 1],
+]
+matriceGraphe = generation_graphe(maMatrice)
 
 
 # Amélioration de l'affichage de la fenêtre Tk
@@ -119,6 +152,10 @@ def represente_entree_sortie(
     entree: tuple,
     sortie: tuple
 ):
+    """
+    Cette fonction configure l'écran pour représenter
+    l'entrée et la sortie du labyrinthe
+    """
     listSommets = G.sommets()
     if (
         entree not in listSommets and
@@ -155,6 +192,11 @@ def represente_chemin(
     entree: tuple,
     sortie: tuple
 ):
+    """
+    Cette fonction représente le chemin trouvé entre
+    l'entrée et la sortie du labyrinthe
+    lorsque l'on appuie sur 'r'
+    """
     chemin = un_chemin(G, entree, sortie)
     if chemin is None:
         print("Aucun chemin trouvé")
@@ -178,17 +220,36 @@ def represente_chemin(
         )
 
 
-represente_laby(monCanvas, monGraphe)
-represente_entree_sortie(monCanvas, monGraphe, (0, 0), (7, 7))
-fen_princ.bind(
-    "<KeyPress-r>",
-    lambda _: represente_chemin(
-        monCanvas,
-        monGraphe,
-        (0, 0),
-        (7, 7),
+if CHOIX == "graphe":
+    print("👇Voici le graphe 👇\n")
+    monGraphe.affiche()
+
+    represente_laby(monCanvas, monGraphe)
+    represente_entree_sortie(monCanvas, monGraphe, (0, 0), (7, 7))
+    fen_princ.bind(
+        "<KeyPress-r>",
+        lambda _: represente_chemin(
+            monCanvas,
+            monGraphe,
+            (0, 0),
+            (7, 7),
+        )
     )
-)
+elif CHOIX == "matrice":
+    print("👇Voici la matrice sous forme de graphe 👇\n")
+    matriceGraphe.affiche()
+
+    represente_laby(monCanvas, matriceGraphe)
+    represente_entree_sortie(monCanvas, matriceGraphe, (0, 0), (7, 7))
+    fen_princ.bind(
+        "<KeyPress-r>",
+        lambda _: represente_chemin(
+            monCanvas,
+            matriceGraphe,
+            (0, 0),
+            (7, 7),
+        )
+    )
 
 # Lancement de l'intéraction avec l'écran
 fen_princ.mainloop()
