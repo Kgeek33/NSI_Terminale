@@ -84,6 +84,8 @@ TAILLE = 8
 WIDTH = 600
 MARGE = 10
 TAILLE_CASE = (WIDTH - 2 * MARGE) // TAILLE
+DEPART = (0, 0)  # avant => (1, 0)
+ARRIVEE = (7, 7)  # avant => (7, 7)
 w_ajustee = TAILLE_CASE * TAILLE
 h_ajustee = w_ajustee
 
@@ -225,14 +227,14 @@ if CHOIX == "graphe":
     monGraphe.affiche()
 
     represente_laby(monCanvas, monGraphe)
-    represente_entree_sortie(monCanvas, monGraphe, (0, 0), (7, 7))
+    represente_entree_sortie(monCanvas, monGraphe, DEPART, ARRIVEE)
     fen_princ.bind(
         "<KeyPress-r>",
         lambda _: represente_chemin(
             monCanvas,
             monGraphe,
-            (0, 0),
-            (7, 7),
+            DEPART,
+            ARRIVEE,
         )
     )
 elif CHOIX == "matrice":
@@ -240,14 +242,14 @@ elif CHOIX == "matrice":
     matriceGraphe.affiche()
 
     represente_laby(monCanvas, matriceGraphe)
-    represente_entree_sortie(monCanvas, matriceGraphe, (0, 0), (7, 7))
+    represente_entree_sortie(monCanvas, matriceGraphe, DEPART, ARRIVEE)
     fen_princ.bind(
         "<KeyPress-r>",
         lambda _: represente_chemin(
             monCanvas,
             matriceGraphe,
-            (0, 0),
-            (7, 7),
+            DEPART,
+            ARRIVEE,
         )
     )
 
