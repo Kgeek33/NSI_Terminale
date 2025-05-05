@@ -1,6 +1,10 @@
 from tkinter import Tk, Canvas
 from graphe_dictionnaire_adjacence_tbc import Graphe
 from parcours_largeur import un_chemin
+from random import choice
+
+DEPART = (0, 0)  # avant => (1, 0)
+ARRIVEE = (7, 7)  # avant => (7, 7)
 
 
 # Fonctions d'initialisation
@@ -15,12 +19,12 @@ def configGraphe(THEgraphe: Graphe):
             THEgraphe.ajouter_sommet((i, j))
 
     # Ajout des arrêtes des sommets
-    THEgraphe.ajouter_arete((0, 0), (0, 1))
-    THEgraphe.ajouter_arete((0, 1), (0, 2))
-    THEgraphe.ajouter_arete((0, 2), (0, 3))
-    THEgraphe.ajouter_arete((0, 3), (1, 3))
+    THEgraphe.ajouter_arete((1, 0), (1, 1))
+    THEgraphe.ajouter_arete((1, 1), (1, 2))
+    THEgraphe.ajouter_arete((1, 2), (1, 3))
+    THEgraphe.ajouter_arete((1, 3), (1, 3))
     THEgraphe.ajouter_arete((1, 3), (1, 4))
-    THEgraphe.ajouter_arete((0, 0), (1, 0))
+    THEgraphe.ajouter_arete((1, 0), (1, 0))
     THEgraphe.ajouter_arete((1, 0), (2, 0))
     THEgraphe.ajouter_arete((2, 0), (2, 1))
     THEgraphe.ajouter_arete((2, 1), (2, 2))
@@ -43,8 +47,8 @@ def configGraphe(THEgraphe: Graphe):
     THEgraphe.ajouter_arete((3, 6), (2, 6))
     THEgraphe.ajouter_arete((2, 6), (2, 7))
     THEgraphe.ajouter_arete((2, 6), (1, 6))
-    THEgraphe.ajouter_arete((1, 6), (0, 6))
-    THEgraphe.ajouter_arete((0, 6), (0, 7))
+    THEgraphe.ajouter_arete((1, 6), (1, 6))
+    THEgraphe.ajouter_arete((1, 6), (1, 7))
     THEgraphe.ajouter_arete((3, 6), (4, 6))
     THEgraphe.ajouter_arete((4, 6), (4, 7))
     THEgraphe.ajouter_arete((4, 7), (5, 7))
@@ -78,14 +82,36 @@ def generation_graphe(M: list[list[int]]) -> Graphe:
     return UNgraphe
 
 
+def parcours_arcs_random(g: Graphe, depart: tuple, arcs_coches=None):
+    """
+    Renvoie le dictionnaire des arcs parcourus où
+    la clé est l’extrémité de l’arc et la valeur est l’origine de l’arc.
+    Lorsque un choix de chemin est possible, il est réalisé aléatoirement.
+    """
+    if arcs_coches is None:
+        arcs_coches = {depart: None}
+
+    # while depart != ARRIVEE and len(arcs_coches.keys()) != g.ordre():
+    while depart != ARRIVEE:
+        voisins = [v for v in g.voisins(depart) if v not in arcs_coches]
+        if not voisins:
+            depart = DEPART
+            arcs_coches = {depart: None}
+            # break  # Aucun voisin disponible, on arrête
+        else:
+            randomChoisi = choice(voisins)
+            arcs_coches[randomChoisi] = depart
+            depart = randomChoisi
+
+    return arcs_coches
+
+
 # Initialisation de Tkinter
-CHOIX = "matrice"  # Choix entre "graphe" et "matrice"
+CHOIX = "IA"  # Choix entre "graphe", "matrice" et "IA"
 TAILLE = 8
 WIDTH = 600
 MARGE = 10
 TAILLE_CASE = (WIDTH - 2 * MARGE) // TAILLE
-DEPART = (0, 0)  # avant => (1, 0)
-ARRIVEE = (7, 7)  # avant => (7, 7)
 w_ajustee = TAILLE_CASE * TAILLE
 h_ajustee = w_ajustee
 
@@ -108,16 +134,17 @@ configGraphe(monGraphe)
 
 # Initialisation d'une matrice sous forme de graphe
 maMatrice = [
-    [1, 1, 1, 0, 0, 0, 0, 0],
-    [1, 0, 0, 1, 1, 1, 0, 0],
-    [1, 0, 1, 1, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 1, 0, 1, 1, 1],
-    [0, 1, 1, 1, 0, 0, 0, 0],
-    [0, 1, 0, 1, 1, 1, 1, 1],
-    [0, 1, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
 ]
 matriceGraphe = generation_graphe(maMatrice)
+print(parcours_arcs_random(matriceGraphe, (0, 0)))
 
 
 # Amélioration de l'affichage de la fenêtre Tk
@@ -199,27 +226,51 @@ def represente_chemin(
     l'entrée et la sortie du labyrinthe
     lorsque l'on appuie sur 'r'
     """
-    chemin = un_chemin(G, entree, sortie)
-    if chemin is None:
-        print("Aucun chemin trouvé")
-        return
-    print(chemin)
+    if CHOIX == "matrice":
+        chemin = un_chemin(G, entree, sortie)
+        if chemin is None:
+            print("Aucun chemin trouvé")
+            return
+        print(chemin)
 
-    for i in range(len(chemin) - 1):
-        x1, y1 = chemin[i]
-        x2, y2 = chemin[i + 1]
-        x1 *= TAILLE_CASE
-        y1 *= TAILLE_CASE
-        x2 *= TAILLE_CASE
-        y2 *= TAILLE_CASE
-        canevas.create_line(
-            x1 + TAILLE_CASE // 2,
-            y1 + TAILLE_CASE // 2,
-            x2 + TAILLE_CASE // 2,
-            y2 + TAILLE_CASE // 2,
-            fill="red",
-            width=5
-        )
+        for i in range(len(chemin) - 1):
+            x1, y1 = chemin[i]
+            x2, y2 = chemin[i + 1]
+            x1 *= TAILLE_CASE
+            y1 *= TAILLE_CASE
+            x2 *= TAILLE_CASE
+            y2 *= TAILLE_CASE
+            canevas.create_line(
+                x1 + TAILLE_CASE // 2,
+                y1 + TAILLE_CASE // 2,
+                x2 + TAILLE_CASE // 2,
+                y2 + TAILLE_CASE // 2,
+                fill="red",
+                width=5
+            )
+    else:
+        chemin = parcours_arcs_random(G, entree)
+        if not chemin:
+            print("Aucun chemin trouvé")
+            return
+        print(chemin)
+
+        for sommet, origine in chemin.items():
+            if origine is not None:
+                x1, y1 = origine
+                x2, y2 = sommet
+                x1 *= TAILLE_CASE
+                y1 *= TAILLE_CASE
+                x2 *= TAILLE_CASE
+                y2 *= TAILLE_CASE
+                canevas.create_line(
+                    x1 + TAILLE_CASE // 2,
+                    y1 + TAILLE_CASE // 2,
+                    x2 + TAILLE_CASE // 2,
+                    y2 + TAILLE_CASE // 2,
+                    fill="red",
+                    width=5
+                )
 
 
 if CHOIX == "graphe":
@@ -237,7 +288,7 @@ if CHOIX == "graphe":
             ARRIVEE,
         )
     )
-elif CHOIX == "matrice":
+else:
     print("👇Voici la matrice sous forme de graphe 👇\n")
     matriceGraphe.affiche()
 
