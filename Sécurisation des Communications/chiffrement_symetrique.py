@@ -44,7 +44,7 @@ print("unicode (binaire) de '{}' : {}".format(clef, u_bin))
 print("unicode (hexa) de '{}' : {}".format(clef, u_hex))
 
 
-def chiffre_xor(msg, cle):
+def chiffre_xor(msg: str, cle: str):
     """prend les chaines msg et clé en paramètres et
     renvoie la chaine des octets en hexa du message chiffré et
     la liste de leur codage unicode (en decimal) """
