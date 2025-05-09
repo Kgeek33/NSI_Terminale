@@ -73,7 +73,7 @@ print("unicode (hexa) de '{}' : {}".format(clef, u_hex))
 print("message chiffré : {}".format(chiffre_xor(message, clef)[0]))
 print("message chiffré (en decimal): {}".format(chiffre_xor(message, clef)[1]))
 print(
-    f"message chiffré (en decimal et hexa): {chiffre_xor("logiciel", "nsi")}")
+    f"message chiffré (en hexa et decimal): {chiffre_xor("logiciel", "nsi")}")
 
 
 def dechiffre_xor(msg_decimal, cle):
