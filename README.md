@@ -34,5 +34,5 @@ Pour rappel FromSoftWare > all
 | @Lascar-png | 86 |
 | @SaiKido33 | 77 |
 | @Skyniraph | 28 |
-| @Github Actions (Bot) | 169 |
+| @Github_Actions(Bot) | 169 |
 
