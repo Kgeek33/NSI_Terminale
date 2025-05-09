@@ -56,7 +56,7 @@ def chiffre_xor(msg: str, cle: str):
         else:
             UNElisteH.append(ord(msg[i]) ^ ord(cle[i]))
     for elm in UNElisteH:
-        UNElisteB.append(bin(elm))
+        UNElisteB.append(hex(elm))
     return UNElisteB, UNElisteH
 
 
