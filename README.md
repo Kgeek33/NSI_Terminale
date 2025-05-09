@@ -26,3 +26,13 @@ Déjà bravo ! Ensuite, tu vas faire faire une `pull request` (pr) pour proposer
 Une fois la pr faite, une personne spécialisée dans le chapitre fera une review de ta pr et s'il accepte, ta pr sera automatiquement merge dans la branche `main`
 
 Pour rappel FromSoftWare > all
+## Contributions des Contributeurs
+
+| Contributeur | Contributions |
+|--------------|---------------|
+| @Kgeek33 | 664 |
+| @github-actions[bot] | 166 |
+| @Lascar-png | 85 |
+| @SaiKido33 | 69 |
+| @Skyniraph | 28 |
+
