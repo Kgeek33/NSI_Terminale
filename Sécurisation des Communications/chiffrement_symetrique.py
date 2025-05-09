@@ -51,10 +51,7 @@ def chiffre_xor(msg: str, cle: str):
     UNElisteH = []
     UNElisteB = []
     for i in range(len(msg)):
-        if i >= len(cle) - 1:
-            UNElisteH.append(ord(msg[i]) ^ ord(cle[i % len(cle)]))
-        else:
-            UNElisteH.append(ord(msg[i]) ^ ord(cle[i]))
+        UNElisteH.append(ord(msg[i]) ^ ord(cle[i % len(cle)]))
     for elm in UNElisteH:
         UNElisteB.append(hex(elm))
     return UNElisteB, UNElisteH
@@ -80,10 +77,7 @@ def dechiffre_xor(msg_decimal: list[int], cle: str) -> str:
     et la clé en paramètres et renvoie la chaine du message déchiffré """
     dechiffre = ""
     for c in range(len(msg_decimal)):
-        if c >= len(cle) - 1:
-            dechiffre += chr(msg_decimal[c] ^ ord(cle[(c % len(cle))]))
-        else:
-            dechiffre += chr(msg_decimal[c] ^ ord(cle[c]))
+        dechiffre += chr(msg_decimal[c] ^ ord(cle[(c % len(cle))]))
     return dechiffre
 
 
