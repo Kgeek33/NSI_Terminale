@@ -83,3 +83,5 @@ def dechiffre_xor(msg_decimal: list[int], cle: str) -> str:
 
 print("message déchiffré : {}".format(
     dechiffre_xor(chiffre_xor(message, clef)[1], clef)))
+
+
