@@ -21,11 +21,22 @@ jobs:
           contributors=$(gh api repos/${{ github.repository }}/contributors --paginate)
 
           table="## Contributions des Contributeurs\n\n| Contributeur | Contributions |\n|--------------|---------------|\n"
+          bot_contributions=0
+
           for row in $(echo "$contributors" | jq -c '.[]'); do
             login=$(echo "$row" | jq -r '.login')
             contributions=$(echo "$row" | jq -r '.contributions')
-            table+="| @$login | $contributions |\n"
+            
+            if [ "$login" = "github-actions[bot]" ] || [ "$login" = "actions-user" ]; then
+              bot_contributions=$((bot_contributions + contributions))
+            else
+              table+="| @$login | $contributions |\n"
+            fi
           done
+
+          if [ $bot_contributions -gt 0 ]; then
+            table+="| @Github Actions (Bot) | $bot_contributions |\n"
+          fi
 
           echo -e "$table" > CONTRIBUTORS.md
 
