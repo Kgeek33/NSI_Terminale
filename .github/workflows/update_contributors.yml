@@ -51,6 +51,10 @@ jobs:
           git commit -m "🔄 Mise à jour des contributions des contributeurs"
           git push
 
+      - name: 🚀 Update branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
