@@ -35,7 +35,7 @@ jobs:
           done
 
           if [ $bot_contributions -gt 0 ]; then
-            table+="| @Github Actions (Bot) | $bot_contributions |\n"
+            table+="| @Github_Actions(Bot) | $bot_contributions |\n"
           fi
 
           echo -e "$table" > CONTRIBUTORS.md
