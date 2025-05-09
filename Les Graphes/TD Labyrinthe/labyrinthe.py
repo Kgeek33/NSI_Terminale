@@ -144,7 +144,6 @@ maMatrice = [
     [1, 1, 1, 1, 1, 1, 1, 1],
 ]
 matriceGraphe = generation_graphe(maMatrice)
-print(parcours_arcs_random(matriceGraphe, (0, 0)))
 
 
 # Amélioration de l'affichage de la fenêtre Tk
