@@ -48,8 +48,17 @@ def chiffre_xor(msg: str, cle: str):
     """prend les chaines msg et clé en paramètres et
     renvoie la chaine des octets en hexa du message chiffré et
     la liste de leur codage unicode (en decimal) """
-    "à compléter"
-    return "a completer", "a completer"
+    UNEliste = []
+    UNite = 0
+    for i in range(len(msg)):
+        if i == len(cle):
+            i = 0
+        caracMsg = msg[UNite]
+        caracCle = cle[i]
+        xOR = caracMsg ^ caracCle
+        UNEliste.append(xOR)
+        UNite += 1
+    return UNEliste, "a completer"
 
 
 message = "logiciel étoilé"
