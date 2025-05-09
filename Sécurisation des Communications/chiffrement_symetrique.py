@@ -44,12 +44,20 @@ print("unicode (binaire) de '{}' : {}".format(clef, u_bin))
 print("unicode (hexa) de '{}' : {}".format(clef, u_hex))
 
 
-def chiffre_xor(msg, cle):
+def chiffre_xor(msg: str, cle: str):
     """prend les chaines msg et clé en paramètres et
     renvoie la chaine des octets en hexa du message chiffré et
     la liste de leur codage unicode (en decimal) """
-    "à compléter"
-    return "a completer", "a completer"
+    UNElisteH = []
+    UNElisteB = []
+    for i in range(len(msg)):
+        if i >= len(cle) - 1:
+            UNElisteH.append(ord(msg[i]) ^ ord(cle[i % len(cle)]))
+        else:
+            UNElisteH.append(ord(msg[i]) ^ ord(cle[i]))
+    for elm in UNElisteH:
+        UNElisteB.append(bin(elm))
+    return UNElisteB, UNElisteH
 
 
 message = "logiciel étoilé"
