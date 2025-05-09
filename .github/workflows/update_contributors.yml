@@ -29,16 +29,9 @@ jobs:
 
           echo -e "$table" > CONTRIBUTORS.md
 
-      - name: 🛠️ Debugging contributors table
-        run: |
-          echo "Generated table:"
-          cat CONTRIBUTORS.md
-
       - name: 📝 Update README.md
         run: |
-          if grep -q "## Contributions des Contributeurs" README.md; then
-            sed -i '/## Contributions des Contributeurs/,$d' README.md
-          fi
+          sed -i '/## Contributions des Contributeurs/,$d' README.md
           cat CONTRIBUTORS.md >> README.md
 
       - name: 📤 Commit and push changes
