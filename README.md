@@ -30,10 +30,10 @@ Pour rappel FromSoftWare > all
 
 | Contributeur | Contributions |
 |--------------|---------------|
-| @Kgeek33 | 671 |
+| @Kgeek33 | 672 |
 | @github-actions[bot] | 166 |
 | @Lascar-png | 86 |
 | @SaiKido33 | 77 |
 | @Skyniraph | 28 |
-| @actions-user | 1 |
+| @actions-user | 2 |
 
