@@ -78,13 +78,13 @@ def dechiffre_xor(msg_decimal: list[int], cle: str) -> str:
     """prend la liste msg_decimal
     (liste des entiers codages unicode du msg chiffré)
     et la clé en paramètres et renvoie la chaine du message déchiffré """
-    L = ""
+    dechiffre = ""
     for c in range(len(msg_decimal)):
         if c >= len(cle) - 1:
-            L += chr(msg_decimal[c] ^ ord(cle[(c % len(cle))]))
+            dechiffre += chr(msg_decimal[c] ^ ord(cle[(c % len(cle))]))
         else:
-            L += chr(msg_decimal[c] ^ ord(cle[c]))
-    return L
+            dechiffre += chr(msg_decimal[c] ^ ord(cle[c]))
+    return dechiffre
 
 
 print("message déchiffré : {}".format(
