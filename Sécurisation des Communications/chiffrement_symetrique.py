@@ -48,8 +48,16 @@ def chiffre_xor(msg, cle):
     """prend les chaines msg et clé en paramètres et
     renvoie la chaine des octets en hexa du message chiffré et
     la liste de leur codage unicode (en decimal) """
-    "à compléter"
-    return "a completer", "a completer"
+    L = []
+    M = []
+    for c in range(len(msg)):
+        if c >= len(cle) - 1:
+            L.append(ord(msg[c]) ^ ord(cle[(c % len(cle))]))
+        else:
+            L.append(ord(msg[c]) ^ ord(cle[c]))
+    for k in L:
+        M.append(hex(k))
+    return (M, L)
 
 
 message = "logiciel étoilé"
@@ -64,6 +72,8 @@ print("unicode (binaire) de '{}' : {}".format(clef, u_bin))
 print("unicode (hexa) de '{}' : {}".format(clef, u_hex))
 print("message chiffré : {}".format(chiffre_xor(message, clef)[0]))
 print("message chiffré (en decimal): {}".format(chiffre_xor(message, clef)[1]))
+print(
+    f"message chiffré (en decimal et hexa): {chiffre_xor("logiciel", "nsi")}")
 
 
 def dechiffre_xor(msg_decimal, cle):
