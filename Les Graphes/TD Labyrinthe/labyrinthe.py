@@ -91,13 +91,11 @@ def parcours_arcs_random(g: Graphe, depart: tuple, arcs_coches=None):
     if arcs_coches is None:
         arcs_coches = {depart: None}
 
-    # while depart != ARRIVEE and len(arcs_coches.keys()) != g.ordre():
     while depart != ARRIVEE:
         voisins = [v for v in g.voisins(depart) if v not in arcs_coches]
         if not voisins:
             depart = DEPART
             arcs_coches = {depart: None}
-            # break  # Aucun voisin disponible, on arrête
         else:
             randomChoisi = choice(voisins)
             arcs_coches[randomChoisi] = depart
