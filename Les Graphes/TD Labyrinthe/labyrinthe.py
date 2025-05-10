@@ -5,15 +5,17 @@ from random import choice, randint
 
 # Définition des constantes
 CHOIX = "IA"  # Choix entre "graphe", "matrice" et "IA"
+TAILLE = 81 if CHOIX == "IA" else 8
 
-DEPART = (randint(0, 7), randint(0, 7))  # Départ du labyrinthe
-ARRIVEE = (randint(0, 7), randint(0, 7))  # Arrivée du labyrinthe
+# Départ du labyrinthe
+DEPART = (randint(0, TAILLE - 1), randint(0, TAILLE - 1))
+# Arrivée du labyrinthe
+ARRIVEE = (randint(0, TAILLE - 1), randint(0, TAILLE - 1))
 # On s'assure que l'arrivée n'a pas les même coordonnées que le départ
 while ARRIVEE == DEPART:
-    ARRIVEE = (randint(0, 7), randint(0, 7))
+    ARRIVEE = (randint(0, TAILLE - 1), randint(0, TAILLE - 1))
 
 # Width/Height automatique
-TAILLE = 8
 WIDTH = 600
 MARGE = 10
 TAILLE_CASE = (WIDTH - 2 * MARGE) // TAILLE
@@ -248,8 +250,8 @@ def represente_chemin(
                     width=5
                 )
 
-        for i in range(8):
-            for j in range(8):
+        for i in range(TAILLE):
+            for j in range(TAILLE):
                 # Pour éviter de modifier `i` et `j` direct
                 THEcoor = (i, j)
 
@@ -268,16 +270,41 @@ def represente_chemin(
                     )
 
 
+def dedale(n: int) -> Graphe:
+    # Exécuté si `CHOIX = "IA"`
+    """
+    Génère un labyrinthe de taille (2n - 1) x (2n - 1) en utilisant un graphe.
+    Les murs sont ajoutés pour créer un labyrinthe.
+    Retourne le graphe représentant le labyrinthe.
+    """
+    taille = 2 * n - 1  # Taille du labyrinthe
+    graphe = Graphe()
+
+    # Ajouter tous les sommets au graphe
+    for i in range(taille):
+        for j in range(taille):
+            graphe.ajouter_sommet((i, j))
+
+    # Ajouter des arêtes pour relier les cases adjacentes
+    for i in range(taille):
+        for j in range(taille):
+            if i < taille - 1:  # Relier vers le bas
+                graphe.ajouter_arete((i, j), (i + 1, j))
+            if j < taille - 1:  # Relier vers la droite
+                graphe.ajouter_arete((i, j), (i, j + 1))
+    return graphe
+
+
 # Initialisation de Tkinter et du Canvas
 fen_princ = Tk()
-fen_princ.geometry("700x700")
+fen_princ.geometry(f"{w_ajustee}x{h_ajustee}")
 
 monCanvas = Canvas(
     fen_princ,
-    width=w_ajustee,
-    height=h_ajustee,
+    width=w_ajustee - 10,
+    height=h_ajustee - 10,
     bg="grey",
-    border=10
+    border=1 if CHOIX == "IA" else 10
 )
 monCanvas.pack()
 
@@ -300,32 +327,19 @@ if CHOIX == "graphe":
             ARRIVEE,
         )
     )
-else:
+elif CHOIX == "matrice":
     # Initialisation d'une matrice puis
     # convertie sous forme de graphe
-    if CHOIX == "matrice":
-        maMatrice = [
-            [1, 1, 1, 0, 0, 0, 0, 0],
-            [1, 0, 0, 1, 1, 1, 0, 0],
-            [1, 0, 1, 1, 0, 0, 0, 0],
-            [1, 1, 1, 1, 1, 1, 1, 0],
-            [0, 0, 0, 1, 0, 1, 1, 1],
-            [0, 1, 1, 1, 0, 0, 0, 0],
-            [0, 1, 0, 1, 1, 1, 1, 1],
-            [0, 1, 0, 0, 0, 0, 0, 1],
-        ]
-    else:
-        # Pas de murs, l'IA les créera à la main
-        maMatrice = [
-            [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1],
-        ]
+    maMatrice = [
+        [1, 1, 1, 0, 0, 0, 0, 0],
+        [1, 0, 0, 1, 1, 1, 0, 0],
+        [1, 0, 1, 1, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 1, 0, 1, 1, 1],
+        [0, 1, 1, 1, 0, 0, 0, 0],
+        [0, 1, 0, 1, 1, 1, 1, 1],
+        [0, 1, 0, 0, 0, 0, 0, 1],
+    ]
     matriceGraphe = generation_graphe(maMatrice)
     print("👇Voici la matrice sous forme de graphe 👇\n")
     matriceGraphe.affiche()
@@ -338,6 +352,23 @@ else:
         lambda _: represente_chemin(
             monCanvas,
             matriceGraphe,
+            DEPART,
+            ARRIVEE,
+        )
+    )
+else:
+    labyrinthe = dedale(TAILLE)
+    print("👇Voici le labyrinthe généré sous forme de graphe 👇\n")
+    labyrinthe.affiche()
+
+    # Configuration de Tkinter
+    represente_laby(monCanvas, labyrinthe)
+    represente_entree_sortie(monCanvas, labyrinthe, DEPART, ARRIVEE)
+    fen_princ.bind(
+        "<KeyPress-r>",
+        lambda _: represente_chemin(
+            monCanvas,
+            labyrinthe,
             DEPART,
             ARRIVEE,
         )
