@@ -251,6 +251,7 @@ def represente_chemin(
                 width=5
             )
     else:
+        coordonnees = []
         chemin = parcours_arcs_random(G, entree)
         if not chemin:
             print("Aucun chemin trouvé")
@@ -261,6 +262,8 @@ def represente_chemin(
         represente_entree_sortie(canevas, G, entree, sortie)
         for sommet, origine in chemin.items():
             if origine is not None:
+                coordonnees.append(sommet)
+
                 x1, y1 = origine
                 x2, y2 = sommet
                 x1 *= TAILLE_CASE
@@ -275,6 +278,25 @@ def represente_chemin(
                     fill="red",
                     width=5
                 )
+
+        for i in range(8):
+            for j in range(8):
+                # Pour éviter de modifier `i` et `j` direct
+                THEcoor = (i, j)
+
+                if THEcoor != DEPART and THEcoor not in coordonnees:
+                    # N'a pas d'impact sur `i` et `j`
+                    ligne, colonne = THEcoor
+
+                    ligne *= TAILLE_CASE
+                    colonne *= TAILLE_CASE
+                    canevas.create_rectangle(
+                        ligne,
+                        colonne,
+                        ligne + TAILLE_CASE,
+                        colonne + TAILLE_CASE,
+                        fill="blue"
+                    )
 
 
 if CHOIX == "graphe":
