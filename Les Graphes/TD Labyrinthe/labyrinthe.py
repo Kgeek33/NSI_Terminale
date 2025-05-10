@@ -1,10 +1,14 @@
 from tkinter import Tk, Canvas
 from graphe_dictionnaire_adjacence_tbc import Graphe
 from parcours_largeur import un_chemin
-from random import choice
+from random import choice, randint
 
-DEPART = (0, 0)  # avant => (1, 0)
-ARRIVEE = (7, 7)  # avant => (7, 7)
+DEPART = (randint(0, 7), randint(0, 7))  # avant => (0, 0)
+ARRIVEE = (randint(0, 7), randint(0, 7))  # avant => (7, 7)
+# On s'assure que l'arrivée n'a pas les même coordonnées
+# que le départ
+while ARRIVEE == DEPART:
+    ARRIVEE = (randint(0, 7), randint(0, 7))
 
 
 # Fonctions d'initialisation
