@@ -134,7 +134,8 @@ monCanvas.pack()
 monGraphe = Graphe()
 configGraphe(monGraphe)
 
-# Initialisation d'une matrice sous forme de graphe
+# Initialisation d'une matrice puis
+# convertie sous forme de graphe
 maMatrice = [
     [1, 1, 1, 1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1, 1, 1, 1],
