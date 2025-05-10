@@ -257,6 +257,8 @@ def represente_chemin(
             return
         print(chemin)
 
+        represente_laby(canevas, G)
+        represente_entree_sortie(canevas, G, entree, sortie)
         for sommet, origine in chemin.items():
             if origine is not None:
                 x1, y1 = origine
