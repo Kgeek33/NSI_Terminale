@@ -12,6 +12,7 @@ def facteurs_premiers(n: int) -> list[int]:
     UNEliste = []
     for i in range(2, n):
         UNEliste.append(est_premier(i))
+    return UNEliste
 
 
 if __name__ == "__main__":
