@@ -21,7 +21,7 @@ Diviser_pour_Régner:
 # Les devoirs du jeudi pour se préparer au bac
 Epreuves_pratiques:
   - changed-files:
-      - any-glob-to-any-file: Entraînement Pratique/**
+      - any-glob-to-any-file: Entrainement Pratique/**
 
 # Informations sur le Grand Oral
 Grand_Oral:
