@@ -28,11 +28,11 @@ Une fois la pr faite, une personne spécialisée dans le chapitre fera une revie
 Pour rappel FromSoftWare > all
 ## Contributions des Contributeurs
 
-| Contributeur | Contributions |
-|--------------|---------------|
-| @Kgeek33 | 728 |
-| @Lascar-png | 99 |
-| @SaiKido33 | 99 |
-| @Skyniraph | 32 |
-| @Github_Actions(Bot) | 190 |
+| Contributeur | Contributions | Évolution |
+|--------------|---------------|-----------|
+| @Kgeek33 | 728 | +728 |
+| @Lascar-png | 99 | +99 |
+| @SaiKido33 | 99 | +99 |
+| @Skyniraph | 32 | +32 |
+| @Github_Actions(Bot) | 190 | N/A |
 
