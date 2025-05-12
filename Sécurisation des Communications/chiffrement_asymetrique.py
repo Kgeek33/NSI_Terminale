@@ -21,7 +21,7 @@ def facteurs_premiers(n: int) -> list[int]:
 
 
 def factorisation_RSA(n):
-    f=facteurs_premiers(n)
+    f = facteurs_premiers(n)
     if len(f) == 2:
         return f
     else:
