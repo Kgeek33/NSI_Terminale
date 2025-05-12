@@ -8,6 +8,10 @@ def est_premier(n):
     return True
 
 
+def facteurs_premiers(n):
+    pass
+
+
 if __name__ == "__main__":
     for i in range(1, 10):
         print(f"Numéro {i} premier ?? => ", est_premier(i))
