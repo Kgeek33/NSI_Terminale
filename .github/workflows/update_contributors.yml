@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: 🛠️ Checkout repository
         uses: actions/checkout@v4.2.2
-      
+
       - name: 📂 Load previous contributors data
         run: |
           if [ -f .github/previous_contributors.json ]; then
@@ -22,7 +22,7 @@ jobs:
             previous_contributors="{}"
           fi
 
-        - name: 📥 Fetch contributors from GitHub API
+      - name: 📥 Fetch contributors from GitHub API
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
