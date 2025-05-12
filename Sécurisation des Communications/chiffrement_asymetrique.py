@@ -20,6 +20,12 @@ def facteurs_premiers(n: int) -> list[int]:
     return UNEliste
 
 
+def factorisation_RSA(n: int) -> tuple:
+    if len(facteurs_premiers(n)) == 2:
+        return facteurs_premiers(n)
+    else:
+        return None
+
 if __name__ == "__main__":
     for i in range(1, 10):
         print(f"Numéro {i} premier ?? => ", est_premier(i))
