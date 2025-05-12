@@ -41,7 +41,7 @@ Listes_Chainées:
 # Chapitre sur la Modularité
 Modularité:
   - changed-files:
-      - any-glob-to-any-file: Modularité/**
+      - any-glob-to-any-file: Modularite/**
 
 # Chapitre sur les Piles et Files
 Piles_et_Files:
