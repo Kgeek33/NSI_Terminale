@@ -66,7 +66,7 @@ Protocoles_de_Routages:
 # Chapitre sur la Récursivité
 Récursivité:
   - changed-files:
-      - any-glob-to-any-file: Récursivité/**
+      - any-glob-to-any-file: Recursivite/**
 
 # Chapitre sur la Sécurisation des Communications
 Sécurisation_des_Communications:
