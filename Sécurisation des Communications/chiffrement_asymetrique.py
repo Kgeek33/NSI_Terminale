@@ -8,7 +8,7 @@ def est_premier(n):
     return True
 
 
-def facteurs_premiers(n: int):
+def facteurs_premiers(n: int) -> list[int]:
     pass
 
 
