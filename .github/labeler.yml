@@ -36,7 +36,7 @@ Les_Graphes:
 # Chapitre sur les Listes Chainées
 Listes_Chainées:
   - changed-files:
-      - any-glob-to-any-file: Listes Chainées/**
+      - any-glob-to-any-file: Listes Chainees/**
 
 # Chapitre sur la Modularité
 Modularité:
