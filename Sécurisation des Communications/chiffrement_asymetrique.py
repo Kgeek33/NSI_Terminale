@@ -17,7 +17,6 @@ def facteurs_premiers(n: int) -> list[int]:
             UNEliste.append(THEpremier)
         else:
             THEpremier += 1
-    print(UNEliste)
     return UNEliste
 
 
