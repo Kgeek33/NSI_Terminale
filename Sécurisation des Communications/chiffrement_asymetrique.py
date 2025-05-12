@@ -12,7 +12,6 @@ def facteurs_premiers(n: int) -> list[int]:
     UNEliste = []
     THEpremier = 2
     while n != 1:
-        print(THEpremier)
         if n % THEpremier == 0 and est_premier(THEpremier):
             n //= THEpremier
             UNEliste.append(THEpremier)
