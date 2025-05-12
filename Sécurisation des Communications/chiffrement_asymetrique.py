@@ -35,8 +35,8 @@ def recur_pgcd(a, b):
     return a
 
 
-def premiers_entre_eux(a,b):
-    if recur_pgcd(a,b) == 1:
+def premiers_entre_eux(a, b):
+    if recur_pgcd(a, b) == 1:
         return True
     return False
 
@@ -49,3 +49,4 @@ if __name__ == "__main__":
     print(factorisation_RSA(437))
     print(factorisation_RSA(99400891))
     print(factorisation_RSA(99999640000243))
+    print(premiers_entre_eux(3, 5))
