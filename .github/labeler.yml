@@ -76,7 +76,7 @@ Sécurisation_des_Communications:
 # Les TD effectués via Capytale
 TD_Capytale:
   - changed-files:
-      - any-glob-to-any-file: TD (Capytale)/**
+      - any-glob-to-any-file: TD Capytale/**
 
 # Chapitre sur le TD Snake
 TD_Snake:
