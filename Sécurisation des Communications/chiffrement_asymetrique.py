@@ -28,6 +28,18 @@ def factorisation_RSA(n: int) -> list[int]:
         return None
 
 
+def recur_pgcd(a: int, b: int) -> int:
+    if b > 0:
+        return recur_pgcd(b, a % b)
+    return a
+
+
+def premiers_entre_eux(a: int, b: int) -> bool:
+    if recur_pgcd(a, b) == 1:
+        return True
+    return False
+
+
 if __name__ == "__main__":
     # Question 1
     for i in range(1, 10):
@@ -41,3 +53,6 @@ if __name__ == "__main__":
     print(factorisation_RSA(437))
     print(factorisation_RSA(99400891))
     print(factorisation_RSA(99999640000243))
+    print(premiers_entre_eux(2, 3))
+    print(premiers_entre_eux(2, 5))
+    print(premiers_entre_eux(2, 4))
