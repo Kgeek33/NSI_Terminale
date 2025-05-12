@@ -7,6 +7,9 @@ def est_premier(n):
             return False
     return True
 
+def facteurs_premiers(n):
+    
+
 
 if __name__ == "__main__":
     for i in range(1, 10):
