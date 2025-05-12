@@ -96,3 +96,4 @@ print("message déchiffré : {}".format(
 print(est_premier(9967))
 print(est_premier(9973))
 print(est_premier(9972))
+
