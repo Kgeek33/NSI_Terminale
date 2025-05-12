@@ -28,7 +28,7 @@ def factorisation_RSA(n: int) -> list[int]:
         return None
 
 
-def recur_pgcd(a, b):
+def recur_pgcd(a: int, b: int) -> int:
     if b > 0:
         return recur_pgcd(b, a % b)
     return a
