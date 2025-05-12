@@ -56,7 +56,7 @@ Processus_et_Ressources:
 # Chapitre sur la Programmation Orientée Objet
 Programmation_Orientée_Objet:
   - changed-files:
-      - any-glob-to-any-file: Programmation Orientée Objet/**
+      - any-glob-to-any-file: Programmation Orientee Objet/**
 
 # Chapitre sur les Protocoles de Routages
 Protocoles_de_Routages:
