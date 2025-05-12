@@ -8,20 +8,19 @@ def est_premier(n):
     return True
 
 
-def facteurs_premiers(n):
-    i = 2
-    r = n
-    p = []
-    while r != 1:
-        if est_premier(i) and n % i == 0:
-            p.append(i)
-            r = n // i
-        i += 1
-    return p
+def facteurs_premiers(n: int) -> list[int]:
+    UNEliste = []
+    THEpremier = 2
+    while n != 1:
+        if n % THEpremier == 0 and est_premier(THEpremier):
+            n //= THEpremier
+            UNEliste.append(THEpremier)
+        else:
+            THEpremier += 1
+    return UNEliste
 
-
-print(facteurs_premiers(300))
 
 if __name__ == "__main__":
     for i in range(1, 10):
         print(f"Numéro {i} premier ?? => ", est_premier(i))
+    assert facteurs_premiers(300) == [2, 2, 3, 5, 5], "PAS BON"
