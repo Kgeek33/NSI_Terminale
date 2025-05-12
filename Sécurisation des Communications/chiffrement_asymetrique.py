@@ -28,3 +28,7 @@ if __name__ == "__main__":
     for i in range(1, 10):
         print(f"Numéro {i} premier ?? => ", est_premier(i))
     assert facteurs_premiers(300) == [2, 2, 3, 5, 5], "PAS BON"
+    print(factorisation_RSA(377))
+    print(factorisation_RSA(437))
+    print(factorisation_RSA(99400891))
+    print(factorisation_RSA(99999640000243))
