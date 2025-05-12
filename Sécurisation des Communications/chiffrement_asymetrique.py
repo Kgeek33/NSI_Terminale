@@ -10,8 +10,12 @@ def est_premier(n):
 
 def facteurs_premiers(n: int) -> list[int]:
     UNEliste = []
-    for i in range(2, n):
-        UNEliste.append(est_premier(i))
+    while n > 0:
+        for i in range(2, 10):
+            if est_premier(n % i):
+                UNEliste.append(n % i)
+                n /= 2
+    print(UNEliste)
     return UNEliste
 
 
