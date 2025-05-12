@@ -36,6 +36,7 @@ def recur_pgcd(a, b):
 
 
 def premiers_entre_eux(a,b):
+    if recur_pgcd(a,b) == 1:
 
 
 if __name__ == "__main__":
