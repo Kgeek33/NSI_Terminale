@@ -20,7 +20,7 @@ def facteurs_premiers(n: int) -> list[int]:
     return UNEliste
 
 
-def factorisation_RSA(n):
+def factorisation_RSA(n: int) -> list[int]:
     f = facteurs_premiers(n)
     if len(f) == 2:
         return f
