@@ -6,22 +6,22 @@ Arbres:
 # Chapitre sur les Bases de Données
 Bases_de_Données:
   - changed-files:
-      - any-glob-to-any-file: Bases de Données/**
+      - any-glob-to-any-file: Bases de Donnees/**
 
 # Chapitre sur les Circuits Intégrés
 Circuits_Intégrés:
   - changed-files:
-      - any-glob-to-any-file: Circuits Intégrés/**
+      - any-glob-to-any-file: Circuits Integres/**
 
 # Chapitre sur Diviser pour Régner
 Diviser_pour_Régner:
   - changed-files:
-      - any-glob-to-any-file: Diviser pour Régner/**
+      - any-glob-to-any-file: Diviser pour Regner/**
 
 # Les devoirs du jeudi pour se préparer au bac
 Epreuves_pratiques:
   - changed-files:
-      - any-glob-to-any-file: Entraînement Pratique/**
+      - any-glob-to-any-file: Entrainement Pratique/**
 
 # Informations sur le Grand Oral
 Grand_Oral:
@@ -36,12 +36,12 @@ Les_Graphes:
 # Chapitre sur les Listes Chainées
 Listes_Chainées:
   - changed-files:
-      - any-glob-to-any-file: Listes Chainées/**
+      - any-glob-to-any-file: Listes Chainees/**
 
 # Chapitre sur la Modularité
 Modularité:
   - changed-files:
-      - any-glob-to-any-file: Modularité/**
+      - any-glob-to-any-file: Modularite/**
 
 # Chapitre sur les Piles et Files
 Piles_et_Files:
@@ -56,7 +56,7 @@ Processus_et_Ressources:
 # Chapitre sur la Programmation Orientée Objet
 Programmation_Orientée_Objet:
   - changed-files:
-      - any-glob-to-any-file: Programmation Orientée Objet/**
+      - any-glob-to-any-file: Programmation Orientee Objet/**
 
 # Chapitre sur les Protocoles de Routages
 Protocoles_de_Routages:
@@ -66,17 +66,17 @@ Protocoles_de_Routages:
 # Chapitre sur la Récursivité
 Récursivité:
   - changed-files:
-      - any-glob-to-any-file: Récursivité/**
+      - any-glob-to-any-file: Recursivite/**
 
 # Chapitre sur la Sécurisation des Communications
 Sécurisation_des_Communications:
 - changed-files:
-  - any-glob-to-any-file: Sécurisation des Communications/**
+  - any-glob-to-any-file: Securisation des Communications/**
 
 # Les TD effectués via Capytale
 TD_Capytale:
   - changed-files:
-      - any-glob-to-any-file: TD (Capytale)/**
+      - any-glob-to-any-file: TD Capytale/**
 
 # Chapitre sur le TD Snake
 TD_Snake:
