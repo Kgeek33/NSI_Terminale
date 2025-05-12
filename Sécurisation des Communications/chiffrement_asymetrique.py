@@ -28,6 +28,16 @@ def factorisation_RSA(n: int) -> list[int]:
         return None
 
 
+def recur_pgcd(a, b):
+    if b > 0:
+        return recur_pgcd(b, a % b)
+
+    return a
+
+
+def premiers_entre_eux(a,b):
+
+
 if __name__ == "__main__":
     for i in range(1, 10):
         print(f"Numéro {i} premier ?? => ", est_premier(i))
