@@ -8,7 +8,8 @@ def est_premier(n):
 
 def facteurs_premiers(n):
     décompo = []
-    for c in range(2,):
+    while n > 0:
+        
         
 
 if __name__ == "__main__":
