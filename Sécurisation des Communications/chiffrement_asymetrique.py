@@ -21,7 +21,15 @@ def facteurs_premiers(n: int) -> list[int]:
 
 
 def factorisation_RSA(n: int) -> tuple | None:
-    pass
+    LESfacteurs = facteurs_premiers(n)
+
+    if len(LESfacteurs) != 2:
+        return None
+
+    return (
+        LESfacteurs[0],
+        LESfacteurs[1],
+    )
 
 
 if __name__ == "__main__":
