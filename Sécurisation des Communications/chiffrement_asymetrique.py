@@ -10,6 +10,8 @@ def est_premier(n):
 
 def facteurs_premiers(n: int) -> list[int]:
     UNEliste = []
+    for i in range(2, n):
+        pass
 
 
 if __name__ == "__main__":
