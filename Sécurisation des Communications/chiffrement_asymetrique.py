@@ -34,7 +34,7 @@ def recur_pgcd(a: int, b: int) -> int:
     return a
 
 
-def premiers_entre_eux(a: int, b: int):
+def premiers_entre_eux(a: int, b: int) -> bool:
     if recur_pgcd(a, b) == 1:
         return True
     return False
