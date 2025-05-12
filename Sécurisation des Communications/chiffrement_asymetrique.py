@@ -9,6 +9,9 @@ def est_premier(n):
 
 def facteurs_premiers(n):
     f = []
+    for i in range(n):
+        if n%i == 0:
+            f.append(i)
 
 
 if __name__ == "__main__":
