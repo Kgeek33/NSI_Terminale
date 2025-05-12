@@ -9,11 +9,14 @@ def est_premier(n):
 
 def facteurs_premiers(n):
     f = []
-    for i in range(n):
+    for i in range(2, n):
         if n%i == 0:
             f.append(i)
+    return f
 
 
 if __name__ == "__main__":
     for i in range(1, 10):
         print(f"Numéro {i} premier ?? => ", est_premier(i))
+    print(facteurs_premiers(6))
+    print(facteurs_premiers(300))
