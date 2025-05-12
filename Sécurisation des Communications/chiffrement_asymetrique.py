@@ -1,5 +1,7 @@
+from math import sqrt
+
 def est_premier(n):
-    for p in range(2, n):
+    for p in range(2,int(sqrt(n))+1):
         if n % p == 0:
             return False
     return True
