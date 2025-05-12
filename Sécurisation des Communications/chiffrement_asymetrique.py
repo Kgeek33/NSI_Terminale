@@ -6,7 +6,8 @@ def est_premier(n):
         if n % p == 0:
             return False
     return True
-        
+
+
 def facteurs_premiers(n: int) -> list[int]:
     UNEliste = []
     THEpremier = 2
