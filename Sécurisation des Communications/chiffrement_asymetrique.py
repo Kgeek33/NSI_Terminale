@@ -26,6 +26,7 @@ def factorisation_RSA(n: int) -> tuple:
     else:
         return None
 
+
 if __name__ == "__main__":
     for i in range(1, 10):
         print(f"Numéro {i} premier ?? => ", est_premier(i))
