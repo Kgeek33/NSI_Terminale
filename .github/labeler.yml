@@ -11,7 +11,7 @@ Bases_de_Données:
 # Chapitre sur les Circuits Intégrés
 Circuits_Intégrés:
   - changed-files:
-      - any-glob-to-any-file: Circuits Intégrés/**
+      - any-glob-to-any-file: Circuits Integres/**
 
 # Chapitre sur Diviser pour Régner
 Diviser_pour_Régner:
