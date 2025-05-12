@@ -22,6 +22,7 @@ def facteurs_premiers(n: int) -> list[int]:
 
 def factorisation_RSA(n):
     
+    return None    
 
 
 if __name__ == "__main__":
