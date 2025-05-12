@@ -71,7 +71,7 @@ Récursivité:
 # Chapitre sur la Sécurisation des Communications
 Sécurisation_des_Communications:
 - changed-files:
-  - any-glob-to-any-file: Sécurisation des Communications/**
+  - any-glob-to-any-file: Securisation des Communications/**
 
 # Les TD effectués via Capytale
 TD_Capytale:
