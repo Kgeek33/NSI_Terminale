@@ -33,10 +33,12 @@ def recur_pgcd(a, b):
         return recur_pgcd(b, a % b)
     return a
 
+
 def premiers_entre_eux(a: int, b: int):
     if recur_pgcd(a, b) == 1:
         return True
     return False
+
 
 if __name__ == "__main__":
     for i in range(1, 10):
