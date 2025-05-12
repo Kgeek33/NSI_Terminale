@@ -18,3 +18,4 @@ def facteurs_premiers(n: int) -> list[int]:
 if __name__ == "__main__":
     for i in range(1, 10):
         print(f"Numéro {i} premier ?? => ", est_premier(i))
+    print(facteurs_premiers(300))
