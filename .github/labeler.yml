@@ -16,7 +16,7 @@ Circuits_Intégrés:
 # Chapitre sur Diviser pour Régner
 Diviser_pour_Régner:
   - changed-files:
-      - any-glob-to-any-file: Diviser pour Régner/**
+      - any-glob-to-any-file: Diviser pour Regner/**
 
 # Les devoirs du jeudi pour se préparer au bac
 Epreuves_pratiques:
