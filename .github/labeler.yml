@@ -6,7 +6,7 @@ Arbres:
 # Chapitre sur les Bases de Données
 Bases_de_Données:
   - changed-files:
-      - any-glob-to-any-file: Bases de Données/**
+      - any-glob-to-any-file: Bases de Donnees/**
 
 # Chapitre sur les Circuits Intégrés
 Circuits_Intégrés:
