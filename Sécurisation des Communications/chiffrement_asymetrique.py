@@ -1,6 +1,6 @@
 def est_premier(n):
-    for c in range(1, n):
-        if c % n == 0:
+    for p in range(2, n):
+        if n % p == 0:
             return False
     return True
 
