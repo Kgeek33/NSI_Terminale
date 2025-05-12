@@ -1,9 +1,8 @@
 def est_premier(n):
-    d = []
     for i in range(2, n):
         if n % i == 0:
-            d.append(i)
-    return d == []
+            return False
+    return True
 
 
 print(est_premier(9967))
