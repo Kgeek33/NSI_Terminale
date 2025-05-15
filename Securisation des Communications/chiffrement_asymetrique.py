@@ -44,7 +44,7 @@ def cles_valides(n: int, e: int, d: int) -> bool:
     p = factorisation_RSA(n)[0]
     q = factorisation_RSA(n)[1]
     f = (p-1) * (q-1)
-    if premiers_entre_eux(f, e) and p != q and p >= 3 and q >= 3 and e > 0 and e < f and est_premier(e) and d >= 1 and d < f and d%f == 1:
+    if premiers_entre_eux(f, e) and p != q and p >= 3 and q >= 3 and e > 0 and e < f and est_premier(e) and d >= 1 and d < f and d % f == 1:
         return True
     return False
 
@@ -69,4 +69,8 @@ if __name__ == "__main__":
     print(premiers_entre_eux(2, 4))
     
     # Question 5
-    
+    print(cles_valides(377, 5, 269))
+    print(cles_valides(437, 41, 29))
+    print(cles_valides(697, 103, 87))
+    print(cles_valides(437, 41, 28))
+    print(cles_valides(697, 102, 87))
