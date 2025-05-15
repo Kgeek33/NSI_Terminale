@@ -62,10 +62,10 @@ def chiffre_RSA(msg: str, cle_n: int, cle_e: int):
 
 
 def dechiffre_RSA(msg: list[int], cle_n, cle_d):
-    Mc = ""
+    Md = ""
     for i in msg:
-        Mc += chr(i**cle_d % cle_n)
-    return Mc
+        Md += chr(i**cle_d % cle_n)
+    return Md
 
 
 if __name__ == "__main__":
