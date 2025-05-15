@@ -45,11 +45,12 @@ def cles_valides(n: int, e: int, d: int) -> bool:
     p, q = produitN
     f = (p - 1) * (q - 1)
 
-    test1 = p != q and p >= 3 and q >= 3
-    test2 = e >= 1 and e < f
-    test3 = d >= 1 and d < f
+    test1 = premiers_entre_eux(p, q)
+    test2 = p != q and p >= 3 and q >= 3
+    test3 = e >= 1 and e < f
+    test4 = d >= 1 and d < f
 
-    return test1 and test2 and test3
+    return test1 and test2 and test3 and test4
 
 
 if __name__ == "__main__":
