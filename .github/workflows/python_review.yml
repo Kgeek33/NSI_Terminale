@@ -101,7 +101,7 @@ jobs:
             const statusTable = `
               | Source   | Statut |
               |----------|--------|
-              | Pyright  | ${process.env.pyright_passed === 'true' ? '✅' : '❌'} |
+              | Pyright  | ${process.env.pyright_passed === 'true' ? '✅' : '❌ (_à corriger via VSCode_)'} |
               | Flake8   | ${process.env.flake8_passed === 'true' ? '✅' : '❌'} |
             `.trim();
 
