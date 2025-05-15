@@ -20,7 +20,7 @@ def facteurs_premiers(n: int) -> list[int]:
     return UNEliste
 
 
-def factorisation_RSA(n: int) -> list[int]:
+def factorisation_RSA(n: int) -> list[int] | None:
     f = facteurs_premiers(n)
     if len(f) == 2:
         return f
@@ -42,6 +42,9 @@ def premiers_entre_eux(a: int, b: int) -> bool:
 
 def cles_valides(n: int, e: int, d: int) -> bool:
     produitN = factorisation_RSA(n)
+    if not produitN:
+        return False
+
     p, q = produitN
     f = (p - 1) * (q - 1)
 
@@ -54,15 +57,21 @@ def cles_valides(n: int, e: int, d: int) -> bool:
     return test1 and test2 and test3 and test4 and test5
 
 
-def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list[str]:
+def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list[int]:
     """prend en parametre le message à chiffrer (chaine) et la clé de
     chiffrement renvoi la liste du message chiffré"""
     msg_chiffre = []
-    z = 0
     for c in msg:
         z = ord(c) ** cle_e % cle_n
         msg_chiffre.append(z)
     return msg_chiffre
+
+
+def dechiffre_RSA(msg: list[int], cle_n: int, cle_d: int):
+    Md = ""
+    for i in msg:
+        Md += chr(i**cle_d % cle_n)
+    return Md
 
 
 if __name__ == "__main__":
@@ -93,8 +102,7 @@ if __name__ == "__main__":
         "Clés (2, 377) et (269, 377) valides ?? =>",
         cles_valides(377, 2, 269)
     )
-
-    # Question 6
+    # Question 7
     print(
         "Message chiffré =>",
         chiffre_RSA("zOrro", 377, 5)
@@ -102,4 +110,12 @@ if __name__ == "__main__":
     print(
         "Message chiffré =>",
         chiffre_RSA("salam aleykoum", 377, 5)
+    )
+    print(
+        "Message déchiffré =>",
+        dechiffre_RSA(chiffre_RSA("zOrro", 377, 5), 377, 269)
+    )
+    print(
+        "Message déchiffré =>",
+        dechiffre_RSA(chiffre_RSA("salam aleykoum", 377, 5), 377, 269)
     )
