@@ -78,7 +78,7 @@ def dechiffre_RSA(msg: list[int], cle_n: int, cle_d: int):
 if __name__ == "__main__":
     # Question 1
     for i in range(1, 10):
-        print(f"Numero {i} premier ?? => ", est_premier(i))
+        print(f"Numéro {i} premier ?? => ", est_premier(i))
 
     # Question 2
     assert facteurs_premiers(300) == [2, 2, 3, 5, 5], "PAS BON"
