@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  flake8-review:
+  python-review:
     runs-on: ubuntu-latest
 
     steps:
