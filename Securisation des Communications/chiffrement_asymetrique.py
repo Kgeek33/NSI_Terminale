@@ -40,6 +40,20 @@ def premiers_entre_eux(a: int, b: int) -> bool:
     return False
 
 
+def cles_valides(n: int, e: int, d: int) -> bool:
+    produitN = factorisation_RSA(n)
+    p, q = produitN
+    f = (p - 1) * (q - 1)
+
+    test1 = premiers_entre_eux(e, f)
+    test2 = p != q and p >= 3 and q >= 3
+    test3 = e >= 1 and e < f
+    test4 = d >= 1 and d < f
+    test5 = e * d % f == 1
+
+    return test1 and test2 and test3 and test4 and test5
+
+
 if __name__ == "__main__":
     # Question 1
     for i in range(1, 10):
@@ -58,3 +72,13 @@ if __name__ == "__main__":
     print(premiers_entre_eux(2, 3))
     print(premiers_entre_eux(2, 5))
     print(premiers_entre_eux(2, 4))
+
+    # Question 5
+    print(
+        "Clés (5, 377) et (269, 377) valides ? =>",
+        cles_valides(377, 5, 269)
+    )
+    print(
+        "Clés (2, 377) et (269, 377) valides ? =>",
+        cles_valides(377, 2, 269)
+    )
