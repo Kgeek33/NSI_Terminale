@@ -40,13 +40,12 @@ jobs:
             echo "flake8_passed=null" >> $GITHUB_ENV
           else
             pyright_passed=true
-            > pyright_output.txt
             flake8_passed=true
             > flake8_output.txt
             while IFS= read -r file; do
               if [ -f "$file" ]; then
                 echo "Checking $file"
-                pyright "$file" >> pyright_output.txt || pyright_passed=false
+                pyright "$file" || pyright_passed=false
                 flake8 "$file" >> flake8_output.txt || flake8_passed=false
               else
                 echo "File $file does not exist, skipping."
@@ -95,10 +94,6 @@ jobs:
         with:
           script: |
             const fs = require("fs");
-
-            const pyrightOutput = fs.existsSync("pyright_output.txt")
-              ? fs.readFileSync("pyright_output.txt", "utf8")
-              : "";
             const flake8Output = fs.existsSync("flake8_output.txt")
               ? fs.readFileSync("flake8_output.txt", "utf8")
               : "";
@@ -120,19 +115,6 @@ jobs:
                   path,
                   line: parseInt(lineNum, 10),
                   body: `🧪 **Flake8** – Col ${column} ➡️ ${message}`
-                });
-              }
-            });
-
-            pyrightOutput.split("\n").forEach((line) => {
-              const match = line.match(/^(.*?):(\d+):(\d+)\s+-\s+\w+:\s+(.*)$/);
-              if (match) {
-                const [_, rawPath, lineNum, column, message] = match;
-                const path = rawPath.trim();
-                comments.push({
-                  path,
-                  line: parseInt(lineNum, 10),
-                  body: `🧠 **Pyright** – Col ${column} ➡️ ${message}`
                 });
               }
             });
