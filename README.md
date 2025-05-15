@@ -30,9 +30,9 @@ Pour rappel FromSoftWare > all
 
 | Contributeur | Contributions | Évolution |
 |--------------|---------------|-----------|
-| @Kgeek33 | 744 | +-3 |
-| @Lascar-png | 99 | +-3 |
-| @SaiKido33 | 99 | +0 |
+| @Kgeek33 | 772 | +28 |
+| @SaiKido33 | 108 | +9 |
+| @Lascar-png | 103 | +4 |
 | @Skyniraph | 32 | +0 |
-| @Github_Actions(Bot) | 194 | N/A |
+| @Github_Actions(Bot) | 199 | N/A |
 
