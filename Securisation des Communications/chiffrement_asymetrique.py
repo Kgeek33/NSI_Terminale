@@ -40,7 +40,7 @@ def premiers_entre_eux(a: int, b: int) -> bool:
     return False
 
 
-def cles_valides(n, e, d):
+def cles_valides(n: int, e: int, d: int) -> bool:
     produitN = factorisation_RSA(n)
     f = (produitN[0] - 1) * (produitN[1] - 1)
     test1 = e >= 1 and e < f
