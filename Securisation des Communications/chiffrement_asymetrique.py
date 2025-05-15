@@ -40,7 +40,8 @@ def premiers_entre_eux(a: int, b: int) -> bool:
     return False
 
 
-def clés_valides(a,n):
+def clés_valides(n,e,d):
+    
 
 
 if __name__ == "__main__":
