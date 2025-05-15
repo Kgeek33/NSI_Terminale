@@ -36,8 +36,8 @@ jobs:
 
           if [ -z "$files" ]; then
             echo "No Python files modified."
-            echo "pyright_passed=null" >> $GITHUB_ENV
-            echo "flake8_passed=null" >> $GITHUB_ENV
+            echo "pyright_passed=true" >> $GITHUB_ENV
+            echo "flake8_passed=true" >> $GITHUB_ENV
           else
             pyright_passed=true
             flake8_passed=true
