@@ -49,8 +49,9 @@ def cles_valides(n: int, e: int, d: int) -> bool:
     test2 = p != q and p >= 3 and q >= 3
     test3 = e >= 1 and e < f
     test4 = d >= 1 and d < f
+    test5 = e * d % f == 1
 
-    return test1 and test2 and test3 and test4
+    return test1 and test2 and test3 and test4 and test5
 
 
 if __name__ == "__main__":
