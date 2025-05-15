@@ -1,7 +1,7 @@
 from math import sqrt
 
 
-def est_premier(n: str):
+def est_premier(n):
     for p in range(2, int(sqrt(n))+1):
         if n % p == 0:
             return False
@@ -20,7 +20,7 @@ def facteurs_premiers(n: int) -> list[int]:
     return UNEliste
 
 
-def factorisation_RSA(n: int) -> list[int]:
+def factorisation_RSA(n: int) -> list[int] | None:
     f = facteurs_premiers(n)
     if len(f) == 2:
         return f
@@ -99,7 +99,7 @@ if __name__ == "__main__":
         cles_valides(377, 5, 269)
     )
     print(
-        "Clés (2, 377) et (269, 377) valides ??? =>",
+        "Clés (2, 377) et (269, 377) valides ?? =>",
         cles_valides(377, 2, 269)
     )
     # Question 7
