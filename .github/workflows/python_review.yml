@@ -78,16 +78,6 @@ jobs:
               body: "Pyright et Flake8 sont contents, LGTM 👍"
             });
 
-            github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: "merge_pr.yml",
-              ref: "main",
-              inputs: {
-                pr_number: context.payload.pull_request.number.toString()
-              }
-            });
-
       - name: ❌ Request changes with comments if checks failed
         if: env.pyright_passed == 'false' || env.flake8_passed == 'false'
         uses: actions/github-script@v7.0.1
