@@ -57,8 +57,7 @@ def cles_valides(n: int, e: int, d: int) -> bool:
 def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list:
     cle = [cle_e, cle_n]
     c = ord(msg)
-    
-    return
+    return c**cle[0]%n
 
 
 if __name__ == "__main__":
