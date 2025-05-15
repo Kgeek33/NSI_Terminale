@@ -57,7 +57,7 @@ def cles_valides(n: int, e: int, d: int) -> bool:
 if __name__ == "__main__":
     # Question 1
     for i in range(1, 10):
-        print(f"Numéro {i} premier ?? => ", est_premier(i))
+        print(f"Numero {i} premier ?? => ", est_premier(i))
 
     # Question 2
     assert facteurs_premiers(300) == [2, 2, 3, 5, 5], "PAS BON"
