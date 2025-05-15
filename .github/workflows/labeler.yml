@@ -22,6 +22,12 @@ jobs:
           gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }} \
             -X PATCH -f assignees[]="$PR_AUTHOR"
 
+      - name: 🚀 Enable automerge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} --auto --merge --repo ${{ github.repository }}
+
       - name: 🏷️ Add labels to PR
         uses: actions/labeler@v5.0.0
         with:
