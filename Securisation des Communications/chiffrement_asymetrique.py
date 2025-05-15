@@ -40,6 +40,11 @@ def premiers_entre_eux(a: int, b: int) -> bool:
     return False
 
 
+def chiffre_RSA(msg, cle_n, cle_e):
+    """prend en parametre le message à chiffrer (chaine) et la clé de
+    chiffrement renvoi la chaine du message chiffré"""
+
+
 if __name__ == "__main__":
     # Question 1
     for i in range(1, 10):
