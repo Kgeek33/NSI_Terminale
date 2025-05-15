@@ -40,10 +40,10 @@ def premiers_entre_eux(a: int, b: int) -> bool:
     return False
 
 
-def cles_valides(n, e, d):
+def cles_valides(n: int, e: int , d: int) -> bool:
     cle_publique = [e, n]
     cle_privee = [d, n]
-    if cle_publique[0] != cle_privee[0] and cle_publique[1] == cle_privee[1]:
+    if :
         return True
     return False
 
@@ -66,3 +66,6 @@ if __name__ == "__main__":
     print(premiers_entre_eux(2, 3))
     print(premiers_entre_eux(2, 5))
     print(premiers_entre_eux(2, 4))
+    
+    # Question 5
+    
