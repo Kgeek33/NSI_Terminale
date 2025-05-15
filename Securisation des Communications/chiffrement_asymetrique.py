@@ -54,11 +54,15 @@ def cles_valides(n: int, e: int, d: int) -> bool:
     return test1 and test2 and test3 and test4 and test5
 
 
-def chiffre_RSA(msg: str, cle_n: int, cle_e: int):
-    Mc = []
+def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list[str]:
+    """prend en parametre le message à chiffrer (chaine) et la clé de
+    chiffrement renvoi la liste du message chiffré"""
+    msg_chiffre = []
+    z = 0
     for c in msg:
-        Mc.append(ord(c)**cle_e % cle_n)
-    return Mc
+        z = ord(c) ** cle_e % cle_n
+        msg_chiffre.append(z)
+    return msg_chiffre
 
 
 def dechiffre_RSA(msg: list[int], cle_n, cle_d):
@@ -96,7 +100,20 @@ if __name__ == "__main__":
         "Clés (2, 377) et (269, 377) valides ?? =>",
         cles_valides(377, 2, 269)
     )
-
     # Question 7
-    print(chiffre_RSA("zOrro", 377, 5))
-    print(dechiffre_RSA(chiffre_RSA("zOrro", 377, 5), 377, 269))
+    print(
+        "Message chiffré =>",
+        chiffre_RSA("zOrro", 377, 5)
+    )
+    print(
+        "Message chiffré =>",
+        chiffre_RSA("salam aleykoum", 377, 5)
+    )
+    print(
+        "Message déchiffré =>",
+        dechiffre_RSA(chiffre_RSA("zOrro", 377, 5))
+    )
+    print(
+        "Message déchiffré =>",
+        dechiffre_RSA(chiffre_RSA("salam aleykoum", 377, 5), 377, 269)
+    )
