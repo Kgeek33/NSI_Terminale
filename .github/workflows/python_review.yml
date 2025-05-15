@@ -125,6 +125,7 @@ jobs:
             });
 
             pyrightOutput.split("\n").forEach((line) => {
+              console.log(line)
               const match = line.match(/^(.*?):(\d+):(\d+): (.*)$/);
               if (match) {
                 const [_, path, lineNum, column, message] = match;
