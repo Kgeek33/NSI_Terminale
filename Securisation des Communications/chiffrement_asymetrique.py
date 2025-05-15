@@ -41,7 +41,12 @@ def premiers_entre_eux(a: int, b: int) -> bool:
 
 
 def cles_valides(n, e, d):
-    pass
+    produitN = factorisation_RSA(n)
+    f = (produitN[0] - 1) * (produitN[1] - 1)
+    test1 = e >= 1 and e < f
+    test2 = d >= 1 and d < f
+
+    return test1 and test2
 
 
 if __name__ == "__main__":
