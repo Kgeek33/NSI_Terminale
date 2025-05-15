@@ -43,6 +43,8 @@ def premiers_entre_eux(a: int, b: int) -> bool:
 def cles_valides(n, e, d):
     cle_publique = [e, n]
     cle_privee = [d, n]
+    if cle_publique[0] != cle_privee[0] and cle_publique[1] == cle_privee[1]:
+        return True
 
 
 if __name__ == "__main__":
