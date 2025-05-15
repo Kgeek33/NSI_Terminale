@@ -41,8 +41,8 @@ def premiers_entre_eux(a: int, b: int) -> bool:
 
 
 def cles_valides(n,e,d):
-    cle_publique=[e,n]
-    cle_privee=[d,n]
+    cle_publique=[e, n]
+    cle_privee=[d, n]
 
 
 if __name__ == "__main__":
