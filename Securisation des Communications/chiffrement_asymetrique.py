@@ -67,3 +67,9 @@ if __name__ == "__main__":
     print(premiers_entre_eux(2, 3))
     print(premiers_entre_eux(2, 5))
     print(premiers_entre_eux(2, 4))
+
+    # Question 5
+    print(
+        "Clés (5, 377) et (269, 377) valides ? =>",
+        cles_valides(377, 5, 269)
+    )
