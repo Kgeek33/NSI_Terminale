@@ -1,0 +1,13 @@
+{
+    "python.analysis.typeCheckingMode": "standard",
+    "files.autoSave": "afterDelay",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.nextEditSuggestions.fixes": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.mergeEditor": true,
+    "git.enableSmartCommit": true,
+    "git.pruneOnFetch": true,
+    "git.pullBeforeCheckout": true,
+    "git.showPushSuccessNotification": false
+}
