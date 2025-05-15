@@ -45,7 +45,7 @@ def cles_valides(n: int, e: int, d: int) -> bool:
     p, q = produitN
     f = (p - 1) * (q - 1)
 
-    test1 = premiers_entre_eux(p, q)
+    test1 = premiers_entre_eux(e, f)
     test2 = p != q and p >= 3 and q >= 3
     test3 = e >= 1 and e < f
     test4 = d >= 1 and d < f
