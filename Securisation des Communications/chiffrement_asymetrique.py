@@ -40,6 +40,10 @@ def premiers_entre_eux(a: int, b: int) -> bool:
     return False
 
 
+def cles_valides(n, e, d):
+    pass
+
+
 if __name__ == "__main__":
     # Question 1
     for i in range(1, 10):
