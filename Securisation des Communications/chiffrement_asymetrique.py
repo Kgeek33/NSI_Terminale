@@ -66,19 +66,19 @@ if __name__ == "__main__":
     print(factorisation_RSA(377))
     print(factorisation_RSA(437))
     print(factorisation_RSA(99400891))
-    print(factorisation_RSA(99999640000243))
+    # print(factorisation_RSA(99999640000243))
 
     # Question 4
-    print(premiers_entre_eux(2, 3))
-    print(premiers_entre_eux(2, 5))
-    print(premiers_entre_eux(2, 4))
+    print("2 et 3 premiers entre eux ?? =>", premiers_entre_eux(2, 3))
+    print("2 et 5 premiers entre eux ?? =>", premiers_entre_eux(2, 5))
+    print("2 et 4 premiers entre eux ?? =>", premiers_entre_eux(2, 4))
 
     # Question 5
     print(
-        "Clés (5, 377) et (269, 377) valides ? =>",
+        "Clés (5, 377) et (269, 377) valides ?? =>",
         cles_valides(377, 5, 269)
     )
     print(
-        "Clés (2, 377) et (269, 377) valides ? =>",
+        "Clés (2, 377) et (269, 377) valides ?? =>",
         cles_valides(377, 2, 269)
     )
