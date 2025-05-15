@@ -7,12 +7,26 @@ on:
 jobs:
   labeler:
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4.2.2
+
+      - name: 🙋 Define author
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }} \
+            -X PATCH -f assignees[]="$PR_AUTHOR"
+
+      - name: 🚀 Enable automerge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} --auto --merge --repo ${{ github.repository }}
 
       - name: 🏷️ Add labels to PR
         uses: actions/labeler@v5.0.0
