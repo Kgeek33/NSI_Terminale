@@ -75,10 +75,10 @@ if __name__ == "__main__":
 
     # Question 5
     print(
-        "Clés (5, 377) et (269, 377) valides ? =>",
+        "Clés (5, 377) et (269, 377) valides ?? =>",
         cles_valides(377, 5, 269)
     )
     print(
-        "Clés (2, 377) et (269, 377) valides ? =>",
+        "Clés (2, 377) et (269, 377) valides ?? =>",
         cles_valides(377, 2, 269)
     )
