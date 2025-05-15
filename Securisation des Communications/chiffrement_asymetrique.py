@@ -8,7 +8,7 @@ def est_premier(n):
     return True
 
 
-def facteurs_premiers(n: int) -> list[int] | None:
+def facteurs_premiers(n: int) -> list[int]:
     UNEliste = []
     THEpremier = 2
     while n != 1:
@@ -20,7 +20,7 @@ def facteurs_premiers(n: int) -> list[int] | None:
     return UNEliste
 
 
-def factorisation_RSA(n: int) -> list[int]:
+def factorisation_RSA(n: int) -> list[int] | None:
     f = facteurs_premiers(n)
     if len(f) == 2:
         return f
@@ -42,6 +42,9 @@ def premiers_entre_eux(a: int, b: int) -> bool:
 
 def cles_valides(n: int, e: int, d: int) -> bool:
     produitN = factorisation_RSA(n)
+    if not produitN:
+        return False
+
     p, q = produitN
     f = (p - 1) * (q - 1)
 
@@ -54,7 +57,7 @@ def cles_valides(n: int, e: int, d: int) -> bool:
     return test1 and test2 and test3 and test4 and test5
 
 
-def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list[str]:
+def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list[int]:
     """prend en parametre le message à chiffrer (chaine) et la clé de
     chiffrement renvoi la liste du message chiffré"""
     msg_chiffre = []
@@ -65,7 +68,7 @@ def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list[str]:
     return msg_chiffre
 
 
-def dechiffre_RSA(msg: list[int], cle_n, cle_d):
+def dechiffre_RSA(msg: list[int], cle_n: int, cle_d: int):
     Md = ""
     for i in msg:
         Md += chr(i**cle_d % cle_n)
@@ -111,7 +114,7 @@ if __name__ == "__main__":
     )
     print(
         "Message déchiffré =>",
-        dechiffre_RSA(chiffre_RSA("zOrro", 377, 5))
+        dechiffre_RSA(chiffre_RSA("zOrro", 377, 5), 377, 269)
     )
     print(
         "Message déchiffré =>",
