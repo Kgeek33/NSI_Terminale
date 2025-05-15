@@ -42,14 +42,14 @@ def premiers_entre_eux(a: int, b: int) -> bool:
 
 def clés_valide(n, e, d):
     f = factorisation_RSA(n)
-    g = (f[0]-1)*(f[1]-1)
-    if e <= 0 or e >= g:
+    fac = (f[0]-1)*(f[1]-1)
+    if e <= 0 or e >= fac:
         return False
-    if not premiers_entre_eux(e, g):
+    if not premiers_entre_eux(e, fac):
         return False
-    if d < 1 or d >= g:
+    if d < 1 or d >= fac:
         return False
-    if e * d % g != 1:
+    if e * d % fac != 1:
         return False
     return True
 
