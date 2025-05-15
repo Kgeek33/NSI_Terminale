@@ -8,7 +8,7 @@ def est_premier(n):
     return True
 
 
-def facteurs_premiers(n: int) -> list[int]:
+def facteurs_premiers(n: int) -> list[int] | None:
     UNEliste = []
     THEpremier = 2
     while n != 1:
@@ -54,6 +54,20 @@ def cles_valides(n: int, e: int, d: int) -> bool:
     return test1 and test2 and test3 and test4 and test5
 
 
+def chiffre_RSA(msg: str, cle_n: int, cle_e: int):
+    Mc = []
+    for c in msg:
+        Mc.append(ord(c)**cle_e % cle_n)
+    return Mc
+
+
+def dechiffre_RSA(msg: list[int], cle_n, cle_d):
+    Mc = ""
+    for i in msg:
+        Mc += chr(i**cle_d % cle_n)
+    return Mc
+
+
 if __name__ == "__main__":
     # Question 1
     for i in range(1, 10):
@@ -82,3 +96,7 @@ if __name__ == "__main__":
         "Clés (2, 377) et (269, 377) valides ? =>",
         cles_valides(377, 2, 269)
     )
+
+    # Question 7
+    print(chiffre_RSA("zOrro", 377, 5))
+    print(dechiffre_RSA(chiffre_RSA("zOrro", 377, 5), 377, 269))
