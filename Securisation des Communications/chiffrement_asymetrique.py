@@ -93,6 +93,7 @@ if __name__ == "__main__":
         "Clés (2, 377) et (269, 377) valides ?? =>",
         cles_valides(377, 2, 269)
     )
+
     # Question 6
     print(
         "Message chiffré =>",
