@@ -63,7 +63,6 @@ def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list[str]:
         z = ord(c) ** cle_e % cle_n
         msg_chiffre.append(z)
     return msg_chiffre
-       
 
 
 if __name__ == "__main__":
@@ -98,4 +97,8 @@ if __name__ == "__main__":
     print(
         "Message chiffré =>",
         chiffre_RSA("zOrro", 377, 5)
+    )
+    print(
+        "Message chiffré =>",
+        chiffre_RSA("salam aleykoum", 377, 5)
     )
