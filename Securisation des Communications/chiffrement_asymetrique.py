@@ -78,3 +78,4 @@ if __name__ == "__main__":
     print(clés_valide(437, 41, 29))
     print(clés_valide(697, 103, 87))
     print(clés_valide(437, 41, 28))
+    print(clés_valide(697, 102, 87))
