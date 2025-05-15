@@ -61,7 +61,6 @@ def chiffre_RSA(msg: str, cle_n: int, cle_e: int) -> list[int]:
     """prend en parametre le message à chiffrer (chaine) et la clé de
     chiffrement renvoi la liste du message chiffré"""
     msg_chiffre = []
-    z = 0
     for c in msg:
         z = ord(c) ** cle_e % cle_n
         msg_chiffre.append(z)
