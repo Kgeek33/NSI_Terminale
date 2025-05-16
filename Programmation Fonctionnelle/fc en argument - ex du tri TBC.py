@@ -145,4 +145,3 @@ if __name__ == "__main__":
 
     # c.
     print(tri_ins_generique(ordre_naissaice_decr, histoire))
-
