@@ -20,7 +20,7 @@ jobs:
 
       - name: 📥 Fetch contributors from GitHub API
         env:
-          GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           contributors=$(gh api repos/${{ github.repository }}/contributors --paginate)
           if [ -f .github/previous_contributors.json ]; then
