@@ -19,6 +19,8 @@ jobs:
           git config --global user.email "actions@github.com"
 
       - name: 🔄 Update all branches
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git fetch origin
           branches=$(git branch -r | grep -v '\->' | grep -v 'main' | sed 's/origin\///')

@@ -16,7 +16,7 @@ jobs:
 
       - name: 🙋 Define author
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }}
         run: |
           PR_AUTHOR="${{ github.event.pull_request.user.login }}"
           gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }} \
@@ -24,12 +24,12 @@ jobs:
 
       - name: 🚀 Enable automerge
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ADMIN_PAT }}
         run: |
           gh pr merge ${{ github.event.pull_request.number }} --auto --merge --repo ${{ github.repository }}
 
       - name: 🏷️ Add labels to PR
         uses: actions/labeler@v5.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.ADMIN_PAT }}
           configuration-path: .github/labeler.yml
