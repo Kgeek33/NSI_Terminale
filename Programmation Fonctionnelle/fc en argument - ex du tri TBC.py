@@ -76,9 +76,9 @@ def insere_deces(h: list[tuple], i: int, v: tuple):
     "a completer"
     j = i
     while j > 0 and h[j - 1][2] < v[2]:
-        h[j] = h[j + 1]
+        h[j] = h[j - 1]
         print(h)
-        j = j + 1
+        j = j - 1
     h[j] = v
 
 
