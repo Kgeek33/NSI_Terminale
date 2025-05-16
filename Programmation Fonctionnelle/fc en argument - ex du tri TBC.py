@@ -73,12 +73,11 @@ def tri_ins_naissance_cr(h: list[tuple]):
 def insere_deces(h: list[tuple], i: int, v: tuple):
     """v est un tuple informaticien"""
     """insère v dans h[0..i[ supposé trié par deces croissants"""
-    "a completer"
     j = i
     while j > 0 and h[j - 1][2] < v[2]:
-        h[j] = h[j + 1]
+        h[j] = h[j - 1]
         print(h)
-        j = j + 1
+        j = j - 1
     h[j] = v
 
 
@@ -90,6 +89,10 @@ def tri_ins_deces_decr(h: list[tuple]):
         print("fin de l'insertion no", i, h[:i+1], "-", h[i+1:])
         # invariant : h[0..i+1[ est trié dans l'ordre des deces croissants
     # postcondition
+
+
+def ordre_naissaice_cr(individu_A: tuple, individu_B: tuple):
+    return individu_A[1] < individu_B[1]
 
 
 histoire = [('Jobs', 1955, 2011),
@@ -107,3 +110,8 @@ if __name__ == "__main__":
     # Question 2
     tri_ins_deces_decr(histoire)
     # print(histoire)
+
+    # Question 3
+    # a.
+    print(ordre_naissaice_cr(('Jobs', 1955, 2011), ('Dijkstra', 1930, 2002)))
+    print(ordre_naissaice_cr(('Turing', 1912, 1954), ('Dijkstra', 1930, 2002)))
