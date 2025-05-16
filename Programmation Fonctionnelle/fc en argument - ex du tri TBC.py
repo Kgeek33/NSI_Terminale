@@ -1,4 +1,4 @@
-def estTrie(t):
+def estTrie(t: list[int]):
     """
     retourne True si le tableau t est trié dans l'ordre croissant
     False sinon
@@ -15,7 +15,7 @@ def estTrie(t):
     return True
 
 
-def insere(t, i, v):
+def insere(t: list[int], i: int, v: int):
     """insère v dans t[0..i[ supposé trié"""
     j = i
     while j > 0 and t[j - 1] > v:
@@ -25,7 +25,7 @@ def insere(t, i, v):
     t[j] = v
 
 
-def tri_insertion(t):
+def tri_insertion(t: list[int]):
     """trie le tableau t dans l'ordre croissant"""
     print("debut de la boucle", "   0", t[:1], "-", t[1:])
     for i in range(1, len(t)):
@@ -47,7 +47,7 @@ print(T)
 print()
 
 
-def insere_naiss(h, i, v):
+def insere_naiss(h: list[tuple], i: int, v: tuple):
     """v est un tuple informaticien"""
     """insère v dans h[0..i[ supposé trié par naissances croissantes"""
 
@@ -55,7 +55,7 @@ def insere_naiss(h, i, v):
     pass
 
 
-def tri_ins_naissance_cr(h):
+def tri_ins_naissance_cr(h: list[tuple]):
     """trie le tableau h dans l'ordre croissant des naissances"""
     print("debut de la boucle", "   0", h[:1], "-", h[1:])
     for i in range(1, len(h)):
@@ -67,14 +67,14 @@ def tri_ins_naissance_cr(h):
     # postcondition
 
 
-def insere_deces(h, i, v):
+def insere_deces(h: list[tuple], i: int, v: tuple):
     """v est un tuple informaticien"""
     """insère v dans h[0..i[ supposé trié par deces croissants"""
     "a completer"
     pass
 
 
-def tri_ins_deces_decr(h):
+def tri_ins_deces_decr(h: list[tuple]):
     """trie le tableau t dans l'ordre croissant"""
     print("debut de la boucle", "   0", h[:1], "-", h[1:])
     for i in range(1, len(h)):
