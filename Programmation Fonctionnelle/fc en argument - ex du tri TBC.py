@@ -95,6 +95,15 @@ def ordre_naissaice_cr(individu_A: tuple, individu_B: tuple):
     return individu_A[1] < individu_B[1]
 
 
+def insert_ordonne(ordonne, t, i, v):
+    j = i
+    while j > 0 and not ordonne(t[j-1], v):
+        t[j] = t[j-1]
+
+        j -= 1
+    t[j] = v
+
+
 histoire = [('Jobs', 1955, 2011),
             ('Dijkstra', 1930, 2002),
             ('Turing', 1912, 1954),
