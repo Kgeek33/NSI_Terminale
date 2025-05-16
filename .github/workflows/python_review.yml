@@ -36,8 +36,8 @@ jobs:
 
           if [ -z "$files" ]; then
             echo "No Python files modified."
-            echo "pyright_passed=true" >> $GITHUB_ENV
-            echo "flake8_passed=true" >> $GITHUB_ENV
+            echo "pyright_passed=null" >> $GITHUB_ENV
+            echo "flake8_passed=null" >> $GITHUB_ENV
           else
             pyright_passed=true
             flake8_passed=true
@@ -76,6 +76,16 @@ jobs:
               pull_number: context.payload.pull_request.number,
               event: "APPROVE",
               body: "Pyright et Flake8 sont contents, LGTM 👍"
+            });
+
+            github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: "merge_pr.yml",
+              ref: "main",
+              inputs: {
+                pr_number: context.payload.pull_request.number.toString()
+              }
             });
 
       - name: ❌ Request changes with comments if checks failed
