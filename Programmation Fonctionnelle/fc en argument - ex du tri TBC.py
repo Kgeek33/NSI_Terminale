@@ -1,16 +1,19 @@
 def estTrie(t):
-    """retourne True si le tableau t est trié dans l'ordre croissant, False sinon
+    """
+    retourne True si le tableau t est trié dans l'ordre croissant
+    False sinon
     >>> estTrie([17, 28, 39, 54, 59, 72])   #True
     >>> estTrie([17, 28, 9, 54, 59, 72])    #False
     >>> estTrie([1,1,1])                    #True
     >>> estTrie([])                         #True
     """
     for i in range(len(t)-1):
-        if t[i]>t[i+1]:
+        if t[i] > t[i+1]:
             print("liste non triée")
             return False
-    #print("liste triée")
+    # print("liste triée")
     return True
+
 
 def insere(t, i, v):
     """insère v dans t[0..i[ supposé trié"""
@@ -21,42 +24,48 @@ def insere(t, i, v):
         j = j - 1
     t[j] = v
 
+
 def tri_insertion(t):
     """trie le tableau t dans l'ordre croissant"""
-    print("debut de la boucle","   0",t[:1],"-",t[1:])
+    print("debut de la boucle", "   0", t[:1], "-", t[1:])
     for i in range(1, len(t)):
         insere(t, i, t[i])
-        print("fin de l'insertion no",i,t[:i+1],"-",t[i+1:])
+        print("fin de l'insertion no", i, t[:i+1], "-", t[i+1:])
         # invariant : t[0..i+1[ est trié
         assert estTrie(t[:i+1])
-    #postcondition
+    # postcondition
     assert estTrie(t)
 
-T=[72, 39, 28, 59, 17, 54]
+
+T = [72, 39, 28, 59, 17, 54]
 tri_insertion(T)
 print(T)
 
-T=[61, 13, 5, 16, 17, 2]
+T = [61, 13, 5, 16, 17, 2]
 tri_insertion(T)
 print(T)
 print()
 
+
 def insere_naiss(h, i, v):
     """v est un tuple informaticien"""
     """insère v dans h[0..i[ supposé trié par naissances croissantes"""
-    
+
     "a completer"
     pass
-    
+
+
 def tri_ins_naissance_cr(h):
     """trie le tableau h dans l'ordre croissant des naissances"""
-    print("debut de la boucle","   0",h[:1],"-",h[1:])
-    for i in range(1,len(h)):
+    print("debut de la boucle", "   0", h[:1], "-", h[1:])
+    for i in range(1, len(h)):
         "a completer"
-        print("fin de l'insertion no",i,h[:i+1],"-",h[i+1:])
-        # invariant : h[0..i+1[ est trié dans l'ordre des naissances croissantes
-        
-    #postcondition
+        print("fin de l'insertion no", i, h[:i+1], "-", h[i+1:])
+        # invariant : h[0..i+1[ est trié
+        # dans l'ordre des naissances croissantes
+
+    # postcondition
+
 
 def insere_deces(h, i, v):
     """v est un tuple informaticien"""
@@ -64,23 +73,24 @@ def insere_deces(h, i, v):
     "a completer"
     pass
 
+
 def tri_ins_deces_decr(h):
     """trie le tableau t dans l'ordre croissant"""
-    print("debut de la boucle","   0",h[:1],"-",h[1:])
-    for i in range(1,len(h)):
+    print("debut de la boucle", "   0", h[:1], "-", h[1:])
+    for i in range(1, len(h)):
         "a completer"
-        print("fin de l'insertion no",i,h[:i+1],"-",h[i+1:])
+        print("fin de l'insertion no", i, h[:i+1], "-", h[i+1:])
         # invariant : h[0..i+1[ est trié dans l'ordre des deces croissants
-    #postcondition
+    # postcondition
 
 
-histoire=[  ('Jobs', 1955, 2011),
-                ('Dijkstra', 1930, 2002),
-                ('Turing', 1912, 1954),
-                ('Hopper', 1906, 1992,)]
+histoire = [('Jobs', 1955, 2011),
+            ('Dijkstra', 1930, 2002),
+            ('Turing', 1912, 1954),
+            ('Hopper', 1906, 1992,)]
 
-#tri_ins_naissance_cr(histoire)
+# tri_ins_naissance_cr(histoire)
 print(histoire)
 
-#tri_ins_deces_decr(histoire)
+# tri_ins_deces_decr(histoire)
 print(histoire)
