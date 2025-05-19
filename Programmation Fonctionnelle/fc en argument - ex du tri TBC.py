@@ -82,7 +82,7 @@ def insere_deces(h: list[tuple], i: int, v: tuple):
 
 
 def tri_ins_deces_decr(h: list[tuple]):
-    """trie le tableau t dans l'ordre croissant"""
+    """trie le tableau t dans l'ordre decroissant"""
     print("debut de la boucle", "   0", h[:1], "-", h[1:])
     for i in range(1, len(h)):
         insere_deces(h, i, h[i])
@@ -95,13 +95,27 @@ def ordre_naissaice_cr(individu_A: tuple, individu_B: tuple):
     return individu_A[1] < individu_B[1]
 
 
-def insert_ordonne(ordonne, t, i, v):
-    j = i
-    while j > 0 and not ordonne(t[j-1], v):
-        t[j] = t[j-1]
+def ordre_naissaice_decr(individu_A: tuple, individu_B: tuple):
+    return individu_A[2] > individu_B[2]
 
-        j -= 1
+
+def insere_ordonne(ordonne, t: list[int], i: int, v: int):
+    """insère v dans t[0..i[ supposé trié"""
+    j = i
+    while j > 0 and not ordonne(t[j - 1], v):
+        t[j] = t[j - 1]
+        print(t)
+        j = j - 1
     t[j] = v
+
+
+def tri_ins_generique(ordonne, h: list):
+    print("debut de la boucle", "   0", h[:1], "-", h[1:])
+    for i in range(1, len(h)):
+        insere_ordonne(ordonne, h, i, h[i])
+        print("fin de l'insertion no", i, h[:i+1], "-", h[i+1:])
+        # invariant : h[0..i+1[ est trié dans l'ordre des deces croissants
+    # postcondition
 
 
 histoire = [('Jobs', 1955, 2011),
@@ -121,6 +135,13 @@ if __name__ == "__main__":
     # print(histoire)
 
     # Question 3
+
     # a.
     print(ordre_naissaice_cr(('Jobs', 1955, 2011), ('Dijkstra', 1930, 2002)))
     print(ordre_naissaice_cr(('Turing', 1912, 1954), ('Dijkstra', 1930, 2002)))
+
+    # b.
+    print(tri_ins_generique(ordre_naissaice_cr, histoire))
+
+    # c.
+    print(tri_ins_generique(ordre_naissaice_decr, histoire))
