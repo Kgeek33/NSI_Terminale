@@ -33,6 +33,6 @@ Pour rappel FromSoftWare > all
 | @Kgeek33 | 795 | +0 |
 | @SaiKido33 | 119 | +0 |
 | @Lascar-png | 103 | +0 |
-| @Skyniraph | 35 | +-2 |
-| @Github_Actions(Bot) | 205 | N/A |
+| @Skyniraph | 37 | +2 |
+| @Github_Actions(Bot) | 206 | N/A |
 
