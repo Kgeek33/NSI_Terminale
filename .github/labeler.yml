@@ -53,6 +53,11 @@ Processus_et_Ressources:
   - changed-files:
       - any-glob-to-any-file: Processus et Ressources/**
 
+# Chapitre sur la Programmation Dynamique
+Programmation_Dynamique:
+  - changed-files:
+      - any-glob-to-any-file: Programmation Dynamique/**
+
 # Chapitre sur la Programmation Fonctionnelle
 Programmation_Fonctionnelle:
   - changed-files:
