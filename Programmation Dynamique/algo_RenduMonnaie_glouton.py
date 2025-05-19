@@ -17,4 +17,4 @@ def rendre_monnaie(pieces: tuple, s: int | float):
 
 
 if __name__ == '__main__':
-    print(rendre_monnaie(euros, 5.33))
+    print("Rendu monnaie de 5,33€ =>", rendre_monnaie(euros, 5.33))
