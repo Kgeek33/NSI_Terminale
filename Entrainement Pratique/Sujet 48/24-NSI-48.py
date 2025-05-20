@@ -27,3 +27,5 @@ def nombre_suivant(s: str) -> str:
     return resultat
 
 
+assert nombre_suivant("1211") == "111221"
+assert nombre_suivant("311") == "1321"
