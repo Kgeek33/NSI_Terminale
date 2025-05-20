@@ -9,7 +9,7 @@ assert voisins_entrants([[1, 2], [2], [0], [0]], 0) == [2, 3]
 assert  voisins_entrants([[1, 2], [2], [0], [0]], 1) == [0]
 
 
-def nombre_suivant(s):
+def nombre_suivant(s: str) -> str:
     '''Renvoie le nombre suivant de celui representé par s
     en appliquant le procédé de lecture.'''
     resultat = ''
