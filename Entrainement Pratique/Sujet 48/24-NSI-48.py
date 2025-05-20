@@ -16,11 +16,11 @@ def nombre_suivant(s: str) -> str:
     resultat = ''
     chiffre = s[0]
     compte = 1
-    for i in range(len(s)):
+    for i in range(1, len(s)):
         if s[i] == chiffre:
             compte = compte + 1
         else:
-            resultat += str(compte) + s[i]
+            resultat += str(compte) + s[i - 1]
             chiffre = s[i]
             compte = 1
     lecture_chiffre = str(compte) + chiffre
