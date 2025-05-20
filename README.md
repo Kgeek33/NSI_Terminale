@@ -17,22 +17,23 @@ Bienvenue dans le repo `NSI_Terminale` !
 
 > [!WARNING]
 >
-> Pour éviter des PR complexes à review ET des conflits tout le temps, une branche doit être utilisée uniquement pour un chapitre
+> Pour éviter des conflits tout le temps, une branche doit être utilisée uniquement pour chaque exercice
 
 ### Quand tu as terminé un exo avant les autres
 
 Déjà bravo ! Ensuite, tu vas faire faire une `pull request` (pr) pour proposer le travail que tu as fait.
 
-Une fois la pr faite, une personne spécialisée dans le chapitre fera une review de ta pr et s'il accepte, ta pr sera automatiquement merge dans la branche `main`
+Une fois la pr faite, une personne spécialisée dans le chapitre fera une review de ta pr et s'il accepte, ta pr sera automatiquement merge dans la branche `main` et tu gagneras des contributions dans le tableau ci-dessous (_automatiquement actualisé par un bot_)
 
 Pour rappel FromSoftWare > all
+
 ## Contributions des Contributeurs
 
 | Contributeur | Contributions | Évolution |
 |--------------|---------------|-----------|
-| @Kgeek33 | 802 | +0 |
+| @Kgeek33 | 806 | +4 |
 | @SaiKido33 | 119 | +0 |
-| @Lascar-png | 103 | +0 |
-| @Skyniraph | 40 | +0 |
-| @Github_Actions(Bot) | 211 | N/A |
+| @Lascar-png | 109 | +6 |
+| @Skyniraph | 41 | +1 |
+| @Github_Actions(Bot) | 220 | N/A |
 
