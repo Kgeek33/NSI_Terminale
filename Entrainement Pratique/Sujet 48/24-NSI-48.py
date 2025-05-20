@@ -5,8 +5,9 @@ def voisins_entrants(adj: list, x: int) -> list:
             list_voisin.append(i)
     return list_voisin
 
+
 assert voisins_entrants([[1, 2], [2], [0], [0]], 0) == [2, 3]
-assert  voisins_entrants([[1, 2], [2], [0], [0]], 1) == [0]
+assert voisins_entrants([[1, 2], [2], [0], [0]], 1) == [0]
 
 
 def nombre_suivant(s: str) -> str:
@@ -15,14 +16,14 @@ def nombre_suivant(s: str) -> str:
     resultat = ''
     chiffre = s[0]
     compte = 1
-    for i in range(len(s)): 
+    for i in range(len(s)):
         if s[i] == chiffre:
-            compte = compte + 1 
+            compte = compte + 1
         else:
-            resultat += str(compte) + s[i] 
-            chiffre = s[i] 
-            compte = 1 
-    lecture_chiffre = str(compte) + chiffre 
+            resultat += str(compte) + s[i]
+            chiffre = s[i]
+            compte = 1
+    lecture_chiffre = str(compte) + chiffre
     resultat += lecture_chiffre
     return resultat
 
