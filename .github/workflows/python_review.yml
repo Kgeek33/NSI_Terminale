@@ -85,6 +85,8 @@ jobs:
 
             let table = "| Auteur | Commits dans la PR |\n|--------|--------------------|\n";
             for (const [author, count] of Object.entries(authorCounts)) {
+              if (author === "github-actions[bot]" || author === "actions-user") continue;
+
               table += `| @${author} | ${count} |\n`;
             }
 
