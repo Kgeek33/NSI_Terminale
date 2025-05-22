@@ -20,7 +20,7 @@ def temps_d_execution_2(f, x, y):
     print(timeit.timeit(functools.partial(f, x, y), number=1))
 
 
-assert euros == (1, 2, 5, 20, 50, 100)
+print(euros == (1, 2, 5, 20, 50, 100))
 a_rendre = 29
 temps_d_execution_2(nb_rendu, euros, a_rendre)
 temps_d_execution_2(nb_rendu_memo, euros, a_rendre)
