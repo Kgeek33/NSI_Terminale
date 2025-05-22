@@ -23,7 +23,7 @@ def nb_rendu(pieces, s, prof=""):
 
 nb_rendu(euros, 4)
 
-test = True
+test = False
 if __name__ == '__main__' and test:
 
     R_G = glouton.rendre_monnaie(euros, 12)
