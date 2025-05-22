@@ -1,0 +1,18 @@
+import timeit, functools
+from algo_RenduMonnaie_optimal_dyn import *
+
+def temps_d_execution(f,x):
+    """mesure le temps d'exeution de f(x)"""
+    print("{} avec timeit et x={}".format(f,x))
+    print(timeit.timeit(functools.partial(f, x),number=10))
+
+def temps_d_execution_2(f,x,y):
+    """mesure le temps d'execution de f(x)"""
+    print("{} avec timeit et x={} et y={}".format(f,x,y))
+    print(timeit.timeit(functools.partial(f,x,y),number=1))
+
+euros==(1,2,5,20,50,100)
+a_rendre=29
+temps_d_execution_2(nb_rendu,euros,a_rendre)
+temps_d_execution_2(nb_rendu_memo,euros,a_rendre)
+temps_d_execution_2(nb_rendu_dyn,euros,a_rendre)
