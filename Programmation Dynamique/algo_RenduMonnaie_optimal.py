@@ -21,9 +21,9 @@ def nb_rendu(pieces, s, prof=""):
     return nb_pieces_a_rendre
 
 
-nb_rendu(euros, 4)
+print(nb_rendu(euros, 4))
 
-test = True
+test = False
 if __name__ == '__main__' and test:
 
     R_G = glouton.rendre_monnaie(euros, 12)
