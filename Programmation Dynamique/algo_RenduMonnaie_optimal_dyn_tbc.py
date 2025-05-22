@@ -6,7 +6,7 @@ import algo_RenduMonnaie_glouton as glouton
 euros = (1, 2, 5, 10, 20, 50, 100, 200)
 
 
-def nb_rendu(pieces, s, prof=None):
+def nb_rendu(pieces: tuple[int], s: int, prof: str | None = None):
     """prend en paramètre le systeme de pieces (tuple) et s, la somme à rendre
     renvoie la liste des pieces rendues"""
 
@@ -35,7 +35,7 @@ def nb_rendu(pieces, s, prof=None):
     return nb_pieces_a_rendre
 
 
-def nb_rendu_memo(pieces, s, dico={}):
+def nb_rendu_memo(pieces: tuple[int], s: int, dico: dict[int, int] = {}):
     """prend en parametre le systeme de pieces (tuple) et s, la somme a rendre,
     et dico le dictionnaire des calculs dejà effectues
     (programmation dynamique)
@@ -62,7 +62,7 @@ def nb_rendu_memo(pieces, s, dico={}):
     return dico[s]
 
 
-def nb_rendu_dyn(pieces, s):
+def nb_rendu_dyn(pieces: tuple[int], s: int):
     """prend en parametre le systeme de pieces (tuple) et s, la somme à rendre,
     et utilise tab un tableau dans lequel on enregistre
     les tailles des solutions optimales calculees iterativement
@@ -83,7 +83,7 @@ def nb_rendu_dyn(pieces, s):
     return tab[s]
 
 
-def rendre_monnaie_dyn(pieces, s):
+def rendre_monnaie_dyn(pieces: tuple[int], s: int):
     """prend en parametre le systeme de pieces (tuple) et s, la somme à rendre,
     et utilise tab_solt un tableau dans lequel on enregistre
     les solutions optimales calculees iterativement
