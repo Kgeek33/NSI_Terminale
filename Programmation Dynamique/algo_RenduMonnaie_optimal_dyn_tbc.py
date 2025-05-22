@@ -6,7 +6,7 @@ import algo_RenduMonnaie_glouton as glouton
 euros = (1, 2, 5, 10, 20, 50, 100, 200)
 
 
-def nb_rendu(pieces, s, prof=None):
+def nb_rendu(pieces: tuple, s: int, prof: str | None = None):
     """prend en paramètre le systeme de pieces (tuple) et s, la somme à rendre
     renvoie la liste des pieces rendues"""
 
@@ -35,7 +35,7 @@ def nb_rendu(pieces, s, prof=None):
     return nb_pieces_a_rendre
 
 
-def nb_rendu_memo(pieces, s, dico={}):
+def nb_rendu_memo(pieces: tuple, s: int, dico: dict[int, int] = {}):
     """prend en parametre le systeme de pieces (tuple) et s, la somme a rendre,
     et dico le dictionnaire des calculs dejà effectues
     (programmation dynamique)
@@ -47,19 +47,22 @@ def nb_rendu_memo(pieces, s, dico={}):
     # si le rendu est connu (deja dans le dico), on ne le recalcule pas
     # on retourne directement sa valeur
     if s in dico:
-        "a completer"
+        return dico[s]
     nb_pieces_a_rendre = s  # s=1+1+1+...1 dans le pire des cas
     # pour chaque piece possible rendue
     for p in pieces:
         if s-p >= 0:
             # on determine le min entre le nb_pieces_a_rendre et
             # 1+nb_rendu(pieces,s-p) et on le stocke dans le dico
-            "a completer"
+            dico[s] = min(
+                nb_pieces_a_rendre,
+                1 + nb_rendu_memo(pieces, s-p, dico)
+            )
         # si p>s : on ne fait rien (la combinaison examinee echoue)
-    return "a completer"
+    return dico[s]
 
 
-def nb_rendu_dyn(pieces, s):
+def nb_rendu_dyn(pieces: tuple, s: int):
     """prend en parametre le systeme de pieces (tuple) et s, la somme à rendre,
     et utilise tab un tableau dans lequel on enregistre
     les tailles des solutions optimales calculees iterativement
@@ -80,7 +83,7 @@ def nb_rendu_dyn(pieces, s):
     return tab[s]
 
 
-def rendre_monnaie_dyn(pieces, s):
+def rendre_monnaie_dyn(pieces: tuple, s: int):
     """prend en parametre le systeme de pieces (tuple) et s, la somme à rendre,
     et utilise tab_solt un tableau dans lequel on enregistre
     les solutions optimales calculees iterativement
