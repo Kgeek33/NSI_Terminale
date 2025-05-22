@@ -142,17 +142,3 @@ if __name__ == '__main__':
     nb_opt_memo = nb_rendu_memo(euros, 29)
     print("nb de pieces optimal pour rendre 29 :", nb_opt_memo)
     assert nb_opt_memo == nb_opt
-
-    for s in range(1, 30):
-        print("test nb rendu", s)
-        nb_opt = nb_rendu(euros, s)
-        nb_opt_memo = nb_rendu_memo(euros, s)
-        nb_opt_dyn = nb_rendu_dyn(euros, s)
-        assert nb_opt_memo == nb_opt == nb_opt_dyn
-
-#     for s in range(1,30):
-#         print("test rendu",s)
-#         nb_opt=nb_rendu(euros,s)
-#         nb_opt_memo=nb_rendu_memo(euros,s)
-#         nb_opt_dyn=nb_rendu_dyn(euros,s)
-#         assert glouton.rendre_monnaie(euros,s)==rendre_monnaie_dyn(euros,s)
