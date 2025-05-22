@@ -83,7 +83,6 @@ def nb_rendu_dyn(pieces: tuple, s: int):
     return tab[s]
 
 
-
 def rendre_monnaie_dyn(pieces: tuple, s: int):
     """prend en parametre le systeme de pieces (tuple) et s, la somme à rendre,
     et utilise tab_solt un tableau dans lequel on enregistre
