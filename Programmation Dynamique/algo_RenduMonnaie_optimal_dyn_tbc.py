@@ -4,6 +4,8 @@ import algo_RenduMonnaie_glouton as glouton
 """ Rendu de monnaie"""
 
 euros = (1, 2, 5, 10, 20, 50, 100, 200)
+print_appels = True
+CPT = {}
 
 
 def nb_rendu(pieces: tuple, s: int, prof: str | None = None):
