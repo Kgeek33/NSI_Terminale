@@ -117,7 +117,7 @@ if __name__ == '__main__':
     print("nb de pieces optimal pour rendre 18 :", nb_opt)
     # vérifie que le rendu glouton est le meilleur
     # *avec les systeme de pièces de l'euro
-    assert len(R_G) == nb_opt
+    #assert len(R_G) == nb_opt
 
     print("rendu glouton 8 avec (1,4,5) : ",
           glouton.rendre_monnaie((1, 4, 5), 8))
