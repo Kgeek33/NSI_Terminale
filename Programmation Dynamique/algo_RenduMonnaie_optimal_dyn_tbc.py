@@ -29,7 +29,7 @@ def nb_rendu(pieces, s, prof=None):
             # le min permet de reinitialiser le nb de pieces a  rendre
             nb_pieces_a_rendre = min(
                 nb_pieces_a_rendre, 1+nb_rendu(pieces, s-p, prof+" "))
-        # si p>s : on ne fait rien (la combinaison examinÃ©e Ã©choue)
+        # si p>s : on ne fait rien (la combinaison examinée échoue)
         if print_appels:
             print()
     return nb_pieces_a_rendre
@@ -105,14 +105,14 @@ if __name__ == '__main__':
     print("rendu glouton 12 : ", R_G)
     nb_opt = nb_rendu_memo(euros, 12)
     print("nb de pieces optimal pour rendre 12 :", nb_opt)
-    # vÃ©rifie que le rendu glouton est le meilleur
+    # vérifie que le rendu glouton est le meilleur
     # avec les systeme de pièces de l'euro
     assert len(R_G) == nb_opt
     R_G = glouton.rendre_monnaie(euros, 18)
     print("rendu glouton 18 : ", R_G)
     nb_opt = nb_rendu_memo(euros, 18)
     print("nb de pieces optimal pour rendre 18 :", nb_opt)
-    # vÃ©rifie que le rendu glouton est le meilleur
+    # vérifie que le rendu glouton est le meilleur
     # *avec les systeme de pièces de l'euro
     assert len(R_G) == nb_opt
 
