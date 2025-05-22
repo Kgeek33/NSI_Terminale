@@ -90,20 +90,16 @@ def rendre_monnaie_dyn(pieces: tuple, s: int):
     et utilise tab_solt un tableau dans lequel on enregistre
     les solutions optimales calculees iterativement
     renvoie la liste optimale des pieces rendues"""
-    tab = [0]*(s+1)
-    # allocation du tableau a la taille attendue et initialisation a  0.
+    tab_nb = [0]*(s+1)  # tableau des nb de pieces rendues
+    tab_solt = [[]]*(s+1)  # tableau des rendus monnaie optimaux
+    # allocation du tableau Ã  la taille attendue et initialisation Ã  0.
     # tab[0] est donc juste.
     # pour chaque somme inferieure ou egale a  la somme s passee en argument
     for n in range(1, s+1):
         # à compléter...
+        pass
 
-        tab[n] = n  # 1+1+1+1...+1 (n fois)
-        for p in pieces:
-            if p <= n:
-                tab[n] = min(tab[n], tab[n-p]+1)
-                # L'appel recursif de la version memo est remplace
-                # par un acces au tableau tab
-    return tab[s]
+    return tab_solt[s]
 
 
 if __name__ == '__main__':
@@ -148,3 +144,17 @@ if __name__ == '__main__':
     nb_opt_memo = nb_rendu_memo(euros, 29)
     print("nb de pieces optimal pour rendre 29 :", nb_opt_memo)
     assert nb_opt_memo == nb_opt
+
+    for s in range(1, 30):
+        print("test nb rendu", s)
+        nb_opt = nb_rendu(euros, s)
+        nb_opt_memo = nb_rendu_memo(euros, s)
+        nb_opt_dyn = nb_rendu_dyn(euros, s)
+        assert nb_opt_memo == nb_opt == nb_opt_dyn
+
+#     for s in range(1,30):
+#         print("test rendu",s)
+#         nb_opt=nb_rendu(euros,s)
+#         nb_opt_memo=nb_rendu_memo(euros,s)
+#         nb_opt_dyn=nb_rendu_dyn(euros,s)
+#         assert glouton.rendre_monnaie(euros,s)==rendre_monnaie_dyn(euros,s)
