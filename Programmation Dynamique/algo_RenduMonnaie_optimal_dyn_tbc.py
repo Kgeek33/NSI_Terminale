@@ -47,16 +47,19 @@ def nb_rendu_memo(pieces, s, dico={}):
     # si le rendu est connu (deja dans le dico), on ne le recalcule pas
     # on retourne directement sa valeur
     if s in dico:
-        "a completer"
+        return dico[s]
     nb_pieces_a_rendre = s  # s=1+1+1+...1 dans le pire des cas
     # pour chaque piece possible rendue
     for p in pieces:
         if s-p >= 0:
             # on determine le min entre le nb_pieces_a_rendre et
             # 1+nb_rendu(pieces,s-p) et on le stocke dans le dico
-            "a completer"
+            dico[s] = min(
+                nb_pieces_a_rendre,
+                1 + nb_rendu_memo(pieces, s-p, dico)
+            )
         # si p>s : on ne fait rien (la combinaison examinee echoue)
-    return "a completer"
+    return dico[s]
 
 
 def nb_rendu_dyn(pieces, s):
