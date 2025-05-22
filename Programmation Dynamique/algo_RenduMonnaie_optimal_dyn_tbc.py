@@ -90,16 +90,20 @@ def rendre_monnaie_dyn(pieces: tuple, s: int):
     et utilise tab_solt un tableau dans lequel on enregistre
     les solutions optimales calculees iterativement
     renvoie la liste optimale des pieces rendues"""
-    tab_nb = [0]*(s+1)  # tableau des nb de pieces rendues
-    tab_solt = [[]]*(s+1)  # tableau des rendus monnaie optimaux
-    # allocation du tableau Ã  la taille attendue et initialisation Ã  0.
+    tab = [0]*(s+1)
+    # allocation du tableau a la taille attendue et initialisation a  0.
     # tab[0] est donc juste.
     # pour chaque somme inferieure ou egale a  la somme s passee en argument
     for n in range(1, s+1):
         # à compléter...
-        pass
 
-    return tab_solt[s]
+        tab[n] = n  # 1+1+1+1...+1 (n fois)
+        for p in pieces:
+            if p <= n:
+                tab[n] = min(tab[n], tab[n-p]+1)
+                # L'appel recursif de la version memo est remplace
+                # par un acces au tableau tab
+    return tab[s]
 
 
 if __name__ == '__main__':
