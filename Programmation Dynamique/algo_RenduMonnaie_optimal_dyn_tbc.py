@@ -7,11 +7,8 @@ euros = (1, 2, 5, 10, 20, 50, 100, 200)
 
 
 def nb_rendu(pieces, s, prof=None):
-    """
-    prend en paramètre le systeme de pieces (tuple) et
-    s, la somme à rendre
-    renvoie la liste des pièces rendues
-    """
+    """prend en paramètre le systeme de pieces (tuple) et s, la somme à rendre
+    renvoie la liste des pieces rendues"""
 
     if prof is None:
         prof = ""
@@ -29,73 +26,44 @@ def nb_rendu(pieces, s, prof=None):
         if print_appels:
             print(prof+str(p), end="-")
         if s-p >= 0:
-            # le min permet de réinitialiser le nb de pieces à rendre
+            # le min permet de reinitialiser le nb de pieces a  rendre
             nb_pieces_a_rendre = min(
                 nb_pieces_a_rendre, 1+nb_rendu(pieces, s-p, prof+" "))
-        # si p>s : on ne fait rien (la combinaison examinée échoue)
+        # si p>s : on ne fait rien (la combinaison examinÃ©e Ã©choue)
         if print_appels:
             print()
     return nb_pieces_a_rendre
 
 
 def nb_rendu_memo(pieces, s, dico={}):
-    """
-    prend en parametre le systeme de pieces (tuple) et s, la somme a rendre,
-    et dico le dictionnaire des calculs déjà effectues
+    """prend en parametre le systeme de pieces (tuple) et s, la somme a rendre,
+    et dico le dictionnaire des calculs dejà effectues
     (programmation dynamique)
-    renvoie *la taille de* la liste optimale des pieces rendues
-    """
+    renvoie *la taille de* la liste optimale des pieces rendues"""
 
-    # cas de base : si la somme à rendre est nulle, elle nécessite zéro pièces
+    # cas de base : si la somme a rendre est nulle, elle necessite zero pieces
     if s == 0:
         return 0
-    # si le rendu est connu, on ne le recalcule pas
+    # si le rendu est connu (deja dans le dico), on ne le recalcule pas
+    # on retourne directement sa valeur
     if s in dico:
-        return dico[s]
+        "a completer"
     nb_pieces_a_rendre = s  # s=1+1+1+...1 dans le pire des cas
     # pour chaque piece possible rendue
     for p in pieces:
         if s-p >= 0:
-            # le min permet de réinitialiser le nb de pieces à rendre
-            dico[s] = min(nb_pieces_a_rendre, 1 +
-                          nb_rendu_memo(pieces, s-p, dico))
+            # on determine le min entre le nb_pieces_a_rendre et
+            # 1+nb_rendu(pieces,s-p) et on le stocke dans le dico
+            "a completer"
         # si p>s : on ne fait rien (la combinaison examinee echoue)
-    return dico[s]
+    return "a completer"
 
-
-# def rendre_monnaie_memo(pieces,s,dico_nb={},dico_solt={}):
-#     """prend en paramètre le systeme de pieces (tuple) et
-#     s, la somme à rendre,
-#     et dico_nb et dico_solt les dictionnaires des calculs déjà effectués
-#     renvoie la liste des pièces rendues"""
-#
-#
-#     # cas de base : si la somme à rendre est nulle
-#     elle nécessite zéro pièces
-#     if s == 0 : return []
-#     # si le rendu est connu, on ne le recalcule pas
-#     if s in dico : return dico_solt[s]
-#     nb_pieces_a_rendre=s      #s=1+1+1+...1 dans le pire des cas
-#     #pour chaque pièce possible rendue
-#     for p in pieces:
-#         if s-p >=0 :
-#             # le min permet de réinitialiser le nb de pièces à rendre
-#             nb_pieces_a_rendre,dico_solt[s] > len(dico_nb[s]
-#             dico_solt[s] = rendre_monnaie_memo(
-#                 pieces,
-#                 s-p,
-#                 dico_nb,dico_solt
-#             )+[s]
-#        # si p>s : on ne fait rien (la combinaison examinée échoue)
-#     return dico_solt[s]
 
 def nb_rendu_dyn(pieces, s):
-    """
-    prend en parametre le systeme de pieces (tuple) et s, la somme à rendre,
-    et utilise tab un tableau dans lequel on enregistre les tailles
-    des solutions optimales calculees iterativement
-    renvoie la *taille de* la liste optimale des pieces rendues
-    """
+    """prend en parametre le systeme de pieces (tuple) et s, la somme à rendre,
+    et utilise tab un tableau dans lequel on enregistre
+    les tailles des solutions optimales calculees iterativement
+    renvoie la *taille de* la liste optimale des pieces rendues"""
     tab = [0]*(s+1)
     # allocation du tableau a la taille attendue et initialisation a  0.
     # tab[0] est donc juste.
@@ -113,14 +81,13 @@ def nb_rendu_dyn(pieces, s):
 
 
 def rendre_monnaie_dyn(pieces, s):
-    """prend en parametre le systeme de pieces (tuple) et
-    s, la somme à rendre,
+    """prend en parametre le systeme de pieces (tuple) et s, la somme à rendre,
     et utilise tab_solt un tableau dans lequel on enregistre
     les solutions optimales calculees iterativement
     renvoie la liste optimale des pieces rendues"""
     tab_nb = [0]*(s+1)  # tableau des nb de pieces rendues
     tab_solt = [[]]*(s+1)  # tableau des rendus monnaie optimaux
-    # allocation du tableau à la taille attendue et initialisation à 0.
+    # allocation du tableau Ã  la taille attendue et initialisation Ã  0.
     # tab[0] est donc juste.
     # pour chaque somme inferieure ou egale a  la somme s passee en argument
     for n in range(1, s+1):
@@ -138,15 +105,15 @@ if __name__ == '__main__':
     print("rendu glouton 12 : ", R_G)
     nb_opt = nb_rendu_memo(euros, 12)
     print("nb de pieces optimal pour rendre 12 :", nb_opt)
-    # vérifie que le rendu glouton est le meilleur
+    # vÃ©rifie que le rendu glouton est le meilleur
     # avec les systeme de pièces de l'euro
     assert len(R_G) == nb_opt
     R_G = glouton.rendre_monnaie(euros, 18)
     print("rendu glouton 18 : ", R_G)
     nb_opt = nb_rendu_memo(euros, 18)
     print("nb de pieces optimal pour rendre 18 :", nb_opt)
-    # vérifie que le rendu glouton est le meilleur
-    # avec les systeme de pièces de l'euro
+    # vÃ©rifie que le rendu glouton est le meilleur
+    # *avec les systeme de pièces de l'euro
     assert len(R_G) == nb_opt
 
     print("rendu glouton 8 avec (1,4,5) : ",
