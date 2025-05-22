@@ -4,6 +4,8 @@ import algo_RenduMonnaie_glouton as glouton
 """ Rendu de monnaie"""
 
 euros = (1, 2, 5, 10, 20, 50, 100, 200)
+print_appels = True
+CPT = {}
 
 
 def nb_rendu(pieces: tuple, s: int, prof: str | None = None):
@@ -117,7 +119,7 @@ if __name__ == '__main__':
     print("nb de pieces optimal pour rendre 18 :", nb_opt)
     # vérifie que le rendu glouton est le meilleur
     # *avec les systeme de pièces de l'euro
-    #assert len(R_G) == nb_opt
+    # assert len(R_G) == nb_opt
 
     print("rendu glouton 8 avec (1,4,5) : ",
           glouton.rendre_monnaie((1, 4, 5), 8))
