@@ -5,6 +5,6 @@ def chemin(n: int, m: int):
 
 
 if __name__ == '__main__':
-    print(chemin(1, 4))
-    print(chemin(3, 4))
-    print(chemin(10, 10))
+    assert chemin(0, 4) == 1
+    assert chemin(3, 4) == 35
+    assert chemin(10, 10) == 184756
