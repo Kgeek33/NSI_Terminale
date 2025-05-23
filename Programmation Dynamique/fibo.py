@@ -3,3 +3,7 @@ def fibo_rec(n: int) -> int:
         return 1
     return fibo_rec(n-1) + fibo_rec(n-2)
 
+
+if __name__ == '__main__':
+    for n in range(11):
+        print(fibo_rec(n))
