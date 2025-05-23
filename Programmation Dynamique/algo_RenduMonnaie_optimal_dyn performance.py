@@ -1,6 +1,6 @@
 import timeit
 import functools
-from algo_RenduMonnaie_optimal_dyn_tbc import (
+from algo_RenduMonnaie_optimal_dyn import (
     nb_rendu,
     nb_rendu_dyn,
     nb_rendu_memo,
