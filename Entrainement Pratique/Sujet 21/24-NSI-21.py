@@ -24,7 +24,7 @@ assert recherche_motif("ab", "abracadabra") == [0, 7]
 assert recherche_motif("ab", "abracadabraab") == [0, 7, 11]
 
 
-def parcours(adj, x, acc: list):
+def parcours(adj: list[list], x: list, acc: list):
     '''Réalise un parcours en profondeur récursif
     du graphe donné par les listes d'adjacence adj
     depuis le sommet x en accumulant les sommets
@@ -35,7 +35,7 @@ def parcours(adj, x, acc: list):
             parcours(adj, y, acc)
 
 
-def accessibles(adj, x):
+def accessibles(adj: list[list], x: list):
     '''Renvoie la liste des sommets accessibles dans le
     graphe donné par les listes d'adjacence adj depuis
     le sommet x.'''
