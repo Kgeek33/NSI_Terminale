@@ -4,6 +4,16 @@ def chemin(n: int, m: int) -> int:
     return chemin(n - 1, m) + chemin(n, m - 1)
 
 
+def chemin_memo(n: int, m: int, dico={}) -> int:
+    if n == 0 or m == 0:
+        return 1
+
+    if (n, m) in dico:
+        return dico[(n, m)]
+
+    return dico[(n, m)]
+
+
 if __name__ == '__main__':
     assert chemin(0, 4) == 1
     assert chemin(3, 4) == 35
