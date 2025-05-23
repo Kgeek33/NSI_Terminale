@@ -5,7 +5,6 @@ def fibo_rec(n: int) -> int:
 
 
 def fibo_memo(n, dico={}):
-
     if n <= 1:
         return 1
     if n in dico:
