@@ -19,7 +19,7 @@ def temps_d_execution_2(f, x, y):
 
 print(euros == (1, 2, 5, 20, 50, 100))
 a_rendre = 29
-n = 20
+n = 25
 # temps_d_execution_2(nb_rendu, euros, a_rendre)
 # temps_d_execution_2(nb_rendu_memo, euros, a_rendre)
 # temps_d_execution_2(nb_rendu_dyn, euros, a_rendre)
