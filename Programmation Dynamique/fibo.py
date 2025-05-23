@@ -15,14 +15,9 @@ def fibo_memo(n: int, dico={}) -> int:
 
 
 def fibo_dyn(n: int) -> int:
+    tab = [1]*(n+1)
 
-    tab = [0]*(n+1)
-    tab[0] = 1
-
-    for k in range(1, n+1):
-        tab[n] = k
-
-    for k in range(2, len(tab)):
+    for k in range(2, n+1):
         tab[k] = tab[k-1] + tab[k-2]
 
     return tab[n]
