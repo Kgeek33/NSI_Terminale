@@ -35,7 +35,7 @@ def parcours(adj: list[list], x: list, acc: list):
             parcours(adj, y, acc)
 
 
-def accessibles(adj: list[list], x: list):
+def accessibles(adj: list[list], x: list) -> list:
     '''Renvoie la liste des sommets accessibles dans le
     graphe donné par les listes d'adjacence adj depuis
     le sommet x.'''
