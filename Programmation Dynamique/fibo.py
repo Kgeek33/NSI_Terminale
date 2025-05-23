@@ -1,12 +1,12 @@
 def fibo_rec(n: int) -> int:
-    if n == 0 or n == 1:
+    if n <= 1:
         return 1
     return fibo_rec(n-1) + fibo_rec(n-2)
 
 
 def fibo_memo(n, dico = {}):
 
-    if n == 0 or n == 1:
+    if n <= 1:
         return 1
     if n in dico:
         return dico[n]
