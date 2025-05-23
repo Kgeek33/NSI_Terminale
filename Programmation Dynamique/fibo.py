@@ -6,4 +6,4 @@ def fibo_rec(n: int) -> int:
 
 if __name__ == '__main__':
     for n in range(11):
-        print(fibo_rec(n))
+        print(f"Fibonacci de {n} =>", fibo_rec(n))
