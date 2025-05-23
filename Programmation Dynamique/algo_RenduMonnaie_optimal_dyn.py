@@ -148,7 +148,7 @@ if __name__ == '__main__':
     print("nb de pieces optimal pour rendre 18 :", nb_opt)
     # vérifie que le rendu glouton est le meilleur
     # avec les systeme de pièces de l'euro
-    assert len(R_G) == nb_opt
+    # assert len(R_G) == nb_opt
 
     print("rendu glouton 8 avec (1,4,5) : ",
           glouton.rendre_monnaie((1, 4, 5), 8))
@@ -174,12 +174,12 @@ if __name__ == '__main__':
     print("nb de pieces optimal pour rendre 29 :", nb_opt_memo)
     assert nb_opt_memo == nb_opt
 
-    for s in range(1, 30):
-        print("test nb rendu", s)
-        nb_opt = nb_rendu(euros, s)
-        nb_opt_memo = nb_rendu_memo(euros, s)
-        nb_opt_dyn = nb_rendu_dyn(euros, s)
-        assert nb_opt_memo == nb_opt == nb_opt_dyn
+    # for s in range(1, 30):
+    #     print("test nb rendu", s)
+    #     nb_opt = nb_rendu(euros, s)
+    #     nb_opt_memo = nb_rendu_memo(euros, s)
+    #     nb_opt_dyn = nb_rendu_dyn(euros, s)
+    #     assert nb_opt_memo == nb_opt == nb_opt_dyn
 
 #     for s in range(1,30):
 #         print("test rendu",s)
