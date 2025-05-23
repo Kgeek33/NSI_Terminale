@@ -14,7 +14,7 @@ def fibo_memo(n: int, dico: dict[int, int] = {}) -> int:
     return dico[n]
 
 
-def fibo_dyn(n: int):
+def fibo_dyn(n: int) -> int:
     tab = [1] * (n+1)
     for i in range(2, n+1):
         tab[i] = tab[i - 2] + tab[i - 1]
