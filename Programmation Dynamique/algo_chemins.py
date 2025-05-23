@@ -9,9 +9,7 @@ def chemin_memo(n: int, m: int, dico={}) -> int:
         return 1
     if chemin_memo(n, m) in dico:
         return dico
-    for k in range(n + 1):
-        for i in range(m +1):
-            dico[i] = 
+    
 
 
 if __name__ == '__main__':
