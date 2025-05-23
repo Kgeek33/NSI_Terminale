@@ -22,9 +22,9 @@ def fibo_dyn(n: int) -> int:
 
 
 if __name__ == '__main__':
-    for n in range(11):
+    for n in range(34):
         print(f"Fibonacci de {n} =>", fibo_rec(n))
-    for n in range(11):
+    for n in range(34):
         print(f"Fibonacci mémo de {n} =>", fibo_memo(n))
-    for n in range(11):
+    for n in range(34):
         print(f"Fibonacci dyn de {n} =>", fibo_dyn(n))
