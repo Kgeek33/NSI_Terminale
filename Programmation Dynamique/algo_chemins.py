@@ -1,4 +1,4 @@
-def chemin(n: int, m: int):
+def chemin(n: int, m: int) -> int:
     if n == 0 or m == 0:
         return 1
     return chemin(n-1, m) + chemin(n, m-1)
