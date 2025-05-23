@@ -4,7 +4,7 @@ def fibo_rec(n: int) -> int:
     return fibo_rec(n-1) + fibo_rec(n-2)
 
 
-def fibo_memo(n: int, dico: dict[int, int] = {}):
+def fibo_memo(n: int, dico: dict[int, int] = {}) -> int:
     if n <= 1:
         return 1
     if n in dico:
