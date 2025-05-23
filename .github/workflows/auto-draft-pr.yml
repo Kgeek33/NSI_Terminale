@@ -1,4 +1,4 @@
-name: Créer une PR à la création d'une branche
+name: 🆕 Créer une PR à la création d'une branche
 
 on:
   create:
