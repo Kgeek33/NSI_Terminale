@@ -9,12 +9,9 @@ def fibo_memo(n, dico={}):
         return 1
     if n in dico:
         return dico[n]
-    for i in range(n):
+    for _ in range(n):
         dico[n] = fibo_memo(n-1) + fibo_memo(n-2)
     return dico[n]
-
-
-
 
 
 if __name__ == '__main__':
