@@ -4,7 +4,7 @@ def fibo_rec(n: int) -> int:
     return fibo_rec(n-1) + fibo_rec(n-2)
 
 
-def fibo_memo(n: int, dico={}):
+def fibo_memo(n: int, dico={}) -> int:
     if n <= 1:
         return 1
     if n in dico:
@@ -14,13 +14,18 @@ def fibo_memo(n: int, dico={}):
     return dico[n]
 
 
-def fibo_dyn(n):
+def fibo_dyn(n: int) -> int:
 
     tab = [0]*(n+1)
+    tab[0] = 1
 
     for k in range(1, n+1):
+        tab[n] = k
 
-        pass
+    for k in range(2, len(tab)):
+        tab[k] = tab[k-1] + tab[k-2]
+
+    return tab[n]
 
 
 if __name__ == '__main__':
@@ -28,3 +33,5 @@ if __name__ == '__main__':
         print(f"Fibonacci de {n} =>", fibo_rec(n))
     for n in range(34):
         print(f"Fibonacci mémo de {n} =>", fibo_memo(n))
+    for n in range(34):
+        print(f"Fibonacci dynamique de {n} =>", fibo_dyn(n))

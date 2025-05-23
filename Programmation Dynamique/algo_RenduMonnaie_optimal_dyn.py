@@ -103,7 +103,6 @@ def nb_rendu_dyn(pieces, s):
     # tab[0] est donc juste.
     # pour chaque somme inferieure ou egale a  la somme s passee en argument
     for n in range(1, s+1):
-        # à compléter...
 
         tab[n] = n  # 1+1+1+1...+1 (n fois)
         for p in pieces:
