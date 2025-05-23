@@ -1,4 +1,4 @@
-name: 🆕 Créer une PR à la création d'une branche
+name: 🆕 Create a PR for creating a branch
 
 on:
   create:
@@ -9,14 +9,14 @@ jobs:
   create-draft-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Vérifier que la branche n'est pas main
+      - name: 👀 Check that the branch is not main
         id: check_branch
         run: |
           if [ "$GITHUB_REF_NAME" = "main" ]; then
             echo "On ne crée pas de PR pour la branche main."
             exit 78
           fi
-      - name: Créer une Pull Request en draft
+      - name: Create a request in draft
         uses: peter-evans/create-pull-request@v7.0.8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
