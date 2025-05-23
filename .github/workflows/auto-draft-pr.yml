@@ -7,6 +7,9 @@ jobs:
   create-draft-pr:
     runs-on: ubuntu-latest
     steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4.2.2
+
       - name: 👀 Check that the ref is a branch and not main
         id: check_branch
         run: |
