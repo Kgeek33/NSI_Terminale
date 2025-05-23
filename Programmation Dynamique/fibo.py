@@ -14,8 +14,17 @@ def fibo_memo(n, dico={}):
     return dico[n]
 
 
+def fibo_dyn(n: int):
+    tab = [1] * (n+1)
+    for i in range(2, n+1):
+        tab[i] = tab[i - 2] + tab[i - 1]
+    return tab[n]
+
+
 if __name__ == '__main__':
     for n in range(11):
         print(f"Fibonacci de {n} =>", fibo_rec(n))
     for n in range(11):
         print(f"Fibonacci mémo de {n} =>", fibo_memo(n))
+    for n in range(11):
+        print(f"Fibonacci dyn de {n} =>", fibo_dyn(n))
