@@ -150,12 +150,12 @@ if __name__ == '__main__':
     print(Maillon.est_vide(L2.suite().suite().suite()))  # True
     print(str(L2))
     print("lg (iter) de ", L2, ":", taille_iter(L2))
-    print("lg (recursif) de ",str(L2),taille_rec(L2))
+    print("lg (recursif) de ", str(L2), taille_rec(L2))
     for i in range(taille_iter(L2)):
         print(i, "-eme element (recursif) :", nieme_element_rec(i, L2))
     # print(10,"-eme element (recursif) :",nieme_element_rec(10, L2))
     for i in range(taille_iter(L2)):
-        print(i, "-eme element (itératif) :",nieme_element_iter(i, L2))
+        print(i, "-eme element (itératif) :", nieme_element_iter(i, L2))
 
     print(str(inserer_fin(L2,100)))
     #!!!! inserer_fin() a modifié L2
