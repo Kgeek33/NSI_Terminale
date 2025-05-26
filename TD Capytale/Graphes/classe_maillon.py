@@ -31,6 +31,7 @@ def taille_rec(lst):
     else:
         return 1 + taille_rec(lst._suivant)
 
+
 # avec une boucle
 def taille_iter(lst):
     """renvoie la longueur de la liste lst"""
