@@ -78,7 +78,7 @@ def inserer_fin(lst, v):
     while maillon._suivant is not None:
         maillon = maillon.suite()
         # ou bien maillon = maillon._suivant
-    maillon._suivant=m
+    maillon._suivant = m
     return lst
 
 def concatener(lst1, lst2):
