@@ -74,7 +74,7 @@ def inserer_fin(lst, v):
     """renvoie le n-ième élément de la liste lst
        les éléments sont numérotés à partir de 0"""
     m = Maillon(v, None)
-    maillon = lst     #adresse du premier maillon de la liste
+    maillon = lst     # adresse du premier maillon de la liste
     while maillon._suivant is not None:
         maillon = maillon.suite()
         # ou bien maillon = maillon._suivant
