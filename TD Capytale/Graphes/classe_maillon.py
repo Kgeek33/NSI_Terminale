@@ -97,7 +97,7 @@ def renverser(lst):
     renverser [30] renvoie   [30]
     renverser [3, 6, 9, 100] renvoie  [100, 9, 6, 3]
     """
-    maillon = lst     #adresse du premier maillon de la liste
+    maillon = lst     # adresse du premier maillon de la liste
     rev_lst = None    # liste vide
     while maillon is not None:
         rev_lst = Maillon(maillon._valeur, rev_lst)
