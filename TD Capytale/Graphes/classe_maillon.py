@@ -12,16 +12,16 @@ class Maillon:
         else:
             return chaine+"{}->{}".format(self.valeur(), Maillon.__str__(self.suite(),""))
 
-    #s'applique sur l'objet self
+    # s'applique sur l'objet self
     def valeur(self):
         return self._valeur
 
     def suite(self):
         return self._suivant
 
-
     def est_vide(lst):
         return lst is None
+
 
 # calcul de la longueur
 # recursif
