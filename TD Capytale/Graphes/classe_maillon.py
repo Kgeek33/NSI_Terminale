@@ -176,4 +176,3 @@ if __name__ == '__main__':
     # #print("min de",str(L2),"=",L2.minimum())
     # #print("max de",str(L1),"=",L1.maximum())
     # #print("min de",str(L1),"=",L1.minimum())
-
