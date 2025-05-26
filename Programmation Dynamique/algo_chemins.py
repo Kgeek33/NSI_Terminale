@@ -17,11 +17,9 @@ def chemins_memo(n: int, m: int, dico: dict[tuple, int] = {}) -> int:
 
 def chemins_dyn(n: int, m: int) -> int:
     tab = [[1] * (m+1)] * (n+1)
-
     for k in range(1, n+1):
         for g in range(1, m+1):
             tab[k][g] = tab[k-1][g] + tab[k][g-1]
-
     return tab[n][m]
 
 
