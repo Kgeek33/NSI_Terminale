@@ -43,6 +43,7 @@ def taille_iter(lst):
         # ou bien maillon = maillon._suivant
     return n
 
+
 # accès au n-ieme element
 # itératif
 def nieme_element_iter(n, lst):
