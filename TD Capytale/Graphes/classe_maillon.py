@@ -131,6 +131,7 @@ def inserer_rec(x, lst):
     si lst est la liste lst contient dans cet ordre  1,2,5,8
     insérer_rec(3,lst) contient dans cet ordre  1,2,3,5,8"""
 
+
 if __name__ == '__main__' :
 
     #creation avec la valeur 3 et une sous liste vide
