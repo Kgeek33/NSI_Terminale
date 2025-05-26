@@ -22,7 +22,7 @@ class Maillon:
     def suite(self):
         return self._suivant
 
-    def est_vide(lst):
+    def est_vide(_self, lst):
         return lst is None
 
 
@@ -112,9 +112,9 @@ def renverser(lst):
 def maximum(self):
     if self is self.liste_vide:
         return None
-    elif self._suivant is self.liste_vide: 
+    elif self._suivant is self.liste_vide:
         return self._valeur
-    else: 
+    else:
         return max(self._valeur, self._suivant.maximum())
 
 
