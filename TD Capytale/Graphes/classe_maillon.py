@@ -57,6 +57,7 @@ def nieme_element_iter(n, lst):
         # ou bien maillon = maillon._suivant
     return maillon.valeur()
 
+
 # recursif
 def nieme_element_rec(n, lst):
     """renvoie le n-ième élément de la liste lst
@@ -69,8 +70,7 @@ def nieme_element_rec(n, lst):
         return nieme_element_rec(n - 1, lst._suivant)
 
 
-
-def inserer_fin(lst,v):
+def inserer_fin(lst, v):
     """renvoie le n-ième élément de la liste lst
        les éléments sont numérotés à partir de 0"""
     m=Maillon(v,None)
