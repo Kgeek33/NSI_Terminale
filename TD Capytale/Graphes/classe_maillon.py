@@ -161,13 +161,13 @@ if __name__ == '__main__':
     # !!!! inserer_fin() a modifié L2
     print(str(L2))
 
-    print(str(concatener(L1,L2)))
-    L3=renverser(None)
-    print(str(None), "renversée : ",str(L3))
-    L3=renverser(L1)
-    print(str(L1), "renversée : ",str(L3))
-    L3=renverser(L2)
-    print(str(L2), "renversée : ",str(L3))
+    print(str(concatener(L1, L2)))
+    L3 = renverser(None)
+    print(str(None), "renversée : ", str(L3))
+    L3 = renverser(L1)
+    print(str(L1), "renversée : ", str(L3))
+    L3 = renverser(L2)
+    print(str(L2), "renversée : ", str(L3))
 
     ##print("max de",str(L2),"=",L2.maximum())
     ##print("min de",str(L2),"=",L2.minimum())
