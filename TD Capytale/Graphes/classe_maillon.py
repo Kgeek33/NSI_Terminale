@@ -157,7 +157,7 @@ if __name__ == '__main__':
     for i in range(taille_iter(L2)):
         print(i, "-eme element (itératif) :", nieme_element_iter(i, L2))
 
-    print(str(inserer_fin(L2,100)))
+    print(str(inserer_fin(L2, 100)))
     #!!!! inserer_fin() a modifié L2
     print(str(L2))
 
