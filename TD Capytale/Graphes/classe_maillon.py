@@ -88,7 +88,7 @@ def concatener(lst1, lst2):
     if lst1 is None:
         return lst2
     else:
-        return Maillon(lst1._valeur, concatener(lst1._suivant,lst2))
+        return Maillon(lst1._valeur, concatener(lst1._suivant, lst2))
 
 
 def renverser(lst):
