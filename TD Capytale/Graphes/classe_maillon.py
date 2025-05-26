@@ -107,7 +107,8 @@ def renverser(lst):
 
 
 def maximum(self):
-    if self is self.liste_vide : return None
+    if self is self.liste_vide:
+        return None
     elif self._suivant is self.liste_vide : return self._valeur
     else : return max(self._valeur,self._suivant.maximum())
 
