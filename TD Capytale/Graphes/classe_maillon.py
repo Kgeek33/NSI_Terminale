@@ -135,7 +135,7 @@ def inserer_rec(x, lst):
 if __name__ == '__main__':
     # creation avec la valeur 3 et une sous liste vide
     L1 = Maillon(30, None)
-    print(L1) # <__main__.Maillon object at 0x...>
+    print(L1)  # <__main__.Maillon object at 0x...>
     print(L1.valeur()) # 3
     print(Maillon.est_vide(L1)) # False
     print("lg (iter) de ",L1,":",taille_iter(L1))
