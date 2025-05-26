@@ -7,7 +7,7 @@ class Maillon:
     def __str__(self, chaine="|"):
         if self is None:
             return "| |"
-        elif Maillon.est_vide(self._suivant):
+        elif Maillon.est_vide(self._suivant):  # type: ignore
             return chaine+str(self._valeur)+"|"
         else:
             return chaine+"{}->{}".format(
@@ -140,14 +140,14 @@ if __name__ == '__main__':
     L1 = Maillon(30, None)
     print(L1)  # <__main__.Maillon object at 0x...>
     print(L1.valeur())  # 3
-    print(Maillon.est_vide(L1))  # False
+    print(Maillon.est_vide(L1))  # type: ignore  # False
     print("lg (iter) de ", L1, ":", taille_iter(L1))
     print("lg (recursif) de ", str(L1), taille_rec(L1))
     c1 = Maillon(9, None)
     c2 = Maillon(6, c1)
     L2 = Maillon(3, c2)
     print(L2.suite().valeur())  # 6
-    print(Maillon.est_vide(L2.suite().suite().suite()))  # True
+    print(Maillon.est_vide(L2.suite().suite().suite()))  # type: ignore  # True
     print(str(L2))
     print("lg (iter) de ", L2, ":", taille_iter(L2))
     print("lg (recursif) de ", str(L2), taille_rec(L2))
