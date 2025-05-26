@@ -169,11 +169,11 @@ if __name__ == '__main__':
     L3 = renverser(L2)
     print(str(L2), "renversée : ", str(L3))
 
-    ##print("max de",str(L2),"=",L2.maximum())
-    ##print("min de",str(L2),"=",L2.minimum())
-    ##L2 = Maillon(3, Maillon(12, Maillon(9, Maillon.liste_vide)))
-    ##print("max de",str(L2),"=",L2.maximum())
-    ##print("min de",str(L2),"=",L2.minimum())
-    ##print("max de",str(L1),"=",L1.maximum())
-    ##print("min de",str(L1),"=",L1.minimum())
+    # #print("max de",str(L2),"=",L2.maximum())
+    # #print("min de",str(L2),"=",L2.minimum())
+    # #L2 = Maillon(3, Maillon(12, Maillon(9, Maillon.liste_vide)))
+    # #print("max de",str(L2),"=",L2.maximum())
+    # #print("min de",str(L2),"=",L2.minimum())
+    # #print("max de",str(L1),"=",L1.maximum())
+    # #print("min de",str(L1),"=",L1.minimum())
 
