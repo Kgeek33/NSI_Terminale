@@ -10,7 +10,10 @@ class Maillon:
         elif Maillon.est_vide(self._suivant):
             return chaine+str(self._valeur)+"|"
         else:
-            return chaine+"{}->{}".format(self.valeur(), Maillon.__str__(self.suite(),""))
+            return chaine+"{}->{}".format(
+                self.valeur(),
+                Maillon.__str__(self.suite(), "")
+            )
 
     # s'applique sur l'objet self
     def valeur(self):
@@ -36,7 +39,7 @@ def taille_rec(lst):
 def taille_iter(lst):
     """renvoie la longueur de la liste lst"""
     n = 0
-    maillon = lst     #adresse du premier maillon de la liste
+    maillon = lst     # adresse du premier maillon de la liste
     while maillon is not None:
         n += 1
         maillon = maillon.suite()
@@ -50,8 +53,8 @@ def nieme_element_iter(n, lst):
     """renvoie le n-ième élément de la liste lst
        les éléments sont numérotés à partir de 0"""
     k = 0
-    maillon = lst     #adresse du premier maillon de la liste
-    while k<n and maillon is not None:
+    maillon = lst     # adresse du premier maillon de la liste
+    while k < n and maillon is not None:
         k += 1
         maillon = maillon.suite()
         # ou bien maillon = maillon._suivant
@@ -62,7 +65,7 @@ def nieme_element_iter(n, lst):
 def nieme_element_rec(n, lst):
     """renvoie le n-ième élément de la liste lst
        les éléments sont numérotés à partir de 0"""
-    if lst is None or n<0:
+    if lst is None or n < 0:
         raise IndexError("indice invalide")
     if n == 0:
         return lst._valeur
