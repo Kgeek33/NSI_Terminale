@@ -1,7 +1,7 @@
 import timeit
 import functools
 from fibo import fibo_dyn, fibo_memo, fibo_rec
-# from algo_RenduMonnaie_optimal_dyn import (nb_rendu, nb_rendu_dyn, nb_rendu_memo, euros,)
+from algo_RenduMonnaie_optimal_dyn import euros
 from algo_chemins import chemin, chemins_memo, chemins_dyn
 
 
