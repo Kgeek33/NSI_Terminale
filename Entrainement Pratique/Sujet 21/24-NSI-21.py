@@ -5,7 +5,6 @@ def recherche_motif(motif: str, text: str) -> list:
     k = 0
     g = 0
     while k < len(text):
-
         if g == len(motif):
             P.append(k - g)
             g = 0
@@ -17,6 +16,7 @@ def recherche_motif(motif: str, text: str) -> list:
             g += 1
 
         k += 1
+
     if g == len(motif):
         P.append(k - g)
 
@@ -29,7 +29,7 @@ assert recherche_motif("ab", "abracadabra") == [0, 7]
 assert recherche_motif("ab", "abracadabraab") == [0, 7, 11]
 
 
-def parcours(adj: list[list], x: int, acc: list):
+def parcours(adj: list[list[int]], x: int, acc: list):
     '''Réalise un parcours en profondeur récursif
     du graphe donné par les listes d'adjacence adj
     depuis le sommet x en accumulant les sommets
