@@ -116,11 +116,12 @@ def maximum(self):
 
 
 def minimum(self):
-    if self is self.liste_vide: 
+    if self is self.liste_vide:
         return None
-    elif self._suivant is self.liste_vide: 
+    elif self._suivant is self.liste_vide:
         return self._valeur
-    else : return min(self._valeur,self._suivant.minimum())
+    else: 
+        return min(self._valeur, self._suivant.minimum())
 
 def inserer_rec(x,lst):
     """prend en argument un entier x et une liste d’entier lst ,
