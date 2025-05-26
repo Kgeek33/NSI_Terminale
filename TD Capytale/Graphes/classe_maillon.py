@@ -81,6 +81,7 @@ def inserer_fin(lst, v):
     maillon._suivant = m
     return lst
 
+
 def concatener(lst1, lst2):
     """concatène les listes lst1 et lst2,
        sous la forme d'une nouvelle liste"""
