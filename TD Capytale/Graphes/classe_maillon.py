@@ -123,7 +123,8 @@ def minimum(self):
     else:
         return min(self._valeur, self._suivant.minimum())
 
-def inserer_rec(x,lst):
+
+def inserer_rec(x, lst):
     """prend en argument un entier x et une liste d’entier lst ,
     supposée triée dans l’ordre croissant et renvoie une nouvelle liste
     dans laquelle x a été inséré à sa place
