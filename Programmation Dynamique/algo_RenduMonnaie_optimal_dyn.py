@@ -119,7 +119,6 @@ def rendre_monnaie_dyn(pieces, s):
     et utilise tab_solt un tableau dans lequel on enregistre
     les solutions optimales calculees iterativement
     renvoie la liste optimale des pieces rendues"""
-    tab_nb = [0]*(s+1)  # tableau des nb de pieces rendues
     tab_solt = [[]]*(s+1)  # tableau des rendus monnaie optimaux
     # allocation du tableau à la taille attendue et initialisation à 0.
     # tab[0] est donc juste.
