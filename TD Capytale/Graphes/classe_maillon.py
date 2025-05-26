@@ -143,10 +143,10 @@ if __name__ == '__main__':
     c1 = Maillon(9, None)
     c2 = Maillon(6, c1)
     L2 = Maillon(3, c2)
-    print(L2.suite().valeur()) # 6
-    print(Maillon.est_vide(L2.suite().suite().suite())) # True
+    print(L2.suite().valeur())  # 6
+    print(Maillon.est_vide(L2.suite().suite().suite()))  # True
     print(str(L2))
-    print("lg (iter) de ",L2,":",taille_iter(L2))
+    print("lg (iter) de ", L2, ":", taille_iter(L2))
     print("lg (recursif) de ",str(L2),taille_rec(L2))
     for i in range(taille_iter(L2)):
         print(i,"-eme element (recursif) :",nieme_element_rec(i, L2))
