@@ -137,7 +137,7 @@ if __name__ == '__main__':
     L1 = Maillon(30, None)
     print(L1)  # <__main__.Maillon object at 0x...>
     print(L1.valeur())  # 3
-    print(Maillon.est_vide(L1)) # False
+    print(Maillon.est_vide(L1))  # False
     print("lg (iter) de ",L1,":",taille_iter(L1))
     print("lg (recursif) de ",str(L1),taille_rec(L1))
     c1 = Maillon(9, None)
