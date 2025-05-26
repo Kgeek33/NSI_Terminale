@@ -26,6 +26,12 @@ def chemins_dyn(n: int, m: int) -> int:
 
 
 if __name__ == '__main__':
+    assert chemin(0, 4) == 1
+    assert chemin(10, 10) == 184756
+    assert chemin(3, 4) == 35
+    assert chemins_memo(0, 4) == 1
+    assert chemins_memo(3, 4) == 35
+    assert chemins_memo(10, 10) == 184756
     assert chemins_dyn(0, 4) == 1
     assert chemins_dyn(3, 4) == 35
     assert chemins_dyn(10, 10) == 184756
