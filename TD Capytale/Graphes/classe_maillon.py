@@ -4,7 +4,7 @@ class Maillon:
         self._valeur = v
         self._suivant = s
 
-    def __str__(self,chaine="|"):
+    def __str__(self, chaine="|"):
         if self is None:
             return "| |"
         elif Maillon.est_vide(self._suivant):
