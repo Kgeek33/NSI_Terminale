@@ -116,7 +116,8 @@ def maximum(self):
 
 
 def minimum(self):
-    if self is self.liste_vide : return None
+    if self is self.liste_vide: 
+        return None
     elif self._suivant is self.liste_vide : return self._valeur
     else : return min(self._valeur,self._suivant.minimum())
 
