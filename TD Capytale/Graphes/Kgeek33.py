@@ -65,7 +65,7 @@ def voisins_entrants(g: Graphe, x):
     return UNEliste
 
 
-print('voisins_entrants(G, "B")=',voisins_entrants(G, "B"))
+print('voisins_entrants(G, "B")=', voisins_entrants(G, "B"))
 assert voisins_entrants(G, "B") == (["A", "D"] or ["D", "A"])
 
 # question 5
