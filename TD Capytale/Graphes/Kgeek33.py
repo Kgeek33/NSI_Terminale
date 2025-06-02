@@ -1,4 +1,4 @@
-from graphe_dictionnaire_adjacence import *
+from graphe_dictionnaire_adjacence import Graphe
 import parcours_largeur as pl
 import parcours_profondeur as pp
 
