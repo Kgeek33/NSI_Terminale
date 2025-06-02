@@ -32,7 +32,7 @@ def max_voisins(g: Graphe):
     return lettre
 
 
-print('max_voisins(G)=',max_voisins(G))
+print('max_voisins(G)=', max_voisins(G))
 
 assert max_voisins(G)=='B' 
 
