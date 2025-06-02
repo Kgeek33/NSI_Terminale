@@ -38,6 +38,8 @@ assert max_voisins(G) == 'B'
 
 # question 3
 print("\nQuestion 3 :")
+
+
 def inaccessible(g: Graphe, x):
     for s in g.sommets():
         for t in g.voisins(s):
