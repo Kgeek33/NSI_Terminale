@@ -19,6 +19,8 @@ G.affiche()
 
 # question 2
 print("\nQuestion 2 :")
+
+
 def max_voisins(g: Graphe):
     lettre = g.sommets()[0]
     nombreVoisins = len(g.voisins(lettre))
