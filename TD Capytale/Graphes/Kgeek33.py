@@ -34,7 +34,7 @@ def max_voisins(g: Graphe):
 
 print('max_voisins(G)=', max_voisins(G))
 
-assert max_voisins(G)=='B' 
+assert max_voisins(G) == 'B'
 
 #question 3
 print("\nQuestion 3 :")
