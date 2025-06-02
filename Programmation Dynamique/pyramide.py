@@ -1,5 +1,7 @@
 from random import randint
 
+compteur = 0
+
 
 def generate_pyramide(h: int) -> list[list[int]]:
     UNEliste: list[list[int]] = []
@@ -31,6 +33,8 @@ def gain_max_rec(pyramide: list[list[int]]) -> int:
 
 
 def gain_max_naif(pyramide: list[list[int]]) -> int:
+    global compteur
+    compteur += 1
     if len(pyramide) == 1:
         return pyramide[0][0]
     gain_gauche = []
@@ -40,8 +44,8 @@ def gain_max_naif(pyramide: list[list[int]]) -> int:
     for k in range(1, len(pyramide)):
         gain_droite.append(pyramide[k][1:])
     return pyramide[0][0] + max(
-        gain_max_rec(gain_gauche),
-        gain_max_rec(gain_droite)
+        gain_max_naif(gain_gauche),
+        gain_max_naif(gain_droite)
     )
 
 
@@ -51,12 +55,17 @@ if __name__ == "__main__":
     print("Pyramide p_1 :")
     afficher_pyramide(p_1)
     print("Gain maximum (récursif) :", gain_max_rec(p_1))
+    print("Gain maximum (naïf) :", gain_max_naif(p_1))
+    print("Compteur :", compteur)
     print("--" * 30)
+    compteur = 0
     print("Pyramide générée :")
     afficher_pyramide(pyramide)
     print("Gain maximum (récursif) :", gain_max_rec(pyramide))
     print("Gain maximum (naïf) :", gain_max_naif(pyramide))
+    print("Compteur :", compteur)
     print("--" * 30)
+    compteur = 0
     p_2 = [
         [8],
         [8, 2],
@@ -73,4 +82,5 @@ if __name__ == "__main__":
     afficher_pyramide(p_2)
     print("Gain maximum (récursif) :", gain_max_rec(p_2))
     print("Gain maximum (naïf) :", gain_max_naif(p_2))
+    print("Compteur :", compteur)
     print("--" * 30)
