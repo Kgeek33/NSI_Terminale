@@ -55,3 +55,22 @@ if __name__ == "__main__":
     print("Pyramide générée :")
     afficher_pyramide(pyramide)
     print("Gain maximum (récursif) :", gain_max_rec(pyramide))
+    print("Gain maximum (naïf) :", gain_max_naif(pyramide))
+    print("--" * 30)
+    p_2 = [
+        [8],
+        [8, 2],
+        [1, 8, 6],
+        [7, 8, 2, 5],
+        [3, 4, 3, 6, 4],
+        [6, 9, 1, 4, 6, 5],
+        [5, 3, 2, 2, 7, 3, 2],
+        [6, 3, 7, 1, 1, 5, 3, 2],
+        [9, 5, 3, 2, 8, 4, 2, 4, 7],
+        [6, 3, 4, 9, 4, 2, 9, 1, 7, 8]
+    ]
+    print("Pyramide p_2 :")
+    afficher_pyramide(p_2)
+    print("Gain maximum (récursif) :", gain_max_rec(p_2))
+    print("Gain maximum (naïf) :", gain_max_naif(p_2))
+    print("--" * 30)
