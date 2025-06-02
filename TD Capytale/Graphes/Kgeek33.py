@@ -3,7 +3,7 @@ import parcours_largeur as pl
 import parcours_profondeur as pp
 
 
-#question 1
+# question 1
 print("Question 1 :")
 G = Graphe()
 G.ajouter_arc("A", "B")
