@@ -33,13 +33,16 @@ def gain_max_rec(pyramide: list[list[int]]) -> int:
 def gain_max_naif(pyramide: list[list[int]]) -> int:
     if len(pyramide) == 1:
         return pyramide[0][0]
-    gain_max = 0
-    for i in range(len(pyramide[1])):
-        gain = pyramide[0][0] + gain_max_naif(
-            [row[i:] for row in pyramide[1:]]
-        )
-        gain_max = max(gain_max, gain)
-    return gain_max
+    gain_gauche = []
+    gain_droite = []
+    for k in range(1, len(pyramide)):
+        gain_gauche.append(pyramide[k][:-1])
+    for k in range(1, len(pyramide)):
+        gain_droite.append(pyramide[k][1:])
+    return pyramide[0][0] + max(
+        gain_max_rec(gain_gauche),
+        gain_max_rec(gain_droite)
+    )
 
 
 if __name__ == "__main__":
@@ -48,7 +51,6 @@ if __name__ == "__main__":
     print("Pyramide p_1 :")
     afficher_pyramide(p_1)
     print("Gain maximum (récursif) :", gain_max_rec(p_1))
-    print("Gain maximum (naïf) :", gain_max_naif(p_1))
     print("--" * 30)
     print("Pyramide générée :")
     afficher_pyramide(pyramide)
