@@ -22,5 +22,21 @@ def afficher_pyramide(pyramide: list[list[int]]) -> None:
         print(texte)
 
 
+def gain_max_rec(pyramide: list[list[int]]) -> int:
+    if len(pyramide) == 1:
+        return pyramide[0][0]
+    gain_gauche = gain_max_rec([row[:-1] for row in pyramide[1:]])
+    gain_droite = gain_max_rec([row[1:] for row in pyramide[1:]])
+    return pyramide[0][0] + max(gain_gauche, gain_droite)
+
+
 if __name__ == "__main__":
-    afficher_pyramide(generate_pyramide(5))
+    pyramide = generate_pyramide(5)
+    p_1 = [[7], [3, 4], [8, 4, 9], [1, 9, 2, 3]]
+    print("Pyramide p_1 :")
+    afficher_pyramide(p_1)
+    print("Gain maximum (récursif) :", gain_max_rec(p_1))
+    print("--" * 30)
+    print("Pyramide générée :")
+    afficher_pyramide(pyramide)
+    print("Gain maximum (récursif) :", gain_max_rec(pyramide))
