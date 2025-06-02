@@ -50,7 +50,6 @@ def gain_max_naif(pyramide: list[list[int]]) -> int:
 
 
 if __name__ == "__main__":
-    pyramide = generate_pyramide(5)
     p_1 = [[7], [3, 4], [8, 4, 9], [1, 9, 2, 3]]
     print("Pyramide p_1 :")
     afficher_pyramide(p_1)
@@ -59,6 +58,7 @@ if __name__ == "__main__":
     print("Compteur :", compteur)
     print("--" * 30)
     compteur = 0
+    pyramide = generate_pyramide(5)
     print("Pyramide générée :")
     afficher_pyramide(pyramide)
     print("Gain maximum (récursif) :", gain_max_rec(pyramide))
