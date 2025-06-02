@@ -48,7 +48,7 @@ def inaccessible(g: Graphe, x):
 
 
 print('inaccessible(G, "D")=', inaccessible(G, "D"))
-print('inaccessible(G, "A")=',inaccessible(G, "A"))
+print('inaccessible(G, "A")=', inaccessible(G, "A"))
 assert inaccessible(G, "D") == False
 assert inaccessible(G, "A") == True
 
