@@ -49,12 +49,29 @@ def gain_max_naif(pyramide: list[list[int]]) -> int:
     )
 
 
+def gain_max_memo(pyramide: list[list[int]], memo: dict) -> int:
+    global compteur
+    compteur += 1
+    if len(pyramide) == 1:
+        return pyramide[0][0]
+    key = tuple(tuple(row) for row in pyramide)
+    if key in memo:
+        return memo[key]
+
+    gain_gauche = gain_max_memo([row[:-1] for row in pyramide[1:]], memo)
+    gain_droite = gain_max_memo([row[1:] for row in pyramide[1:]], memo)
+
+    memo[key] = pyramide[0][0] + max(gain_gauche, gain_droite)
+    return memo[key]
+
+
 if __name__ == "__main__":
     p_1 = [[7], [3, 4], [8, 4, 9], [1, 9, 2, 3]]
     print("Pyramide p_1 :")
     afficher_pyramide(p_1)
     print("Gain maximum (récursif) :", gain_max_rec(p_1))
     print("Gain maximum (naïf) :", gain_max_naif(p_1))
+    print("Gain maximum (mémoïsé) :", gain_max_memo(p_1, {}))
     print("Compteur :", compteur)
     print("--" * 30)
     compteur = 0
@@ -63,6 +80,7 @@ if __name__ == "__main__":
     afficher_pyramide(pyramide)
     print("Gain maximum (récursif) :", gain_max_rec(pyramide))
     print("Gain maximum (naïf) :", gain_max_naif(pyramide))
+    print("Gain maximum (mémoïsé) :", gain_max_memo(pyramide, {}))
     print("Compteur :", compteur)
     print("--" * 30)
     compteur = 0
@@ -82,5 +100,6 @@ if __name__ == "__main__":
     afficher_pyramide(p_2)
     print("Gain maximum (récursif) :", gain_max_rec(p_2))
     print("Gain maximum (naïf) :", gain_max_naif(p_2))
+    print("Gain maximum (mémoïsé) :", gain_max_memo(p_2, {}))
     print("Compteur :", compteur)
     print("--" * 30)
