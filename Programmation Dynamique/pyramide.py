@@ -22,5 +22,12 @@ def afficher_pyramide(pyramide: list[list[int]]) -> None:
         print(texte)
 
 
+def gain_max(pyramide: list[list[int]]):
+    if len(pyramide) == 1:
+        return pyramide[0][0]
+    else:
+        return 
+
+
 if __name__ == "__main__":
     afficher_pyramide(generate_pyramide(5))
