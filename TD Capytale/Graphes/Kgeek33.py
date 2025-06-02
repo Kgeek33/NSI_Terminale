@@ -69,7 +69,7 @@ def voisins_entrants(g: Graphe, x):
 print('voisins_entrants(G, "B")=',voisins_entrants(G, "B"))
 assert voisins_entrants(G, "B") == (["A", "D"] or ["D", "A"])
 
-#question 5
+# question 5
 print("\nQuestion 5 :")
 # def distance(g: Graphe, x, y):
 #     for t in g.voisins(x):
