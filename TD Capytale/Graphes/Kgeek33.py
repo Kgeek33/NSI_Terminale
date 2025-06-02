@@ -91,5 +91,5 @@ print('distance(G, "A", "D")=', distance(G, "A", "D"))
 print('distance(G, "D", "A")=', distance(G, "D", "A"))
 print('distance(G, "A", "E")=', distance(G, "A", "E"))
 assert distance(G, "A", "D") == 2
-assert distance(G, "D", "A") == None
+assert distance(G, "D", "A") is None
 assert distance(G, "A", "E") == 2
