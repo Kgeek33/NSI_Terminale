@@ -17,7 +17,7 @@ G.ajouter_arc("E", "D")
 
 G.affiche()
 
-#question 2
+# question 2
 print("\nQuestion 2 :")
 def max_voisins(g: Graphe):
     lettre = g.sommets()[0]
