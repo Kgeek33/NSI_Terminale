@@ -31,7 +31,8 @@ def gain_max_rec(pyramide: list[list[int]]) -> int:
         gain_gauche.append(pyramide[k][:-1])
     for k in range(1, len(pyramide)):
         gain_droite.append(pyramide[k][1:])
-    return pyramide[0][0] + max(gain_max_rec(gain_gauche), gain_max_rec(gain_droite))
+    return pyramide[0][0] + max(gain_max_rec(gain_gauche),
+                                gain_max_rec(gain_droite))
 
 
 if __name__ == "__main__":
