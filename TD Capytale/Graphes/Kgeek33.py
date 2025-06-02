@@ -53,7 +53,7 @@ print('inaccessible(G, "A")=',inaccessible(G, "A"))
 assert inaccessible(G, "D") == False
 assert inaccessible(G, "A") == True
 
-#question 4
+# question 4
 print("\nQuestion 4 :")
 def voisins_entrants(g: Graphe, x):
     UNEliste = []
