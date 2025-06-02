@@ -55,6 +55,8 @@ assert inaccessible(G, "A") == True
 
 # question 4
 print("\nQuestion 4 :")
+
+
 def voisins_entrants(g: Graphe, x):
     UNEliste = []
     for s in g.sommets():
