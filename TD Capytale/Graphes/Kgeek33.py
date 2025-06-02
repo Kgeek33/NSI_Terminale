@@ -79,6 +79,7 @@ print("\nQuestion 5 :")
 #                 return num + 1
 #     return None
 
+
 def distance(g: Graphe, x, y):
     largeur = pl.parcours_largeur(g, x)
     if y not in largeur:
