@@ -74,6 +74,7 @@ if __name__ == "__main__":
     print("Gain maximum (mémoïsé) :", gain_max_memo(p_1, {}))
     print("Compteur :", compteur)
     print("--" * 30)
+
     compteur = 0
     pyramide = generate_pyramide(5)
     print("Pyramide générée :")
@@ -83,6 +84,7 @@ if __name__ == "__main__":
     print("Gain maximum (mémoïsé) :", gain_max_memo(pyramide, {}))
     print("Compteur :", compteur)
     print("--" * 30)
+
     compteur = 0
     p_2 = [
         [8],
