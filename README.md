@@ -1,3 +1,8 @@
+> [!CAUTION]
+>
+> **Fin de l'année** !! Le repo n'est plus maintenu, à bientôt ;)
+---
+
 > [!NOTE]
 >
 > C'est la 1ère fois depuis que la spécialité `NSI` a été crée que GitHub est utilisé pour travailler 🤣
